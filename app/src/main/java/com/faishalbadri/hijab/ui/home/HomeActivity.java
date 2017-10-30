@@ -40,7 +40,6 @@ public class HomeActivity extends AppCompatActivity {
   private void setupViewPager(ViewPager viewPagerActivityHome) {
     AdapterViewPagerHome adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager());
     adapterViewPagerHome.addFragment(new HomeFragment(),"Home");
-    adapterViewPagerHome.addFragment(new SettingFragment(),"Setting");
     adapterViewPagerHome.addFragment(new OtherFragment(),"Other");
     adapterViewPagerHome.addFragment(new AccountFragment(),"Account");
     viewPagerActivityHome.setAdapter(adapterViewPagerHome);
