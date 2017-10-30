@@ -21,6 +21,14 @@
   <string name="text_pinky_hijab_video">Pinky Hijab Video</string>
   <string name="text_pinky_hijab_video_detail">Get the last update video for women in this app</string>
 
+  <string name="text_pinky_hijab_ebook">Pinky Hijab E-book</string>
+  <string name="text_pinky_hijab_ebook_detail">Get the last update E-book for women in this app</string>
+
+  <string name="text_pinky_hijab_event">Pinky Hijab Event</string>
+  <string name="text_pinky_hijab_event_detail">Get the last update event for women in this app</string>
+
+
+
 </resources>
 
   <!--Rules :-->
@@ -44,3 +52,7 @@
   <!--Home :-->
   <!--1. Event-->
   <!--2. Ebook-->
+  <!--3. News-->
+  <!--4. Voting-->
+  <!--5. Video-->
+  <!--6. Community-->
