@@ -1,8 +1,6 @@
 package com.faishalbadri.hijab.ui.home.fragment.account;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,26 +40,19 @@ public class AccountFragment extends Fragment implements AccountContract.accoutV
   TextView txtEmailProfile,txtUsernameProfile;
   ImageView imgUserProfile;
   Button btnLogout;
-  Context context;
+  View v;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View v = inflater.inflate(R.layout.fragment_account, container, false);
-    sessionAccount = new SessionManager(getActivity());
-    HashMap<String, String> user = sessionAccount.getUserDetails();
-    email = user.get(SessionManager.key_email);
-    txtEmailProfile = v.findViewById(R.id.txt_email_detail_user_profile);
-    txtUsernameProfile = v.findViewById(R.id.txt_nama_detail_user_profile);
-    imgUserProfile = v.findViewById(R.id.img_detail_user_profile);
-    btnLogout = v.findViewById(R.id.btn_logout);
+    v = inflater.inflate(R.layout.fragment_account, container, false);
+    setView();
     btnLogout.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         logout();
       }
     });
-    txtEmailProfile.setText(email);
     accountPresenter = new AccountPresenter(AccountRepositoryInject.provideToLoginRepository(getActivity()));
     accountPresenter.onAttachView(this);
     if (savedInstanceState != null){
@@ -72,8 +63,19 @@ public class AccountFragment extends Fragment implements AccountContract.accoutV
     return v;
   }
   private void logout() {
+    getActivity().finish();
     sessionAccount.logout();
-    ((Activity) context ).finish();
+  }
+
+  private void setView() {
+    sessionAccount = new SessionManager(getActivity());
+    HashMap<String, String> user = sessionAccount.getUserDetails();
+    email = user.get(SessionManager.key_email);
+    txtEmailProfile = v.findViewById(R.id.txt_email_user_account);
+    txtUsernameProfile = v.findViewById(R.id.txt_username_user_account);
+    imgUserProfile = v.findViewById(R.id.img_user_account);
+    btnLogout = v.findViewById(R.id.btn_logout_account);
+    txtEmailProfile.setText(email);
   }
 
   @Override

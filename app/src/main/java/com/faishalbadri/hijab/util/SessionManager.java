@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,11 +41,13 @@ public class SessionManager {
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.startActivity(i);
+//      ((Activity) context).finish();
     } else {
       Intent i = new Intent(context, HomeActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.startActivity(i);
+//      ((Activity) context).finish();
     }
   }
 
