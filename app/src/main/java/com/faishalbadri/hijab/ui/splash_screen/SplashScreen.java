@@ -1,15 +1,16 @@
 package com.faishalbadri.hijab.ui.splash_screen;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity;
+import com.faishalbadri.hijab.util.SessionManager;
 
 public class SplashScreen extends AppCompatActivity {
+
+  SessionManager sesi;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,13 @@ public class SplashScreen extends AppCompatActivity {
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_splash_screen);
 
+    sesi = new SessionManager(SplashScreen.this);
+
     Handler handler = new Handler();
     handler.postDelayed(new Runnable() {
       @Override
       public void run() {
-        startActivity(new Intent(getApplicationContext(), LoginRegisterActivity.class));
+        sesi.checkLogin();
         finish();
       }
     },3000);
