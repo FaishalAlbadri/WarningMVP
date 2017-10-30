@@ -2,8 +2,10 @@ package com.faishalbadri.hijab.ui.login_register;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,13 +20,17 @@ public class LoginRegisterActivity extends AppCompatActivity {
   @BindView(R.id.button_register_activity_login_register)
   Button buttonRegisterActivityLoginRegister;
   ActivityUtil activityUtil;
+  @BindView(R.id.view_segment_login)
+  View viewSegmentLogin;
+  @BindView(R.id.view_segment_register)
+  View viewSegmentRegister;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    getWindow().setFlags(LayoutParams.FLAG_FULLSCREEN,
+        LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_login_register);
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
@@ -43,13 +49,16 @@ public class LoginRegisterActivity extends AppCompatActivity {
   }
 
   private void login() {
-    activityUtil.addFragment(getSupportFragmentManager(),
-        R.id.framelayout_for_fragment_activity_login_register, LoginFragment.instance());
+    activityUtil.addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_login_register, LoginFragment.instance());
+    viewSegmentLogin.setVisibility(View.VISIBLE);
+    viewSegmentRegister.setVisibility(View.INVISIBLE);
   }
 
   private void register() {
-    activityUtil.addFragment(getSupportFragmentManager(),
-        R.id.framelayout_for_fragment_activity_login_register, RegisterFragment.instance());
+    activityUtil.addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_login_register, RegisterFragment.instance());
+    viewSegmentRegister.setVisibility(View.VISIBLE);
+    viewSegmentLogin.setVisibility(View.INVISIBLE);
+
   }
 
   @Override
