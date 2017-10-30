@@ -96,7 +96,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     sessionManagerLogin.createSession(email);
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     startActivity(new Intent(getActivity(), HomeActivity.class));
-    ((Activity) context).finish();
+    getActivity().finish();
   }
 
   @Override
