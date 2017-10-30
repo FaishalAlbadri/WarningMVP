@@ -34,21 +34,21 @@ public class HomeActivity extends AppCompatActivity {
   private void setView() {
     setupViewPager(viewPagerActivityHome);
     tablayoutActivityHome.setupWithViewPager(viewPagerActivityHome);
+    sessionHome = new SessionManager(getApplicationContext());
+    HashMap<String, String> user = sessionHome.getUserDetails();
+    Toast.makeText(this, user.toString(), Toast.LENGTH_SHORT).show();
   }
 
   private void setupViewPager(ViewPager viewPagerActivityHome) {
     AdapterViewPagerHome adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager());
     adapterViewPagerHome.addFragment(new HomeFragment(),"Home");
-    adapterViewPagerHome.addFragment(new OtherFragment(),"Other");
     adapterViewPagerHome.addFragment(new AccountFragment(),"Account");
+    adapterViewPagerHome.addFragment(new OtherFragment(),"Other");
     viewPagerActivityHome.setAdapter(adapterViewPagerHome);
   }
 
   @Override
   public void onBackPressed() {
 
-    sessionHome = new SessionManager(getApplicationContext());
-    HashMap<String, String> user = sessionHome.getUserDetails();
-    Toast.makeText(this, user.toString(), Toast.LENGTH_SHORT).show();
   }
 }
