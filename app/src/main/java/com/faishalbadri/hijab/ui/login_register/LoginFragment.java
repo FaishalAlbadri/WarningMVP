@@ -1,6 +1,9 @@
 package com.faishalbadri.hijab.ui.login_register;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.LoginRepositoryInject;
+import com.faishalbadri.hijab.ui.home.HomeActivity;
 import com.faishalbadri.hijab.util.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -30,6 +34,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   Button buttonLoginFragmentLogin;
   LoginPresenter loginPresenter;
   String email, password;
+  Context context;
 
   public LoginFragment() {
     // Required empty public constructor
@@ -86,6 +91,8 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   @Override
   public void onSuccesLogin(String msg) {
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    startActivity(new Intent(getActivity(), HomeActivity.class));
+    ((Activity) context).finish();
   }
 
   @Override

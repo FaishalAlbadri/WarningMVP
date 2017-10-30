@@ -2,7 +2,7 @@
 <resources>
 
   <color name="colorPrimary">#fff</color>
-  <color name="colorPrimaryDark">#fff</color>
+  <color name="colorPrimaryDark">#448AFF</color>
   <color name="colorAccent">#ffff</color>
 
   <!--<color name="colorPrimary">#448AFF</color>-->
@@ -14,6 +14,7 @@
   <!--<color name="colorAccent">#FF80AB</color>-->
 
   <color name="segment_color">#36f4eeee</color>
+  <color name="tab_toolbar_color">#2979ff</color>
 
 
 </resources>
