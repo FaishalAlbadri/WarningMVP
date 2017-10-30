@@ -1,0 +1,98 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@null"
+  tools:context="com.faishalbadri.hijab.ui.login_register.RegisterFragment">
+
+
+  <TextView
+    android:id="@+id/textview_app_name_fragment_register"
+    android:textStyle="bold"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_widget"
+    android:fontFamily="cursive"
+    android:gravity="center"
+    android:text="@string/app_name"
+    android:textColor="@color/colorPrimaryDark"
+    android:textSize="@dimen/app_name_text_size"
+    app:layout_constraintBottom_toTopOf="@+id/materialedittext_username_fragment_register"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent" />
+
+  <com.rengwuxian.materialedittext.MaterialEditText
+    android:id="@+id/materialedittext_username_fragment_register"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_widget"
+    android:padding="@dimen/padding_widget"
+    android:hint="@string/text_username"
+    android:maxLines="1"
+    app:layout_constraintBottom_toTopOf="@+id/materialedittext_email_fragment_register"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:met_baseColor="@color/colorPrimaryDark"
+    app:met_errorColor="@android:color/holo_red_dark"
+    app:met_floatingLabel="highlight"
+    app:met_primaryColor="@color/colorPrimaryDark"
+    app:met_textColorHint="@color/colorPrimaryDark"
+    app:met_underlineColor="@color/colorPrimaryDark" />
+
+
+  <com.rengwuxian.materialedittext.MaterialEditText
+    android:id="@+id/materialedittext_email_fragment_register"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_widget"
+    android:padding="@dimen/padding_widget"
+    android:hint="@string/text_email"
+    android:inputType="textEmailAddress"
+    android:maxLines="1"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:met_baseColor="@color/colorPrimaryDark"
+    app:met_errorColor="@android:color/holo_red_dark"
+    app:met_floatingLabel="highlight"
+    app:met_primaryColor="@color/colorPrimaryDark"
+    app:met_textColorHint="@color/colorPrimaryDark"
+    app:met_underlineColor="@color/colorPrimaryDark" />
+
+  <com.rengwuxian.materialedittext.MaterialEditText
+    android:id="@+id/materialedittext_password_fragment_register"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_widget"
+    android:padding="@dimen/padding_widget"
+    android:hint="@string/text_password"
+    android:inputType="textPassword"
+    android:maxLines="1"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/materialedittext_email_fragment_register"
+    app:met_baseColor="@color/colorPrimaryDark"
+    app:met_errorColor="@android:color/holo_red_dark"
+    app:met_floatingLabel="highlight"
+    app:met_primaryColor="@color/colorPrimaryDark"
+    app:met_textColorHint="@color/colorPrimaryDark"
+    app:met_underlineColor="@color/colorPrimaryDark" />
+
+  <Button
+    android:id="@+id/button_register_fragment_register"
+    style="?attr/selectableItemBackground"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_widget"
+    android:padding="@dimen/padding_widget"
+    android:background="@drawable/custom_border_layout_pink"
+    android:text="@string/text_register"
+    android:textColor="@color/colorPrimaryDark"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/materialedittext_password_fragment_register" />
+
+
+</android.support.constraint.ConstraintLayout>

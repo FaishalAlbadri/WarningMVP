@@ -1,0 +1,23 @@
+<resources>
+  <string name="app_name">Faishal App</string>
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="text_email">Email</string>
+  <string name="text_username">Username</string>
+  <string name="text_password">Password</string>
+  <string name="text_login">Login</string>
+  <string name="text_register">Register</string>
+  <string name="text_succes">Succes</string>
+  <string name="text_error">Error</string>
+</resources>
+
+  <!--Rules :-->
+  <!--1. Semua nama package harus huruf kecil dan spasi diganti "_"-->
+  <!--2. Penamaan id = "namawidget_kegunaan_dilayoutmana" , contoh ="button_intenttologin_activity_login_register"-->
+  <!--3. Semua harus menggunakan bahasa inggris-->
+  <!--4. Gunakan semua fasilitas yang ada di values-->
+  <!--5. Harus se-CleanCode mungkin-->
+  <!--6. Setiap selesai mengerjakan jangan lupa di "cmd + alt + l" dan "alt + control + i"-->
+  <!--7. Wajib MVP-->
+  <!--8. Penamaan Drawable = "tipe(ic/logo/background/dll)_kegunaan" contoh = "logo_pinky_hijab" / "background_button_color"-->
+  <!--9. Selalu Custom ActionBar kecuali jika menggunakan Navigation-->
+  <!--10. Gunakan Fragment-->
