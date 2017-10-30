@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import com.faishalbadri.hijab.data.DataHomeFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by faishal on 10/30/17.
@@ -14,6 +17,7 @@ public class ActivityUtil {
 
   private static ActivityUtil INSTANCE;
   Context context;
+
 
   public static ActivityUtil getInstance(Context context) {
     if (INSTANCE == null){

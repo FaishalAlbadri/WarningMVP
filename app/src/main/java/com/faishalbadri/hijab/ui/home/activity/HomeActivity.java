@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.home;
+package com.faishalbadri.hijab.ui.home.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,8 +8,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
-import com.faishalbadri.hijab.ui.home.fragment.OtherFragment;
-import com.faishalbadri.hijab.ui.home.fragment.HomeFragment;
+import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragment;
+import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
 
 public class HomeActivity extends AppCompatActivity {
 

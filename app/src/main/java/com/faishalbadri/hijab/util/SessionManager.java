@@ -3,7 +3,7 @@ package com.faishalbadri.hijab.util;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import com.faishalbadri.hijab.ui.home.HomeActivity;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity;
 import java.util.HashMap;
 

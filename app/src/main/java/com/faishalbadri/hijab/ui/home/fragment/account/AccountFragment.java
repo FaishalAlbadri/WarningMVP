@@ -1,6 +1,8 @@
 package com.faishalbadri.hijab.ui.home.fragment.account;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -40,6 +42,7 @@ public class AccountFragment extends Fragment implements AccountContract.accoutV
   TextView txtEmailProfile,txtUsernameProfile;
   ImageView imgUserProfile;
   Button btnLogout;
+  Context context;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +73,7 @@ public class AccountFragment extends Fragment implements AccountContract.accoutV
   }
   private void logout() {
     sessionAccount.logout();
+    ((Activity) context ).finish();
   }
 
   @Override

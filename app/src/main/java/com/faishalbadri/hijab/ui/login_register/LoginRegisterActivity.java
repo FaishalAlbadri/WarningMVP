@@ -11,7 +11,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login_register);
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
+
     login();
   }
 

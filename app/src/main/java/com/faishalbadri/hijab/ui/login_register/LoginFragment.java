@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.LoginRepositoryInject;
-import com.faishalbadri.hijab.ui.home.HomeActivity;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
 import com.rengwuxian.materialedittext.MaterialEditText;

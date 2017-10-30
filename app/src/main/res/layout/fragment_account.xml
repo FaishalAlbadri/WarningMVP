@@ -5,7 +5,6 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context="com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment">
 
-  <!-- TODO: Update blank fragment layout -->
   <ImageView
     android:id="@+id/img_detail_user_profile"
     android:layout_width="150dp"
@@ -56,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:maxLines="1"
-        android:text="o"
+        android:text=""
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/usernamedummy"
@@ -100,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:maxLines="1"
-        android:text="Faishalalbadri@gmail.com"
+        android:text=""
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/emaildummy"

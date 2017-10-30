@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.home.fragment;
+package com.faishalbadri.hijab.ui.home.fragment.other;
 
 
 import android.os.Bundle;

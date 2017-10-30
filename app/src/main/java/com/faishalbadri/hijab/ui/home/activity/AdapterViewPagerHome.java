@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.home;
+package com.faishalbadri.hijab.ui.home.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
