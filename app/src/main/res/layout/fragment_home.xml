@@ -1,12 +1,220 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:orientation="vertical"
   tools:context="com.faishalbadri.hijab.ui.home.fragment.HomeFragment">
 
-  <TextView
+  <android.support.v7.widget.CardView
+    android:id="@+id/cardview_news_fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment" />
+    android:layout_weight="1"
+    android:layout_marginTop="@dimen/padding_widget"
+    android:layout_marginBottom="@dimen/padding_widget"
+    >
 
-</FrameLayout>
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+      <ImageView
+        android:id="@+id/imageview_news_fragment_home"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_image_login_register_activity_dummy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/textview_tittle_news_fragment_home"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_news"
+        android:textColor="@color/tab_toolbar_color"
+        android:textSize="@dimen/normal_tittle_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_news_detail"
+        android:textColor="@color/tab_toolbar_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imageview_news_fragment_home"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tittle_news_fragment_home"
+
+        />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/cardview_voting_fragment_home"
+    style="?attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_marginBottom="@dimen/padding_widget"
+    >
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+      <ImageView
+        android:id="@+id/imageview_voting_fragment_home"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_image_login_register_activity_dummy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/textview_tittle_voting_fragment_home"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_voting"
+        android:textColor="@color/tab_toolbar_color"
+        android:textSize="@dimen/normal_tittle_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_voting_detail"
+        android:textColor="@color/tab_toolbar_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imageview_voting_fragment_home"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tittle_voting_fragment_home"
+
+        />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/cardview_video_fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_marginBottom="@dimen/padding_widget">
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+      <ImageView
+        android:id="@+id/imageview_video_fragment_home"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_image_login_register_activity_dummy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/textview_tittle_video_fragment_home"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_video"
+        android:textColor="@color/tab_toolbar_color"
+        android:textSize="@dimen/normal_tittle_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_video_detail"
+        android:textColor="@color/tab_toolbar_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imageview_video_fragment_home"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tittle_video_fragment_home" />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/cardview_community_fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_marginBottom="@dimen/padding_widget">
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+      <ImageView
+        android:id="@+id/imageview_community_fragment_home"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_image_login_register_activity_dummy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/textview_tittle_community_fragment_home"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_community"
+        android:textColor="@color/tab_toolbar_color"
+        android:textSize="@dimen/normal_tittle_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_widget"
+        android:text="@string/text_pinky_hijab_community_detail"
+        android:textColor="@color/tab_toolbar_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imageview_community_fragment_home"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tittle_community_fragment_home"
+
+        />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+</LinearLayout>
+
