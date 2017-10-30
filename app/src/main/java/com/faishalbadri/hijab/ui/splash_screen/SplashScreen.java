@@ -10,7 +10,7 @@ import com.faishalbadri.hijab.util.SessionManager;
 
 public class SplashScreen extends AppCompatActivity {
 
-  SessionManager sesi;
+  SessionManager sessionSplash;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,13 @@ public class SplashScreen extends AppCompatActivity {
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_splash_screen);
 
-    sesi = new SessionManager(SplashScreen.this);
+    sessionSplash = new SessionManager(SplashScreen.this);
 
     Handler handler = new Handler();
     handler.postDelayed(new Runnable() {
       @Override
       public void run() {
-        sesi.checkLogin();
+        sessionSplash.checkLogin();
         finish();
       }
     },3000);

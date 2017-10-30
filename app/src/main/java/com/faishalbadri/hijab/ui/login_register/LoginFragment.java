@@ -33,7 +33,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   Button buttonLoginFragmentLogin;
   LoginPresenter loginPresenter;
   String email, password;
-  SessionManager sessionManager;
+  SessionManager sessionManagerLogin;
 
   public LoginFragment() {
     // Required empty public constructor
@@ -50,7 +50,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_login, container, false);
     ButterKnife.bind(this, view);
-    sessionManager = new SessionManager(getActivity());
+    sessionManagerLogin = new SessionManager(getActivity());
 
     loginPresenter = new LoginPresenter(
         LoginRepositoryInject.provideToLoginRepository(getActivity()));
@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
 
   @Override
   public void onSuccesLogin(String msg) {
-    sessionManager.createSession(email);
+    sessionManagerLogin.createSession(email);
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     startActivity(new Intent(getActivity(), HomeActivity.class));
   }
