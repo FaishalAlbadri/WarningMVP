@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.fragment.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.OtherFragment;
-import com.faishalbadri.hijab.ui.home.fragment.SettingFragment;
 import com.faishalbadri.hijab.ui.home.fragment.HomeFragment;
 import com.faishalbadri.hijab.util.SessionManager;
 import java.util.HashMap;
