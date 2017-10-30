@@ -20,7 +20,7 @@ public class SessionManager {
 
   private static final String pref_name = "crudpref";
   private static final String is_login = "islogin";
-  public static final String kunci_email = "keyemail";
+  public static final String key_email = "keyemail";
 
   public SessionManager(Context context) {
     this.context = context;
@@ -30,7 +30,7 @@ public class SessionManager {
 
   public void createSession(String email) {
     editor.putBoolean(is_login, true);
-    editor.putString(kunci_email, email);
+    editor.putString(key_email, email);
     editor.commit();
   }
 
@@ -63,7 +63,7 @@ public class SessionManager {
 
   public HashMap<String, String> getUserDetails() {
     HashMap<String, String> user = new HashMap<String, String>();
-    user.put(kunci_email, pref.getString(kunci_email, null));
+    user.put(key_email, pref.getString(key_email, null));
     return user;
   }
 

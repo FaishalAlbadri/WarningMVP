@@ -6,14 +6,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import android.widget.Toast;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.ui.home.fragment.AccountFragment;
+import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.OtherFragment;
-import com.faishalbadri.hijab.ui.home.fragment.SettingFragment;
 import com.faishalbadri.hijab.ui.home.fragment.HomeFragment;
-import com.faishalbadri.hijab.util.SessionManager;
-import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -22,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
   @BindView(R.id.view_pager_activity_home)
   ViewPager viewPagerActivityHome;
 
-  SessionManager sessionHome;
+  String email;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +36,13 @@ public class HomeActivity extends AppCompatActivity {
   private void setupViewPager(ViewPager viewPagerActivityHome) {
     AdapterViewPagerHome adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager());
     adapterViewPagerHome.addFragment(new HomeFragment(),"Home");
-    adapterViewPagerHome.addFragment(new SettingFragment(),"Setting");
     adapterViewPagerHome.addFragment(new OtherFragment(),"Other");
-    adapterViewPagerHome.addFragment(new AccountFragment(),"My Account");
+    adapterViewPagerHome.addFragment(new AccountFragment(),"Account");
     viewPagerActivityHome.setAdapter(adapterViewPagerHome);
   }
 
   @Override
   public void onBackPressed() {
 
-    sessionHome = new SessionManager(getApplicationContext());
-    HashMap<String, String> user = sessionHome.getUserDetails();
-    Toast.makeText(this, user.toString(), Toast.LENGTH_SHORT).show();
   }
 }

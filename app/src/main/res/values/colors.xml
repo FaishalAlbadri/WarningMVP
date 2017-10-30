@@ -13,6 +13,7 @@
   <!--<color name="colorPrimaryDark">#F50057</color>-->
   <!--<color name="colorAccent">#FF80AB</color>-->
 
+  <color name="button_color_logout">#e63f52</color>
   <color name="segment_color">#36f4eeee</color>
   <color name="tab_toolbar_color">#2979ff</color>
 

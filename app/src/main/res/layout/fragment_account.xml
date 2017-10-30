@@ -1,13 +1,128 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.home.fragment.AccountFragment">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  tools:context="com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment">
 
   <!-- TODO: Update blank fragment layout -->
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment" />
+  <ImageView
+    android:id="@+id/img_detail_user_profile"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_margin="40dp"
+    android:src="@drawable/logo_pinky_hijab"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+  <ImageView
+    android:id="@+id/btn_edit_photo"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_marginBottom="8dp"
+    android:src="@mipmap/ic_launcher"
+    app:layout_constraintBottom_toBottomOf="@+id/img_detail_user_profile"
+    app:layout_constraintRight_toRightOf="@+id/img_detail_user_profile" />
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/cvUser"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/img_detail_user_profile">
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp">
+
+      <TextView
+        android:id="@+id/usernamedummy"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Name :"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/txt_nama_detail_user_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:text="o"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/usernamedummy"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/carddummy"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/cvUser">
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp">
+
+      <TextView
+        android:id="@+id/emaildummy"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Email :"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/txt_email_detail_user_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:text="Faishalalbadri@gmail.com"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/emaildummy"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <Button
+    android:id="@+id/btn_logout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="log out"
+    android:textAllCaps="true"
+    android:textColor="@color/button_color_logout"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/carddummy"
+    android:background="@android:color/white"
+    android:layout_marginTop="24dp"
+    />
+
+</android.support.constraint.ConstraintLayout>
