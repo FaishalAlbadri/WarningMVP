@@ -4,9 +4,7 @@ import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoUser;
 import java.util.List;
 
-/**
- * Created by fikriimaduddin on 10/30/17.
- */
+
 
 public class AccountContract {
 

@@ -5,6 +5,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,6 +42,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   String email, password;
   SessionManager sessionManagerLogin;
   ProgressDialog pd;
+  Context context;
 
   public LoginFragment() {
     // Required empty public constructor
@@ -62,7 +67,10 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     loginPresenter = new LoginPresenter(
         LoginRepositoryInject.provideToLoginRepository(getActivity()));
     loginPresenter.onAttachView(this);
-
+    if (VERSION.SDK_INT >= VERSION_CODES.M) {
+      buttonLoginFragmentLogin.setForeground(getSelectedItemDrawable());
+    }
+    buttonLoginFragmentLogin.setClickable(true);
     buttonLoginFragmentLogin.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -110,4 +118,13 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = getActivity().obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
 }
