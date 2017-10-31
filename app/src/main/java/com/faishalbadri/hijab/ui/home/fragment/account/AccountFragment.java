@@ -5,10 +5,13 @@ import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +20,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +36,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoUser.UserBean;
 import com.faishalbadri.hijab.di.AccountRepositoryInject;
-import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.accoutView;
-import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
+import com.faishalbadri.hijab.util.ActivityUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
 import java.io.IOException;
@@ -66,6 +67,8 @@ public class AccountFragment extends Fragment implements accoutView {
   ProgressDialog pd;
   private int PICK_IMAGE_REQUEST = 1;
   private String id, email;
+  Context context;
+  ActivityUtil activityUtil;
 
   private static final int STORAGE_PERMISSION_CODE = 123;
 
@@ -76,8 +79,8 @@ public class AccountFragment extends Fragment implements accoutView {
     // Required empty public constructor
   }
 
-  public static AccountFragment instance(){
-    return new AccountFragment();
+  public  static  AccountFragment instance(){
+    return new  AccountFragment();
   }
   AccountPresenter accountPresenter;
   SessionManager sessionAccount;
@@ -140,9 +143,11 @@ public class AccountFragment extends Fragment implements accoutView {
     HashMap<String, String> user = sessionAccount.getUserDetails();
     email = user.get(SessionManager.key_email);
     txtEmailUserAccount.setText(email);
+    btnLogoutAccount.setForeground(getSelectedItemDrawable());
     accountPresenter = new AccountPresenter(
         AccountRepositoryInject.provideToLoginRepository(getActivity()));
     accountPresenter.onAttachView(this);
+    activityUtil = ActivityUtil.getInstance(context);
   }
 
   private void requestStoragePermission() {
@@ -198,8 +203,8 @@ public class AccountFragment extends Fragment implements accoutView {
         @Override
         public void run() {
           pd.dismiss();
-          startActivity(new Intent(getActivity(), HomeActivity.class));
-          getActivity().finish();
+          activityUtil.addFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_home, AccountFragment.instance());
+
         }
       }, 4000);
     } catch (Exception exc) {
@@ -251,5 +256,12 @@ public class AccountFragment extends Fragment implements accoutView {
         logout();
         break;
     }
+  }
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = (getActivity()).obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 }
