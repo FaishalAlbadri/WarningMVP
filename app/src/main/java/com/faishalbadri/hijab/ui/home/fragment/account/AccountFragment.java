@@ -13,6 +13,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -143,7 +145,9 @@ public class AccountFragment extends Fragment implements accoutView {
     HashMap<String, String> user = sessionAccount.getUserDetails();
     email = user.get(SessionManager.key_email);
     txtEmailUserAccount.setText(email);
-    btnLogoutAccount.setForeground(getSelectedItemDrawable());
+    if (VERSION.SDK_INT >= VERSION_CODES.M) {
+      btnLogoutAccount.setForeground(getSelectedItemDrawable());
+    }
     accountPresenter = new AccountPresenter(
         AccountRepositoryInject.provideToLoginRepository(getActivity()));
     accountPresenter.onAttachView(this);
@@ -198,15 +202,12 @@ public class AccountFragment extends Fragment implements accoutView {
           .setMaxRetries(2)
           .startUpload();
       Handler handler = new Handler();
-      handler.postDelayed(new Runnable() {
-        @Override
-        public void run() {
-          pd.dismiss();
-          activityUtil.addFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_home, AccountFragment.instance());
+      handler.postDelayed(() -> {
+        pd.dismiss();
+        activityUtil.addFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_home, AccountFragment.instance());
 
-        }
       }, 4000);
-    } catch (Exception exc) {
+    } catch (Exception ignored) {
 
     }
   }
