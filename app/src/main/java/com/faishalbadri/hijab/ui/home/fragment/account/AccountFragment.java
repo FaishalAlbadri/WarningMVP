@@ -168,7 +168,6 @@ public class AccountFragment extends Fragment implements accoutView {
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    Toast.makeText(getActivity(), "ini adalah : "+RESULT_OK, Toast.LENGTH_SHORT).show();
     if (requestCode ==PICK_IMAGE_REQUEST && resultCode== RESULT_OK && data != null
         && data.getData() != null) {
       filePathAccount = data.getData();
