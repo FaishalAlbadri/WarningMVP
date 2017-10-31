@@ -13,7 +13,7 @@ public interface AccountDataResource {
 
   public interface AccountGetCallback {
 
-    void onSucces(List<PojoUser.UserBean> user, String username, String image );
+    void onSucces(List<PojoUser.UserBean> user, String username, String image , String id);
 
     void onError(String msg);
 

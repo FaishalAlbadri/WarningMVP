@@ -50,9 +50,10 @@ public class AccountDataRemote implements AccountDataResource{
           accountGetCallback.onError("No Account");
         } else {
           for (int a = 0; a < pojoUser.getUser().size(); a++) {
+            String id = pojoUser.getUser().get(a).getId_user();
             String username = pojoUser.getUser().get(a).getUsername();
             String image = pojoUser.getUser().get(a).getImg_user();
-            accountGetCallback.onSucces(pojoUser.getUser(), username, image);
+            accountGetCallback.onSucces(pojoUser.getUser(), username, image, id);
           }
         }
       }
