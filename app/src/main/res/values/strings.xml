@@ -11,6 +11,10 @@
   <string name="text_name_with_dot">Name :</string>
   <string name="text_email_with_dot">Email :</string>
   <string name="text_logout">Logout</string>
+  <string name="text_home">Home</string>
+  <string name="text_other">Other</string>
+  <string name="text_account">Account</string>
+
 
   <string name="text_pinky_hijab_news">Pinky Hijab News</string>
   <string name="text_pinky_hijab_news_detail">Get the last update news for women in this app</string>
@@ -30,6 +34,10 @@
   <string name="text_pinky_hijab_event">Pinky Hijab Event</string>
   <string name="text_pinky_hijab_event_detail">Get the last update event for women in this app</string>
 
+  <string name="text_other_kritik_saran">Kritik &amp; Saran</string>
+  <string name="text_other_kirim_artikel">Kirim Artikelmu</string>
+  <string name="text_other_share">Share This App</string>
+  <string name="text_other_about">About</string>
 
 
 </resources>

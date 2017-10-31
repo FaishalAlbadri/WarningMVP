@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.RegisterRepositoryInject;
 import com.faishalbadri.hijab.util.Server;

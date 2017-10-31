@@ -14,36 +14,61 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <android.support.design.widget.TabLayout
-    android:id="@+id/tablayout_activity_home"
+  <LinearLayout
+    android:id="@+id/linear_layout_tab_activity_home"
     android:layout_width="0dp"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/tab_toolbar_color"
+    android:orientation="horizontal"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_home"
-    custom:tabIndicatorColor="@color/segment_color"
-    custom:tabMode="fixed"
-    custom:tabSelectedTextColor="@color/segment_color"
-    custom:tabTextColor="#fff" />
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_home">
 
-  <android.support.v4.view.ViewPager
-    android:id="@+id/view_pager_activity_home"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/tablayout_activity_home"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+      android:id="@+id/button_home_activity_home"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="?attr/selectableItemBackground"
+      android:text="@string/text_home"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/normal_tittle_text_size"
+      android:textStyle="bold"/>
+
+    <Button
+      android:id="@+id/button_other_activity_home"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="?attr/selectableItemBackground"
+      android:text="@string/text_other"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/normal_tittle_text_size"
+      android:textStyle="bold"/>
+
+    <Button
+      android:id="@+id/button_account_activity_home"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="?attr/selectableItemBackground"
+      android:text="@string/text_account"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/normal_tittle_text_size"
+      android:textStyle="bold"/>
+
+  </LinearLayout>
 
   <FrameLayout
     android:id="@+id/framelayout_for_fragment_activity_home"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_home"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/tablayout_activity_home"
-    app:layout_constraintBottom_toBottomOf="parent"
-    />
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

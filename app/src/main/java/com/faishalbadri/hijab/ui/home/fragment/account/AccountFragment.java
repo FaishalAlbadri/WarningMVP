@@ -4,6 +4,7 @@ package com.faishalbadri.hijab.ui.home.fragment.account;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,16 +51,20 @@ public class AccountFragment extends Fragment implements accoutView {
     // Required empty public constructor
   }
 
+  public static AccountFragment instance(){
+    return new AccountFragment();
+  }
   AccountPresenter accountPresenter;
   SessionManager sessionAccount;
   private static final String save = "save";
   String email;
+  Button myButton;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View v = inflater.inflate(R.layout.fragment_account, container, false);
-    ButterKnife.bind(this, v);
+    View view = inflater.inflate(R.layout.fragment_account, container, false);
+    ButterKnife.bind(this, view);
     pd = new ProgressDialog(getActivity());
     pd.setMessage("Loading");
     pd.setCanceledOnTouchOutside(false);
@@ -71,12 +76,10 @@ public class AccountFragment extends Fragment implements accoutView {
     } else {
       accountPresenter.getDataAccount(email);
     }
-
-    return v;
+    return view;
   }
 
   private void logout() {
-    pd.show();
     sessionAccount.logout();
     getActivity().finish();
   }

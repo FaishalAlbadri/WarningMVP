@@ -3,12 +3,14 @@ package com.faishalbadri.hijab.ui.splash_screen;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.util.SessionManager;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity{
+
 
   SessionManager sessionSplash;
 

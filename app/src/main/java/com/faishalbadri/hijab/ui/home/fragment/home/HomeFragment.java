@@ -33,6 +33,11 @@ public class HomeFragment extends Fragment {
     // Required empty public constructor
   }
 
+  public static HomeFragment instance(){
+    return new  HomeFragment();
+  }
+
+
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,12 +53,12 @@ public class HomeFragment extends Fragment {
 
   private void setString() {
     image = new int[]{
-        R.drawable.logo_pinky_hijab,
-        R.drawable.logo_pinky_hijab,
-        R.drawable.logo_pinky_hijab,
-        R.drawable.logo_pinky_hijab,
-        R.drawable.logo_pinky_hijab,
-        R.drawable.logo_pinky_hijab
+        R.mipmap.ic_launcher,
+        R.mipmap.ic_launcher,
+        R.mipmap.ic_launcher,
+        R.mipmap.ic_launcher,
+        R.mipmap.ic_launcher,
+        R.mipmap.ic_launcher
     };
     event = getActivity().getResources().getString(R.string.text_pinky_hijab_event);
     ebook = getActivity().getResources().getString(R.string.text_pinky_hijab_ebook);
