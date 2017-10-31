@@ -12,7 +12,7 @@ public class AccountContract {
 
   public interface accoutView {
 
-    void onSuccesAccount(List<PojoUser.UserBean> user,String username, String image);
+    void onSuccesAccount(List<PojoUser.UserBean> user,String username, String image, String id);
 
     void onErrorAccount(String msg);
   }

@@ -33,8 +33,8 @@ public class AccountPresenter implements AccountContract.accountPresenter{
   public void getDataAccount(String email) {
     accountRepository.getAccountResult(email, new AccountGetCallback() {
       @Override
-      public void onSucces(List<UserBean> user, String username, String image) {
-        accoutView.onSuccesAccount(user, username, image);
+      public void onSucces(List<UserBean> user, String username, String image, String id) {
+        accoutView.onSuccesAccount(user, username, image, id);
       }
 
       @Override
