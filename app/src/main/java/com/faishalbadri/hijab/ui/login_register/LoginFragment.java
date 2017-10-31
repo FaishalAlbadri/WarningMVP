@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.login_register;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,8 +36,8 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   Button buttonLoginFragmentLogin;
   LoginPresenter loginPresenter;
   String email, password;
-  Context context;
   SessionManager sessionManagerLogin;
+  ProgressDialog pd;
 
   public LoginFragment() {
     // Required empty public constructor
@@ -54,7 +55,10 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     View view = inflater.inflate(R.layout.fragment_login, container, false);
     ButterKnife.bind(this, view);
     sessionManagerLogin = new SessionManager(getActivity());
-
+    pd = new ProgressDialog(getActivity());
+    pd.setMessage("Loading");
+    pd.setCancelable(false);
+    pd.setCanceledOnTouchOutside(false);
     loginPresenter = new LoginPresenter(
         LoginRepositoryInject.provideToLoginRepository(getActivity()));
     loginPresenter.onAttachView(this);
@@ -85,6 +89,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
       materialedittextPasswordFragmentLogin.setError("Password tidak boleh kosong");
       materialedittextPasswordFragmentLogin.requestFocus();
     } else {
+      pd.show();
       email = materialedittextEmailFragmentLogin.getText().toString();
       password = materialedittextPasswordFragmentLogin.getText().toString();
       loginPresenter.getDataLogin(email, password);
@@ -93,6 +98,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
 
   @Override
   public void onSuccesLogin(String msg) {
+    pd.dismiss();
     sessionManagerLogin.createSession(email);
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     startActivity(new Intent(getActivity(), HomeActivity.class));
@@ -101,6 +107,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
 
   @Override
   public void onErrorLogin(String msg) {
+    pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
 }

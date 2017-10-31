@@ -1,6 +1,7 @@
 package com.faishalbadri.hijab.ui.login_register;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,6 +34,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   Button buttonRegisterFragmentRegister;
   RegisterPresenter registerPresenter;
   String username, email, password;
+  ProgressDialog pd;
+
 
   public RegisterFragment() {
     // Required empty public constructor
@@ -48,6 +51,10 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_register, container, false);
     ButterKnife.bind(this, view);
+    pd = new ProgressDialog(getActivity());
+    pd.setMessage("Loading");
+    pd.setCanceledOnTouchOutside(false);
+    pd.setCancelable(false);
     registerPresenter = new RegisterPresenter(
         RegisterRepositoryInject.provideToRegisterRepository(getActivity()));
     registerPresenter.onAttachView(this);
@@ -85,6 +92,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
       materialedittextPasswordFragmentRegister.setError("Password tidak boleh kosong");
       materialedittextPasswordFragmentRegister.requestFocus();
     } else {
+      pd.show();
       username = materialedittextUsernameFragmentRegister.getText().toString();
       email = materialedittextEmailFragmentRegister.getText().toString();
       password = materialedittextPasswordFragmentRegister.getText().toString();
@@ -94,12 +102,14 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
 
   @Override
   public void onSuccesRegister(String msg) {
+    pd.dismiss();
     Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
         .show();
   }
 
   @Override
   public void onErrorRegister(String msg) {
+    pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
 }
