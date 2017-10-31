@@ -63,14 +63,11 @@
 
   <Button
     android:id="@+id/button_login_fragment_login"
-    style="?attr/selectableItemBackground"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
     android:background="@drawable/custom_border_layout_pink"
-    android:clickable="true"
-    android:focusable="true"
     android:text="@string/text_login"
     android:textColor="@color/colorAccent"
     app:layout_constraintLeft_toLeftOf="parent"

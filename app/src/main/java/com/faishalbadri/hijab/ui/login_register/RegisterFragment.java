@@ -1,7 +1,12 @@
 package com.faishalbadri.hijab.ui.login_register;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -57,7 +62,10 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     registerPresenter = new RegisterPresenter(
         RegisterRepositoryInject.provideToRegisterRepository(getActivity()));
     registerPresenter.onAttachView(this);
-
+    if (VERSION.SDK_INT >= VERSION_CODES.M) {
+      buttonRegisterFragmentRegister.setForeground(getSelectedItemDrawable());
+    }
+    buttonRegisterFragmentRegister.setClickable(true);
     buttonRegisterFragmentRegister.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -111,4 +119,13 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = getActivity().obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
 }
