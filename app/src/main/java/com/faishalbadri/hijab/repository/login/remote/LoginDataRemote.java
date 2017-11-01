@@ -12,9 +12,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.data.PojoUser;
 import com.faishalbadri.hijab.repository.login.LoginDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
+import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -44,7 +46,11 @@ public class LoginDataRemote implements LoginDataResource {
         try {
           if (String.valueOf(new JSONObject(response).getString("msg")).equals("login berhasil")) {
             try {
-              loginGetCallback.onSuccesLogin(context.getString(R.string.text_succes));
+              final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
+              for (int a = 0; a < pojoUser.getUser().size(); a++) {
+                String id = pojoUser.getUser().get(a).getId_user();
+                loginGetCallback.onSuccesLogin(context.getString(R.string.text_succes),id);
+              }
             } catch (Exception e) {
               e.printStackTrace();
             }

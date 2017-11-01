@@ -11,7 +11,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
+import com.faishalbadri.hijab.util.SessionManager;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,10 +35,9 @@ public class HomeFragment extends Fragment {
     // Required empty public constructor
   }
 
-  public static HomeFragment instance(){
-    return new  HomeFragment();
+  public static HomeFragment instance() {
+    return new HomeFragment();
   }
-
 
 
   @Override
