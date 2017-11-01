@@ -41,13 +41,13 @@ public class SessionManager {
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.startActivity(i);
-//      ((Activity) context).finish();
+      ((Activity) context).finish();
     } else {
       Intent i = new Intent(context, HomeActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.startActivity(i);
-//      ((Activity) context).finish();
+      ((Activity) context).finish();
     }
   }
 
@@ -62,6 +62,7 @@ public class SessionManager {
     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(i);
+    ((Activity)context).finish();
   }
 
   public HashMap<String, String> getUserDetails() {

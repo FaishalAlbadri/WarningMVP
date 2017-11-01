@@ -11,7 +11,7 @@ public interface LoginDataResource {
   public interface LoginGetCallback {
 
     void onSuccesLogin(String msg);
-
+    void onWrongLogin(String msg);
     void onErrorLogin(String msg);
 
   }

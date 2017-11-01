@@ -12,6 +12,8 @@ public interface RegisterDataResource {
 
     void onSuccesRegister(String msg);
 
+    void onWrongRegister(String msg);
+
     void onErrorRegister(String msg);
   }
 

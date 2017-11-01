@@ -49,6 +49,7 @@ public class RegisterDataRemote implements RegisterDataResource {
             }
           } else {
             Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai", Toast.LENGTH_SHORT).show();
+            registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
           }
         } catch (JSONException e) {
 

@@ -114,6 +114,11 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   }
 
   @Override
+  public void onWrongLogin(String msg) {
+    pd.dismiss();
+  }
+
+  @Override
   public void onErrorLogin(String msg) {
     pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();

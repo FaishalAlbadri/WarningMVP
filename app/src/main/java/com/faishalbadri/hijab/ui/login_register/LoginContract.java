@@ -12,6 +12,8 @@ public class LoginContract {
 
     void onSuccesLogin(String msg);
 
+    void onWrongLogin(String msg);
+
     void onErrorLogin(String msg);
   }
 

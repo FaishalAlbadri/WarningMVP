@@ -115,6 +115,11 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   }
 
   @Override
+  public void onWrongRegister(String msg) {
+    pd.dismiss();
+  }
+
+  @Override
   public void onErrorRegister(String msg) {
     pd.dismiss();
     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();

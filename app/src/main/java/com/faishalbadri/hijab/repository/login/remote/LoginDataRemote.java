@@ -49,7 +49,8 @@ public class LoginDataRemote implements LoginDataResource {
               e.printStackTrace();
             }
           } else {
-            Toast.makeText(context, "Masukkan data yang valid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
+            loginGetCallback.onWrongLogin(context.getString(R.string.text_wrong_login));
           }
         } catch (JSONException e) {
 

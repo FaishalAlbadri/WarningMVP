@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.home.fragment.other;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -20,6 +21,8 @@ import com.bumptech.glide.Glide;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataOtherFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragmentAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.kritik_saran.KritikSaranActivity;
+import com.faishalbadri.hijab.ui.send_article.SendArticleActivity;
 import java.util.List;
 
 /**
@@ -31,6 +34,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
   Context context;
   List<DataOtherFragment> datalist;
   String kritiksaran, kirimartikel, share, about;
+  String shareSubject,shareText;
 
   public OtherFragmentAdapter(Context context,
       List<DataOtherFragment> datalist) {
@@ -71,6 +75,8 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     kirimartikel = ((Activity) context).getResources().getString(R.string.text_other_kirim_artikel);
     share = ((Activity) context).getResources().getString(R.string.text_other_share);
     about = ((Activity) context).getResources().getString(R.string.text_other_about);
+    shareSubject = ((Activity)context).getResources().getString(R.string.text_share_app_subject);
+    shareText = ((Activity)context).getResources().getString(R.string.text_share_app_text);
 
     holder.textviewTitleOtherItem.setText(dataOtherFragment.getTitle());
     Glide.with(context).load(dataOtherFragment.getImage()).into(holder.imgTitleOtherItem);
@@ -80,11 +86,15 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
       @Override
       public void onClick(View v) {
         if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
-
+          ((Activity) context).startActivity(new Intent(context, KritikSaranActivity.class));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
-
+          ((Activity) context).startActivity(new Intent(context, SendArticleActivity.class));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
-
+          Intent sharing = new Intent(Intent.ACTION_SEND);
+          sharing.setType("text/plain");
+          sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+          sharing.putExtra(Intent.EXTRA_TEXT, shareText);
+          ((Activity)context).startActivity(Intent.createChooser(sharing, "Share Via"));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
         }

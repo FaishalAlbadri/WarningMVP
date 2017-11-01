@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="horizontal">
+
+    <TextView
+      android:id="@+id/textview_general_toolbar_with_button"
+      android:textStyle="bold"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
+      android:gravity="center_vertical"
+      android:layout_marginLeft="@dimen/padding_widget"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/toolbar_title_text_size" />
+
+    <ImageView
+      android:id="@+id/button_send_general_toolbar_with_button"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="5"
+      android:padding="@dimen/padding_widget_size_normal_bar"
+      android:background="?attr/selectableItemBackground"
+      android:src="@drawable/ic_send"
+      />
+
+  </LinearLayout>
+
+</android.support.design.widget.AppBarLayout>

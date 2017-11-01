@@ -37,6 +37,11 @@ public class RegisterPresenter implements RegisterContract.registerPresenter {
       }
 
       @Override
+      public void onWrongRegister(String msg) {
+        registerView.onWrongRegister(msg);
+      }
+
+      @Override
       public void onErrorRegister(String msg) {
         registerView.onErrorRegister(msg);
       }

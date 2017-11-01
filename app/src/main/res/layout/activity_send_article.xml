@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.faishalbadri.hijab.ui.send_article.SendArticleActivity">
+
+  <include
+    android:id="@+id/toolbar_activity_send_article"
+    layout="@layout/general_toolbar_with_button"/>
+
+  <EditText
+    android:id="@+id/edittext_send_article"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:gravity="top"
+    android:layout_margin="@dimen/margin_widget"
+    android:hint="@string/text_instruction_type"
+    android:background="@android:color/transparent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_send_article"
+    app:layout_constraintBottom_toBottomOf="parent"
+    />
+</android.support.constraint.ConstraintLayout>

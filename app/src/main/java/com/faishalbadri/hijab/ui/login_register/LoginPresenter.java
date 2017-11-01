@@ -38,6 +38,11 @@ public class LoginPresenter implements LoginContract.loginPresenter {
       }
 
       @Override
+      public void onWrongLogin(String msg) {
+        loginView.onWrongLogin(msg);
+      }
+
+      @Override
       public void onErrorLogin(String msg) {
         loginView.onErrorLogin(msg);
       }

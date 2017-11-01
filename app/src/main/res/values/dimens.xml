@@ -3,9 +3,11 @@
 
   <dimen name="app_name_text_size">40sp</dimen>
   <dimen name="margin_widget">16dp</dimen>
-  <dimen name="padding_widget">5dp</dimen>
+  <dimen name="padding_widget">5dp</dimen>x
+  <dimen name="padding_widget_size_normal_bar">12dp</dimen>x
   <dimen name="normal_button_size">50dp</dimen>
   <dimen name="normal_tittle_text_size">18sp</dimen>
+  <dimen name="toolbar_title_text_size">22sp</dimen>
   <dimen name="normal_tittle_text_size_detail">14sp</dimen>
   <dimen name="cardview_size">125dp</dimen>
   <dimen name="image_size">150dp</dimen>
