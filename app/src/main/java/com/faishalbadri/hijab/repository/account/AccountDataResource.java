@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface AccountDataResource {
 
-  interface AccountGetCallback {
+  public interface AccountGetCallback {
 
     void onSucces(List<PojoUser.UserBean> user, String username, String image , String id);
 
