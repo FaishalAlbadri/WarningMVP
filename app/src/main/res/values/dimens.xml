@@ -3,7 +3,8 @@
 
   <dimen name="app_name_text_size">40sp</dimen>
   <dimen name="margin_widget">16dp</dimen>
-  <dimen name="padding_widget">5dp</dimen>x
+  <dimen name="padding_widget">5dp</dimen>
+  <dimen name="ten_dp">10dp</dimen>
   <dimen name="padding_widget_size_normal_bar">12dp</dimen>x
   <dimen name="normal_button_size">50dp</dimen>
   <dimen name="normal_tittle_text_size">18sp</dimen>

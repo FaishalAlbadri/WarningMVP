@@ -26,7 +26,7 @@ public class OtherFragment extends Fragment {
   OtherFragmentAdapter otherFragmentAdapter;
   List<DataOtherFragment> data_list_other;
   String kritiksaran, kirimartikel, share, about;
-  private int [] image;
+  private int[] image;
 
   public OtherFragment() {
     // Required empty public constructor
@@ -50,16 +50,16 @@ public class OtherFragment extends Fragment {
   }
 
   private void dataOtherFragment() {
-    data_list_other.add(new DataOtherFragment(kritiksaran,image[0]));
-    data_list_other.add(new DataOtherFragment(kirimartikel,image[1]));
-    data_list_other.add(new DataOtherFragment(share,image[2]));
-    data_list_other.add(new DataOtherFragment(about,image[3]));
+    data_list_other.add(new DataOtherFragment(kritiksaran, image[0]));
+    data_list_other.add(new DataOtherFragment(kirimartikel, image[1]));
+    data_list_other.add(new DataOtherFragment(share, image[2]));
+    data_list_other.add(new DataOtherFragment(about, image[3]));
     otherFragmentAdapter.notifyDataSetChanged();
   }
 
   private void setView() {
     data_list_other = new ArrayList<>();
-    otherFragmentAdapter = new OtherFragmentAdapter(getActivity(),data_list_other);
+    otherFragmentAdapter = new OtherFragmentAdapter(getActivity(), data_list_other);
     LinearLayoutManager llmOtherFragment = new LinearLayoutManager(getActivity());
     llmOtherFragment.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentOther.setLayoutManager(llmOtherFragment);
@@ -68,10 +68,10 @@ public class OtherFragment extends Fragment {
 
   private void setString() {
     image = new int[]{
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher
+        R.drawable.ic_feedback,
+        R.drawable.ic_send_blue,
+        R.drawable.ic_share,
+        R.drawable.ic_info_outline
     };
 
     kritiksaran = getActivity().getResources().getString(R.string.text_other_kritik_saran);
@@ -79,7 +79,5 @@ public class OtherFragment extends Fragment {
     share = getActivity().getResources().getString(R.string.text_other_share);
     about = getActivity().getResources().getString(R.string.text_other_about);
   }
-
-
 
 }

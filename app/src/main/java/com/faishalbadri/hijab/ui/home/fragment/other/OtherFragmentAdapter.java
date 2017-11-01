@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -13,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +34,8 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
   Context context;
   List<DataOtherFragment> datalist;
   String kritiksaran, kirimartikel, share, about;
-  String shareSubject,shareText;
+  String shareSubject, shareText;
+
 
   public OtherFragmentAdapter(Context context,
       List<DataOtherFragment> datalist) {
@@ -47,11 +48,10 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
     @BindView(R.id.card_view_other_item)
     CardView cardViewOtherItem;
-    @BindView(R.id.img_title_other_item)
-    ImageView imgTitleOtherItem;
     @BindView(R.id.textview_title_other_item)
     TextView textviewTitleOtherItem;
-
+    @BindView(R.id.img_title_other_item)
+    AppCompatImageView imgTitleOtherItem;
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
@@ -75,11 +75,12 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     kirimartikel = ((Activity) context).getResources().getString(R.string.text_other_kirim_artikel);
     share = ((Activity) context).getResources().getString(R.string.text_other_share);
     about = ((Activity) context).getResources().getString(R.string.text_other_about);
-    shareSubject = ((Activity)context).getResources().getString(R.string.text_share_app_subject);
-    shareText = ((Activity)context).getResources().getString(R.string.text_share_app_text);
+    shareSubject = ((Activity) context).getResources().getString(R.string.text_share_app_subject);
+    shareText = ((Activity) context).getResources().getString(R.string.text_share_app_text);
 
     holder.textviewTitleOtherItem.setText(dataOtherFragment.getTitle());
-    Glide.with(context).load(dataOtherFragment.getImage()).into(holder.imgTitleOtherItem);
+    holder.imgTitleOtherItem.setImageResource(dataOtherFragment.getImage());
+//    Glide.with(context).load(dataOtherFragment.getImage()).into(holder.imgTitleOtherItem);
     holder.cardViewOtherItem.setForeground(getSelectedItemDrawable());
     holder.cardViewOtherItem.setClickable(true);
     holder.cardViewOtherItem.setOnClickListener(new OnClickListener() {
@@ -94,7 +95,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
           sharing.setType("text/plain");
           sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
           sharing.putExtra(Intent.EXTRA_TEXT, shareText);
-          ((Activity)context).startActivity(Intent.createChooser(sharing, "Share Via"));
+          ((Activity) context).startActivity(Intent.createChooser(sharing, "Share Via"));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
         }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer-array name="image_other_fragment">
+    <item>@drawable/ic_feedback</item>
+    <item>@drawable/ic_send_blue</item>
+    <item>@drawable/ic_share</item>
+    <item>@drawable/ic_info_outline</item>
+  </integer-array>
+</resources>
