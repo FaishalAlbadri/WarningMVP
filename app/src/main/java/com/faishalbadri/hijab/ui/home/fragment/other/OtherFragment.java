@@ -32,6 +32,7 @@ public class OtherFragment extends Fragment {
     // Required empty public constructor
   }
 
+
   public static OtherFragment instance() {
     return new OtherFragment();
   }
