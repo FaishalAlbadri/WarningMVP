@@ -20,7 +20,7 @@
     android:id="@+id/view_activity_login_register"
     android:layout_width="0dp"
     android:layout_height="1dp"
-    android:background="@color/colorAccent"
+    android:background="@color/color_white_ff"
     app:layout_constraintBottom_toTopOf="@+id/button_login_activity_login_register"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent" />
@@ -33,7 +33,7 @@
     android:background="?attr/selectableItemBackground"
     android:text="@string/text_login"
     android:textAllCaps="false"
-    android:textColor="@color/colorAccent"
+    android:textColor="@color/color_white_ff"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toLeftOf="@+id/view_activity_login_register_center" />
@@ -42,7 +42,7 @@
     android:id="@+id/view_activity_login_register_center"
     android:layout_width="1dp"
     android:layout_height="0dp"
-    android:background="@color/colorAccent"
+    android:background="@color/color_white_ff"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
@@ -76,7 +76,7 @@
     android:background="?attr/selectableItemBackground"
     android:text="@string/text_register"
     android:textAllCaps="false"
-    android:textColor="@color/colorAccent"
+    android:textColor="@color/color_white_ff"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@+id/view_activity_login_register_center"
     app:layout_constraintRight_toRightOf="parent" />

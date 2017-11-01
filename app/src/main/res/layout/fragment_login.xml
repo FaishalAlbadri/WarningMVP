@@ -15,7 +15,7 @@
     android:fontFamily="cursive"
     android:gravity="center"
     android:text="@string/app_name"
-    android:textColor="@color/colorAccent"
+    android:textColor="@color/color_white_ff"
     android:textSize="@dimen/app_name_text_size"
     app:layout_constraintBottom_toTopOf="@+id/materialedittext_email_fragment_login"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -31,15 +31,16 @@
     android:hint="@string/text_email"
     android:inputType="textEmailAddress"
     android:maxLines="1"
+    android:textCursorDrawable="@null"
     app:layout_constraintBottom_toTopOf="@+id/materialedittext_password_fragment_login"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:met_baseColor="@color/colorAccent"
+    app:met_baseColor="@color/color_white_ff"
     app:met_errorColor="@android:color/holo_red_dark"
     app:met_floatingLabel="highlight"
-    app:met_primaryColor="@color/colorAccent"
-    app:met_textColorHint="@color/colorAccent"
-    app:met_underlineColor="@color/colorAccent" />
+    app:met_primaryColor="@color/color_white_ff"
+    app:met_textColorHint="@color/color_white_ff"
+    app:met_underlineColor="@color/color_white_ff" />
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_password_fragment_login"
@@ -50,16 +51,17 @@
     android:hint="@string/text_password"
     android:inputType="textPassword"
     android:maxLines="1"
+    android:textCursorDrawable="@null"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:met_baseColor="@color/colorAccent"
+    app:met_baseColor="@color/color_white_ff"
     app:met_errorColor="@android:color/holo_red_dark"
     app:met_floatingLabel="highlight"
-    app:met_primaryColor="@color/colorAccent"
-    app:met_textColorHint="@color/colorAccent"
-    app:met_underlineColor="@color/colorAccent"/>
+    app:met_primaryColor="@color/color_white_ff"
+    app:met_textColorHint="@color/color_white_ff"
+    app:met_underlineColor="@color/color_white_ff" />
 
   <Button
     android:id="@+id/button_login_fragment_login"
@@ -69,7 +71,7 @@
     android:padding="@dimen/padding_widget"
     android:background="@drawable/custom_border_layout_pink"
     android:text="@string/text_login"
-    android:textColor="@color/colorAccent"
+    android:textColor="@color/color_white_ff"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/materialedittext_password_fragment_login" />
