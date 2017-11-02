@@ -33,8 +33,8 @@ public class LoginPresenter implements LoginContract.loginPresenter {
   public void getDataLogin(String email, String password) {
     loginRepository.getLoginResult(email, password, new LoginGetCallback() {
       @Override
-      public void onSuccesLogin(String msg, String id) {
-        loginView.onSuccesLogin(msg,id);
+      public void onSuccesLogin(String msg, String id, String username, String image) {
+        loginView.onSuccesLogin(msg,id,username,image);
       }
 
       @Override

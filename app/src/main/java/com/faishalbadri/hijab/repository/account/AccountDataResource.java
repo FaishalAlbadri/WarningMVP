@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.repository.account;
 
 import android.support.annotation.NonNull;
 import com.faishalbadri.hijab.data.PojoUser;
+import com.faishalbadri.hijab.util.ActivityUtil;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
 
 public interface AccountDataResource {
 
-  public interface AccountGetCallback {
+  interface AccountGetCallback {
 
     void onSucces(List<PojoUser.UserBean> user, String username, String image , String id);
 
@@ -20,5 +21,15 @@ public interface AccountDataResource {
   }
 
   void getAccountResult(String email, @NonNull AccountDataResource.AccountGetCallback accountGetCallback);
+
+  interface EditImageGetCallback {
+
+    void onSucces(ActivityUtil activityUtil);
+
+    void onError(String msg);
+
+  }
+
+  void getEditImageResult(String id,String path, @NonNull AccountDataResource.EditImageGetCallback editImageGetCallback);
 
 }

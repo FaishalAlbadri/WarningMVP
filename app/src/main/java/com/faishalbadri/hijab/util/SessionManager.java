@@ -22,6 +22,8 @@ public class SessionManager {
   private static final String pref_name = "crudpref";
   private static final String is_login = "islogin";
   public static final String key_email = "keyemail";
+  public static final String key_username = "keyusername";
+  public static final String key_image = "keyimage";
   public static final String key_id = "keyid";
 
   public SessionManager(Context context) {
@@ -30,9 +32,11 @@ public class SessionManager {
     editor = pref.edit();
   }
 
-  public void createSession(String email,String id) {
+  public void createSession(String email,String id, String username, String image ) {
     editor.putBoolean(is_login, true);
     editor.putString(key_email, email);
+    editor.putString(key_username, username);
+    editor.putString(key_image, image);
     editor.putString(key_id, id);
     editor.commit();
   }
@@ -67,10 +71,17 @@ public class SessionManager {
     ((Activity)context).finish();
   }
 
+  public void clear() {
+    editor.clear();
+    editor.commit();
+  }
+
   public HashMap<String, String> getUserDetails() {
-    HashMap<String, String> user = new HashMap<String, String>();
+    HashMap<String, String> user = new HashMap<>();
     user.put(key_email, pref.getString(key_email, null));
     user.put(key_id, pref.getString(key_id, null));
+    user.put(key_username, pref.getString(key_username, null));
+    user.put(key_image, pref.getString(key_image, null));
     return user;
   }
 

@@ -10,7 +10,7 @@ public class LoginContract {
 
   public interface loginView {
 
-    void onSuccesLogin(String msg, String id);
+    void onSuccesLogin(String msg, String id, String username, String image);
 
     void onWrongLogin(String msg);
 

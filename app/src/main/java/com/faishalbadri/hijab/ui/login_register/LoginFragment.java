@@ -105,10 +105,9 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   }
 
   @Override
-  public void onSuccesLogin(String msg ,String id) {
+  public void onSuccesLogin(String msg ,String id,String username,String image) {
     pd.dismiss();
-    sessionManagerLogin.createSession(email,id);
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    sessionManagerLogin.createSession(email,id,username,image);
     startActivity(new Intent(getActivity(), HomeActivity.class));
     getActivity().finish();
   }
