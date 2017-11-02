@@ -110,8 +110,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   @Override
   public void onSuccesRegister(String msg) {
     pd.dismiss();
-    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
-        .show();
+    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT).show();
   }
 
   @Override

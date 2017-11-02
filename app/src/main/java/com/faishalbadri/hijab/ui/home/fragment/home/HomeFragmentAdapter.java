@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.home.fragment.home;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -20,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.voting.VotingActivity;
 import com.faishalbadri.hijab.util.SessionManager;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +35,6 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
   Context context;
   List<DataHomeFragment> dataList;
   String event, ebook, news, voting, video, community;
-  SessionManager sessionManager;
-  String id_user;
 
 
   public HomeFragmentAdapter(Context context,
@@ -78,9 +78,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     community = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_community);
     event = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_event);
     ebook = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_ebook);
-    sessionManager = new SessionManager(context);
-    HashMap<String, String> user = sessionManager.getUserDetails();
-    id_user = user.get(SessionManager.key_id);
+
 
     holder.textviewTitleFragmentHomeAdapter.setText(dataHomeFragment.getJudul());
     holder.textviewTitleDetailFragmentHomeAdapter.setText(dataHomeFragment.getJudulDetail());
@@ -94,7 +92,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
         if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
-
+          ((Activity)context).startActivity(new Intent(context, VotingActivity.class));
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
