@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.repository.login.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
@@ -43,13 +44,16 @@ public class LoginDataRemote implements LoginDataResource {
         Method.POST, String.valueOf(URL), new Listener<String>() {
       @Override
       public void onResponse(String response) {
+        Log.i("response",response);
         try {
           if (String.valueOf(new JSONObject(response).getString("msg")).equals("login berhasil")) {
             try {
               final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
               for (int a = 0; a < pojoUser.getUser().size(); a++) {
                 String id = pojoUser.getUser().get(a).getId_user();
-                loginGetCallback.onSuccesLogin(context.getString(R.string.text_succes),id);
+                String username = pojoUser.getUser().get(a).getUsername();
+                String image = pojoUser.getUser().get(a).getImg_user();
+                loginGetCallback.onSuccesLogin(context.getString(R.string.text_succes),id,username,image);
               }
             } catch (Exception e) {
               e.printStackTrace();

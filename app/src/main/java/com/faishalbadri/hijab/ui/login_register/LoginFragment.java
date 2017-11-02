@@ -1,7 +1,9 @@
 package com.faishalbadri.hijab.ui.login_register;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -40,6 +42,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   String email, password;
   SessionManager sessionManagerLogin;
   ProgressDialog pd;
+  Context context;
 
   public LoginFragment() {
     // Required empty public constructor
@@ -102,9 +105,9 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   }
 
   @Override
-  public void onSuccesLogin(String msg ,String id) {
+  public void onSuccesLogin(String msg ,String id,String username,String image) {
     pd.dismiss();
-    sessionManagerLogin.createSession(email,id);
+    sessionManagerLogin.createSession(email,id,username,image);
     startActivity(new Intent(getActivity(), HomeActivity.class));
     getActivity().finish();
   }

@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -39,25 +38,24 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoUser.UserBean;
 import com.faishalbadri.hijab.di.AccountRepositoryInject;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.accoutView;
+import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.editImageView;
 import com.faishalbadri.hijab.util.ActivityUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountFragment extends Fragment implements accoutView {
+public class AccountFragment extends Fragment implements accoutView, editImageView {
 
 
   @BindView(R.id.img_user_account)
-  ImageView imgUserAccount;
+  CircleImageView imgUserAccount;
   @BindView(R.id.img_edit_photo_account)
   ImageView imgEditPhotoAccount;
   @BindView(R.id.txt_username_user_account)
@@ -68,7 +66,7 @@ public class AccountFragment extends Fragment implements accoutView {
   Button btnLogoutAccount;
   ProgressDialog pd;
   private int PICK_IMAGE_REQUEST = 1;
-  private String id, email;
+  private String id, email, username, image;
   Context context;
   ActivityUtil activityUtil;
 
@@ -76,15 +74,18 @@ public class AccountFragment extends Fragment implements accoutView {
 
   private Uri filePathAccount;
   private Bitmap bitmapAccount;
+  HashMap<String, String> user;
 
   public AccountFragment() {
     // Required empty public constructor
   }
 
-  public  static  AccountFragment instance(){
-    return new  AccountFragment();
+  public static AccountFragment instance() {
+    return new AccountFragment();
   }
+
   AccountPresenter accountPresenter;
+  EditImagePresenter editImagePresenter;
   SessionManager sessionAccount;
   private static final String save = "save";
 
@@ -93,18 +94,9 @@ public class AccountFragment extends Fragment implements accoutView {
       Bundle savedInstanceState) {
     View v = inflater.inflate(R.layout.fragment_account, container, false);
     ButterKnife.bind(this, v);
-    pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
-    pd.setCanceledOnTouchOutside(false);
-    pd.setCancelable(false);
-    pd.show();
     setView();
     requestStoragePermission();
-    if (savedInstanceState != null) {
-      ArrayList<UserBean> resultArray = savedInstanceState.getParcelableArrayList(save);
-    } else {
-      accountPresenter.getDataAccount(email);
-    }
+    accountPresenter.getDataAccount(email);
 
     return v;
   }
@@ -112,27 +104,35 @@ public class AccountFragment extends Fragment implements accoutView {
   @Override
   public void onSuccesAccount(List<UserBean> user, String username, String image, String id) {
     this.id = id;
-    txtUsernameUserAccount.setText(username);
     RequestOptions options = new RequestOptions().circleCrop().format(
         DecodeFormat.PREFER_ARGB_8888).override(400, 400);
     Glide.with(getActivity())
         .load(Server.BASE_IMG + image)
         .apply(options)
         .into(imgUserAccount);
-    pd.dismiss();
   }
 
   @Override
   public void onErrorAccount(String msg) {
-    pd.dismiss();
     Toast.makeText(getActivity(), "Internal Server Error", Toast.LENGTH_SHORT).show();
   }
 
+  @Override
+  public void onSuccessEditImage(ActivityUtil activityUtil) {
+    activityUtil.addFragment(getActivity().getSupportFragmentManager(),
+        R.id.framelayout_for_fragment_activity_home, AccountFragment.instance());
+  }
+
+  @Override
+  public void onErrorEditImage(String msg) {
+
+  }
+
   private void logout() {
-    pd.show();
     sessionAccount.logout();
     getActivity().finish();
   }
+
   private void editPhoto() {
     Intent intent = new Intent();
     intent.setType("image/*");
@@ -142,15 +142,22 @@ public class AccountFragment extends Fragment implements accoutView {
 
   private void setView() {
     sessionAccount = new SessionManager(getActivity());
-    HashMap<String, String> user = sessionAccount.getUserDetails();
+    user = sessionAccount.getUserDetails();
     email = user.get(SessionManager.key_email);
+    username = user.get(SessionManager.key_username);
+    image = user.get(SessionManager.key_image);
     txtEmailUserAccount.setText(email);
+    txtUsernameUserAccount.setText(username);
+
     if (VERSION.SDK_INT >= VERSION_CODES.M) {
       btnLogoutAccount.setForeground(getSelectedItemDrawable());
     }
     accountPresenter = new AccountPresenter(
         AccountRepositoryInject.provideToLoginRepository(getActivity()));
     accountPresenter.onAttachView(this);
+    editImagePresenter = new EditImagePresenter(
+        AccountRepositoryInject.provideToLoginRepository(getActivity()));
+    editImagePresenter.onAttachView(this);
     activityUtil = ActivityUtil.getInstance(context);
   }
 
@@ -162,53 +169,32 @@ public class AccountFragment extends Fragment implements accoutView {
     }
 
     if (ActivityCompat
-        .shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        .shouldShowRequestPermissionRationale(getActivity(),
+            Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
     }
-    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-        STORAGE_PERMISSION_CODE);
+    ActivityCompat
+        .requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+            STORAGE_PERMISSION_CODE);
   }
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode ==PICK_IMAGE_REQUEST && resultCode== RESULT_OK && data != null
+    if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null
         && data.getData() != null) {
       filePathAccount = data.getData();
-      uploadMultipart();
-
+      editImagePresenter.getEditImage(id, getPath(filePathAccount));
+      sessionAccount.clear();
+//
       try {
-        bitmapAccount = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePathAccount);
-
+        bitmapAccount = MediaStore.Images.Media
+            .getBitmap(getActivity().getContentResolver(), filePathAccount);
+        sessionAccount.createSession(email, id, username, image);
         imgUserAccount.setImageBitmap(bitmapAccount);
       } catch (IOException e) {
         e.printStackTrace();
       }
-    }
-  }
-
-  private void uploadMultipart() {
-    String path = getPath(filePathAccount);
-    final ProgressDialog pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
-    pd.show();
-    try {
-      String uploadId = UUID.randomUUID().toString();
-
-      new MultipartUploadRequest(getActivity(), uploadId, Server.BASE_URL + "uploadimage.php")
-          .addFileToUpload(path, "image")
-          .addParameter("id", id)
-          .setNotificationConfig(new UploadNotificationConfig())
-          .setMaxRetries(2)
-          .startUpload();
-      Handler handler = new Handler();
-      handler.postDelayed(() -> {
-        pd.dismiss();
-        activityUtil.addFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_home, AccountFragment.instance());
-
-      }, 4000);
-    } catch (Exception ignored) {
-
     }
   }
 
@@ -236,11 +222,13 @@ public class AccountFragment extends Fragment implements accoutView {
 
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-        Toast.makeText(getActivity(), "Permission granted now you can read the storage", Toast.LENGTH_SHORT)
+        Toast.makeText(getActivity(), "Permission granted now you can read the storage",
+            Toast.LENGTH_SHORT)
             .show();
       } else {
 
-        Toast.makeText(getActivity(), "Oops you just denied the permission", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Oops you just denied the permission", Toast.LENGTH_SHORT)
+            .show();
       }
     }
   }
@@ -257,6 +245,7 @@ public class AccountFragment extends Fragment implements accoutView {
         break;
     }
   }
+
   public Drawable getSelectedItemDrawable() {
     int[] attrs = new int[]{R.attr.selectableItemBackground};
     TypedArray ta = (getActivity()).obtainStyledAttributes(attrs);

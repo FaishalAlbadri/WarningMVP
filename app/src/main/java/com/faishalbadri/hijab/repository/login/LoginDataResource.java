@@ -10,7 +10,7 @@ public interface LoginDataResource {
 
   public interface LoginGetCallback {
 
-    void onSuccesLogin(String msg, String id);
+    void onSuccesLogin(String msg, String id, String username, String image);
 
     void onWrongLogin(String msg);
 
