@@ -104,7 +104,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   @Override
   public void onSuccesAccount(List<UserBean> user, String username, String image, String id) {
     this.id = id;
-    RequestOptions options = new RequestOptions().circleCrop().format(
+    RequestOptions options = new RequestOptions().circleCrop().error(R.drawable.ic_account_circle_black_24dp).format(
         DecodeFormat.PREFER_ARGB_8888).override(400, 400);
     Glide.with(getActivity())
         .load(Server.BASE_IMG + image)

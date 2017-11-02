@@ -68,7 +68,6 @@ public class AccountDataRemote implements AccountDataResource{
       new MultipartUploadRequest(context, uploadId, URL_EDIT_IMAGE)
           .addFileToUpload(path, "image")
           .addParameter("id", id)
-          .setNotificationConfig(new UploadNotificationConfig())
           .setMaxRetries(2)
           .startUpload();
     } catch (Exception ignored) {
