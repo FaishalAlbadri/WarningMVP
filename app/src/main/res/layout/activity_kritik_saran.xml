@@ -13,8 +13,8 @@
 
   <EditText
     android:id="@+id/edittext_kritik_saran"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="@dimen/match_parent_size"
+    android:layout_height="@dimen/match_parent_size"
     android:gravity="top"
     android:layout_margin="@dimen/margin_widget"
     android:hint="@string/text_instruction_type"

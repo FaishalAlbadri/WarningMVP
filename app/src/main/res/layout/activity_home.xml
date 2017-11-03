@@ -15,7 +15,7 @@
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_home"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/tab_toolbar_color"
     android:orientation="horizontal"
@@ -63,8 +63,8 @@
 
   <FrameLayout
     android:id="@+id/framelayout_for_fragment_activity_home"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="@dimen/match_parent_size"
+    android:layout_height="@dimen/match_parent_size"
     app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_home"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
