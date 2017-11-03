@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.voting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVoting;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.di.VotingRepositoryInject;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +91,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","0"));
     finish();
   }
 }

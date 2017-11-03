@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.ebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.EbookContract.EbookView;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,5 +81,12 @@ public class EbookActivity extends AppCompatActivity implements EbookView {
   @Override
   public void onErrorEbook(String msg) {
     Toast.makeText(EbookActivity.this, msg, Toast.LENGTH_SHORT).show();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","0"));
+    finish();
   }
 }

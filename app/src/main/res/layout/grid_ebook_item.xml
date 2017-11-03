@@ -9,7 +9,7 @@
     android:layout_width="@dimen/imageview_grid_ebook_size"
     android:layout_height="@dimen/imageview_grid_ebook_size"
     android:clickable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:background="?attr/selectableItemBackground"
     android:scaleType="centerCrop"
     />
 
