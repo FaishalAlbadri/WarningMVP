@@ -9,7 +9,7 @@ import com.faishalbadri.hijab.repository.video_perkat.remote.VideoPerkatRemote;
  */
 
 public class VideoPerkatRepositoryInject {
-  public static VideoPerkatRepository provideToLoginRepository(Context context){
+  public static VideoPerkatRepository provideToVideoPerkatRepository(Context context){
     return new VideoPerkatRepository(new VideoPerkatRemote(context));
   }
 }

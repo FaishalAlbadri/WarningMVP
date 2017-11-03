@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.repository.video_perkat;
 
-import android.content.Context;
+import android.support.annotation.NonNull;
 import com.faishalbadri.hijab.data.PojoVideoPerkat;
 import java.util.List;
 
@@ -17,5 +17,7 @@ public interface VideoPerkatDataResource {
     void onError(String msg);
 
   }
+
+  void getAccountResult(String id, @NonNull VideoPerkatDataResource.VideoPerkatGetDataCallBack videoPerkatGetDataCallBack);
 
 }
