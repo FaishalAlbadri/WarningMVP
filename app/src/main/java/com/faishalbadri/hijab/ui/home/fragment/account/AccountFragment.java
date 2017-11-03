@@ -233,12 +233,16 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     }
   }
 
-  @OnClick({R.id.img_edit_photo_account, R.id.btn_logout_account})
+  @OnClick({R.id.img_edit_photo_account, R.id.btn_logout_account, R.id.img_user_account})
   public void onViewClicked(View view) {
     switch (view.getId()) {
       case R.id.img_edit_photo_account:
         editPhoto();
         imgEditPhotoAccount.setEnabled(true);
+        break;
+      case R.id.img_user_account:
+        editPhoto();
+        imgUserAccount.setEnabled(true);
         break;
       case R.id.btn_logout_account:
         logout();
