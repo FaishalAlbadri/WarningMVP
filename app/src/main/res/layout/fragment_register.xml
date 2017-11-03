@@ -10,7 +10,7 @@
   <TextView
     android:id="@+id/textview_app_name_fragment_register"
     android:textStyle="bold"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:fontFamily="cursive"
@@ -24,7 +24,7 @@
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_username_fragment_register"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
@@ -44,7 +44,7 @@
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_email_fragment_register"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
@@ -65,7 +65,7 @@
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_password_fragment_register"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
@@ -85,7 +85,7 @@
 
   <Button
     android:id="@+id/button_register_fragment_register"
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
