@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <integer-array name="image_other_fragment">
-    <item>@drawable/ic_feedback</item>
-    <item>@drawable/ic_send_blue</item>
-    <item>@drawable/ic_share</item>
-    <item>@drawable/ic_info_outline</item>
+    <item>@drawable/ic_feedback_primary_color</item>
+    <item>@drawable/ic_send_primary_color</item>
+    <item>@drawable/ic_share_primary_color</item>
+    <item>@drawable/ic_info_outline_primary_color</item>
   </integer-array>
 </resources>
