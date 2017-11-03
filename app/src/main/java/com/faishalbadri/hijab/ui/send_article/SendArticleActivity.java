@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 
 public class SendArticleActivity extends AppCompatActivity {
 
@@ -52,6 +53,7 @@ public class SendArticleActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","1"));
     finish();
   }
 }

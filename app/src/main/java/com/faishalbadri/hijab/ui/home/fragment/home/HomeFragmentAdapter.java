@@ -91,6 +91,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
           ((Activity)context).startActivity(new Intent(context, VotingActivity.class));
+          ((Activity)context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
@@ -99,6 +100,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
           ((Activity)context).startActivity(new Intent(context, EbookActivity.class));
+          ((Activity)context).finish();
         }
       }
     });

@@ -1,6 +1,9 @@
 package com.faishalbadri.hijab.ui.voting;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;

@@ -88,8 +88,10 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
       public void onClick(View v) {
         if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
           ((Activity) context).startActivity(new Intent(context, KritikSaranActivity.class));
+          ((Activity)context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
           ((Activity) context).startActivity(new Intent(context, SendArticleActivity.class));
+          ((Activity)context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
           Intent sharing = new Intent(Intent.ACTION_SEND);
           sharing.setType("text/plain");

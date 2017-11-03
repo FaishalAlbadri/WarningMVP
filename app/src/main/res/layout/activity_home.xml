@@ -15,7 +15,7 @@
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_home"
-    android:layout_width="@dimen/match_parent_size"
+    android:layout_width="0dp"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/tab_toolbar_color"
     android:orientation="horizontal"
@@ -28,46 +28,49 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
+      android:drawableTop="@drawable/ic_home"
       android:text="@string/text_home"
       android:textAllCaps="false"
       android:textColor="@android:color/white"
-      android:textSize="@dimen/normal_tittle_text_size"
-      android:textStyle="bold"/>
+      />
 
     <Button
       android:id="@+id/button_other_activity_home"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
+      android:drawableTop="@drawable/ic_help_outline"
       android:text="@string/text_other"
       android:textAllCaps="false"
       android:textColor="@android:color/white"
-      android:textSize="@dimen/normal_tittle_text_size"
-      android:textStyle="bold"/>
+      />
 
     <Button
       android:id="@+id/button_account_activity_home"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
+      android:drawableTop="@drawable/ic_person"
       android:text="@string/text_account"
       android:textAllCaps="false"
       android:textColor="@android:color/white"
-      android:textSize="@dimen/normal_tittle_text_size"
-      android:textStyle="bold"/>
+      />
 
   </LinearLayout>
 
   <FrameLayout
     android:id="@+id/framelayout_for_fragment_activity_home"
-    android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/match_parent_size"
-    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_home"
-    app:layout_constraintRight_toRightOf="parent"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_home" />
 
 </android.support.constraint.ConstraintLayout>

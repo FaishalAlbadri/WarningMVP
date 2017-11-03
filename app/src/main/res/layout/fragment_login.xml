@@ -40,7 +40,8 @@
     app:met_floatingLabel="highlight"
     app:met_primaryColor="@color/color_white_ff"
     app:met_textColorHint="@color/color_white_ff"
-    app:met_underlineColor="@color/color_white_ff" />
+    app:met_underlineColor="@color/color_white_ff"
+    />
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_password_fragment_login"

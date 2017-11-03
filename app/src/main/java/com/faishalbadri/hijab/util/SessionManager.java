@@ -26,13 +26,14 @@ public class SessionManager {
   public static final String key_image = "keyimage";
   public static final String key_id = "keyid";
 
+
   public SessionManager(Context context) {
     this.context = context;
     pref = context.getSharedPreferences(pref_name, mode);
     editor = pref.edit();
   }
 
-  public void createSession(String email,String id, String username, String image ) {
+  public void createSession(String email,String id, String username, String image) {
     editor.putBoolean(is_login, true);
     editor.putString(key_email, email);
     editor.putString(key_username, username);
@@ -40,6 +41,7 @@ public class SessionManager {
     editor.putString(key_id, id);
     editor.commit();
   }
+
 
   public void checkLogin() {
     if (!this.is_login()) {
