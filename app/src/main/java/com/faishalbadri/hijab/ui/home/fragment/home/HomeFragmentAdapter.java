@@ -14,16 +14,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
+import com.faishalbadri.hijab.ui.ebook.EbookActivity;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.voting.VotingActivity;
-import com.faishalbadri.hijab.util.SessionManager;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -100,7 +98,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
-
+          ((Activity)context).startActivity(new Intent(context, EbookActivity.class));
         }
       }
     });

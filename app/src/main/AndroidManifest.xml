@@ -36,6 +36,9 @@
     <activity
       android:name=".ui.voting.VotingActivity"
       android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ui.ebook.EbookActivity"
+      android:theme="@style/AppTheme.NoActionBar"></activity>
   </application>
 
 </manifest>

@@ -14,6 +14,7 @@
   <string name="text_email_with_dot">Email :</string>
   <string name="text_logout">Logout</string>
   <string name="text_home">Home</string>
+  <string name="text_ebook">E-Book</string>
   <string name="text_other">Other</string>
   <string name="text_account">Account</string>
   <string name="text_send">Send</string>
@@ -48,7 +49,7 @@
   <string name="text_share_app_text">Get the last update women news from Pinky Hijab</string>
 
   <string name="text_kritik_saran_instruction">Kami sangat membutuhkan kritik &amp; saran dari pengguna semua, supaya kami dapat mengembangkan aplikasi yang lebih baik dan disukai oleh pengguna semua. Terima Kasih</string>
-
+  <string name="title_activity_ebook">EbookActivity</string>
 
 </resources>
 
@@ -60,5 +61,4 @@
   <!--Home :--><!--1. Event--><!--2. Ebook--><!--3. News--><!--4. Voting--><!--5. Video--><!--6. Community-->
 
 
-  <!--Set color progressbar-->
-  <!--pbHeaderProgress.getIndeterminateDrawable().setColorFilter(Color.RED, Mode.MULTIPLY);-->
+  <!--Set color progressbar--><!--pbHeaderProgress.getIndeterminateDrawable().setColorFilter(Color.RED, Mode.MULTIPLY);-->

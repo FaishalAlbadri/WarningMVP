@@ -15,4 +15,6 @@
   <dimen name="card_account">60dp</dimen>
   <dimen name="mini_img_size">30dp</dimen>
   <dimen name="imageview_grid_size">130dp</dimen>
+  <dimen name="imageview_grid_ebook_size">180dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
 </resources>
