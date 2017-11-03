@@ -9,18 +9,18 @@
   <include
     android:id="@+id/toolbar_activity_ebook"
     layout="@layout/general_toolbar_with_button"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent" />
 
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview_activity_ebook"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
-    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_ebook"
-    app:layout_constraintBottom_toBottomOf="parent">
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_ebook">
 
   </android.support.v7.widget.RecyclerView>
 

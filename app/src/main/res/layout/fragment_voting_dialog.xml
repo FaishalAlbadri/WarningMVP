@@ -65,7 +65,6 @@
         android:layout_height="?attr/actionBarSize"
         android:padding="@dimen/ten_dp"
         android:gravity="center"
-        android:text="asdasdasdsadas"
         android:textColor="@android:color/white"
         android:textSize="@dimen/normal_tittle_text_size"
         app:layout_constraintBottom_toBottomOf="parent"

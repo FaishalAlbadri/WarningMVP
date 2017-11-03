@@ -106,10 +106,10 @@
   </android.support.v7.widget.CardView>
 
   <android.support.v7.widget.CardView
-    android:layout_width="0dp"
+    android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/card_account"
     android:layout_marginTop="@dimen/margin_widget"
-    app:cardElevation="0dp"
+    app:cardElevation="@dimen/match_parent_size"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/carddummy">

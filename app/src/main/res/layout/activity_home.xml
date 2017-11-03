@@ -33,8 +33,7 @@
       android:drawableTop="@drawable/ic_home_white"
       android:text="@string/text_home"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
-      />
+      android:textColor="@android:color/white" />
 
     <Button
       android:id="@+id/button_other_activity_home"
@@ -46,8 +45,7 @@
       android:drawableTop="@drawable/ic_help_outline_white"
       android:text="@string/text_other"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
-      />
+      android:textColor="@android:color/white" />
 
     <Button
       android:id="@+id/button_account_activity_home"
@@ -59,15 +57,14 @@
       android:drawableTop="@drawable/ic_person_white"
       android:text="@string/text_account"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
-      />
+      android:textColor="@android:color/white" />
 
   </LinearLayout>
 
   <FrameLayout
     android:id="@+id/framelayout_for_fragment_activity_home"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="@dimen/match_parent_size"
+    android:layout_height="@dimen/match_parent_size"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
