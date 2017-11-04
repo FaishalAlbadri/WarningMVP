@@ -21,6 +21,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.EbookActivity;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.ui.voting.VotingActivity;
 import java.util.List;
 
@@ -88,7 +89,8 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
       @Override
       public void onClick(View v) {
         if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
-
+          ((Activity)context).startActivity(new Intent(context, NewsActivity.class));
+          ((Activity)context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
           ((Activity)context).startActivity(new Intent(context, VotingActivity.class));
           ((Activity)context).finish();

@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
   private void setFragment() {
     try {
       sessionHome = getIntent().getStringExtra("session_home");
-      if (sessionHome == null || sessionHome.equals("0")) {
+      if (sessionHome == null) {
         homeFragment();
       } else if (sessionHome.equals("1")) {
         otherFragment();

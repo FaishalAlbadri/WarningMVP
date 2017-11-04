@@ -4,73 +4,64 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.home.activity.HomeActivity">
+  tools:context="com.faishalbadri.hijab.ui.news.activity.NewsActivity">
 
   <include
-    android:id="@+id/toolbar_activity_home"
-    layout="@layout/general_toolbar_with_logo"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/toolbar_activity_news"
+    layout="@layout/general_toolbar_with_back_button" />
 
   <LinearLayout
-    android:id="@+id/linear_layout_tab_activity_home"
+    android:id="@+id/linear_layout_tab_activity_news"
     android:layout_width="0dp"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
     android:orientation="horizontal"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_home">
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_news">
 
-    <Button
-      android:id="@+id/button_home_activity_home"
+    <ImageButton
+      android:id="@+id/button_news_activity_news"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_home_white"
-      android:text="@string/text_home"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
+      android:src="@drawable/ic_news_white"
       />
 
-    <Button
-      android:id="@+id/button_other_activity_home"
+    <ImageButton
+      android:id="@+id/button_category_activity_news"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_help_outline_white"
-      android:text="@string/text_other"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
+      android:src="@drawable/ic_news_white"
       />
 
-    <Button
-      android:id="@+id/button_account_activity_home"
+    <ImageButton
+      android:id="@+id/button_search_activity_news"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_person_white"
-      android:text="@string/text_account"
       android:textAllCaps="false"
-      android:textColor="@android:color/white"
+      android:src="@drawable/ic_news_white"
       />
 
   </LinearLayout>
 
   <FrameLayout
-    android:id="@+id/framelayout_for_fragment_activity_home"
+    android:id="@+id/framelayout_for_fragment_activity_news"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_home" />
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_news" />
 
 </android.support.constraint.ConstraintLayout>

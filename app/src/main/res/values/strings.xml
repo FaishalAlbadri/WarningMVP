@@ -20,23 +20,22 @@
   <string name="text_send">Send</string>
   <string name="text_send_article">Send Article</string>
 
-
-  <string name="text_pinky_hijab_news">News</string>
+  <string name="text_pinky_hijab_news">Pinky Hijab News</string>
   <string name="text_pinky_hijab_news_detail">Get the last update news for women in this app</string>
 
-  <string name="text_pinky_hijab_voting">Voting</string>
+  <string name="text_pinky_hijab_voting">Pinky Hijab Voting</string>
   <string name="text_pinky_hijab_voting_detail">Dont forget to support and like</string>
 
-  <string name="text_pinky_hijab_community">Community</string>
+  <string name="text_pinky_hijab_community">Pinky Hijab Community</string>
   <string name="text_pinky_hijab_community_detail">History of Pinky Hijab Community from beginning</string>
 
-  <string name="text_pinky_hijab_video">Video</string>
+  <string name="text_pinky_hijab_video">Pinky Hijab Video</string>
   <string name="text_pinky_hijab_video_detail">Get the last update video for women in this app</string>
 
-  <string name="text_pinky_hijab_ebook">E-book</string>
+  <string name="text_pinky_hijab_ebook">Pinky Hijab E-book</string>
   <string name="text_pinky_hijab_ebook_detail">Get the last update E-book for women in this app</string>
 
-  <string name="text_pinky_hijab_event">Event</string>
+  <string name="text_pinky_hijab_event">Pinky Hijab Event</string>
   <string name="text_pinky_hijab_event_detail">Get the last update event for women in this app</string>
 
   <string name="text_other_kritik_saran">Kritik &amp; Saran</string>

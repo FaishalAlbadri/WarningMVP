@@ -46,7 +46,13 @@
       android:name=".ui.ebook.EbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ui.video_perkat.VideoPerkatActivity"></activity>
+
+    <activity android:name=".ui.video_perkat.VideoPerkatActivity" />
+
+    <activity
+      android:name=".ui.news.activity.NewsActivity"
+      android:theme="@style/AppTheme.NoActionBar"
+      android:screenOrientation="portrait"/>
   </application>
 
 </manifest>
