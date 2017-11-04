@@ -60,7 +60,7 @@
       android:theme="@style/AppTheme.NoActionBar"
       android:screenOrientation="portrait"/>
 
-    <activity android:name=".ui.perkat_video.PerkatActivity"
+    <activity android:name=".ui.video_by_category.VideoByCategoryActivity"
       android:theme="@style/AppTheme.NoActionBar"
       android:screenOrientation="portrait"/>
   </application>

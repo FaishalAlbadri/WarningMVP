@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.perkat_video;
+package com.faishalbadri.hijab.ui.video_by_category;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +16,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;
+import com.faishalbadri.hijab.data.PojoVideoByCategory.VideoBean;
 import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoActivity;
-import com.faishalbadri.hijab.ui.perkat_video.PerkatVideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +27,14 @@ import java.util.List;
  * Created by fikriimaduddin on 11/4/17.
  */
 
-public class PerkatVideoAdapter extends Adapter<ViewHolder> {
+public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<VideoBean> list_video_perkat;
+  List<VideoBean> list;
 
-  public PerkatVideoAdapter(PerkatActivity perkatActivity, ArrayList<VideoBean> resultItem) {
+  public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity, ArrayList<VideoBean> resultItem) {
     context = perkatActivity;
-    list_video_perkat = resultItem;
+    list = resultItem;
   }
 
   @Override
@@ -46,7 +46,7 @@ public class PerkatVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final VideoBean listitem = list_video_perkat.get(position);
+    final VideoBean listitem = list.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
@@ -68,7 +68,7 @@ public class PerkatVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public int getItemCount() {
-    return list_video_perkat.size();
+    return list.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {

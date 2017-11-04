@@ -4,19 +4,19 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.perkat_video.PerkatActivity">
+  tools:context=".ui.video_by_category.VideoByCategoryActivity">
 
   <include
-    android:id="@+id/toolbar_activity_video_perkat"
+    android:id="@+id/toolbar_activity_video_by_category"
     layout="@layout/general_toolbar_with_back_button" />
 
   <android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_activity_perkat_video"
+    android:id="@+id/recyclerview_activity_video_by_category"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_video_perkat"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_video_by_category"
     app:layout_constraintBottom_toBottomOf="parent"
     />
 
