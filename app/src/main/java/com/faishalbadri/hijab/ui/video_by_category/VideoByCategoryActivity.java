@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideoByCategory.VideoBean;
+import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
@@ -25,7 +25,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   private static final String SAVE_DATA_VIDEO_PERKAT = "save";
   VideoByCategoryPresenter videoByCategoryPresenter;
   VideoByCategoryAdapter videoByCategoryAdapter;
-  ArrayList<VideoBean> resultItem;
+  ArrayList<PojoVideo.VideoBean> resultItem;
   String id, title;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
@@ -41,7 +41,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<VideoBean> resultArray = savedInstanceState
+      ArrayList<PojoVideo.VideoBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -73,20 +73,18 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
-    startActivity(
-        new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
+    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
     finish();
   }
 
   @Override
   public void onBackPressed() {
-    startActivity(
-        new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
+    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
     finish();
   }
 
   @Override
-  public void onSuccesVideoByCategory(List<VideoBean> data, String msg) {
+  public void onSuccesVideoByCategory(List<PojoVideo.VideoBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     videoByCategoryAdapter.notifyDataSetChanged();

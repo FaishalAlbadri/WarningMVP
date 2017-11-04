@@ -9,7 +9,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideoByCategory;
+import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.video_by_category.VideoByCategoryDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
@@ -40,7 +40,7 @@ public class VideoByCategoryRemote implements VideoByCategoryDataResource {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Video")) {
           try {
             Log.i("Response",response);
-            PojoVideoByCategory pojoVideoPerkat = new Gson().fromJson(response,PojoVideoByCategory.class);
+            PojoVideo pojoVideoPerkat = new Gson().fromJson(response,PojoVideo.class);
             videoByCategoryGetDataCallBack.onSuccessVideoByCategory(pojoVideoPerkat.getVideo(),context.getString(
                 R.string.text_succes));
           } catch (Exception e) {
