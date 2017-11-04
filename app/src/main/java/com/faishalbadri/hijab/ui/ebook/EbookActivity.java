@@ -86,7 +86,7 @@ public class EbookActivity extends AppCompatActivity implements EbookView {
   @Override
   public void onBackPressed() {
     super.onBackPressed();
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","0"));
+    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
     finish();
   }
 }
