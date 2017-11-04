@@ -19,6 +19,7 @@
   <string name="text_other">Other</string>
   <string name="text_category">Category</string>
   <string name="text_search">Search</string>
+  <string name="error_player">Cant play this video</string>
   <string name="text_account">Account</string>
   <string name="text_send">Send</string>
   <string name="text_send_article">Send Article</string>

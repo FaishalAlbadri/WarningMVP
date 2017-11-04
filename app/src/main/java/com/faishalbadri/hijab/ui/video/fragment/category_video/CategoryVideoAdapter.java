@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
+import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +50,10 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setClickable(true);
     holder.cardViewCategoryItem.setOnClickListener(v -> {
-//      Intent i = new Intent(v.getContext(), VideoActivity.class);
-//      i.putExtra("id", listitem.getId_kategori());
-//      i.putExtra("kategori", listitem.getKategori_nama());
+      Intent i = new Intent(v.getContext(), PerkatActivity.class);
+      i.putExtra("id", listitem.getId_kategori());
+      i.putExtra("kategori", listitem.getKategori_nama());
+      v.getContext().startActivity(i);
     });
   }
 

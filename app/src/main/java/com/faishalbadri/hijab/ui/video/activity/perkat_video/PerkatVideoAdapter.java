@@ -1,11 +1,7 @@
-package com.faishalbadri.hijab.ui.video.fragment.video;
+package com.faishalbadri.hijab.ui.video.activity.perkat_video;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -20,9 +16,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
+import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;
 import com.faishalbadri.hijab.ui.video.activity.DetailVideoActivity;
-import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +27,14 @@ import java.util.List;
  * Created by fikriimaduddin on 11/4/17.
  */
 
-public class VideoAdapter extends Adapter<ViewHolder> {
+public class PerkatVideoAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<VideoBean> list_video;
+  List<VideoBean> list_video_perkat;
 
-  public VideoAdapter(FragmentActivity activity,ArrayList<VideoBean> resultItem) {
-    this.context = activity;
-    this.list_video = resultItem;
+  public PerkatVideoAdapter(PerkatActivity perkatActivity, ArrayList<VideoBean> resultItem) {
+    context = perkatActivity;
+    list_video_perkat = resultItem;
   }
 
   @Override
@@ -50,7 +46,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final VideoBean listitem = list_video.get(position);
+    final VideoBean listitem = list_video_perkat.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
@@ -60,7 +56,6 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     holder.txtJudulListVideo.setText(listitem.getJudul_video());
     holder.txtJudulListVideo.setMaxLines(3);
     holder.txtDurationVideo.setText(listitem.getDuration().toString());
-    holder.cardViewVideoItem.setForeground(getSelectedItemDrawable());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
@@ -73,11 +68,10 @@ public class VideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public int getItemCount() {
-    return list_video.size();
+    return list_video_perkat.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
-
     @BindView(R.id.img_list_video)
     ImageView imgListVideo;
     @BindView(R.id.txtJudulListVideo)
@@ -91,13 +85,5 @@ public class VideoAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this,itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }
