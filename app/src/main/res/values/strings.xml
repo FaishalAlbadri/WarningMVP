@@ -14,8 +14,11 @@
   <string name="text_email_with_dot">Email :</string>
   <string name="text_logout">Logout</string>
   <string name="text_home">Home</string>
+  <string name="text_video">Video</string>
   <string name="text_ebook">E-Book</string>
   <string name="text_other">Other</string>
+  <string name="text_category">Category</string>
+  <string name="text_search">Search</string>
   <string name="text_account">Account</string>
   <string name="text_send">Send</string>
   <string name="text_send_article">Send Article</string>

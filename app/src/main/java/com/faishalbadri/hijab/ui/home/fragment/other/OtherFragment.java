@@ -68,10 +68,10 @@ public class OtherFragment extends Fragment {
 
   private void setString() {
     image = new int[]{
-        R.drawable.ic_feedback,
-        R.drawable.ic_send_blue,
-        R.drawable.ic_share,
-        R.drawable.ic_info_outline
+        R.drawable.ic_feedback_primary_color,
+        R.drawable.ic_send_primary_color,
+        R.drawable.ic_share_primary_color,
+        R.drawable.ic_info_outline_primary_color
     };
 
     kritiksaran = getActivity().getResources().getString(R.string.text_other_kritik_saran);

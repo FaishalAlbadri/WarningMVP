@@ -27,7 +27,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-      <!--android:background="#50ff4081"-->
+      <!--android:background="#6a50c7ff"-->
+
 
       <View
         android:layout_width="@dimen/match_parent_size"
@@ -35,14 +36,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#6a50c7ff"/>
+        android:background="#50ff4081"/>
 
       <ImageView
         android:id="@+id/btn_before_like_voting"
         android:layout_width="@dimen/card_account"
         android:layout_height="?attr/actionBarSize"
-        android:padding="@dimen/ten_dp"
-        android:src="@drawable/before_like"
+        android:padding="10dp"
+        android:src="@drawable/ic_before_like_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/textview_name_dialog_fragment_voting" />
@@ -51,8 +52,8 @@
         android:id="@+id/button_after_like_voting"
         android:layout_width="@dimen/card_account"
         android:layout_height="?attr/actionBarSize"
-        android:padding="@dimen/padding_widget"
-        android:src="@drawable/after_like"
+        android:padding="5dp"
+        android:src="@drawable/ic_after_like_white"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -64,7 +65,6 @@
         android:layout_height="?attr/actionBarSize"
         android:padding="@dimen/ten_dp"
         android:gravity="center"
-        android:text="asdasdasdsadas"
         android:textColor="@android:color/white"
         android:textSize="@dimen/normal_tittle_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
         android:padding="@dimen/padding_widget_size_normal_bar"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/share"
+        android:src="@drawable/ic_share_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/textview_name_dialog_fragment_voting"
         app:layout_constraintRight_toRightOf="parent" />

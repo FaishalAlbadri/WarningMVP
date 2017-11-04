@@ -4,6 +4,7 @@ package com.faishalbadri.hijab.ui.home.fragment.account;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -44,7 +47,6 @@ import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,9 +64,9 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   TextView txtUsernameUserAccount;
   @BindView(R.id.txt_email_user_account)
   TextView txtEmailUserAccount;
+  ProgressDialog pd;
   @BindView(R.id.btn_logout_account)
   Button btnLogoutAccount;
-  ProgressDialog pd;
   private int PICK_IMAGE_REQUEST = 1;
   private String id, email, username, image;
   Context context;
@@ -104,8 +106,9 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   @Override
   public void onSuccesAccount(List<UserBean> user, String username, String image, String id) {
     this.id = id;
-    RequestOptions options = new RequestOptions().circleCrop().error(R.drawable.ic_account_circle_black_24dp).format(
-        DecodeFormat.PREFER_ARGB_8888).override(400, 400);
+    RequestOptions options = new RequestOptions().circleCrop()
+        .error(R.drawable.ic_account_circle_primary_color).format(
+            DecodeFormat.PREFER_ARGB_8888).override(400, 400);
     Glide.with(getActivity())
         .load(Server.BASE_IMG + image)
         .apply(options)
@@ -163,18 +166,18 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
   private void requestStoragePermission() {
     if (ContextCompat
-        .checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+        .checkSelfPermission(getActivity(), permission.READ_EXTERNAL_STORAGE)
         == PackageManager.PERMISSION_GRANTED) {
       return;
     }
 
     if (ActivityCompat
         .shouldShowRequestPermissionRationale(getActivity(),
-            Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            permission.READ_EXTERNAL_STORAGE)) {
 
     }
     ActivityCompat
-        .requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+        .requestPermissions(getActivity(), new String[]{permission.READ_EXTERNAL_STORAGE},
             STORAGE_PERMISSION_CODE);
   }
 
@@ -188,7 +191,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
       sessionAccount.clear();
 //
       try {
-        bitmapAccount = MediaStore.Images.Media
+        bitmapAccount = Media
             .getBitmap(getActivity().getContentResolver(), filePathAccount);
         sessionAccount.createSession(email, id, username, image);
         imgUserAccount.setImageBitmap(bitmapAccount);
@@ -206,10 +209,10 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     cursor.close();
 
     cursor = getActivity().getContentResolver().query(
-        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-        null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+        Media.EXTERNAL_CONTENT_URI,
+        null, Media._ID + " = ? ", new String[]{document_id}, null);
     cursor.moveToFirst();
-    String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+    String path = cursor.getString(cursor.getColumnIndex(Media.DATA));
     cursor.close();
 
     return path;
@@ -257,4 +260,5 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     ta.recycle();
     return selectedItemDrawable;
   }
+
 }

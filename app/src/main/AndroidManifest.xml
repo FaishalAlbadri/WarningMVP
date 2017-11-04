@@ -46,7 +46,9 @@
       android:name=".ui.ebook.EbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ui.video.VideoActivity"></activity>
+    <activity android:name=".ui.video.activity.VideoActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" ></activity>
   </application>
 
 </manifest>
