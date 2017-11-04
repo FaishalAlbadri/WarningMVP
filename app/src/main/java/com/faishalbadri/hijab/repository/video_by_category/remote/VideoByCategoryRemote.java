@@ -32,7 +32,7 @@ public class VideoByCategoryRemote implements VideoByCategoryDataResource {
   }
 
   @Override
-  public void setVideoByCategoryGetDataCallBack(String id, @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
+  public void getVideoByCategoryGetDataCallBack(String id, @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(
         Method.POST, String.valueOf(URL_VIDEO_PERKAT), response -> {
