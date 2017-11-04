@@ -21,7 +21,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
-import com.faishalbadri.hijab.ui.video.activity.DetailVideoActivity;
+import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoActivity;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_video, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }

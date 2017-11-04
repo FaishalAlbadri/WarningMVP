@@ -1,9 +1,8 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.repository.category_video.CategoryVideoDataResource.CategoryVideoGetCallBack;
-import com.faishalbadri.hijab.repository.category_video.CategoryVideoRepository;
+import com.faishalbadri.hijab.repository.category.CategoryDataResource.CategoryGetCallback;
+import com.faishalbadri.hijab.repository.category.CategoryRepository;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoPresenter;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
 import java.util.List;
@@ -15,10 +14,11 @@ import java.util.List;
 public class CategoryVideoPresenter implements categoryVideoPresenter {
 
   categoryVideoView categoryVideoView;
-  private CategoryVideoRepository categoryVideoRepository;
+  private CategoryRepository categoryRepository;
 
-  public CategoryVideoPresenter(CategoryVideoRepository categoryVideoRepository) {
-    this.categoryVideoRepository = categoryVideoRepository;
+  public CategoryVideoPresenter(
+      CategoryRepository categoryRepository) {
+    this.categoryRepository = categoryRepository;
   }
 
   @Override
@@ -33,16 +33,17 @@ public class CategoryVideoPresenter implements categoryVideoPresenter {
 
   @Override
   public void getDataCategoryVideo() {
-    categoryVideoRepository.getCategoryVideoList(new CategoryVideoGetCallBack() {
+    categoryRepository.getCategoryResult(new CategoryGetCallback() {
       @Override
-      public void onSuccessCategoryVideo(List<KategoriBean> data, String msg) {
-        categoryVideoView.onSuccesCategoryVideo(data,msg);
+      public void onSuccesCategory(List<KategoriBean> data, String msg) {
+        categoryVideoView.onSuccesCategoryVideo(data, msg);
       }
 
       @Override
-      public void onErrorCategoryVideo(String msg) {
+      public void onErrorCategory(String msg) {
         categoryVideoView.onErrorCategoryVideo(msg);
       }
+
     });
   }
 }

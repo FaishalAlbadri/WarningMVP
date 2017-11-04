@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.video.activity.perkat_video;
+package com.faishalbadri.hijab.ui.perkat_video;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;
-import com.faishalbadri.hijab.ui.video.activity.DetailVideoActivity;
-import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatVideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoActivity;
+import com.faishalbadri.hijab.ui.perkat_video.PerkatVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class PerkatVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_video, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }

@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.video.activity.perkat_video;
+package com.faishalbadri.hijab.ui.perkat_video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;

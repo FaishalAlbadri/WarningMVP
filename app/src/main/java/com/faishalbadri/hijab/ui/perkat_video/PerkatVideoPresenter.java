@@ -1,10 +1,10 @@
-package com.faishalbadri.hijab.ui.video.activity.perkat_video;
+package com.faishalbadri.hijab.ui.perkat_video;
 
 import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;
 import com.faishalbadri.hijab.repository.video_perkat.VideoPerkatDataResource.VideoPerkatGetDataCallBack;
 import com.faishalbadri.hijab.repository.video_perkat.VideoPerkatRepository;
-import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatVideoContract.perkatVideoPresenter;
-import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatVideoContract.perkatVideoView;
+import com.faishalbadri.hijab.ui.perkat_video.PerkatVideoContract.perkatVideoPresenter;
+import com.faishalbadri.hijab.ui.perkat_video.PerkatVideoContract.perkatVideoView;
 import java.util.List;
 
 /**

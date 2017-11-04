@@ -1,10 +1,7 @@
 package com.faishalbadri.hijab.ui.ebook;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -42,7 +39,7 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.grid_ebook_item, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_grid_ebook, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }

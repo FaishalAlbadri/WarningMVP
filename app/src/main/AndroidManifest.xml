@@ -54,11 +54,15 @@
       android:name=".ui.news.activity.NewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
+
     <activity
-      android:name=".ui.video.activity.DetailVideoActivity"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
-    <activity android:name=".ui.video.activity.perkat_video.PerkatActivity"
-      android:theme="@style/AppTheme.NoActionBar"/>
+      android:name=".ui.detail_activity.video.DetailVideoActivity"
+      android:theme="@style/AppTheme.NoActionBar"
+      android:screenOrientation="portrait"/>
+
+    <activity android:name=".ui.perkat_video.PerkatActivity"
+      android:theme="@style/AppTheme.NoActionBar"
+      android:screenOrientation="portrait"/>
   </application>
 
 </manifest>

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:padding="1.3dp">
+  android:layout_height="wrap_content">
 
   <ImageView
-    android:id="@+id/imageview_voting_grid"
-    android:layout_width="@dimen/imageview_grid_size"
-    android:layout_height="@dimen/imageview_grid_size"
+    android:id="@+id/imageview_ebook_grid"
+    android:layout_width="@dimen/imageview_grid_ebook_size"
+    android:layout_height="@dimen/imageview_grid_ebook_size"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    android:scaleType="centerCrop"
-    />
+    android:scaleType="centerCrop" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.bumptech.glide.Glide;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataOtherFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragmentAdapter.ViewHolder;
@@ -62,7 +61,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.other_item, parent, false);
+        .inflate(R.layout.item_other, parent, false);
 
     return new ViewHolder(view);
   }

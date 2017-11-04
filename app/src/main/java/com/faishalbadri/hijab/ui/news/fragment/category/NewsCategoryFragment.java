@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.di.NewsCategoryRepositoryInject;
+import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
   }
 
   private void setView() {
-    newsCategoryPresenter = new NewsCategoryPresenter(NewsCategoryRepositoryInject.provideToNewsCategoryInject(getActivity()));
+    newsCategoryPresenter = new NewsCategoryPresenter(CategoryRepositoryInject.provideToCategoryInject(getActivity()));
     list_data = new ArrayList<>();
     newsCategoryAdapter = new NewsCategoryAdapter(getActivity(),list_data);
     LinearLayoutManager llm = new LinearLayoutManager(getActivity());

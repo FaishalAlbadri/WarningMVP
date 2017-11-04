@@ -27,7 +27,6 @@
       android:layout_height="@dimen/match_parent_size"
       android:padding="@dimen/ten_dp"
       android:gravity="center_vertical"
-      android:text="@string/app_name"
       android:textColor="@color/colorPrimary"
       android:textSize="@dimen/normal_tittle_text_size"
       app:layout_constraintBottom_toBottomOf="parent"

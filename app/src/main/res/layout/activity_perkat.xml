@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatActivity">
+  tools:context=".ui.perkat_video.PerkatActivity">
 
   <include
     android:id="@+id/toolbar_activity_video_perkat"

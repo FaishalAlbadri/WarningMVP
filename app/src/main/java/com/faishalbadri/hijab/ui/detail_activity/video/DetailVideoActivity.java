@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.video.activity;
+package com.faishalbadri.hijab.ui.detail_activity.video;
 
 import android.content.Intent;
 import android.os.Bundle;

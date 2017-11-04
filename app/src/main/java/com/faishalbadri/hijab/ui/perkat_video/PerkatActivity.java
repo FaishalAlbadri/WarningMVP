@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.video.activity.perkat_video;
+package com.faishalbadri.hijab.ui.perkat_video;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideoPerkat.VideoBean;
 import com.faishalbadri.hijab.di.VideoPerkatRepositoryInject;
 import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
-import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatVideoContract.perkatVideoView;
+import com.faishalbadri.hijab.ui.perkat_video.PerkatVideoContract.perkatVideoView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +40,6 @@ public class PerkatActivity extends AppCompatActivity implements perkatVideoView
     setContentView(R.layout.activity_perkat);
     ButterKnife.bind(this);
     setView();
-    buttonBackGeneralToolbarWithBackButton.setOnClickListener(v -> {
-      startActivity(new Intent(getApplicationContext(), VideoActivity.class));
-      finish();
-    });
     if (savedInstanceState != null) {
       ArrayList<VideoBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
@@ -90,5 +84,13 @@ public class PerkatActivity extends AppCompatActivity implements perkatVideoView
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
+    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video","1"));
+    finish();
+  }
+
+  @Override
+  public void onBackPressed() {
+    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video","1"));
+    finish();
   }
 }

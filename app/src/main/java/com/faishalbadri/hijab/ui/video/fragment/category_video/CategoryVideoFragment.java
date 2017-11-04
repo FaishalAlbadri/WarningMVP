@@ -13,8 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.di.CategoryVideoRepositoryInject;
+import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +58,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   }
 
   private void setView() {
-    categoryVideoPresenter = new CategoryVideoPresenter(
-        CategoryVideoRepositoryInject.provideToCategoryVideoRepositories(getActivity()));
+    categoryVideoPresenter = new CategoryVideoPresenter(CategoryRepositoryInject.provideToCategoryInject(getActivity()));
     categoryVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     categoryVideoAdapter = new CategoryVideoAdapter(getActivity(), resultItem);

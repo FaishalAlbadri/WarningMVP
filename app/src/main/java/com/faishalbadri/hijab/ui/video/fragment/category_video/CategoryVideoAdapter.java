@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.ui.video.activity.perkat_video.PerkatActivity;
+import com.faishalbadri.hijab.ui.perkat_video.PerkatActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
@@ -54,6 +54,7 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
       i.putExtra("id", listitem.getId_kategori());
       i.putExtra("kategori", listitem.getKategori_nama());
       v.getContext().startActivity(i);
+      ((Activity)context).finish();
     });
   }
 

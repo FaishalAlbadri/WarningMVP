@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.repository.news_category.NewsCategoryDataResource.NewsCategoryGetCallback;
-import com.faishalbadri.hijab.repository.news_category.NewsCategoryRepository;
+import com.faishalbadri.hijab.repository.category.CategoryDataResource.CategoryGetCallback;
+import com.faishalbadri.hijab.repository.category.CategoryRepository;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
 import java.util.List;
 
@@ -13,13 +13,12 @@ import java.util.List;
 public class NewsCategoryPresenter implements NewsCategoryContract.newsCategoryPresenter {
 
   NewsCategoryContract.newsCategoryView newsCategoryView;
-  NewsCategoryRepository newsCategoryRepository;
+  CategoryRepository categoryRepository;
 
   public NewsCategoryPresenter(
-      NewsCategoryRepository newsCategoryRepository) {
-    this.newsCategoryRepository = newsCategoryRepository;
+      CategoryRepository categoryRepository) {
+    this.categoryRepository = categoryRepository;
   }
-
 
   @Override
   public void onAttachView(newsCategoryView view) {
@@ -33,16 +32,17 @@ public class NewsCategoryPresenter implements NewsCategoryContract.newsCategoryP
 
   @Override
   public void getDataNewsCategory() {
-    newsCategoryRepository.getNewsCategoryResult(new NewsCategoryGetCallback() {
+    categoryRepository.getCategoryResult(new CategoryGetCallback() {
       @Override
-      public void onSuccesNewsCategory(List<KategoriBean> data, String msg) {
+      public void onSuccesCategory(List<KategoriBean> data, String msg) {
         newsCategoryView.onSuccesNewsCategory(data, msg);
       }
 
       @Override
-      public void onErrorNewsCategory(String msg) {
+      public void onErrorCategory(String msg) {
         newsCategoryView.onErrorNewsCategory(msg);
       }
+
     });
   }
 }
