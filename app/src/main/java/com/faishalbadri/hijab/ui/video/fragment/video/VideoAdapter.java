@@ -24,6 +24,7 @@ import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoActivity;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
+import com.google.android.youtube.player.YouTubeThumbnailView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +37,14 @@ public class VideoAdapter extends Adapter<ViewHolder> {
   Context context;
   List<VideoBean> list_video;
 
-  public VideoAdapter(FragmentActivity activity,ArrayList<VideoBean> resultItem) {
+  public VideoAdapter(FragmentActivity activity, ArrayList<VideoBean> resultItem) {
     this.context = activity;
     this.list_video = resultItem;
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_video_full, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
@@ -51,24 +52,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final VideoBean listitem = list_video.get(position);
-    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-        .override(200, 200);
-    Glide.with(context)
-        .load(Server.BASE_IMG_YT + listitem.getVideo() + Server.IMG_YT_FORMAT)
-        .apply(options)
-        .into(holder.imgListVideo);
-    holder.txtJudulListVideo.setText(listitem.getJudul_video());
-    holder.txtJudulListVideo.setMaxLines(3);
-    holder.txtDurationVideo.setText(listitem.getDuration().toString());
-    holder.cardViewVideoItem.setForeground(getSelectedItemDrawable());
-    holder.cardViewVideoItem.setClickable(true);
-    holder.cardViewVideoItem.setOnClickListener(v -> {
-      Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
-      i.putExtra("title", listitem.getJudul_video());
-      i.putExtra("video", listitem.getVideo());
-      i.putExtra("duration", listitem.getDuration());
-      v.getContext().startActivity(i);
-    });
+
   }
 
   @Override
@@ -78,18 +62,16 @@ public class VideoAdapter extends Adapter<ViewHolder> {
 
   public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.img_list_video)
-    ImageView imgListVideo;
-    @BindView(R.id.txtJudulListVideo)
-    TextView txtJudulListVideo;
-    @BindView(R.id.txt_duration_video)
-    TextView txtDurationVideo;
-    @BindView(R.id.card_view_video_item)
-    CardView cardViewVideoItem;
+    @BindView(R.id.thumbnail_view_video_item)
+    YouTubeThumbnailView thumbnailViewVideoItem;
+    @BindView(R.id.txt_title_item_video)
+    TextView txtTitleItemVideo;
+    @BindView(R.id.txt_duration_item_video)
+    TextView txtDurationItemVideo;
 
     public ViewHolder(View itemView) {
       super(itemView);
-      ButterKnife.bind(this,itemView);
+      ButterKnife.bind(this, itemView);
     }
   }
 
