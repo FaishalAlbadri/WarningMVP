@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.video_perkat.remote;
+package com.faishalbadri.hijab.repository.video_by_category.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,8 +9,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideoPerkat;
-import com.faishalbadri.hijab.repository.video_perkat.VideoPerkatDataResource;
+import com.faishalbadri.hijab.data.PojoVideoByCategory;
+import com.faishalbadri.hijab.repository.video_by_category.VideoByCategoryDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -22,17 +22,17 @@ import org.json.JSONObject;
  * Created by fikriimaduddin on 11/3/17.
  */
 
-public class VideoPerkatRemote implements VideoPerkatDataResource{
+public class VideoByCategoryRemote implements VideoByCategoryDataResource {
 
   private Context context;
   private static final String URL_VIDEO_PERKAT = Server.BASE_URL+"getTbVideoPerKategori.php";
 
-  public VideoPerkatRemote(Context context) {
+  public VideoByCategoryRemote(Context context) {
     this.context = context;
   }
 
   @Override
-  public void getAccountResult(String id, @NonNull VideoPerkatGetDataCallBack videoPerkatGetDataCallBack) {
+  public void setVideoByCategoryGetDataCallBack(String id, @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(
         Method.POST, String.valueOf(URL_VIDEO_PERKAT), response -> {
@@ -40,14 +40,14 @@ public class VideoPerkatRemote implements VideoPerkatDataResource{
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Video")) {
           try {
             Log.i("Response",response);
-            PojoVideoPerkat pojoVideoPerkat = new Gson().fromJson(response,PojoVideoPerkat.class);
-            videoPerkatGetDataCallBack.onSuccessVideoPerkat(pojoVideoPerkat.getVideo(),context.getString(
+            PojoVideoByCategory pojoVideoPerkat = new Gson().fromJson(response,PojoVideoByCategory.class);
+            videoByCategoryGetDataCallBack.onSuccessVideoByCategory(pojoVideoPerkat.getVideo(),context.getString(
                 R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }
         } else {
-          videoPerkatGetDataCallBack.onError(context.getString(R.string.text_error));
+          videoByCategoryGetDataCallBack.onErrorVideoByCategory(context.getString(R.string.text_error));
         }
       } catch (JSONException e) {
 
@@ -55,7 +55,7 @@ public class VideoPerkatRemote implements VideoPerkatDataResource{
 
       }
 
-    }, error -> videoPerkatGetDataCallBack.onError(String.valueOf(error)))
+    }, error -> videoByCategoryGetDataCallBack.onErrorVideoByCategory(String.valueOf(error)))
     {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by fikriimaduddin on 11/3/17.
  */
 
-public class PojoVideoPerkat {
+public class PojoVideoByCategory {
 
   /**
    * video : [{"id":"1","judul_video":"Hampir Di Cium HARUKA!!","video":"ehcyDLnTWuQ","duration":"3:46","id_kategori":"1"},{"id":"2","judul_video":"REFRESHER MONKEY KING DOTA 2 PATCH 7.06 NEW META PRO GAMEPLAY","video":"MLbvrYpLOLw","duration":"10:02","id_kategori":"1"}]
