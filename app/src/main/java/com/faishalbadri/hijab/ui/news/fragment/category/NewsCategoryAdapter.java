@@ -1,7 +1,10 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -60,6 +63,7 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
   public void onBindViewHolder(ViewHolder holder, int position) {
     final KategoriBean list_item = data.get(position);
     holder.textviewTitleCategoryItem.setText(list_item.getKategori_nama());
+    holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -73,5 +77,12 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     return data.size();
   }
 
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
 
 }

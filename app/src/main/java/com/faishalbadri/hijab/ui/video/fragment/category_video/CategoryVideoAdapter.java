@@ -1,8 +1,11 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -12,7 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,25 +27,27 @@ import java.util.List;
 public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<EbookBean> list_category_video;
+  List<KategoriBean> list_category_video;
 
-  public CategoryVideoAdapter(FragmentActivity activity, ArrayList<EbookBean> resultItem) {
+  public CategoryVideoAdapter(FragmentActivity activity, ArrayList<KategoriBean> resultItem) {
     this.context = activity;
     this.list_category_video = resultItem;
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.category_video_item, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EbookBean listitem = list_category_video.get(position);
-    holder.txtCategoryVideo.setText(listitem.getJudul_ebook());
-    holder.constrantVideoCategoryItem.setOnClickListener(v -> {
+    final KategoriBean listitem = list_category_video.get(position);
+    holder.textviewTitleCategoryItem.setText(listitem.getKategori_nama());
+    holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
+    holder.cardViewCategoryItem.setClickable(true);
+    holder.cardViewCategoryItem.setOnClickListener(v -> {
 //      Intent i = new Intent(v.getContext(), VideoActivity.class);
 //      i.putExtra("id", listitem.getId_kategori());
 //      i.putExtra("kategori", listitem.getKategori_nama());
@@ -55,15 +60,22 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
-
-    @BindView(R.id.txt_category_video)
-    TextView txtCategoryVideo;
-    @BindView(R.id.constrant_video_category_item)
-    ConstraintLayout constrantVideoCategoryItem;
+    @BindView(R.id.textview_title_category_item)
+    TextView textviewTitleCategoryItem;
+    @BindView(R.id.card_view_category_item)
+    CardView cardViewCategoryItem;
 
     public ViewHolder(View itemView) {
       super(itemView);
-      ButterKnife.bind(this,itemView);
+      ButterKnife.bind(this, itemView);
     }
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 }

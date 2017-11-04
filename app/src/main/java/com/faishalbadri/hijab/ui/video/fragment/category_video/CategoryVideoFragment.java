@@ -12,6 +12,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.CategoryVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
@@ -29,7 +30,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   private static final String SAVE_DATA_CATEGORY_VIDEO = "save";
   CategoryVideoPresenter categoryVideoPresenter;
   CategoryVideoAdapter categoryVideoAdapter;
-  ArrayList<EbookBean> resultItem;
+  ArrayList<KategoriBean> resultItem;
   View v;
 
   public CategoryVideoFragment() {
@@ -47,7 +48,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     ButterKnife.bind(this, v);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<EbookBean> resultArray = savedInstanceState.getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
+      ArrayList<KategoriBean> resultArray = savedInstanceState.getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
       categoryVideoAdapter.notifyDataSetChanged();
@@ -74,7 +75,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   }
 
   @Override
-  public void onSuccesCategoryVideo(List<EbookBean> category, String msg) {
+  public void onSuccesCategoryVideo(List<KategoriBean> category, String msg) {
     resultItem.clear();
     resultItem.addAll(category);
     categoryVideoAdapter.notifyDataSetChanged();

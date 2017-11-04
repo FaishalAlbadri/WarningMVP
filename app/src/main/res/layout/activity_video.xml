@@ -6,6 +6,10 @@
   android:layout_height="match_parent"
   tools:context="com.faishalbadri.hijab.ui.video.activity.VideoActivity">
 
+  <include
+    android:id="@+id/toolbar_activity_video"
+    layout="@layout/general_toolbar_with_back_button" />
+
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_video"
     android:layout_width="@dimen/match_parent_size"
@@ -14,43 +18,36 @@
     android:orientation="horizontal"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_video"
+    >
 
-    <Button
+    <ImageButton
       android:id="@+id/button_video_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_video_white"
-      android:text="@string/text_video"
-      android:textAllCaps="false"
-      android:textColor="@android:color/white" />
+      android:src="@drawable/ic_video_white"
+      />
 
-    <Button
+    <ImageButton
       android:id="@+id/button_other_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_category_white"
-      android:text="@string/text_category"
-      android:textAllCaps="false"
-      android:textColor="@android:color/white" />
+      android:src="@drawable/ic_category_white"/>
 
-    <Button
+    <ImageButton
       android:id="@+id/button_account_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:drawableTop="@drawable/ic_search_white"
-      android:text="@string/text_search"
-      android:textAllCaps="false"
-      android:textColor="@android:color/white" />
+      android:src="@drawable/ic_search_white"/>
 
   </LinearLayout>
 

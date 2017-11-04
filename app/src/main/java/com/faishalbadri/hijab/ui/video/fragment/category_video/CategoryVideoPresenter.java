@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
+import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.repository.category_video.CategoryVideoDataResource.CategoryVideoGetCallBack;
 import com.faishalbadri.hijab.repository.category_video.CategoryVideoRepository;
@@ -34,7 +35,7 @@ public class CategoryVideoPresenter implements categoryVideoPresenter {
   public void getDataCategoryVideo() {
     categoryVideoRepository.getCategoryVideoList(new CategoryVideoGetCallBack() {
       @Override
-      public void onSuccessCategoryVideo(List<EbookBean> data, String msg) {
+      public void onSuccessCategoryVideo(List<KategoriBean> data, String msg) {
         categoryVideoView.onSuccesCategoryVideo(data,msg);
       }
 

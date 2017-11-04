@@ -8,14 +8,15 @@ import android.support.annotation.NonNull;
 
 public class CategoryVideoRepository implements CategoryVideoDataResource {
 
-  private CategoryVideoDataResource categoryVideoDataResource;
+  CategoryVideoDataResource categoryVideoDataResource;
 
-  public CategoryVideoRepository(CategoryVideoDataResource categoryVideoDataResource) {
-    this.categoryVideoDataResource = categoryVideoDataResource;
+  public CategoryVideoRepository(
+      CategoryVideoDataResource newsCategoryDataResource) {
+    this.categoryVideoDataResource = newsCategoryDataResource;
   }
 
   @Override
-  public void getCategoryVideoList(@NonNull CategoryVideoGetCallBack CategoryVideoGetCallBack) {
-    categoryVideoDataResource.getCategoryVideoList(CategoryVideoGetCallBack);
+  public void getCategoryVideoList(@NonNull CategoryVideoGetCallBack categoryVideoGetCallBack) {
+    categoryVideoDataResource.getCategoryVideoList(categoryVideoGetCallBack);
   }
 }

@@ -3,8 +3,9 @@ package com.faishalbadri.hijab.ui.video.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,12 +19,17 @@ import com.faishalbadri.hijab.util.ActivityUtil;
 public class VideoActivity extends AppCompatActivity {
 
   @BindView(R.id.button_video_activity_video)
-  Button buttonVideoActivityVideo;
+  ImageButton buttonVideoActivityVideo;
   @BindView(R.id.button_other_activity_video)
-  Button buttonOtherActivityVideo;
+  ImageButton buttonOtherActivityVideo;
   @BindView(R.id.button_account_activity_video)
-  Button buttonAccountActivityVideo;
+  ImageButton buttonAccountActivityVideo;
   ActivityUtil activityUtil;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.textview_general_toolbar_with_back_button)
+  TextView textviewGeneralToolbarWithBackButton;
+  String sessionVideo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +37,24 @@ public class VideoActivity extends AppCompatActivity {
     setContentView(R.layout.activity_video);
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
+    textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_video);
     setFragment();
   }
 
   private void setFragment() {
-    videoFragment();
+    try {
+      sessionVideo = getIntent().getStringExtra("session_video");
+      if (sessionVideo == null) {
+        videoFragment();
+      } else if (sessionVideo.equals("1")) {
+        categoryFragment();
+      }else if (sessionVideo.equals("2")){
+        searchFragment();
+      }
+
+    } catch (Exception e) {
+
+    }
   }
 
   @OnClick(R.id.button_video_activity_video)
@@ -55,7 +74,6 @@ public class VideoActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    super.onBackPressed();
     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     finish();
   }
@@ -81,4 +99,9 @@ public class VideoActivity extends AppCompatActivity {
 
   }
 
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onViewClicked() {
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+    finish();
+  }
 }

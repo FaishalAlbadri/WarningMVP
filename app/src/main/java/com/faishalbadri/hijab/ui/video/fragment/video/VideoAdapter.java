@@ -1,6 +1,9 @@
 package com.faishalbadri.hijab.ui.video.fragment.video;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -55,6 +58,8 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     holder.txtJudulListVideo.setText(listitem.getJudul_video());
     holder.txtJudulListVideo.setMaxLines(3);
     holder.txtDurationVideo.setText(listitem.getDuration().toString());
+    holder.cardViewVideoItem.setForeground(getSelectedItemDrawable());
+    holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
 
     });
@@ -80,5 +85,13 @@ public class VideoAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this,itemView);
     }
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 }
