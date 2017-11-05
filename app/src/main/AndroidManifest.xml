@@ -57,12 +57,17 @@
 
     <activity
       android:name=".ui.detail_activity.video.DetailVideoActivity"
-      android:theme="@style/AppTheme.NoActionBar"
-      android:screenOrientation="portrait"/>
+      android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ui.video_by_category.VideoByCategoryActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" />
 
-    <activity android:name=".ui.video_by_category.VideoByCategoryActivity"
-      android:theme="@style/AppTheme.NoActionBar"
-      android:screenOrientation="portrait"/>
+    <activity
+      android:name=".ui.news_by_category.NewsByCategoryActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" />
   </application>
 
 </manifest>

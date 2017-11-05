@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideoByCategory.VideoBean;
+import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoActivity;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
@@ -30,9 +30,9 @@ import java.util.List;
 public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<VideoBean> list;
+  List<PojoVideo.VideoBean> list;
 
-  public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity, ArrayList<VideoBean> resultItem) {
+  public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity, ArrayList<PojoVideo.VideoBean> resultItem) {
     context = perkatActivity;
     list = resultItem;
   }
@@ -46,7 +46,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final VideoBean listitem = list.get(position);
+    final PojoVideo.VideoBean listitem = list.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
