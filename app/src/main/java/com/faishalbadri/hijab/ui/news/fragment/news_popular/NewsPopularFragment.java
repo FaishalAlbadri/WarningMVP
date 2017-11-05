@@ -82,6 +82,7 @@ public class NewsPopularFragment extends Fragment implements NewsPopularContract
     list_data.clear();
     list_data.addAll(data);
     newsPopularAdapter.notifyDataSetChanged();
+
   }
 
   @Override
