@@ -12,7 +12,6 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoFragment;
-import com.faishalbadri.hijab.ui.video.fragment.search_video.SearchFragment;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
 
@@ -48,8 +47,6 @@ public class VideoActivity extends AppCompatActivity {
         videoFragment();
       } else if (sessionVideo.equals("1")) {
         categoryFragment();
-      }else if (sessionVideo.equals("2")){
-        searchFragment();
       }
 
     } catch (Exception e) {
@@ -69,7 +66,7 @@ public class VideoActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_account_activity_video)
   public void onButtonAccountActivityVideoClicked() {
-    searchFragment();
+
   }
 
   @Override
@@ -92,12 +89,6 @@ public class VideoActivity extends AppCompatActivity {
 
   }
 
-  private void searchFragment() {
-    activityUtil
-        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_video,
-            SearchFragment.instance());
-
-  }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {

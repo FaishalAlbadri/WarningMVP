@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
@@ -27,10 +27,10 @@ public class EbookActivity extends AppCompatActivity implements EbookView {
   EbookAdapter ebookAdapter;
   ArrayList<EbookBean> resultItem;
   private static final String SAVE_DATA_EBOOK = "save";
-  @BindView(R.id.textview_general_toolbar_with_button)
-  TextView textviewGeneralToolbarWithButton;
-  @BindView(R.id.button_send_general_toolbar_with_button)
-  ImageView buttonSendGeneralToolbarWithButton;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.textview_general_toolbar_with_back_button)
+  TextView textviewGeneralToolbarWithBackButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,7 @@ public class EbookActivity extends AppCompatActivity implements EbookView {
   }
 
   private void setView() {
-    buttonSendGeneralToolbarWithButton.setVisibility(View.GONE);
-    textviewGeneralToolbarWithButton.setText(R.string.text_ebook);
+    textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_ebook);
     ebookPresenter = new EbookPresenter(
         EbookRepositoryInject.provideToEbookRepositories(EbookActivity.this));
     ebookPresenter.onAttachView(this);
@@ -85,8 +84,13 @@ public class EbookActivity extends AppCompatActivity implements EbookView {
 
   @Override
   public void onBackPressed() {
-    super.onBackPressed();
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+    finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onViewClicked() {
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     finish();
   }
 }

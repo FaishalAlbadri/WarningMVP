@@ -54,7 +54,6 @@ public class KritikSaranActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    super.onBackPressed();
     startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","1"));
     finish();
   }

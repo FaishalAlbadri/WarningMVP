@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_ebook"
-    layout="@layout/general_toolbar_with_button"
+    layout="@layout/general_toolbar_with_back_button"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

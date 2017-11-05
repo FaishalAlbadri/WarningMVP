@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_news"
-    layout="@layout/general_toolbar_with_back_button" />
+    layout="@layout/general_toolbar_search" />
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_news"
@@ -32,6 +32,17 @@
       />
 
     <ImageButton
+      android:id="@+id/button_rank_activity_news"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
+      android:background="?attr/selectableItemBackground"
+      android:textAllCaps="false"
+      android:src="@drawable/ic_rank_white"
+      />
+
+    <ImageButton
       android:id="@+id/button_category_activity_news"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -42,16 +53,6 @@
       android:src="@drawable/ic_category_white"
       />
 
-    <ImageButton
-      android:id="@+id/button_search_activity_news"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:padding="@dimen/padding_widget"
-      android:background="?attr/selectableItemBackground"
-      android:textAllCaps="false"
-      android:src="@drawable/ic_search_white"
-      />
 
   </LinearLayout>
 

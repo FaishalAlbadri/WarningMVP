@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVoting;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.di.VotingRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
@@ -28,10 +27,10 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   ArrayList<VotingBean> list_data;
   VotingAdapter votingAdapter;
   private static final String save_data_voting = "save_data_voting";
-  @BindView(R.id.textview_general_toolbar_with_button)
-  TextView textviewGeneralToolbarWithButton;
-  @BindView(R.id.button_send_general_toolbar_with_button)
-  ImageView buttonSendGeneralToolbarWithButton;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.textview_general_toolbar_with_back_button)
+  TextView textviewGeneralToolbarWithBackButton;
 
 
   @Override
@@ -52,13 +51,12 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   }
 
   private void setView() {
-    buttonSendGeneralToolbarWithButton.setVisibility(View.GONE);
-    textviewGeneralToolbarWithButton.setText(R.string.text_pinky_hijab_voting);
+    textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_voting);
     votingPresenter = new VotingPresenter(
         VotingRepositoryInject.provideToVotingRepository(getApplicationContext()));
     votingPresenter.onAttachView(this);
     list_data = new ArrayList<>();
-    votingAdapter = new VotingAdapter(getApplicationContext(), list_data,this);
+    votingAdapter = new VotingAdapter(getApplicationContext(), list_data, this);
     GridLayoutManager voting = new GridLayoutManager(getApplicationContext(), 3);
     voting.setOrientation(GridLayoutManager.VERTICAL);
     recyclerviewActivityVoting.setLayoutManager(voting);
@@ -90,7 +88,13 @@ public class VotingActivity extends AppCompatActivity implements votingView {
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+    finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onViewClicked() {
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     finish();
   }
 }
