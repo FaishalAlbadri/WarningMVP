@@ -10,6 +10,8 @@
     android:layout_width="@dimen/image_size"
     android:layout_height="@dimen/image_size"
     android:layout_marginBottom="@dimen/margin_widget"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
     app:layout_constraintBottom_toTopOf="@+id/cvUser"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent" />
@@ -18,6 +20,8 @@
     android:id="@+id/img_edit_photo_account"
     android:layout_width="@dimen/mini_img_size"
     android:layout_height="@dimen/mini_img_size"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
     android:src="@drawable/ic_photo_camera_primary_color"
     app:layout_constraintBottom_toBottomOf="@+id/img_user_account"
     app:layout_constraintRight_toRightOf="@+id/img_user_account" />

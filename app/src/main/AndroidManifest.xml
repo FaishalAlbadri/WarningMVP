@@ -54,7 +54,6 @@
       android:name=".ui.news.activity.NewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
       android:name=".ui.detail_activity.video.DetailVideoActivity"
       android:screenOrientation="portrait"
