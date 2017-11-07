@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.EbookActivity;
+import com.faishalbadri.hijab.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
@@ -101,7 +102,8 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
-
+          ((Activity)context).startActivity(new Intent(context, EventActivity.class));
+          ((Activity)context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
           ((Activity)context).startActivity(new Intent(context, EbookActivity.class));
           ((Activity)context).finish();

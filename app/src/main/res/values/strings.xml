@@ -24,6 +24,9 @@
   <string name="text_send">Send</string>
   <string name="text_send_article">Send Article</string>
 
+  <string name="text_rate">Rate This App</string>
+  <string name="text_sponsor">Sponsored By</string>
+
   <string name="text_pinky_hijab_news">Pinky Hijab News</string>
   <string name="text_pinky_hijab_news_detail">Get the last update news for women in this app</string>
 

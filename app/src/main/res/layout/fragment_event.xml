@@ -1,8 +1,6 @@
 <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/recyclerview_fragment_video"
+  android:id="@+id/recyclerview_fragment_event"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingTop="@dimen/padding_widget"
-  android:paddingBottom="@dimen/padding_widget"
-  tools:context="com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment"/>
+  tools:context="com.faishalbadri.hijab.ui.event.fragment.event.EventFragment" />

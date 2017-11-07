@@ -62,10 +62,13 @@
       android:name=".ui.video_by_category.VideoByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
       android:name=".ui.news_by_category.NewsByCategoryActivity"
       android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+      android:name=".ui.event.activity.EventActivity"
       android:theme="@style/AppTheme.NoActionBar" />
   </application>
 

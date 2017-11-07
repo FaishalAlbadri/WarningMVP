@@ -1,9 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
 import com.faishalbadri.hijab.data.PojoNews;
-import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract;
+import com.faishalbadri.hijab.data.PojoSlider;
 import java.util.List;
 
 /**
@@ -18,11 +17,17 @@ public class NewsContract {
 
     void onErrorNews(String msg);
 
+    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider,String msg);
+
+    void onErrorSlider(String msg);
+
   }
 
   public interface newsPresenter extends BasePresenter<NewsContract.newsView> {
 
     void getDataNews();
+
+    void getDataSlider();
 
   }
 

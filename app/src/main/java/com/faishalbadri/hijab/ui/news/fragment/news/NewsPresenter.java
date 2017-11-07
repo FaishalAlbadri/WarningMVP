@@ -1,7 +1,9 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.repository.news.NewsDataResource.NewsGetCallback;
+import com.faishalbadri.hijab.repository.news.NewsDataResource.SliderGetCallback;
 import com.faishalbadri.hijab.repository.news.NewsRepository;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import java.util.List;
@@ -40,6 +42,22 @@ public class NewsPresenter implements NewsContract.newsPresenter {
       @Override
       public void onErrorNews(String msg) {
         newsView.onErrorNews(msg);
+      }
+
+    });
+  }
+
+  @Override
+  public void getDataSlider() {
+    newsRepository.getSliderResult(new SliderGetCallback() {
+      @Override
+      public void onSuccesSlider(List<SliderBean> dataSlider, String msg) {
+        newsView.onSuccesSlider(dataSlider, msg);
+      }
+
+      @Override
+      public void onErrorSlider(String msg) {
+        newsView.onErrorSlider(msg);
       }
     });
   }

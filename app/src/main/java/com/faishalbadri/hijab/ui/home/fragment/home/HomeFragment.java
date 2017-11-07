@@ -54,27 +54,27 @@ public class HomeFragment extends Fragment {
 
   private void setString() {
     image = new int[]{
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher,
-        R.mipmap.ic_launcher
+        R.drawable.sampleone,
+        R.drawable.sampletwo,
+        R.drawable.sampleone,
+        R.drawable.sampletwo,
+//        R.drawable.sampleone,
+        R.drawable.sampletwo
     };
     event = getActivity().getResources().getString(R.string.text_pinky_hijab_event);
     ebook = getActivity().getResources().getString(R.string.text_pinky_hijab_ebook);
     news = getActivity().getResources().getString(R.string.text_pinky_hijab_news);
     voting = getActivity().getResources().getString(R.string.text_pinky_hijab_voting);
     video = getActivity().getResources().getString(R.string.text_pinky_hijab_video);
-    community = getActivity().getResources().getString(R.string.text_pinky_hijab_community);
+//    community = getActivity().getResources().getString(R.string.text_pinky_hijab_community);
 
     eventDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_event_detail);
     ebookDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_ebook_detail);
     newsDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_news_detail);
     votingDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_voting_detail);
     videoDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_video_detail);
-    communityDetail = getActivity().getResources()
-        .getString(R.string.text_pinky_hijab_community_detail);
+//    communityDetail = getActivity().getResources()
+//        .getString(R.string.text_pinky_hijab_community_detail);
   }
 
 
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
     data_list.add(new DataHomeFragment(voting, votingDetail, image[2]));
     data_list.add(new DataHomeFragment(event, eventDetail, image[3]));
     data_list.add(new DataHomeFragment(ebook, ebookDetail, image[4]));
-    data_list.add(new DataHomeFragment(community, communityDetail, image[5]));
+//    data_list.add(new DataHomeFragment(community, communityDetail, image[5]));
     homeFragmentAdapter.notifyDataSetChanged();
   }
 
