@@ -19,6 +19,7 @@
   <dimen name="imageview_grid_size">130dp</dimen>
   <!--<dimen name="imageview_grid_size">130dp</dimen>-->
   <dimen name="imageview_grid_ebook_size">180dp</dimen>
+  <dimen name="slider_size">170dp</dimen>
   <dimen name="imageview_list_video_width">160dp</dimen>
   <dimen name="imageview_list_video_height">100dp</dimen>
   <dimen name="match_parent_size">0dp</dimen>

@@ -18,4 +18,9 @@ public class NewsRepository implements NewsDataResource {
   public void getNewsResult(@NonNull NewsGetCallback newsGetCallback) {
     newsDataResource.getNewsResult(newsGetCallback);
   }
+
+  @Override
+  public void getSliderResult(@NonNull SliderGetCallback sliderGetCallback) {
+    newsDataResource.getSliderResult(sliderGetCallback);
+  }
 }

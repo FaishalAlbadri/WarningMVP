@@ -32,7 +32,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
   Context context;
   List<DataOtherFragment> datalist;
-  String kritiksaran, kirimartikel, share, about;
+  String kritiksaran, kirimartikel, share, rate, about,sponsor;
   String shareSubject, shareText;
 
 
@@ -51,6 +51,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     TextView textviewTitleOtherItem;
     @BindView(R.id.img_title_other_item)
     AppCompatImageView imgTitleOtherItem;
+
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
@@ -74,6 +75,8 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     kirimartikel = ((Activity) context).getResources().getString(R.string.text_other_kirim_artikel);
     share = ((Activity) context).getResources().getString(R.string.text_other_share);
     about = ((Activity) context).getResources().getString(R.string.text_other_about);
+    rate = ((Activity) context).getResources().getString(R.string.text_rate);
+    sponsor = ((Activity) context).getResources().getString(R.string.text_sponsor);
     shareSubject = ((Activity) context).getResources().getString(R.string.text_share_app_subject);
     shareText = ((Activity) context).getResources().getString(R.string.text_share_app_text);
 
@@ -87,16 +90,20 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
       public void onClick(View v) {
         if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
           ((Activity) context).startActivity(new Intent(context, KritikSaranActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
           ((Activity) context).startActivity(new Intent(context, SendArticleActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
           Intent sharing = new Intent(Intent.ACTION_SEND);
           sharing.setType("text/plain");
           sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
           sharing.putExtra(Intent.EXTRA_TEXT, shareText);
           ((Activity) context).startActivity(Intent.createChooser(sharing, "Share Via"));
+        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
+
+        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
+
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
         }

@@ -69,6 +69,11 @@
     <activity android:name=".ui.detail_video.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
+      android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+      android:name=".ui.event.activity.EventActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
   </application>
 
 </manifest>

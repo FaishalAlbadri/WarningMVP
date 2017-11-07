@@ -25,7 +25,7 @@ public class OtherFragment extends Fragment {
   RecyclerView recyclerviewFragmentOther;
   OtherFragmentAdapter otherFragmentAdapter;
   List<DataOtherFragment> data_list_other;
-  String kritiksaran, kirimartikel, share, about;
+  String kritiksaran, kirimartikel, share,rate, about, sponsor;
   private int[] image;
 
   public OtherFragment() {
@@ -53,7 +53,9 @@ public class OtherFragment extends Fragment {
     data_list_other.add(new DataOtherFragment(kritiksaran, image[0]));
     data_list_other.add(new DataOtherFragment(kirimartikel, image[1]));
     data_list_other.add(new DataOtherFragment(share, image[2]));
-    data_list_other.add(new DataOtherFragment(about, image[3]));
+    data_list_other.add(new DataOtherFragment(rate, image[3]));
+    data_list_other.add(new DataOtherFragment(sponsor, image[4]));
+    data_list_other.add(new DataOtherFragment(about, image[5]));
     otherFragmentAdapter.notifyDataSetChanged();
   }
 
@@ -71,12 +73,16 @@ public class OtherFragment extends Fragment {
         R.drawable.ic_feedback_primary_color,
         R.drawable.ic_send_primary_color,
         R.drawable.ic_share_primary_color,
+        R.drawable.ic_star_border_primary_color,
+        R.drawable.ic_sponsor_primary_color,
         R.drawable.ic_info_outline_primary_color
     };
 
     kritiksaran = getActivity().getResources().getString(R.string.text_other_kritik_saran);
     kirimartikel = getActivity().getResources().getString(R.string.text_other_kirim_artikel);
     share = getActivity().getResources().getString(R.string.text_other_share);
+    rate = getActivity().getResources().getString(R.string.text_rate);
+    sponsor = getActivity().getResources().getString(R.string.text_sponsor);
     about = getActivity().getResources().getString(R.string.text_other_about);
   }
 
