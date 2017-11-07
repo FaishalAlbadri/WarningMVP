@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail_activity.video;
+package com.faishalbadri.hijab.ui.detail_video.video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;

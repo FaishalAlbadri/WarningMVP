@@ -1,14 +1,12 @@
-package com.faishalbadri.hijab.ui.detail_activity.video;
+package com.faishalbadri.hijab.ui.detail_video.video;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +17,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
-import com.faishalbadri.hijab.ui.detail_activity.video.DetailVideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.detail_video.video.DetailVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 
