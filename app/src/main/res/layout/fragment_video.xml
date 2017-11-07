@@ -3,6 +3,4 @@
   android:id="@+id/recyclerview_fragment_video"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingTop="@dimen/padding_widget"
-  android:paddingBottom="@dimen/padding_widget"
   tools:context="com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment"/>

@@ -53,8 +53,6 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   DetailVideoPresenter detailVideoPresenter;
   @BindView(R.id.ad_view_detail_video)
   AdView adViewDetailVideo;
-  private String android_id = Secure.getString(getContentResolver(),
-      Secure.ANDROID_ID);
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
