@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.os.Parcelable;
 import java.util.List;
 
 /**
@@ -11,7 +11,7 @@ import java.util.List;
 public class PojoVideo {
 
   /**
-   * video : [{"id":"8","judul_video":"Dimitri Vegas & Like Mike vs David Guetta feat. Kiiara - Complicated (Official Music Video)\r\n","video":"w0EF3AxJwLU","duration":" 3:09","id_kategori":"4"},{"id":"7","judul_video":"Martin Garrix & Troye Sivan - There For You (Official Video)","video":"pNNMr5glICM","duration":"3:40","id_kategori":"4"},{"id":"6","judul_video":"Dimitri Vegas & Like Mike vs David Guetta feat. Kiiara - Complicated (Official Music Video)\n","video":"w0EF3AxJwLU","duration":" 3:09","id_kategori":"3"},{"id":"5","judul_video":"Martin Garrix & Troye Sivan - There For You (Official Video)","video":"pNNMr5glICM","duration":"3:40","id_kategori":"3"},{"id":"4","judul_video":"Wendy Bete Karena Dituduh Mengambil Snack - Ini Talk Show 23 April 2016 (3/6)\n","video":"L5NT-m5GGPg","duration":"15:23","id_kategori":"2"},{"id":"3","judul_video":"6 RAPIERS ON PHANTOM ASSASSIN IN-GAME DOTA 2","video":"VNTH1CCVtJA","duration":"45:08","id_kategori":"2"},{"id":"2","judul_video":"REFRESHER MONKEY KING DOTA 2 PATCH 7.06 NEW META PRO GAMEPLAY","video":"MLbvrYpLOLw","duration":"10:02","id_kategori":"1"},{"id":"1","judul_video":"Hampir Di Cium HARUKA!!","video":"ehcyDLnTWuQ","duration":"3:46","id_kategori":"1"}]
+   * video : [{"id":"8","judul_video":"Dimitri Vegas & Like Mike vs David Guetta feat. Kiiara - Complicated (Official Music Video)\r\n","video":"w0EF3AxJwLU","duration":" 3:09","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"4"},{"id":"7","judul_video":"Martin Garrix & Troye Sivan - There For You (Official Video)","video":"pNNMr5glICM","duration":"3:40","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"4"},{"id":"6","judul_video":"Dimitri Vegas & Like Mike vs David Guetta feat. Kiiara - Complicated (Official Music Video)\n","video":"w0EF3AxJwLU","duration":" 3:09","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"3"},{"id":"5","judul_video":"Martin Garrix & Troye Sivan - There For You (Official Video)","video":"pNNMr5glICM","duration":"3:40","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"3"},{"id":"4","judul_video":"Wendy Bete Karena Dituduh Mengambil Snack - Ini Talk Show 23 April 2016 (3/6)\n","video":"L5NT-m5GGPg","duration":"15:23","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"2"},{"id":"3","judul_video":"6 RAPIERS ON PHANTOM ASSASSIN IN-GAME DOTA 2","video":"VNTH1CCVtJA","duration":"45:08","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"2"},{"id":"2","judul_video":"REFRESHER MONKEY KING DOTA 2 PATCH 7.06 NEW META PRO GAMEPLAY","video":"MLbvrYpLOLw","duration":"10:02","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"1"},{"id":"1","judul_video":"Hampir Di Cium HARUKA!!","video":"ehcyDLnTWuQ","duration":"3:46","description":"\t I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions=\"actionSend\" for the EditText XML layout","id_kategori":"1"}]
    * status : 1
    * msg : Data Semua Video
    */
@@ -44,7 +44,7 @@ public class PojoVideo {
     this.video = video;
   }
 
-  public static class VideoBean implements android.os.Parcelable {
+  public static class VideoBean implements Parcelable{
 
     /**
      * id : 8
@@ -52,6 +52,7 @@ public class PojoVideo {
 
      * video : w0EF3AxJwLU
      * duration :  3:09
+     * description : I just looked for IME_ACTION_DONE and I was surprised that it didn't trigger. After I also looked for ACTION_DOWN and KEYCODE_ENTER it finally triggered onEditorAction(). Since I see no difference in the built-in keyboard (I expected the Enter key to be highlighted) I wonder what the point is of using android:imeOptions="actionSend" for the EditText XML layout
      * id_kategori : 4
      */
 
@@ -59,7 +60,29 @@ public class PojoVideo {
     private String judul_video;
     private String video;
     private String duration;
+    private String description;
     private String id_kategori;
+
+    protected VideoBean(Parcel in) {
+      id = in.readString();
+      judul_video = in.readString();
+      video = in.readString();
+      duration = in.readString();
+      description = in.readString();
+      id_kategori = in.readString();
+    }
+
+    public static final Creator<VideoBean> CREATOR = new Creator<VideoBean>() {
+      @Override
+      public VideoBean createFromParcel(Parcel in) {
+        return new VideoBean(in);
+      }
+
+      @Override
+      public VideoBean[] newArray(int size) {
+        return new VideoBean[size];
+      }
+    };
 
     public String getId() {
       return id;
@@ -68,7 +91,6 @@ public class PojoVideo {
     public void setId(String id) {
       this.id = id;
     }
-
 
     public String getJudul_video() {
       return judul_video;
@@ -94,6 +116,14 @@ public class PojoVideo {
       this.duration = duration;
     }
 
+    public String getDescription() {
+      return description;
+    }
+
+    public void setDescription(String description) {
+      this.description = description;
+    }
+
     public String getId_kategori() {
       return id_kategori;
     }
@@ -109,34 +139,12 @@ public class PojoVideo {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.id);
-      dest.writeString(this.judul_video);
-      dest.writeString(this.video);
-      dest.writeString(this.duration);
-      dest.writeString(this.id_kategori);
+      dest.writeString(id);
+      dest.writeString(judul_video);
+      dest.writeString(video);
+      dest.writeString(duration);
+      dest.writeString(description);
+      dest.writeString(id_kategori);
     }
-
-    public VideoBean() {
-    }
-
-    protected VideoBean(Parcel in) {
-      this.id = in.readString();
-      this.judul_video = in.readString();
-      this.video = in.readString();
-      this.duration = in.readString();
-      this.id_kategori = in.readString();
-    }
-
-    public static final Creator<VideoBean> CREATOR = new Creator<VideoBean>() {
-      @Override
-      public VideoBean createFromParcel(Parcel source) {
-        return new VideoBean(source);
-      }
-
-      @Override
-      public VideoBean[] newArray(int size) {
-        return new VideoBean[size];
-      }
-    };
   }
 }
