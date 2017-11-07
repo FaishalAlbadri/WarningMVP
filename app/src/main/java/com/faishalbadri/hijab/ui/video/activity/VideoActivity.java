@@ -19,16 +19,16 @@ public class VideoActivity extends AppCompatActivity {
 
   @BindView(R.id.button_video_activity_video)
   ImageButton buttonVideoActivityVideo;
-  @BindView(R.id.button_other_activity_video)
+  @BindView(R.id.button_category_activity_video)
   ImageButton buttonOtherActivityVideo;
-  @BindView(R.id.button_account_activity_video)
-  ImageButton buttonAccountActivityVideo;
   ActivityUtil activityUtil;
-  @BindView(R.id.button_back_general_toolbar_with_back_button)
-  ImageView buttonBackGeneralToolbarWithBackButton;
-  @BindView(R.id.textview_general_toolbar_with_back_button)
-  TextView textviewGeneralToolbarWithBackButton;
   String sessionVideo;
+  @BindView(R.id.button_back_general_toolbar_search)
+  ImageView buttonBackGeneralToolbarSearch;
+  @BindView(R.id.textview_general_toolbar_search)
+  TextView textviewGeneralToolbarSearch;
+  @BindView(R.id.button_search_general_toolbar_search)
+  ImageView buttonSearchGeneralToolbarSearch;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class VideoActivity extends AppCompatActivity {
     setContentView(R.layout.activity_video);
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
-    textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_video);
+    textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_video);
     setFragment();
   }
 
@@ -59,14 +59,9 @@ public class VideoActivity extends AppCompatActivity {
     videoFragment();
   }
 
-  @OnClick(R.id.button_other_activity_video)
+  @OnClick(R.id.button_category_activity_video)
   public void onButtonOtherActivityVideoClicked() {
     categoryFragment();
-  }
-
-  @OnClick(R.id.button_account_activity_video)
-  public void onButtonAccountActivityVideoClicked() {
-
   }
 
   @Override
@@ -89,10 +84,14 @@ public class VideoActivity extends AppCompatActivity {
 
   }
 
-
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
+  @OnClick(R.id.button_back_general_toolbar_search)
+  public void onButtonBackGeneralToolbarSearchClicked() {
     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     finish();
+  }
+
+  @OnClick(R.id.button_search_general_toolbar_search)
+  public void onButtonSearchGeneralToolbarSearchClicked() {
+
   }
 }

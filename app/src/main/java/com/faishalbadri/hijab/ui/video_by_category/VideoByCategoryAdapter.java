@@ -61,6 +61,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
       i.putExtra("title", listitem.getJudul_video());
       i.putExtra("video", listitem.getVideo());
+      i.putExtra("description", listitem.getDescription());
       i.putExtra("duration", listitem.getDuration());
       v.getContext().startActivity(i);
     });

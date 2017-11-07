@@ -22,6 +22,8 @@
   <string name="error_player">Cant play this video</string>
   <string name="text_account">Account</string>
   <string name="text_send">Send</string>
+  <string name="text_related">Related</string>
+  <string name="ads_footer">ca-app-pub-6242493810500826/4487972485</string>
   <string name="text_send_article">Send Article</string>
 
   <string name="text_pinky_hijab_news">Pinky Hijab News</string>

@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_video"
-    layout="@layout/general_toolbar_with_back_button" />
+    layout="@layout/general_toolbar_search" />
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_video"
@@ -32,22 +32,13 @@
       />
 
     <ImageButton
-      android:id="@+id/button_other_activity_video"
+      android:id="@+id/button_category_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
       android:src="@drawable/ic_category_white"/>
-
-    <ImageButton
-      android:id="@+id/button_account_activity_video"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-      android:padding="@dimen/padding_widget"
-      android:background="?attr/selectableItemBackground"
-      android:src="@drawable/ic_search_white"/>
 
   </LinearLayout>
 
