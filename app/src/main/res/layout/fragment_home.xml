@@ -4,6 +4,8 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:listitem="@layout/item_home"
+  android:paddingTop="@dimen/margin_other_item"
+  android:paddingBottom="@dimen/margin_other_item"
   tools:context="com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment" />
 
 
