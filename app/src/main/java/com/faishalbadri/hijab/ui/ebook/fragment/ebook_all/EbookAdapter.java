@@ -1,14 +1,16 @@
-package com.faishalbadri.hijab.ui.ebook;
+package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -17,7 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.ui.ebook.EbookAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,7 @@ public class EbookAdapter extends Adapter<ViewHolder> {
   Context context;
   List<EbookBean> list_ebook;
 
-
-  public EbookAdapter(EbookActivity ebookActivity, ArrayList<EbookBean> resultItem) {
+  public EbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookBean> resultItem) {
     this.context = ebookActivity;
     this.list_ebook = resultItem;
   }
@@ -46,13 +47,14 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final PojoEbook.EbookBean listitem = list_ebook.get(position);
+    final EbookBean listitem = list_ebook.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
         .load(Server.BASE_IMG + listitem.getGambar_ebook())
         .apply(options)
         .into(holder.imageViewEbookGrid);
+    holder.txtEbookGrid.setText(listitem.getJudul_ebook());
     holder.imageViewEbookGrid.setOnClickListener(view -> {
       Intent i = new Intent(Intent.ACTION_VIEW);
       i.setData(Uri.parse(listitem.getLink()));
@@ -69,10 +71,12 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
     @BindView(R.id.imageview_ebook_grid)
     ImageView imageViewEbookGrid;
+    @BindView(R.id.txt_ebook_grid)
+    TextView txtEbookGrid;
 
     public ViewHolder(View itemView) {
       super(itemView);
-      ButterKnife.bind(this,itemView);
+      ButterKnife.bind(this, itemView);
     }
   }
 }

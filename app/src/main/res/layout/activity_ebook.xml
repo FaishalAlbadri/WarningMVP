@@ -4,24 +4,51 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.ebook.EbookActivity">
+  tools:context="com.faishalbadri.hijab.ui.ebook.activity.EbookActivity">
 
   <include
     android:id="@+id/toolbar_activity_ebook"
-    layout="@layout/general_toolbar_with_back_button"
+    layout="@layout/general_toolbar_search" />
+
+  <LinearLayout
+    android:id="@+id/linear_layout_tab_activity_ebook"
+    android:layout_width="@dimen/match_parent_size"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_ebook"
+    >
 
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_activity_ebook"
+    <ImageButton
+      android:id="@+id/button_all_activity_ebook"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
+      android:background="?attr/selectableItemBackground"
+      android:src="@drawable/ic_book_white"
+      />
+
+    <ImageButton
+      android:id="@+id/button_category_activity_ebook"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
+      android:background="?attr/selectableItemBackground"
+      android:src="@drawable/ic_category_white"/>
+
+  </LinearLayout>
+
+  <FrameLayout
+    android:id="@+id/framelayout_for_fragment_activity_ebook"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_ebook">
-
-  </android.support.v7.widget.RecyclerView>
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_ebook" />
 
 </android.support.constraint.ConstraintLayout>

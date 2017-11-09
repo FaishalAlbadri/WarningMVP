@@ -43,7 +43,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
-      android:name=".ui.ebook.EbookActivity"
+      android:name=".ui.ebook.activity.EbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
@@ -55,7 +55,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
-      android:name=".ui.detail_video.video.DetailVideoActivity"
+      android:name=".ui.detail.video.DetailVideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
@@ -66,7 +66,7 @@
       android:name=".ui.news_by_category.NewsByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ui.detail_video.news.DetailNewsActivity"
+    <activity android:name=".ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
       android:theme="@style/AppTheme.NoActionBar" />
