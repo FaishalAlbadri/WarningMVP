@@ -2,10 +2,12 @@ package com.faishalbadri.hijab.ui.home.fragment.other;
 
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +34,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
   Context context;
   List<DataOtherFragment> datalist;
-  String kritiksaran, kirimartikel, share, rate, about,sponsor;
+  String kritiksaran, kirimartikel, share, rate, about, sponsor;
   String shareSubject, shareText;
 
 
@@ -101,7 +103,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
           sharing.putExtra(Intent.EXTRA_TEXT, shareText);
           ((Activity) context).startActivity(Intent.createChooser(sharing, "Share Via"));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
-
+          rateApp();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
 
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
@@ -111,6 +113,20 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     });
 
 
+  }
+
+  private void rateApp() {
+    Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+    Intent rate = new Intent(Intent.ACTION_VIEW, uri);
+//    rate.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT
+//        | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+    try {
+      ((Activity) context).startActivity(rate);
+    } catch (ActivityNotFoundException e) {
+      ((Activity) context).startActivity(new Intent(Intent.ACTION_VIEW,
+          Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+    }
   }
 
   @Override
