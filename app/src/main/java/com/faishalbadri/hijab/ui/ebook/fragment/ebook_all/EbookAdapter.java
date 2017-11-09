@@ -49,7 +49,7 @@ public class EbookAdapter extends Adapter<ViewHolder> {
   public void onBindViewHolder(ViewHolder holder, int position) {
     final EbookBean listitem = list_ebook.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-        .override(150, 150);
+        .override(200, 200);
     Glide.with(context)
         .load(Server.BASE_IMG + listitem.getGambar_ebook())
         .apply(options)
