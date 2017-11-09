@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -9,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;
@@ -73,11 +74,12 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     holder.textviewTitleNewsItem.setText(listitem.getIsi_judul());
     holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentNews.setClickable(true);
-    holder.cardviewNewsFragmentNews.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-      }
+    holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
+      Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
+      i.putExtra("title", listitem.getIsi_judul());
+      i.putExtra("image", listitem.getIsi_gambar());
+      i.putExtra("desc", listitem.getIsi_keterangan());
+      v.getContext().startActivity(i);
     });
   }
 

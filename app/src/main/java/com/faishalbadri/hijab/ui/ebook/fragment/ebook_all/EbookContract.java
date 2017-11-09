@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.ebook;
+package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoEbook;
