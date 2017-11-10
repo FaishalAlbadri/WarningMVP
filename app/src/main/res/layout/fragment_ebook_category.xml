@@ -1,0 +1,9 @@
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/recyclerview_fragment_category_ebook"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryFragment">
+
+
+</android.support.v7.widget.RecyclerView>

@@ -1,13 +1,11 @@
-package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
+package com.faishalbadri.hijab.ui.ebook_by_category;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,26 +15,24 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
-import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by fikriimaduddin on 11/3/17.
+ * Created by fikriimaduddin on 10/11/17.
  */
 
-public class EbookAdapter extends Adapter<ViewHolder> {
+public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<EbookBean> list_ebook;
+  List<EbookBean> list_data;
 
-  public EbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookBean> resultItem) {
-    this.context = ebookActivity;
-    this.list_ebook = resultItem;
+  public EbookByCategoryAdapter(EbookByCategoryActivity ebookByCategoryActivity, ArrayList<EbookBean> resultItem) {
+    context = ebookByCategoryActivity;
+    list_data = resultItem;
   }
 
   @Override
@@ -48,33 +44,28 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EbookBean listitem = list_ebook.get(position);
+    final EbookBean listitem = list_data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
         .load(Server.BASE_IMG + listitem.getGambar_ebook())
         .apply(options)
-        .into(holder.imageViewEbookGrid);
+        .into(holder.imageviewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
-    holder.imageViewEbookGrid.setOnClickListener(view -> {
-      Intent i = new Intent(view.getContext(), DetailEbookActivity.class);
-      i.putExtra("name", listitem.getJudul_ebook());
-      i.putExtra("image", listitem.getGambar_ebook());
-      i.putExtra("description", listitem.getDescription());
-      i.putExtra("link", listitem.getLink());
-      view.getContext().startActivity(i);
+    holder.imageviewEbookGrid.setOnClickListener(v -> {
+
     });
   }
 
   @Override
   public int getItemCount() {
-    return list_ebook.size();
+    return list_data.size();
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.imageview_ebook_grid)
-    ImageView imageViewEbookGrid;
+    ImageView imageviewEbookGrid;
     @BindView(R.id.txt_ebook_grid)
     TextView txtEbookGrid;
 

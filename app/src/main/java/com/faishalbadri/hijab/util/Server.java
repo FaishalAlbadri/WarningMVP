@@ -11,7 +11,6 @@ public class Server {
   public final static String BASE_URL = "http://api.santriprogrammer.com/hijab/library/";
   public final static String BASE_IMG = "http://api.santriprogrammer.com/hijab/img/";
   public static String BASE_IMG_YT = "https://i.ytimg.com/vi/";
-  public static String VIDEO_YT = "https://www.youtube.com/watch?v=";
   public static String IMG_YT_FORMAT = "/mqdefault.jpg";
   public static String YT_CODE = "AIzaSyAZtqvIpixBElGAIewxDbfOABF0V35TWTY";
 

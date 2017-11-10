@@ -103,14 +103,9 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @Override
   public void onInitializationSuccess(Provider provider, YouTubePlayer youTubePlayer, boolean b) {
     if (!b) {
-
-      // loadVideo() will auto play video
-      // Use cueVideo() method, if you don't want to play it automatically
       youTubePlayer.loadVideo(video);
       youTubePlayer.addFullscreenControlFlag(RECOVERY_DIALOG_REQUEST);
-      // Hiding player controls
       youTubePlayer.setPlayerStyle(PlayerStyle.DEFAULT);
-
     }
   }
 

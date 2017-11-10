@@ -31,6 +31,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   Context context;
   List<PojoVideo.VideoBean> list;
+  String video;
 
   public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity, ArrayList<PojoVideo.VideoBean> resultItem) {
     context = perkatActivity;
@@ -47,10 +48,26 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final PojoVideo.VideoBean listitem = list.get(position);
+    if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=") || listitem.getVideo()
+        .startsWith("https://youtu.be/") || listitem.getVideo()
+        .startsWith("www.youtube.com/watch?v=")) {
+
+      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(32, listitem.getVideo().length());
+      }
+
+      if (listitem.getVideo().startsWith("https://youtu.be/")) {
+        video = listitem.getVideo().substring(17, listitem.getVideo().length());
+      }
+
+      if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(24, listitem.getVideo().length());
+      }
+    }
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_IMG_YT + listitem.getVideo() + Server.IMG_YT_FORMAT)
+        .load(Server.BASE_IMG_YT + video + Server.IMG_YT_FORMAT)
         .apply(options)
         .into(holder.imgListVideo);
     holder.txtJudulListVideo.setText(listitem.getJudul_video());
@@ -60,7 +77,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
     holder.cardViewVideoItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
       i.putExtra("title", listitem.getJudul_video());
-      i.putExtra("video", listitem.getVideo());
+      i.putExtra("video", video);
       i.putExtra("description", listitem.getDescription());
       i.putExtra("duration", listitem.getDuration());
       v.getContext().startActivity(i);

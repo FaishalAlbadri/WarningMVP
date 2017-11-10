@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryFragment;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
@@ -57,7 +58,7 @@ public class EbookActivity extends AppCompatActivity {
   private void ebookCategoryFragment() {
     activityUtil
         .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_ebook,
-            EbookFragment.instance());
+            EbookCategoryFragment.instance());
   }
 
   private void ebookFragment() {
