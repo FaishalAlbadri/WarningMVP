@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
@@ -72,6 +73,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final DataOtherFragment dataOtherFragment = datalist.get(position);
+
 
     kritiksaran = ((Activity) context).getResources().getString(R.string.text_other_kritik_saran);
     kirimartikel = ((Activity) context).getResources().getString(R.string.text_other_kirim_artikel);
