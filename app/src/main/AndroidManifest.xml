@@ -74,10 +74,15 @@
     <activity
       android:name=".ui.event.activity.EventActivity"
       android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ui.detail.ebook.DetailEbookActivity"
-      android:theme="@style/AppTheme.NoActionBar"/>
-    <activity android:name=".ui.ebook_by_category.EbookByCategoryActivity"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
+      android:name=".ui.detail.ebook.DetailEbookActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ui.ebook_by_category.EbookByCategoryActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity android:name=".ui.search_ebook.SearchEbookActivity" />
+    <activity android:name=".ui.search_event.SearchEventActivity" />
+    <activity android:name=".ui.search_news.SearchNewsActivity"></activity>
   </application>
 
 </manifest>

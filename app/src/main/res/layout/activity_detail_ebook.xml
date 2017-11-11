@@ -10,6 +10,39 @@
     android:id="@+id/toolbar_activity_detail_ebook"
     layout="@layout/general_toolbar_with_back_button" />
 
+  <ImageView
+    android:id="@+id/imageview_ebook_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/imageview_grid_ebook_size"
+    android:scaleType="centerCrop"
+    android:layout_margin="@dimen/margin_widget"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook"
+    />
+
+  <TextView
+    android:id="@+id/txt_ebook_title_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/toolbar_title_text_size"
+    android:textStyle="bold"
+    android:layout_margin="@dimen/margin_widget"
+    app:layout_constraintLeft_toRightOf="@+id/imageview_ebook_detail"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook"
+    />
+
+  <TextView
+    android:id="@+id/txt_ebook_description_detail"
+    android:layout_width="@dimen/match_parent_size"
+    android:layout_height="wrap_content"
+    android:textColor="@android:color/black"
+    android:textSize="@dimen/normal_tittle_text_size_detail"
+    android:layout_margin="@dimen/padding_widget"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageview_ebook_detail"
+    />
+
 
 
 </android.support.constraint.ConstraintLayout>

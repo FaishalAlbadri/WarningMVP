@@ -11,7 +11,7 @@ import java.util.List;
 public class PojoEbook {
 
   /**
-   * ebook : [{"id_ebook":"1","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"1"},{"id_ebook":"2","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"1"},{"id_ebook":"3","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"1"},{"id_ebook":"4","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"2"},{"id_ebook":"5","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"2"},{"id_ebook":"6","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"2"},{"id_ebook":"7","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"3"},{"id_ebook":"8","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori":"3"}]
+   * ebook : [{"id_ebook":"1","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"2","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"3","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"4","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"5","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"6","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"7","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"3"},{"id_ebook":"8","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"3"}]
    * status : 1
    * msg : Data Semua Ebook
    */
@@ -52,7 +52,7 @@ public class PojoEbook {
      * gambar_ebook : norel.png
      * description : In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin
      * link : http://santriprogrammer.com
-     * id_kategori : 1
+     * id_kategori_ebook : 1
      */
 
     private String id_ebook;
@@ -60,7 +60,7 @@ public class PojoEbook {
     private String gambar_ebook;
     private String description;
     private String link;
-    private String id_kategori;
+    private String id_kategori_ebook;
 
     protected EbookBean(Parcel in) {
       id_ebook = in.readString();
@@ -68,7 +68,7 @@ public class PojoEbook {
       gambar_ebook = in.readString();
       description = in.readString();
       link = in.readString();
-      id_kategori = in.readString();
+      id_kategori_ebook = in.readString();
     }
 
     public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
@@ -123,12 +123,12 @@ public class PojoEbook {
       this.link = link;
     }
 
-    public String getId_kategori() {
-      return id_kategori;
+    public String getId_kategori_ebook() {
+      return id_kategori_ebook;
     }
 
-    public void setId_kategori(String id_kategori) {
-      this.id_kategori = id_kategori;
+    public void setId_kategori_ebook(String id_kategori_ebook) {
+      this.id_kategori_ebook = id_kategori_ebook;
     }
 
     @Override
@@ -143,7 +143,7 @@ public class PojoEbook {
       dest.writeString(gambar_ebook);
       dest.writeString(description);
       dest.writeString(link);
-      dest.writeString(id_kategori);
+      dest.writeString(id_kategori_ebook);
     }
   }
 }
