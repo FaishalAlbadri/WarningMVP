@@ -51,9 +51,9 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
         SearchEbookRepositoryInject.provideToSearchEbookRepository(this));
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchEbookAdapter(this, resultItem);
+//    adapter = new SearchEbookAdapter(this, resultItem);
     recyclerviewActivitySearchEbook.setLayoutManager(new LinearLayoutManager(this));
-    recyclerviewActivitySearchEbook.setAdapter(adapter);
+//    recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
 
   @Override
@@ -66,7 +66,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   public void onSuccesSearchEbook(List<EbookBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
-    adapter.notifyDataSetChanged();
+//    adapter.notifyDataSetChanged();
   }
 
   @Override

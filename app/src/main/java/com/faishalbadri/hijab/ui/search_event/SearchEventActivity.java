@@ -56,9 +56,9 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
         SearchEventRepositoryInject.provideToSearchEventRepository(this));
     searchEventPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchEventAdapter(this, resultItem);
+//    adapter = new SearchEventAdapter(this, resultItem);
     recyclerviewActivitySearchEvent.setLayoutManager(new LinearLayoutManager(this));
-    recyclerviewActivitySearchEvent.setAdapter(adapter);
+//    recyclerviewActivitySearchEvent.setAdapter(adapter);
   }
 
   @Override
@@ -71,7 +71,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   public void onSuccesSearchEvent(List<EventBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
-    adapter.notifyDataSetChanged();
+//    adapter.notifyDataSetChanged();
   }
 
   @Override

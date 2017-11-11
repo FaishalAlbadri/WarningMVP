@@ -101,6 +101,7 @@ public class NewsActivity extends AppCompatActivity {
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
     startActivity(new Intent(getApplicationContext(), SearchNewsActivity.class));
+    finish();
   }
 
   @OnClick(R.id.button_rank_activity_news)
