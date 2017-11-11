@@ -73,13 +73,12 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
-    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
-    finish();
+    onBackPressed();
   }
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), VideoActivity.class).putExtra("session_video", "1"));
+    super.onBackPressed();
     finish();
   }
 

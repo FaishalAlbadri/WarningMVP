@@ -73,13 +73,22 @@ public class DetailVideoAdapter extends Adapter<ViewHolder> {
         .into(holder.imageviewDetailVideoGrid);
     holder.txtTitleDetailVideoGrid.setText(listitem.getJudul_video());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
+
+      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(32, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("https://youtu.be/")) {
+        video = listitem.getVideo().substring(17, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(24, listitem.getVideo().length());
+      }
+
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
       i.putExtra("title", listitem.getJudul_video());
       i.putExtra("video", video);
       i.putExtra("description", listitem.getDescription());
       i.putExtra("duration", listitem.getDuration());
       v.getContext().startActivity(i);
-      ((Activity)context).finish();
+      ((Activity) context).finish();
     });
   }
 

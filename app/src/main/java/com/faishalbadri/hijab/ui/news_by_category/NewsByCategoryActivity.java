@@ -88,13 +88,12 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
-    startActivity(new Intent(getApplicationContext(), NewsActivity.class).putExtra("session_news","1"));
-    finish();
+    onBackPressed();
   }
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), NewsActivity.class).putExtra("session_news","1"));
+    super.onBackPressed();
     finish();
   }
 }

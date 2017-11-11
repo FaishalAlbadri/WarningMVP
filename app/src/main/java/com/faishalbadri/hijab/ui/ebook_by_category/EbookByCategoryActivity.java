@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   }
 
   private void setView() {
+    buttonSearchGeneralToolbarSearch.setVisibility(View.INVISIBLE);
     id = getIntent().getStringExtra("id_category_ebook");
     title = getIntent().getStringExtra("title");
     textviewGeneralToolbarSearch.setText(title);
@@ -78,11 +80,12 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
 
   @OnClick(R.id.button_back_general_toolbar_search)
   public void onButtonBackGeneralToolbarSearchClicked() {
-    startActivity(new Intent(getApplicationContext(), EbookActivity.class));
-    finish();
+    onBackPressed();
   }
 
-  @OnClick(R.id.button_search_general_toolbar_search)
-  public void onButtonSearchGeneralToolbarSearchClicked() {
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    finish();
   }
 }

@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.news.fragment.news_popular;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -20,6 +21,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;
@@ -75,7 +77,11 @@ public class NewsPopularAdapter extends Adapter<NewsPopularAdapter.ViewHolder> {
     holder.cardviewNewsFragmentNews.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
+        i.putExtra("title", listitem.getIsi_gambar());
+        i.putExtra("image", listitem.getIsi_gambar());
+        i.putExtra("desc", listitem.getIsi_keterangan());
+        v.getContext().startActivity(i);
       }
     });
   }

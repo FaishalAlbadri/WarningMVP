@@ -70,7 +70,6 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
         ((Activity) context).startActivity(new Intent(context, NewsByCategoryActivity.class)
             .putExtra("id_kategori", list_item.getId_kategori())
             .putExtra("kategori_title", list_item.getKategori_nama()));
-        ((Activity) context).finish();
       }
     });
   }

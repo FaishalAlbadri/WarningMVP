@@ -1,6 +1,7 @@
 package com.faishalbadri.hijab.ui.ebook_by_category;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
@@ -52,8 +54,13 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
         .apply(options)
         .into(holder.imageviewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
-    holder.imageviewEbookGrid.setOnClickListener(v -> {
-
+    holder.imageviewEbookGrid.setOnClickListener(view -> {
+      Intent i = new Intent(view.getContext(), DetailEbookActivity.class);
+      i.putExtra("name", listitem.getJudul_ebook());
+      i.putExtra("image", listitem.getGambar_ebook());
+      i.putExtra("description", listitem.getDescription());
+      i.putExtra("link", listitem.getLink());
+      view.getContext().startActivity(i);
     });
   }
 

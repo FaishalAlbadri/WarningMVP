@@ -38,22 +38,9 @@ public class VideoActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_video);
-    setFragment();
+    videoFragment();
   }
 
-  private void setFragment() {
-    try {
-      sessionVideo = getIntent().getStringExtra("session_video");
-      if (sessionVideo == null) {
-        videoFragment();
-      } else if (sessionVideo.equals("1")) {
-        categoryFragment();
-      }
-
-    } catch (Exception e) {
-
-    }
-  }
 
   @OnClick(R.id.button_video_activity_video)
   public void onButtonVideoActivityVideoClicked() {

@@ -41,21 +41,7 @@ public class EbookActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_ebook);
-    setFragment();
-  }
-
-  private void setFragment() {
-    try {
-      sessionEbook = getIntent().getStringExtra("session_video");
-      if (sessionEbook == null) {
-        ebookFragment();
-      } else if (sessionEbook.equals("1")) {
-        ebookCategoryFragment();
-      }
-
-    } catch (Exception e) {
-
-    }
+    ebookFragment();
   }
 
   private void ebookCategoryFragment() {

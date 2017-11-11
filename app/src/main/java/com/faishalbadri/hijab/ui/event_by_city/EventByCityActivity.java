@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -63,6 +64,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
 
 
   private void setView() {
+    buttonSearchGeneralToolbarSearch.setVisibility(View.INVISIBLE);
     id = getIntent().getStringExtra("id");
     city = getIntent().getStringExtra("city");
     textviewGeneralToolbarSearch.setText(city);
@@ -88,17 +90,12 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), EventActivity.class));
+    super.onBackPressed();
     finish();
   }
 
   @OnClick(R.id.button_back_general_toolbar_search)
   public void onButtonBackGeneralToolbarSearchClicked() {
-    startActivity(new Intent(getApplicationContext(), EventActivity.class));
-    finish();
-  }
-
-  @OnClick(R.id.button_search_general_toolbar_search)
-  public void onButtonSearchGeneralToolbarSearchClicked() {
+    onBackPressed();
   }
 }

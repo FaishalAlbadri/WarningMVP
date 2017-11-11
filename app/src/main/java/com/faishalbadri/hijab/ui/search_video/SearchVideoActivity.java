@@ -19,13 +19,14 @@ import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
 import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
+import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchVideoActivity extends AppCompatActivity implements SearchVideoView {
 
-  SearchVideoPresenter searchEbookPresenter;
-  SearchVideoAdapter adapter;
+  SearchVideoPresenter searchVideoPresenter;
+  VideoAdapter adapter;
   ArrayList<VideoBean> resultItem;
   private static final String SAVE_DATA_VIDEO_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_video)
@@ -41,11 +42,11 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   }
 
   private void setView() {
-    searchEbookPresenter = new SearchVideoPresenter(
+    searchVideoPresenter = new SearchVideoPresenter(
         SearchVideoRepositoryInject.provideToSearchVideoRepository(this));
-    searchEbookPresenter.onAttachView(this);
+    searchVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchVideoAdapter(this, resultItem);
+    adapter = new VideoAdapter(this, resultItem);
     recyclerviewActivitySearchVideo.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivitySearchVideo.setAdapter(adapter);
   }
@@ -83,7 +84,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
-        searchEbookPresenter.getDataSearchVideo(key);
+        searchVideoPresenter.getDataSearchVideo(key);
         searchView.clearFocus();
         setTitle(key);
         return true;
@@ -102,7 +103,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), VideoActivity.class));
+    super.onBackPressed();
     finish();
   }
 }

@@ -52,7 +52,6 @@ public class EventCityAdapter extends Adapter<ViewHolder> {
       @Override
       public void onClick(View v) {
         ((Activity)context).startActivity(new Intent(context, EventByCityActivity.class).putExtra("id",listitem.getId_city_event()).putExtra("city",listitem.getCity_event()));
-        ((Activity)context).finish();
       }
     });
   }

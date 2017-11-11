@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.video_by_category;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -33,7 +34,8 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
   List<PojoVideo.VideoBean> list;
   String video;
 
-  public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity, ArrayList<PojoVideo.VideoBean> resultItem) {
+  public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity,
+      ArrayList<PojoVideo.VideoBean> resultItem) {
     context = perkatActivity;
     list = resultItem;
   }
@@ -75,6 +77,15 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
     holder.txtDurationVideo.setText(listitem.getDuration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
+
+      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(32, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("https://youtu.be/")) {
+        video = listitem.getVideo().substring(17, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(24, listitem.getVideo().length());
+      }
+
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
       i.putExtra("title", listitem.getJudul_video());
       i.putExtra("video", video);
@@ -90,6 +101,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
+
     @BindView(R.id.img_list_video)
     ImageView imgListVideo;
     @BindView(R.id.txtJudulListVideo)
@@ -101,7 +113,7 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
     public ViewHolder(View itemView) {
       super(itemView);
-      ButterKnife.bind(this,itemView);
+      ButterKnife.bind(this, itemView);
     }
   }
 }

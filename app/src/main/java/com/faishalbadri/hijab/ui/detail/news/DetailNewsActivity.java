@@ -92,7 +92,12 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
-    startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+    onBackPressed();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
     finish();
   }
 

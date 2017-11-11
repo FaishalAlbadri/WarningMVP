@@ -5,16 +5,12 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +18,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
-import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
+import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +26,7 @@ import java.util.List;
 public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
 
   SearchEbookPresenter searchEbookPresenter;
-  SearchEbookAdapter adapter;
+  EbookAdapter adapter;
   ArrayList<EbookBean> resultItem;
   private static final String SAVE_DATA_EBOOK_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_ebook)
@@ -50,8 +46,8 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
         SearchEbookRepositoryInject.provideToSearchEbookRepository(this));
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchEbookAdapter(this, resultItem);
-    recyclerviewActivitySearchEbook.setLayoutManager(new LinearLayoutManager(this));
+    adapter = new EbookAdapter(this, resultItem);
+    recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this,3));
     recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
 
@@ -106,7 +102,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), EbookActivity.class));
+    super.onBackPressed();
     finish();
   }
 }

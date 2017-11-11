@@ -26,13 +26,13 @@ import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchNewsActivity extends AppCompatActivity implements SearchNewsView{
+public class SearchNewsActivity extends AppCompatActivity implements SearchNewsView {
 
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
   private static final String SAVE_DATA_NEWS_SEARCH = "save";
   String key;
-  SearchNewsPresenter searchEventPresenter;
+  SearchNewsPresenter searchNewsPresenter;
   SearchNewsAdapter adapter;
   ArrayList<IsiBean> resultItem;
 
@@ -46,9 +46,9 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
 
   private void setView() {
     setTitle("Search News Here");
-    searchEventPresenter = new SearchNewsPresenter(
+    searchNewsPresenter = new SearchNewsPresenter(
         SearchNewsRepositoryInject.provideToSearchNewsRepository(this));
-    searchEventPresenter.onAttachView(this);
+    searchNewsPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     adapter = new SearchNewsAdapter(this, resultItem);
     recyclerviewActivitySearchEvent.setLayoutManager(new LinearLayoutManager(this));
@@ -88,7 +88,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
-        searchEventPresenter.getDataSearchNews(key);
+        searchNewsPresenter.getDataSearchNews(key);
         searchView.clearFocus();
         setTitle(key);
         return true;
@@ -107,7 +107,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+    super.onBackPressed();
     finish();
   }
 }

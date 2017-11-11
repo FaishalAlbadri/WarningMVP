@@ -24,7 +24,6 @@ public class NewsActivity extends AppCompatActivity {
   ImageButton buttonNewsActivityNews;
   @BindView(R.id.button_category_activity_news)
   ImageButton buttonCategoryActivityNews;
-  String sessionNews;
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -40,24 +39,9 @@ public class NewsActivity extends AppCompatActivity {
     setContentView(R.layout.activity_news);
     ButterKnife.bind(this);
     setView();
-    setFragment();
+    newsFragment();
   }
 
-  private void setFragment() {
-    try {
-      sessionNews = getIntent().getStringExtra("session_news");
-      if (sessionNews == null) {
-        newsFragment();
-      } else if (sessionNews.equals("1")) {
-        categoryNews();
-      }else if (sessionNews.equals("2")) {
-        newsPopular();
-      }
-
-    } catch (Exception e) {
-
-    }
-  }
 
   private void setView() {
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
@@ -101,7 +85,6 @@ public class NewsActivity extends AppCompatActivity {
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
     startActivity(new Intent(getApplicationContext(), SearchNewsActivity.class));
-    finish();
   }
 
   @OnClick(R.id.button_rank_activity_news)

@@ -39,21 +39,7 @@ public class EventActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_event);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
-    setFragment();
-  }
-
-  private void setFragment() {
-    try {
-      sessionEvent = getIntent().getStringExtra("session_event");
-      if (sessionEvent == null) {
-        homeFragment();
-      } else if (sessionEvent.equals("1")) {
-        cityFragment();
-      }
-
-    } catch (Exception e) {
-
-    }
+    homeFragment();
   }
 
   @OnClick(R.id.button_back_general_toolbar_search)

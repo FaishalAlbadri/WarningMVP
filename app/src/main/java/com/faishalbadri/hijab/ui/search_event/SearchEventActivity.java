@@ -24,6 +24,7 @@ import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.activity.EventActivity;
+import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   private static final String SAVE_DATA_EVENT_SEARCH = "save";
   String key;
   SearchEventPresenter searchEventPresenter;
-  SearchEventAdapter adapter;
+  EventAdapter adapter;
   ArrayList<EventBean> resultItem;
 
   @Override
@@ -52,7 +53,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
         SearchEventRepositoryInject.provideToSearchEventRepository(this));
     searchEventPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchEventAdapter(this, resultItem);
+    adapter = new EventAdapter(this, resultItem);
     recyclerviewActivitySearchEvent.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivitySearchEvent.setAdapter(adapter);
   }
@@ -109,7 +110,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), EventActivity.class));
+    super.onBackPressed();
     finish();
   }
 }

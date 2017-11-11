@@ -51,5 +51,12 @@ public class DetailEbookActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
+    onBackPressed();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    finish();
   }
 }

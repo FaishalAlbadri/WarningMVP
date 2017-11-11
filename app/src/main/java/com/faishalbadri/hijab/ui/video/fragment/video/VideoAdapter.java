@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -60,13 +61,9 @@ public class VideoAdapter extends Adapter<ViewHolder> {
 
       if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
         video = listitem.getVideo().substring(32, listitem.getVideo().length());
-      }
-
-      if (listitem.getVideo().startsWith("https://youtu.be/")) {
+      } else if (listitem.getVideo().startsWith("https://youtu.be/")) {
         video = listitem.getVideo().substring(17, listitem.getVideo().length());
-      }
-
-      if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
+      } else if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
         video = listitem.getVideo().substring(24, listitem.getVideo().length());
       }
     }
@@ -83,6 +80,15 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     holder.txtDurationVideo.setText(listitem.getDuration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
+
+      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(32, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("https://youtu.be/")) {
+        video = listitem.getVideo().substring(17, listitem.getVideo().length());
+      } else if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
+        video = listitem.getVideo().substring(24, listitem.getVideo().length());
+      }
+
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
       i.putExtra("title", listitem.getJudul_video());
       i.putExtra("video", video);

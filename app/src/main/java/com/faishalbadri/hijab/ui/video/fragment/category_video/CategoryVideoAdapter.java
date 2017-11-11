@@ -54,7 +54,6 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
       i.putExtra("id", listitem.getId_kategori());
       i.putExtra("kategori", listitem.getKategori_nama());
       v.getContext().startActivity(i);
-      ((Activity)context).finish();
     });
   }
 

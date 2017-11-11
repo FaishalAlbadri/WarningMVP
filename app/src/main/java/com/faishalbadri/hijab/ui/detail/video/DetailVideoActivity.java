@@ -135,8 +135,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onViewClicked() {
-    startActivity(new Intent(getApplicationContext(), VideoActivity.class));
-    finish();
+    onBackPressed();
   }
 
   @Override
@@ -149,5 +148,11 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @Override
   public void onError(String msg) {
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    finish();
   }
 }
