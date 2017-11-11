@@ -79,6 +79,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
         .into(holder.imgListVideo);
     holder.txtJudulListVideo.setText(listitem.getJudul_video());
     holder.txtJudulListVideo.setMaxLines(3);
+    holder.cardViewVideoItem.setForeground(getSelectedItemDrawable());
     holder.txtDurationVideo.setText(listitem.getDuration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {

@@ -1,12 +1,18 @@
 package com.faishalbadri.hijab.ui.search_event;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +23,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
+import com.faishalbadri.hijab.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.ArrayList;
@@ -24,10 +31,6 @@ import java.util.List;
 
 public class SearchEventActivity extends AppCompatActivity implements SearchEventView{
 
-  @BindView(R.id.edt_search_event)
-  EditText edtSearchEvent;
-  @BindView(R.id.txt_input_layout)
-  TextInputLayout txtInputLayout;
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
   private static final String SAVE_DATA_EVENT_SEARCH = "save";
@@ -42,13 +45,6 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
     setContentView(R.layout.activity_search_event);
     ButterKnife.bind(this);
     setView();
-    edtSearchEvent.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
-      if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-        key = edtSearchEvent.getText().toString();
-        searchEventPresenter.getDataSearchEvent(key);
-      }
-      return false;
-    });
   }
 
   private void setView() {
@@ -56,9 +52,9 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
         SearchEventRepositoryInject.provideToSearchEventRepository(this));
     searchEventPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-//    adapter = new SearchEventAdapter(this, resultItem);
+    adapter = new SearchEventAdapter(this, resultItem);
     recyclerviewActivitySearchEvent.setLayoutManager(new LinearLayoutManager(this));
-//    recyclerviewActivitySearchEvent.setAdapter(adapter);
+    recyclerviewActivitySearchEvent.setAdapter(adapter);
   }
 
   @Override
@@ -71,7 +67,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   public void onSuccesSearchEvent(List<EventBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
-//    adapter.notifyDataSetChanged();
+    adapter.notifyDataSetChanged();
   }
 
   @Override
@@ -82,5 +78,38 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   @Override
   public void onErrorSearchEvent(String msg) {
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu_search, menu);
+    MenuItem searchItem = menu.findItem(R.id.search);
+    final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+      @Override
+      public boolean onQueryTextSubmit(String query) {
+        key = query;
+        searchEventPresenter.getDataSearchEvent(key);
+        searchView.clearFocus();
+        setTitle(key);
+        return true;
+      }
+
+      @Override
+      public boolean onQueryTextChange(String newText) {
+
+        return false;
+      }
+
+
+    });
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
+  public void onBackPressed() {
+    startActivity(new Intent(getApplicationContext(), EventActivity.class));
+    finish();
   }
 }

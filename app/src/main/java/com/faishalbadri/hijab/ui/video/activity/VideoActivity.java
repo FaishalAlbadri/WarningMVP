@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.ui.search_video.SearchVideoActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoFragment;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
@@ -92,6 +93,6 @@ public class VideoActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
-
+    startActivity(new Intent(getApplicationContext(), SearchVideoActivity.class));
   }
 }

@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.search_ebook;
+package com.faishalbadri.hijab.ui.search_video;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,75 +8,71 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
-import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
-import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
-import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
+import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
+import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
+import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
+import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
+public class SearchVideoActivity extends AppCompatActivity implements SearchVideoView {
 
-  SearchEbookPresenter searchEbookPresenter;
-  SearchEbookAdapter adapter;
-  ArrayList<EbookBean> resultItem;
-  private static final String SAVE_DATA_EBOOK_SEARCH = "save";
-  @BindView(R.id.recyclerview_activity_search_ebook)
-  RecyclerView recyclerviewActivitySearchEbook;
+  SearchVideoPresenter searchEbookPresenter;
+  SearchVideoAdapter adapter;
+  ArrayList<VideoBean> resultItem;
+  private static final String SAVE_DATA_VIDEO_SEARCH = "save";
+  @BindView(R.id.recyclerview_activity_search_video)
+  RecyclerView recyclerviewActivitySearchVideo;
   String key;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_search_ebook);
+    setContentView(R.layout.activity_search_video);
     ButterKnife.bind(this);
     setView();
   }
 
   private void setView() {
-    searchEbookPresenter = new SearchEbookPresenter(
-        SearchEbookRepositoryInject.provideToSearchEbookRepository(this));
+    searchEbookPresenter = new SearchVideoPresenter(
+        SearchVideoRepositoryInject.provideToSearchVideoRepository(this));
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new SearchEbookAdapter(this, resultItem);
-    recyclerviewActivitySearchEbook.setLayoutManager(new LinearLayoutManager(this));
-    recyclerviewActivitySearchEbook.setAdapter(adapter);
+    adapter = new SearchVideoAdapter(this, resultItem);
+    recyclerviewActivitySearchVideo.setLayoutManager(new LinearLayoutManager(this));
+    recyclerviewActivitySearchVideo.setAdapter(adapter);
   }
 
   @Override
   public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
     super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_EBOOK_SEARCH, resultItem);
+    outState.putParcelableArrayList(SAVE_DATA_VIDEO_SEARCH, resultItem);
   }
 
   @Override
-  public void onSuccesSearchEbook(List<EbookBean> data, String msg) {
+  public void onSuccesSearchVideo(List<VideoBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
   }
 
   @Override
-  public void onWrongSearchEbook(String msg) {
+  public void onWrongSearchVideo(String msg) {
     Toast.makeText(this, "wrong key", Toast.LENGTH_SHORT).show();
   }
 
   @Override
-  public void onErrorSearchEbook(String msg) {
+  public void onErrorSearchVideo(String msg) {
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
   }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
@@ -87,7 +83,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
-        searchEbookPresenter.getDataSearchEbook(key);
+        searchEbookPresenter.getDataSearchVideo(key);
         searchView.clearFocus();
         setTitle(key);
         return true;
@@ -106,7 +102,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(), EbookActivity.class));
+    startActivity(new Intent(getApplicationContext(), VideoActivity.class));
     finish();
   }
 }
