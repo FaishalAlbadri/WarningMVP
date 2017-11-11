@@ -4,8 +4,8 @@
   android:id="@+id/cardview_news_fragment_news"
   android:layout_width="match_parent"
   android:layout_height="@dimen/cardview_size"
-  android:layout_marginTop="@dimen/padding_widget"
-  android:layout_marginBottom="@dimen/padding_widget">
+  android:layout_marginTop="@dimen/one"
+  android:layout_marginBottom="@dimen/one">
 
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

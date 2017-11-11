@@ -70,14 +70,23 @@
       android:name=".ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-    android:theme="@style/AppTheme.NoActionBar" />
     <activity
       android:name=".ui.event.activity.EventActivity"
       android:theme="@style/AppTheme.NoActionBar" />
-    <activity android:name=".ui.detail.ebook.DetailEbookActivity"
-      android:theme="@style/AppTheme.NoActionBar"/>
-    <activity android:name=".ui.ebook_by_category.EbookByCategoryActivity"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
+      android:name=".ui.detail.ebook.DetailEbookActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ui.ebook_by_category.EbookByCategoryActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+      android:name=".ui.detail.event.DetailEventActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+      android:name=".ui.event_by_city.EventByCityActivity"
+      android:theme="@style/AppTheme.NoActionBar" />
   </application>
 
 </manifest>

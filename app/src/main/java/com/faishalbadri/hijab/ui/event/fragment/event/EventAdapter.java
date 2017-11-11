@@ -64,8 +64,6 @@ public class EventAdapter extends Adapter<ViewHolder> {
 
       }
     });
-
-
   }
 
   @Override

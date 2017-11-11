@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.event.fragment.event_city;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -18,6 +19,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCityEvent;
 import com.faishalbadri.hijab.data.PojoCityEvent.CityEventBean;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.event_by_city.EventByCityActivity;
 import java.util.List;
 
 
@@ -49,7 +51,8 @@ public class EventCityAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        ((Activity)context).startActivity(new Intent(context, EventByCityActivity.class).putExtra("id",listitem.getId_city_event()).putExtra("city",listitem.getCity_event()));
+        ((Activity)context).finish();
       }
     });
   }
