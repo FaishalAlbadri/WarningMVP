@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,6 +14,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryFragment;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.ui.search_ebook.SearchEbookActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
 
 public class EbookActivity extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class EbookActivity extends AppCompatActivity {
   ImageButton buttonCategoryActivityEbook;
   ActivityUtil activityUtil;
   String sessionEbook;
+  SearchView searchView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class EbookActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
+    startActivity(new Intent(getApplicationContext(), SearchEbookActivity.class));
   }
 
   @OnClick(R.id.button_all_activity_ebook)
@@ -92,4 +96,5 @@ public class EbookActivity extends AppCompatActivity {
   public void onButtonCategoryActivityEbookClicked() {
     ebookCategoryFragment();
   }
+
 }

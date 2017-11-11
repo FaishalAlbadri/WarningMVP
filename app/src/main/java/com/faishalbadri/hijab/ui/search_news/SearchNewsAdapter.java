@@ -1,9 +1,62 @@
 package com.faishalbadri.hijab.ui.search_news;
 
+import android.content.Context;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.ui.search_news.SearchNewsAdapter.ViewHolder;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by faishal on 10/11/17.
  */
 
-public class SearchNewsAdapter {
+public class SearchNewsAdapter extends Adapter<ViewHolder> {
 
+  Context context;
+  List<IsiBean> list_data;
+
+  public SearchNewsAdapter(SearchNewsActivity seaerchNewsActivity, ArrayList<IsiBean> resultItem) {
+    context = seaerchNewsActivity;
+    list_data = resultItem;
+  }
+
+  @Override
+  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(context).inflate(R.layout.item_category_video, parent, false);
+    final ViewHolder viewHolder = new ViewHolder(view);
+    return viewHolder;
+  }
+
+  @Override
+  public void onBindViewHolder(ViewHolder holder, int position) {
+    final IsiBean listitem = list_data.get(position);
+    holder.txtCategoryVideo.setText(listitem.getIsi_judul());
+  }
+
+  @Override
+  public int getItemCount() {
+    return list_data.size();
+  }
+
+  public class ViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.txt_category_video)
+    TextView txtCategoryVideo;
+    @BindView(R.id.constrant_video_category_item)
+    ConstraintLayout constrantVideoCategoryItem;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+    }
+  }
 }

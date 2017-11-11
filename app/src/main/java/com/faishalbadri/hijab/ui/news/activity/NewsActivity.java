@@ -14,6 +14,7 @@ import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryFragment;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsFragment;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularFragment;
+import com.faishalbadri.hijab.ui.search_news.SearchNewsActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
 
 public class NewsActivity extends AppCompatActivity {
@@ -99,7 +100,7 @@ public class NewsActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
-
+    startActivity(new Intent(getApplicationContext(), SearchNewsActivity.class));
   }
 
   @OnClick(R.id.button_rank_activity_news)

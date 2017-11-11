@@ -14,6 +14,7 @@ import com.faishalbadri.hijab.ui.event.fragment.event.EventFragment;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
+import com.faishalbadri.hijab.ui.search_event.SearchEventActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
 
 public class EventActivity extends AppCompatActivity {
@@ -63,7 +64,7 @@ public class EventActivity extends AppCompatActivity {
 
   @OnClick(R.id.button_search_general_toolbar_search)
   public void onButtonSearchGeneralToolbarSearchClicked() {
-
+    startActivity(new Intent(getApplicationContext(), SearchEventActivity.class));
   }
 
   @OnClick(R.id.button_home_activity_event)
