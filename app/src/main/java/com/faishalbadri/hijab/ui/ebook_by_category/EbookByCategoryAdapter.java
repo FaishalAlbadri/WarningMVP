@@ -59,6 +59,9 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
       i.putExtra("name", listitem.getJudul_ebook());
       i.putExtra("image", listitem.getGambar_ebook());
       i.putExtra("description", listitem.getDescription());
+      i.putExtra("publisher", listitem.getPenerbit_ebook());
+      i.putExtra("writer", listitem.getPenulis_ebook());
+      i.putExtra("time", listitem.getTanggal_terbit_ebook());
       i.putExtra("link", listitem.getLink());
       view.getContext().startActivity(i);
     });

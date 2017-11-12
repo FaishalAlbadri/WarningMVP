@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -11,7 +11,7 @@ import java.util.List;
 public class PojoEbook {
 
   /**
-   * ebook : [{"id_ebook":"1","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"2","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"3","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"1"},{"id_ebook":"4","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"5","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"6","judul_ebook":"halloow","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"2"},{"id_ebook":"7","judul_ebook":"helloo","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"3"},{"id_ebook":"8","judul_ebook":"halloowqwejqeoqwejweojwqe","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"http://santriprogrammer.com","id_kategori_ebook":"3"}]
+   * ebook : [{"id_ebook":"9","judul_ebook":"asdadsada","penulis_ebook":"asdasdas","penerbit_ebook":"asdasdas","tanggal_terbit_ebook":"2017-11-05","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"faishalbadri.com","id_kategori_ebook":"1"}]
    * status : 1
    * msg : Data Semua Ebook
    */
@@ -44,44 +44,29 @@ public class PojoEbook {
     this.ebook = ebook;
   }
 
-  public static class EbookBean implements Parcelable{
+  public static class EbookBean implements android.os.Parcelable {
 
     /**
-     * id_ebook : 1
-     * judul_ebook : helloo
+     * id_ebook : 9
+     * judul_ebook : asdadsada
+     * penulis_ebook : asdasdas
+     * penerbit_ebook : asdasdas
+     * tanggal_terbit_ebook : 2017-11-05
      * gambar_ebook : norel.png
      * description : In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin
-     * link : http://santriprogrammer.com
+     * link : faishalbadri.com
      * id_kategori_ebook : 1
      */
 
     private String id_ebook;
     private String judul_ebook;
+    private String penulis_ebook;
+    private String penerbit_ebook;
+    private String tanggal_terbit_ebook;
     private String gambar_ebook;
     private String description;
     private String link;
     private String id_kategori_ebook;
-
-    protected EbookBean(Parcel in) {
-      id_ebook = in.readString();
-      judul_ebook = in.readString();
-      gambar_ebook = in.readString();
-      description = in.readString();
-      link = in.readString();
-      id_kategori_ebook = in.readString();
-    }
-
-    public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
-      @Override
-      public EbookBean createFromParcel(Parcel in) {
-        return new EbookBean(in);
-      }
-
-      @Override
-      public EbookBean[] newArray(int size) {
-        return new EbookBean[size];
-      }
-    };
 
     public String getId_ebook() {
       return id_ebook;
@@ -97,6 +82,30 @@ public class PojoEbook {
 
     public void setJudul_ebook(String judul_ebook) {
       this.judul_ebook = judul_ebook;
+    }
+
+    public String getPenulis_ebook() {
+      return penulis_ebook;
+    }
+
+    public void setPenulis_ebook(String penulis_ebook) {
+      this.penulis_ebook = penulis_ebook;
+    }
+
+    public String getPenerbit_ebook() {
+      return penerbit_ebook;
+    }
+
+    public void setPenerbit_ebook(String penerbit_ebook) {
+      this.penerbit_ebook = penerbit_ebook;
+    }
+
+    public String getTanggal_terbit_ebook() {
+      return tanggal_terbit_ebook;
+    }
+
+    public void setTanggal_terbit_ebook(String tanggal_terbit_ebook) {
+      this.tanggal_terbit_ebook = tanggal_terbit_ebook;
     }
 
     public String getGambar_ebook() {
@@ -138,12 +147,42 @@ public class PojoEbook {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(id_ebook);
-      dest.writeString(judul_ebook);
-      dest.writeString(gambar_ebook);
-      dest.writeString(description);
-      dest.writeString(link);
-      dest.writeString(id_kategori_ebook);
+      dest.writeString(this.id_ebook);
+      dest.writeString(this.judul_ebook);
+      dest.writeString(this.penulis_ebook);
+      dest.writeString(this.penerbit_ebook);
+      dest.writeString(this.tanggal_terbit_ebook);
+      dest.writeString(this.gambar_ebook);
+      dest.writeString(this.description);
+      dest.writeString(this.link);
+      dest.writeString(this.id_kategori_ebook);
     }
+
+    public EbookBean() {
+    }
+
+    protected EbookBean(Parcel in) {
+      this.id_ebook = in.readString();
+      this.judul_ebook = in.readString();
+      this.penulis_ebook = in.readString();
+      this.penerbit_ebook = in.readString();
+      this.tanggal_terbit_ebook = in.readString();
+      this.gambar_ebook = in.readString();
+      this.description = in.readString();
+      this.link = in.readString();
+      this.id_kategori_ebook = in.readString();
+    }
+
+    public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
+      @Override
+      public EbookBean createFromParcel(Parcel source) {
+        return new EbookBean(source);
+      }
+
+      @Override
+      public EbookBean[] newArray(int size) {
+        return new EbookBean[size];
+      }
+    };
   }
 }

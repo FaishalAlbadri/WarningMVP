@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.request.RequestOptions;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
@@ -24,6 +27,7 @@ import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.slider.ChildAnimationExample;
 import com.faishalbadri.hijab.util.slider.SliderLayout;
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -111,10 +115,12 @@ public class NewsFragment extends Fragment implements newsView {
       file_maps.put(dataSlider.get(a).getSlider_judul(),
           Server.BASE_IMG + dataSlider.get(a).getSlider_gambar());
 
+
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());
 
         String image = file_maps.get(name);
+
         textSliderView
             .description(name)
             .image(image)

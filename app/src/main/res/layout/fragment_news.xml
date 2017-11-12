@@ -17,8 +17,8 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
-      android:background="@color/colorPrimary"
-      app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+      app:layout_scrollFlags="scroll|exitUntilCollapsed"
+      android:padding="@dimen/padding_widget"/>
 
     <android.support.v7.widget.RecyclerView
       android:id="@+id/recyclerview_fragment_news"

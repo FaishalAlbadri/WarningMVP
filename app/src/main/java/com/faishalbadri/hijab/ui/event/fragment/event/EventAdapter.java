@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.event.fragment.event;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -21,6 +22,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
+import com.faishalbadri.hijab.ui.detail.event.DetailEventActivity;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;
@@ -60,8 +63,15 @@ public class EventAdapter extends Adapter<ViewHolder> {
     holder.cardViewEventItem.setClickable(true);
     holder.cardViewEventItem.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View v) {
-
+      public void onClick(View view) {
+        Intent i = new Intent(view.getContext(), DetailEventActivity.class);
+        i.putExtra("title", listitem.getEvent_title());
+        i.putExtra("image", listitem.getEvent_image());
+        i.putExtra("desc", listitem.getEvent_detail());
+        i.putExtra("link", listitem.getEvent_link());
+        i.putExtra("place", listitem.getCity_event());
+        i.putExtra("time", listitem.getEvent_time());
+        view.getContext().startActivity(i);
       }
     });
   }

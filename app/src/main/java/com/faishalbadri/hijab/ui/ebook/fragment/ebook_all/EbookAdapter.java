@@ -62,6 +62,9 @@ public class EbookAdapter extends Adapter<ViewHolder> {
       i.putExtra("image", listitem.getGambar_ebook());
       i.putExtra("description", listitem.getDescription());
       i.putExtra("link", listitem.getLink());
+      i.putExtra("publisher", listitem.getPenerbit_ebook());
+      i.putExtra("writer", listitem.getPenulis_ebook());
+      i.putExtra("time", listitem.getTanggal_terbit_ebook());
       view.getContext().startActivity(i);
     });
   }
