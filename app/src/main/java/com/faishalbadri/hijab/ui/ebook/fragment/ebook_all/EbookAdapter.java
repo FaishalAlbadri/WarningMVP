@@ -1,9 +1,13 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -17,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter.ViewHolder;
@@ -56,7 +59,8 @@ public class EbookAdapter extends Adapter<ViewHolder> {
         .apply(options)
         .into(holder.imageViewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
-    holder.imageViewEbookGrid.setOnClickListener(view -> {
+    holder.constraintItemGrid.setForeground(getSelectedItemDrawable());
+    holder.constraintItemGrid.setOnClickListener(view -> {
       Intent i = new Intent(view.getContext(), DetailEbookActivity.class);
       i.putExtra("name", listitem.getJudul_ebook());
       i.putExtra("image", listitem.getGambar_ebook());
@@ -80,10 +84,20 @@ public class EbookAdapter extends Adapter<ViewHolder> {
     ImageView imageViewEbookGrid;
     @BindView(R.id.txt_ebook_grid)
     TextView txtEbookGrid;
+    @BindView(R.id.constraint_item_grid)
+    ConstraintLayout constraintItemGrid;
 
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 }
