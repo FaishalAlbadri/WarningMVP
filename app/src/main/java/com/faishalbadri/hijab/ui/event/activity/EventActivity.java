@@ -13,7 +13,6 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventFragment;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
-import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.search_event.SearchEventActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
 

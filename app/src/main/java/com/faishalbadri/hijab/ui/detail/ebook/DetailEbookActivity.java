@@ -14,6 +14,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.util.Server;
+import com.gw.swipeback.SwipeBackLayout;
 
 public class DetailEbookActivity extends AppCompatActivity {
 
@@ -36,6 +37,9 @@ public class DetailEbookActivity extends AppCompatActivity {
   TextView textviewPublisherDetailEbook;
   @BindView(R.id.textview_time_detail_ebook)
   TextView textviewTimeDetailEbook;
+  @BindView(R.id.swipe_back_detail_ebook)
+  SwipeBackLayout swipeBackDetailEbook;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,14 @@ public class DetailEbookActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    setSwipeBack();
     finish();
+  }
+
+  private void setSwipeBack() {
+    swipeBackDetailEbook.setDirectionMode(SwipeBackLayout.FROM_LEFT);
+    swipeBackDetailEbook.setMaskAlpha(125);
+    swipeBackDetailEbook.setSwipeBackFactor(0.5f);
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)

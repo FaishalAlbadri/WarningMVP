@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.detail.news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,12 +19,12 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
-import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.util.Server;
+import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailNewsActivity extends AppCompatActivity implements DetailNewsView{
+public class DetailNewsActivity extends AppCompatActivity implements DetailNewsView {
 
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
@@ -39,6 +38,8 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   WebView webViewDescriptionNewsDetail;
   @BindView(R.id.recyclerview_activity_news_detail)
   RecyclerView recyclerviewActivityNewsDetail;
+  @BindView(R.id.swipe_back_detail_news)
+  SwipeBackLayout swipeBackDetailNews;
   private String title, image, desc;
   private static final String SAVE_DATA_NEWS_DETAIL = "save";
   DetailNewsPresenter detailNewsPresenter;
@@ -98,7 +99,14 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    setSwipeBack();
     finish();
+  }
+
+  private void setSwipeBack() {
+    swipeBackDetailNews.setDirectionMode(SwipeBackLayout.FROM_LEFT);
+    swipeBackDetailNews.setMaskAlpha(125);
+    swipeBackDetailNews.setSwipeBackFactor(0.5f);
   }
 
   @Override

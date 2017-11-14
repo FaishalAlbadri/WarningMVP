@@ -57,7 +57,7 @@
     <activity
       android:name=".ui.detail.video.DetailVideoActivity"
       android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar" />
+      android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.video_by_category.VideoByCategoryActivity"
       android:screenOrientation="portrait"
@@ -69,19 +69,19 @@
     <activity
       android:name=".ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar" />
+      android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.event.activity.EventActivity"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
       android:name=".ui.detail.ebook.DetailEbookActivity"
-      android:theme="@style/AppTheme.NoActionBar" />
+      android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.ebook_by_category.EbookByCategoryActivity"
       android:theme="@style/AppTheme.NoActionBar" />
     <activity
       android:name=".ui.detail.event.DetailEventActivity"
-      android:theme="@style/AppTheme.NoActionBar" />
+      android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.event_by_city.EventByCityActivity"
       android:theme="@style/AppTheme.NoActionBar" />

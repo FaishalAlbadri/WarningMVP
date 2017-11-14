@@ -16,6 +16,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.util.Server;
+import com.gw.swipeback.SwipeBackLayout;
 
 public class DetailEventActivity extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class DetailEventActivity extends AppCompatActivity {
   @BindView(R.id.button_register_detail_event)
   Button buttonRegisterDetailEvent;
   String title, time, place, image, desc, link;
+  @BindView(R.id.swipe_back_detail_event)
+  SwipeBackLayout swipeBackDetailEvent;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +76,16 @@ public class DetailEventActivity extends AppCompatActivity {
     startActivity(browserIntent);
   }
 
+  private void setSwipeBack() {
+    swipeBackDetailEvent.setDirectionMode(SwipeBackLayout.FROM_LEFT);
+    swipeBackDetailEvent.setMaskAlpha(125);
+    swipeBackDetailEvent.setSwipeBackFactor(0.5f);
+  }
+
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    setSwipeBack();
     finish();
   }
 }
