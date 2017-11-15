@@ -25,6 +25,7 @@ import com.faishalbadri.hijab.data.DataOtherFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.kritik_saran.KritikSaranActivity;
 import com.faishalbadri.hijab.ui.send_article.SendArticleActivity;
+import com.faishalbadri.hijab.ui.sponsor.SponsorActivity;
 import java.util.List;
 
 /**
@@ -107,7 +108,8 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
           rateApp();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
-
+          ((Activity) context).startActivity(new Intent(context, SponsorActivity.class));
+          ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
         }
