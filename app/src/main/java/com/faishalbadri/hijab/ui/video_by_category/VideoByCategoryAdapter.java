@@ -86,12 +86,12 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
         video = listitem.getVideo().substring(24, listitem.getVideo().length());
       }
 
-      Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
-      i.putExtra("title", listitem.getJudul_video());
-      i.putExtra("video", video);
-      i.putExtra("description", listitem.getDescription());
-      i.putExtra("duration", listitem.getDuration());
-      v.getContext().startActivity(i);
+      v.getContext().startActivity(new Intent(v.getContext(), DetailVideoActivity.class)
+          .putExtra("title", listitem.getJudul_video())
+          .putExtra("video", video)
+          .putExtra("description", listitem.getDescription())
+          .putExtra("duration", listitem.getDuration()));
+      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
     });
   }
 
