@@ -64,14 +64,14 @@ public class EventAdapter extends Adapter<ViewHolder> {
     holder.cardViewEventItem.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent i = new Intent(view.getContext(), DetailEventActivity.class);
-        i.putExtra("title", listitem.getEvent_title());
-        i.putExtra("image", listitem.getEvent_image());
-        i.putExtra("desc", listitem.getEvent_detail());
-        i.putExtra("link", listitem.getEvent_link());
-        i.putExtra("place", listitem.getCity_event());
-        i.putExtra("time", listitem.getEvent_time());
-        view.getContext().startActivity(i);
+        view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
+        .putExtra("title", listitem.getEvent_title())
+        .putExtra("image", listitem.getEvent_image())
+        .putExtra("desc", listitem.getEvent_detail())
+        .putExtra("link", listitem.getEvent_link())
+        .putExtra("place", listitem.getCity_event())
+        .putExtra("time", listitem.getEvent_time()));
+        ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
       }
     });
   }

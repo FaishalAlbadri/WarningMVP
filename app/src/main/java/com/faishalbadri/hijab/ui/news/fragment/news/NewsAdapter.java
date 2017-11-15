@@ -75,11 +75,11 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentNews.setClickable(true);
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
-      Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
-      i.putExtra("title", listitem.getIsi_judul());
-      i.putExtra("image", listitem.getIsi_gambar());
-      i.putExtra("desc", listitem.getIsi_keterangan());
-      v.getContext().startActivity(i);
+      v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
+      .putExtra("title", listitem.getIsi_judul())
+      .putExtra("image", listitem.getIsi_gambar())
+      .putExtra("desc", listitem.getIsi_keterangan()));
+      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
     });
   }
 

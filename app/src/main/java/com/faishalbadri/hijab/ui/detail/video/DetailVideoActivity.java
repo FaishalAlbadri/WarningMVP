@@ -15,9 +15,9 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
-import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.util.Server;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdRequest.Builder;
 import com.google.android.gms.ads.AdView;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -26,6 +26,7 @@ import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
 import com.google.android.youtube.player.YouTubePlayer.PlayerStyle;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +53,8 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   DetailVideoPresenter detailVideoPresenter;
   @BindView(R.id.ad_view_detail_video)
   AdView adViewDetailVideo;
+  @BindView(R.id.swipe_back_detail_video)
+  SwipeBackLayout swipeBackDetailVideo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +93,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   }
 
   private void setAdView() {
-    AdRequest adRequest = new AdRequest.Builder().build();
+    AdRequest adRequest = new Builder().build();
     adViewDetailVideo.loadAd(adRequest);
   }
 
@@ -150,9 +153,16 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
   }
 
+  private void setSwipeBack() {
+    swipeBackDetailVideo.setDirectionMode(SwipeBackLayout.FROM_LEFT);
+    swipeBackDetailVideo.setMaskAlpha(125);
+    swipeBackDetailVideo.setSwipeBackFactor(0.5f);
+  }
+
   @Override
   public void onBackPressed() {
     super.onBackPressed();
+    setSwipeBack();
     finish();
   }
 }

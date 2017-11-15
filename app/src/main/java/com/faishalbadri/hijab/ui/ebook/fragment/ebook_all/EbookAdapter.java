@@ -7,7 +7,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -61,15 +60,15 @@ public class EbookAdapter extends Adapter<ViewHolder> {
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
     holder.constraintItemGrid.setForeground(getSelectedItemDrawable());
     holder.constraintItemGrid.setOnClickListener(view -> {
-      Intent i = new Intent(view.getContext(), DetailEbookActivity.class);
-      i.putExtra("name", listitem.getJudul_ebook());
-      i.putExtra("image", listitem.getGambar_ebook());
-      i.putExtra("description", listitem.getDescription());
-      i.putExtra("link", listitem.getLink());
-      i.putExtra("publisher", listitem.getPenerbit_ebook());
-      i.putExtra("writer", listitem.getPenulis_ebook());
-      i.putExtra("time", listitem.getTanggal_terbit_ebook());
-      view.getContext().startActivity(i);
+      view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
+      .putExtra("name", listitem.getJudul_ebook())
+      .putExtra("image", listitem.getGambar_ebook())
+      .putExtra("description", listitem.getDescription())
+      .putExtra("link", listitem.getLink())
+      .putExtra("publisher", listitem.getPenerbit_ebook())
+      .putExtra("writer", listitem.getPenulis_ebook())
+      .putExtra("time", listitem.getTanggal_terbit_ebook()));
+      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
     });
   }
 
