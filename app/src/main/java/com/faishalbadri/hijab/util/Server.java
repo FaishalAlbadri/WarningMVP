@@ -1,5 +1,7 @@
 package com.faishalbadri.hijab.util;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 /**

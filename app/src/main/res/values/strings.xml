@@ -1,6 +1,6 @@
 <resources>
   <string name="email_developer">pinkyhijabdeveloper@gmail.com</string>
-  <string name="app_name">Pinky Hijab</string>
+  <string name="app_name">Pink Muslimah</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="text_email">Email</string>
   <string name="text_username">Username</string>
@@ -29,22 +29,22 @@
   <string name="text_rate">Rate This App</string>
   <string name="text_sponsor">Sponsored By</string>
 
-  <string name="text_pinky_hijab_news">Pinky Hijab News</string>
+  <string name="text_pinky_hijab_news">Pink Muslimah News</string>
   <string name="text_pinky_hijab_news_detail">Get the last update news for women in this app</string>
 
-  <string name="text_pinky_hijab_voting">Pinky Hijab Voting</string>
+  <string name="text_pinky_hijab_voting">Pink Muslimah Vote</string>
   <string name="text_pinky_hijab_voting_detail">Dont forget to support and like</string>
 
-  <string name="text_pinky_hijab_community">Pinky Hijab Community</string>
+  <string name="text_pinky_hijab_community">Pink Muslimah Community</string>
   <string name="text_pinky_hijab_community_detail">History of Pinky Hijab Community from beginning</string>
 
-  <string name="text_pinky_hijab_video">Pinky Hijab Video</string>
+  <string name="text_pinky_hijab_video">Pink Muslimah TV</string>
   <string name="text_pinky_hijab_video_detail">Get the last update video for women in this app</string>
 
-  <string name="text_pinky_hijab_ebook">Pinky Hijab E-book</string>
+  <string name="text_pinky_hijab_ebook">Pink Muslimah E-book</string>
   <string name="text_pinky_hijab_ebook_detail">Get the last update E-book for women in this app</string>
 
-  <string name="text_pinky_hijab_event">Pinky Hijab Event</string>
+  <string name="text_pinky_hijab_event">Pink Muslimah Event</string>
   <string name="text_pinky_hijab_event_detail">Get the last update event for women in this app</string>
 
   <string name="text_other_kritik_saran">Feedback</string>
@@ -52,6 +52,8 @@
   <string name="text_other_share">Share This App</string>
   <string name="text_other_about">About</string>
   <string name="text_instruction_type">Type in here</string>
+  <string name="text_next">Next</string>
+  <string name="text_skip">Skip</string>
 
   <string name="text_share_app_subject">Share This App To Your Friends</string>
   <string name="text_share_app_text">Get the last update women news from Pinky Hijab</string>

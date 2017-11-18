@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -17,13 +19,15 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
 import com.faishalbadri.hijab.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
-import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
+import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.voting.VotingActivity;
 import java.util.List;
 
@@ -54,6 +58,8 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     TextView textviewTitleDetailFragmentHomeAdapter;
     @BindView(R.id.cardview_news_fragment_home)
     CardView cardviewNewsFragmentHome;
+    @BindView(R.id.constraint_item_home)
+    ConstraintLayout constraintItemHome;
 
     public ViewHolder(View itemView) {
       super(itemView);
@@ -80,33 +86,38 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     event = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_event);
     ebook = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_ebook);
 
-
+    Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
+      @Override
+      public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+        holder.constraintItemHome.setBackground(resource);
+      }
+    });
     holder.textviewTitleFragmentHomeAdapter.setText(dataHomeFragment.getJudul());
-    holder.textviewTitleDetailFragmentHomeAdapter.setText(dataHomeFragment.getJudulDetail());
-    Glide.with(context).load(dataHomeFragment.getGambar())
-        .into(holder.imageviewFragmentHomeAdapter);
+    holder.textviewTitleFragmentHomeAdapter.setVisibility(View.GONE);
+    holder.textviewTitleDetailFragmentHomeAdapter.setVisibility(View.GONE);
+    holder.imageviewFragmentHomeAdapter.setVisibility(View.GONE);
     holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentHome.setClickable(true);
     holder.cardviewNewsFragmentHome.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
-          ((Activity)context).startActivity(new Intent(context, NewsActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).startActivity(new Intent(context, NewsActivity.class));
+          ((Activity) context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
-          ((Activity)context).startActivity(new Intent(context, VotingActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).startActivity(new Intent(context, VotingActivity.class));
+          ((Activity) context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
-          ((Activity)context).startActivity(new Intent(context, VideoActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).startActivity(new Intent(context, VideoActivity.class));
+          ((Activity) context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
 
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
-          ((Activity)context).startActivity(new Intent(context, EventActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).startActivity(new Intent(context, EventActivity.class));
+          ((Activity) context).finish();
         } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
-          ((Activity)context).startActivity(new Intent(context, EbookActivity.class));
-          ((Activity)context).finish();
+          ((Activity) context).startActivity(new Intent(context, EbookActivity.class));
+          ((Activity) context).finish();
         }
       }
     });

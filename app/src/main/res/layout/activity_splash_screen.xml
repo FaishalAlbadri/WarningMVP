@@ -4,31 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/background_image_login_register_activity_dummy"
-  tools:context="com.faishalbadri.hijab.ui.splash_screen.SplashScreen">
+  android:background="@drawable/splashscreen_logo"
+  tools:context="com.faishalbadri.hijab.ui.splash_screen.SplashScreen"/>
 
 
-  <!--<ImageView-->
-  <!--android:layout_width="0dp"-->
-  <!--android:layout_height="0dp"-->
-  <!--app:layout_constraintTop_toTopOf="parent"-->
-  <!--app:layout_constraintBottom_toBottomOf="parent"-->
-  <!--app:layout_constraintRight_toRightOf="parent"-->
-  <!--app:layout_constraintLeft_toLeftOf="parent"-->
-  <!--/>-->
-
-  <TextView
-    android:textStyle="bold"
-    android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/match_parent_size"
-    android:fontFamily="cursive"
-    android:gravity="center"
-    android:text="@string/app_name"
-    android:textColor="@color/color_white_ff"
-    android:textSize="@dimen/app_name_text_size"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>

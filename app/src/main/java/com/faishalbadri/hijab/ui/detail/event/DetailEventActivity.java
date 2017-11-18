@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,13 +16,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
 
 public class DetailEventActivity extends AppCompatActivity {
 
-  @BindView(R.id.button_back_general_toolbar_with_back_button)
-  ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.imageview_detail_event)
@@ -37,6 +37,11 @@ public class DetailEventActivity extends AppCompatActivity {
   String title, time, place, image, desc, link;
   @BindView(R.id.swipe_back_detail_event)
   SwipeBackLayout swipeBackDetailEvent;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.imageview_share_general_toolbar_with_back_button)
+  ImageView imageviewShareGeneralToolbarWithBackButton;
+  String share = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,7 @@ public class DetailEventActivity extends AppCompatActivity {
     textviewGeneralToolbarWithBackButton.setText("Deskripsi Event");
     textviewTitleDetailEvent.setText(title);
     textviewPlaceTimeEventDetail.setText(place + ", " + time);
+    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
     Glide.with(getApplicationContext())
         .load(Server.BASE_IMG + image)
@@ -65,10 +71,6 @@ public class DetailEventActivity extends AppCompatActivity {
     webViewDescriptionEventDetail.loadData(desc, "text/html", "uutf/-8");
   }
 
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
-    onBackPressed();
-  }
 
   @OnClick(R.id.button_register_detail_event)
   public void onButtonRegisterDetailEventClicked() {
@@ -87,5 +89,16 @@ public class DetailEventActivity extends AppCompatActivity {
     super.onBackPressed();
     setSwipeBack();
     finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.imageview_share_general_toolbar_with_back_button)
+  public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
+    IntentUtil intentUtil = new IntentUtil(this);
+    intentUtil.IntentShare("", share);
   }
 }

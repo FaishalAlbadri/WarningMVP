@@ -1,5 +1,7 @@
 package com.faishalbadri.hijab.repository.event.remote;
 
+import static java.lang.String.valueOf;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -35,11 +37,11 @@ public class EventDataRemote implements EventDataResource {
   @Override
   public void getEventResult(@NonNull EventGetCallback eventGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL), new Listener<String>() {
+    StringRequest stringRequest = new StringRequest(Method.GET, valueOf(URL), new Listener<String>() {
       @Override
       public void onResponse(String response) {
         try {
-          if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Event")) {
+          if (valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Event")) {
             try {
               PojoEvent pojoEvent = new Gson().fromJson(response,PojoEvent.class);
               eventGetCallback.onSuccesEvent(pojoEvent.getEvent(),context.getString(R.string.text_succes));
@@ -59,7 +61,7 @@ public class EventDataRemote implements EventDataResource {
     }, new ErrorListener() {
       @Override
       public void onErrorResponse(VolleyError error) {
-        eventGetCallback.onErrorEvent(String.valueOf(error));
+        eventGetCallback.onErrorEvent(valueOf(error));
       }
     });
     requestQueue.add(stringRequest);

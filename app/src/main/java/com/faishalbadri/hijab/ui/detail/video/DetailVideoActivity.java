@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
+import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
@@ -55,6 +57,9 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   AdView adViewDetailVideo;
   @BindView(R.id.swipe_back_detail_video)
   SwipeBackLayout swipeBackDetailVideo;
+  @BindView(R.id.imageview_share_general_toolbar_with_back_button)
+  ImageView imageviewShareGeneralToolbarWithBackButton;
+  String share = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     txtTitleVideoDetail.setText(title);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_video);
     txtDescriptionVideoDetail.setText(description);
+    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     youtubeVideoDetail.initialize(Server.YT_CODE, this);
     setAdView();
   }
@@ -136,10 +142,6 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     return youtubeVideoDetail;
   }
 
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    onBackPressed();
-  }
 
   @Override
   public void onSuccessDetailVideo(List<VideoBean> data, String msg) {
@@ -164,5 +166,16 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     super.onBackPressed();
     setSwipeBack();
     finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.imageview_share_general_toolbar_with_back_button)
+  public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
+    IntentUtil intentUtil = new IntentUtil(this);
+    intentUtil.IntentShare("", share);
   }
 }

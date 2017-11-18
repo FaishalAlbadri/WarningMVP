@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -58,7 +60,7 @@ public class EbookAdapter extends Adapter<ViewHolder> {
         .apply(options)
         .into(holder.imageViewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
-    holder.constraintItemGrid.setForeground(getSelectedItemDrawable());
+    holder.constraintItemGrid.setBackground(getSelectedItemDrawable());
     holder.constraintItemGrid.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
       .putExtra("name", listitem.getJudul_ebook())

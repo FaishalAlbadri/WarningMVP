@@ -5,6 +5,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
+import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
@@ -26,8 +28,6 @@ import java.util.List;
 
 public class DetailNewsActivity extends AppCompatActivity implements DetailNewsView {
 
-  @BindView(R.id.button_back_general_toolbar_with_back_button)
-  ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.txt_title_news_detail)
@@ -40,11 +40,16 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   RecyclerView recyclerviewActivityNewsDetail;
   @BindView(R.id.swipe_back_detail_news)
   SwipeBackLayout swipeBackDetailNews;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.imageview_share_general_toolbar_with_back_button)
+  ImageView imageviewShareGeneralToolbarWithBackButton;
   private String title, image, desc;
   private static final String SAVE_DATA_NEWS_DETAIL = "save";
   DetailNewsPresenter detailNewsPresenter;
   DetailNewsAdapter detailNewsAdapter;
   ArrayList<IsiBean> resultItem;
+  String share = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     image = getIntent().getStringExtra("image");
     desc = getIntent().getStringExtra("desc");
     txtTitleNewsDetail.setText(title);
+    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_news);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(500, 500);
@@ -89,11 +95,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
     super.onSaveInstanceState(outState, outPersistentState);
     outState.putParcelableArrayList(SAVE_DATA_NEWS_DETAIL, resultItem);
-  }
-
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    onBackPressed();
   }
 
   @Override
@@ -119,5 +120,16 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   @Override
   public void onError(String msg) {
     Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.imageview_share_general_toolbar_with_back_button)
+  public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
+    IntentUtil intentUtil = new IntentUtil(this);
+    intentUtil.IntentShare("", share);
   }
 }

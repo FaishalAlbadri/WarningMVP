@@ -77,7 +77,6 @@
     <activity
       android:name=".ui.detail.ebook.DetailEbookActivity"
       android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar" />
       android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.ebook_by_category.EbookByCategoryActivity"
@@ -86,13 +85,11 @@
     <activity
       android:name=".ui.detail.event.DetailEventActivity"
       android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar" />
       android:theme="@style/AppTheme.NoActionBar.swipe" />
     <activity
       android:name=".ui.event_by_city.EventByCityActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
       android:name=".ui.search_ebook.SearchEbookActivity"
       android:screenOrientation="portrait" />
@@ -105,11 +102,16 @@
     <activity
       android:name=".ui.search_video.SearchVideoActivity"
       android:screenOrientation="portrait" />
-
     <activity
       android:name=".ui.sponsor.SponsorActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ui.intro.IntroActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity android:name=".ui.detail.read_ebook.ReadEbook" android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 
 </manifest>

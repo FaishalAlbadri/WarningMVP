@@ -1,7 +1,9 @@
 package com.faishalbadri.hijab.ui.detail.ebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,14 +15,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.ui.detail.read_ebook.ReadEbook;
+import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
 
 public class DetailEbookActivity extends AppCompatActivity {
 
-  String title, image, description, link, publisher, time, writer;
-  @BindView(R.id.button_back_general_toolbar_with_back_button)
-  ImageView buttonBackGeneralToolbarWithBackButton;
+  String title, image, description, link, publisher, time, writer, share = "";
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.imageview_detail_ebook)
@@ -39,6 +41,10 @@ public class DetailEbookActivity extends AppCompatActivity {
   TextView textviewTimeDetailEbook;
   @BindView(R.id.swipe_back_detail_ebook)
   SwipeBackLayout swipeBackDetailEbook;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBackGeneralToolbarWithBackButton;
+  @BindView(R.id.imageview_share_general_toolbar_with_back_button)
+  ImageView imageviewShareGeneralToolbarWithBackButton;
 
 
   @Override
@@ -60,6 +66,7 @@ public class DetailEbookActivity extends AppCompatActivity {
     textviewTitleDetalEbook.setText(title);
     textviewPublisherDetailEbook.setText(publisher);
     textviewTimeDetailEbook.setText(time);
+    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewWriterDetailEbook.setText(writer);
     textviewGeneralToolbarWithBackButton.setText("Deskripsi Ebook");
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
@@ -83,13 +90,20 @@ public class DetailEbookActivity extends AppCompatActivity {
     swipeBackDetailEbook.setSwipeBackFactor(0.5f);
   }
 
+
+  @OnClick(R.id.button_read_ebok_detail_ebook)
+  public void onButtonReadEbokDetailEbookClicked() {
+    startActivity(new Intent(getApplicationContext(), ReadEbook.class).putExtra("ebook", link));
+  }
+
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
   public void onButtonBackGeneralToolbarWithBackButtonClicked() {
     onBackPressed();
   }
 
-  @OnClick(R.id.button_read_ebok_detail_ebook)
-  public void onButtonReadEbokDetailEbookClicked() {
-
+  @OnClick(R.id.imageview_share_general_toolbar_with_back_button)
+  public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
+    IntentUtil intentUtil = new IntentUtil(this);
+    intentUtil.IntentShare("", share);
   }
 }

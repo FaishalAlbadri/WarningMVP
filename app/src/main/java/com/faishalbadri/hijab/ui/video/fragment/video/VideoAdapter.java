@@ -89,7 +89,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
         video = listitem.getVideo().substring(24, listitem.getVideo().length());
       }
 
-      v.getContext().startActivity(new Intent(v.getContext(), DetailVideoActivity.class)
+      ((Activity)context).startActivity(new Intent(context, DetailVideoActivity.class)
       .putExtra("title", listitem.getJudul_video())
       .putExtra("video", video)
       .putExtra("description", listitem.getDescription())

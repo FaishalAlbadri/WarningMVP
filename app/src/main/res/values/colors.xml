@@ -5,19 +5,47 @@
   <!--<color name="colorPrimaryDark">#448AFF</color>-->
   <!--<color name="colorAccent">#000</color>-->
 
-  <color name="colorPrimary">#448AFF</color>
-  <color name="colorPrimaryDark">#2979ff</color>
-  <color name="colorAccent">#82B1FF</color>
+  <!--<color name="colorPrimary">#448AFF</color>-->
+  <!--<color name="colorPrimaryDark">#2979ff</color>-->
+  <!--<color name="colorAccent">#82B1FF</color>-->
 
-  <!--<color name="colorPrimary">#FF4081</color>-->
-  <!--<color name="colorPrimaryDark">#F50057</color>-->
-  <!--<color name="colorAccent">#FF80AB</color>-->
+  <color name="colorPrimary">#FF4081</color>
+  <color name="colorPrimaryDark">#F50057</color>
+  <color name="colorAccent">#FF80AB</color>
 
   <color name="color_grey_oppacity_37">#37aaaaaa</color>
   <color name="color_grey_opacity_61">#616161</color>
   <color name="color_background_duration">#a0333333</color>
   <color name="color_white_ff">#ffffff</color>
 
+  <!-- dots inactive colors -->
+  <color name="dot_dark_screen1">#fff</color>
+  <color name="dot_dark_screen2">#fff</color>
+  <color name="dot_dark_screen3">#fff</color>
+  <color name="dot_dark_screen4">#fff</color>
+  <color name="dot_dark_screen5">#fff</color>
 
+  <!-- dots active colors -->
+  <color name="dot_light_screen1">#aaa</color>
+  <color name="dot_light_screen2">#aaa</color>
+  <color name="dot_light_screen3">#aaa</color>
+  <color name="dot_light_screen4">#aaa</color>
+  <color name="dot_light_screen5">#aaa</color>
+
+  <array name="array_dot_active">
+    <item>@color/dot_light_screen1</item>
+    <item>@color/dot_light_screen2</item>
+    <item>@color/dot_light_screen3</item>
+    <item>@color/dot_light_screen4</item>
+    <item>@color/dot_light_screen5</item>
+  </array>
+
+  <array name="array_dot_inactive">
+    <item>@color/dot_dark_screen1</item>
+    <item>@color/dot_dark_screen2</item>
+    <item>@color/dot_dark_screen3</item>
+    <item>@color/dot_dark_screen4</item>
+    <item>@color/dot_dark_screen5</item>
+  </array>
 
 </resources>

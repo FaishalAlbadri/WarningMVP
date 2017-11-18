@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity;
 import java.util.HashMap;
@@ -14,8 +15,8 @@ import java.util.HashMap;
 
 public class SessionManager {
 
-  SharedPreferences pref;
-  SharedPreferences.Editor editor;
+  SharedPreferences pref, prefIntro;
+  SharedPreferences.Editor editor, editorIntro;
   Context context;
   int mode = 0;
 
@@ -26,14 +27,18 @@ public class SessionManager {
   public static final String key_image = "keyimage";
   public static final String key_id = "keyid";
 
+  private static final String pref_intro = "intro-welcome";
+  private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
   public SessionManager(Context context) {
     this.context = context;
     pref = context.getSharedPreferences(pref_name, mode);
+    prefIntro = context.getSharedPreferences(pref_intro, mode);
     editor = pref.edit();
+    editorIntro = prefIntro.edit();
   }
 
-  public void createSession(String email,String id, String username, String image) {
+  public void createSession(String email, String id, String username, String image) {
     editor.putBoolean(is_login, true);
     editor.putString(key_email, email);
     editor.putString(key_username, username);
@@ -70,7 +75,7 @@ public class SessionManager {
     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(i);
-    ((Activity)context).finish();
+    ((Activity) context).finish();
   }
 
   public void clear() {
@@ -85,6 +90,17 @@ public class SessionManager {
     user.put(key_username, pref.getString(key_username, null));
     user.put(key_image, pref.getString(key_image, null));
     return user;
+  }
+
+
+  //buat Intro
+  public void setFirstTimeLaunch(boolean isFirstTime) {
+    editorIntro.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+    editorIntro.commit();
+  }
+
+  public boolean isFirstTimeLaunch() {
+    return prefIntro.getBoolean(IS_FIRST_TIME_LAUNCH, true);
   }
 
 }

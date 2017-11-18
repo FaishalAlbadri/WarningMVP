@@ -1,11 +1,29 @@
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/recyclerview_fragment_home"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:listitem="@layout/item_home"
-  android:paddingTop="@dimen/margin_other_item"
-  android:paddingBottom="@dimen/margin_other_item"
-  tools:context="com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment" />
+  tools:context="com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment">
+
+  <com.faishalbadri.hijab.util.slider.SliderLayout
+    android:id="@+id/slider_fragment_home"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/slider_size"
+    android:padding="@dimen/padding_widget"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerview_fragment_home"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/slider_fragment_home" />
+
+</android.support.constraint.ConstraintLayout>
 
 

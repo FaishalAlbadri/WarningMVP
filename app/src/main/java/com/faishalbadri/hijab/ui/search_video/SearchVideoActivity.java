@@ -11,6 +11,9 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +42,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
     setContentView(R.layout.activity_search_video);
     ButterKnife.bind(this);
     setView();
+
   }
 
   private void setView() {
