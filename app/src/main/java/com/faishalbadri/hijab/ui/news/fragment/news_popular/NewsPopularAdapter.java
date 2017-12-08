@@ -78,7 +78,7 @@ public class NewsPopularAdapter extends Adapter<NewsPopularAdapter.ViewHolder> {
       @Override
       public void onClick(View v) {
         v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-        .putExtra("title", listitem.getIsi_gambar())
+        .putExtra("title", listitem.getIsi_judul())
         .putExtra("image", listitem.getIsi_gambar())
         .putExtra("desc", listitem.getIsi_keterangan()));
         ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
