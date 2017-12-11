@@ -4,8 +4,8 @@
   android:id="@+id/cardview_news_fragment_news"
   android:layout_width="match_parent"
   android:layout_height="@dimen/cardview_size"
-  android:layout_marginTop="@dimen/one"
-  android:layout_marginBottom="@dimen/one">
+  android:layout_marginTop="@dimen/two"
+  android:layout_marginBottom="@dimen/two">
 
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
@@ -18,21 +18,24 @@
       android:scaleType="fitXY"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
       android:id="@+id/textview_title_news_item"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:padding="@dimen/padding_widget"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
       android:ellipsize="end"
-      android:lines="4"
+      android:gravity="top"
+      android:lines="5"
+      android:maxLines="5"
       android:textColor="@color/colorPrimary"
       android:textSize="@dimen/normal_tittle_text_size"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@+id/imageview_news_item"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 

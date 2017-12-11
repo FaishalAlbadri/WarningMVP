@@ -23,8 +23,8 @@ import org.json.JSONObject;
 
 public class EventCityDataRemote implements EventCityDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "getTbCityEvent.php";
+  Context context;
 
   public EventCityDataRemote(Context context) {
     this.context = context;
@@ -38,10 +38,12 @@ public class EventCityDataRemote implements EventCityDataResource {
       @Override
       public void onResponse(String response) {
         try {
-          if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua city Event")) {
+          if (String.valueOf(new JSONObject(response).getString("msg"))
+              .equals("Data Semua city Event")) {
             try {
-              PojoCityEvent pojoCityEvent = new Gson().fromJson(response,PojoCityEvent.class);
-              eventCityGetCallback.onSuccesEventCity(pojoCityEvent.getCity_event(),context.getString(R.string.text_succes));
+              PojoCityEvent pojoCityEvent = new Gson().fromJson(response, PojoCityEvent.class);
+              eventCityGetCallback.onSuccesEventCity(pojoCityEvent.getCity_event(),
+                  context.getString(R.string.text_succes));
             } catch (Exception e) {
               e.printStackTrace();
             }

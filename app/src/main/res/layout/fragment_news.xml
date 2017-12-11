@@ -1,33 +1,39 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/refresh_fragment_news"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context="com.faishalbadri.hijab.ui.news.fragment.news.NewsFragment">
 
-  <RelativeLayout
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-
-    <com.faishalbadri.hijab.util.slider.SliderLayout
-      android:id="@+id/slider_fragment_news"
+    <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="@dimen/slider_size"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      app:layout_scrollFlags="scroll|exitUntilCollapsed"
-      android:padding="@dimen/padding_widget"/>
+      android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/recyclerview_fragment_news"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_below="@+id/slider_fragment_news"
-      android:nestedScrollingEnabled="false" />
+      <com.faishalbadri.hijab.util.slider.SliderLayout
+        android:id="@+id/slider_fragment_news"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/slider_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/padding_widget"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"/>
 
-  </RelativeLayout>
+      <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_fragment_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/slider_fragment_news"
+        android:nestedScrollingEnabled="false"/>
 
-</ScrollView>
+    </RelativeLayout>
+
+  </ScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
 

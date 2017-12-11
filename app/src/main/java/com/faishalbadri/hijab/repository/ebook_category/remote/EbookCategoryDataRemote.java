@@ -16,10 +16,10 @@ import com.google.gson.Gson;
  * Created by fikriimaduddin on 10/11/17.
  */
 
-public class EbookCategoryDataRemote implements EbookCategoryDataResource{
+public class EbookCategoryDataRemote implements EbookCategoryDataResource {
 
+  private static final String URL_CATEGORY_EBOOK = Server.BASE_URL + "getTbKategoriEbook.php";
   private Context context;
-  private static final String URL_CATEGORY_EBOOK = Server.BASE_URL+"getTbKategoriEbook.php";
 
   public EbookCategoryDataRemote(Context context) {
     this.context = context;
@@ -28,16 +28,24 @@ public class EbookCategoryDataRemote implements EbookCategoryDataResource{
   @Override
   public void getEbookCategoryList(@NonNull EbookCategoryGetCallBack ebookCategoryGetCallBack) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL_CATEGORY_EBOOK),
+    StringRequest stringRequest = new StringRequest(Request.Method.GET,
+        String.valueOf(URL_CATEGORY_EBOOK),
         response -> {
-          final PojoEbookCategory pojoEbookCategory = new Gson().fromJson(response, PojoEbookCategory.class);
+          final PojoEbookCategory pojoEbookCategory = new Gson()
+              .fromJson(response, PojoEbookCategory.class);
           Log.i("response", response);
-          if (pojoEbookCategory == null) {
-            ebookCategoryGetCallBack.onNullCategoryEbook("Internal Server error");
-          } else {
-            ebookCategoryGetCallBack.onSuccessCategoryEbook(pojoEbookCategory.getKategori_ebook(), "Data Semua Kategori");
-            Log.i(pojoEbookCategory.getKategori_ebook().toString(), "Data Semua Kategori");
+          try {
+            if (pojoEbookCategory == null) {
+              ebookCategoryGetCallBack.onNullCategoryEbook("Internal Server error");
+            } else {
+              ebookCategoryGetCallBack.onSuccessCategoryEbook(pojoEbookCategory.getKategori_ebook(),
+                  "Data Semua Kategori");
+              Log.i(pojoEbookCategory.getKategori_ebook().toString(), "Data Semua Kategori");
+            }
+          } catch (Exception e) {
+
           }
+
         }, error -> ebookCategoryGetCallBack.onErrorCategoryEbook(String.valueOf(error)));
     requestQueue.add(stringRequest);
   }

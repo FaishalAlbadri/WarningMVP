@@ -19,8 +19,8 @@ import org.json.JSONObject;
 
 public class DetailNewsDataRemote implements DetailNewsDataResource {
 
+  private static final String URL = Server.BASE_URL + "getTbIsiNewRelated.php";
   Context context;
-  private static final String URL = Server.BASE_URL+"getTbIsiNewRelated.php";
 
   public DetailNewsDataRemote(Context context) {
     this.context = context;
@@ -30,21 +30,24 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
   public void getDetailNewsPopularResult(
       @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL), response -> {
-      try {
-        if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Isi")) {
+    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL),
+        response -> {
           try {
-            final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
-            detailNewsPopularGetCallback.onSuccesDetailNewsPopular(pojoNews.getIsi(), "Success");
-          } catch (Exception e) {
+            if (String.valueOf(new JSONObject(response).getString("msg"))
+                .equals("Data Semua Isi")) {
+              try {
+                final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
+                detailNewsPopularGetCallback
+                    .onSuccesDetailNewsPopular(pojoNews.getIsi(), "Success");
+              } catch (Exception e) {
 
+              }
+            } else {
+              detailNewsPopularGetCallback.onErrorDetailNewsPopular("Error");
+            }
+          } catch (JSONException e) {
           }
-        }else {
-          detailNewsPopularGetCallback.onErrorDetailNewsPopular("Error");
-        }
-      } catch (JSONException e) {
-      }
-    }, error -> detailNewsPopularGetCallback.onErrorDetailNewsPopular(String.valueOf(error)));
+        }, error -> detailNewsPopularGetCallback.onErrorDetailNewsPopular(String.valueOf(error)));
 
     requestQueue.add(stringRequest);
   }

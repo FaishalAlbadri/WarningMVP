@@ -21,8 +21,8 @@ import com.google.gson.Gson;
 
 public class VotingDataRemote implements VotingDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "getTbVoting.php";
+  Context context;
 
 
   public VotingDataRemote(Context context) {
@@ -37,12 +37,15 @@ public class VotingDataRemote implements VotingDataResource {
           @Override
           public void onResponse(String response) {
             final PojoVoting pojoVoting = new Gson().fromJson(response, PojoVoting.class);
+            try {
+              if (pojoVoting == null) {
+                votingGetCallback.onDataVotingNull("Data Voting Null");
+              } else {
+                votingGetCallback.onSuccesVoting(pojoVoting.getVoting(), "Succes");
+                Log.i("response", response);
+              }
+            } catch (Exception e) {
 
-            if (pojoVoting == null) {
-              votingGetCallback.onDataVotingNull("Data Voting Null");
-            } else {
-              votingGetCallback.onSuccesVoting(pojoVoting.getVoting(),"Succes");
-              Log.i("response",response);
             }
           }
         }, new ErrorListener() {

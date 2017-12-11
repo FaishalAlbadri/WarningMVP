@@ -3,6 +3,8 @@ package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,22 +14,20 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.request.RequestOptions;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView.OnSliderClickListener;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.data.PojoSlider;
 import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.slider.ChildAnimationExample;
 import com.faishalbadri.hijab.util.slider.SliderLayout;
-import com.squareup.picasso.Picasso;
+import com.faishalbadri.hijab.util.slider.SliderLayout.PresetIndicators;
+import com.faishalbadri.hijab.util.slider.SliderLayout.Transformer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,15 +37,17 @@ import java.util.List;
  */
 public class NewsFragment extends Fragment implements newsView {
 
+  private static final String save_news = "saveNews";
   @BindView(R.id.recyclerview_fragment_news)
   RecyclerView recyclerviewFragmentNews;
   NewsPresenter newsPresenter;
   ArrayList<IsiBean> list_data;
   NewsAdapter newsAdapter;
-  private static final String save_news = "saveNews";
   @BindView(R.id.slider_fragment_news)
   SliderLayout sliderFragmentNews;
   TextSliderView textSliderView;
+  @BindView(R.id.refresh_fragment_news)
+  SwipeRefreshLayout refreshFragmentNews;
 
 
   public NewsFragment() {
@@ -75,6 +77,15 @@ public class NewsFragment extends Fragment implements newsView {
       newsPresenter.getDataNews();
       newsPresenter.getDataSlider();
     }
+
+    refreshFragmentNews.setOnRefreshListener(new OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        refreshFragmentNews.setRefreshing(false);
+        newsPresenter.getDataNews();
+        newsPresenter.getDataSlider();
+      }
+    });
     return view;
   }
 
@@ -86,6 +97,11 @@ public class NewsFragment extends Fragment implements newsView {
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentNews.setLayoutManager(llm);
     recyclerviewFragmentNews.setAdapter(newsAdapter);
+    refreshFragmentNews.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override
@@ -109,12 +125,11 @@ public class NewsFragment extends Fragment implements newsView {
   @Override
   public void onSuccesSlider(List<SliderBean> dataSlider, String msg) {
 
-    Log.i("responsesucces",msg);
+    Log.i("responsesucces", msg);
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.put(dataSlider.get(a).getSlider_judul(),
           Server.BASE_IMG + dataSlider.get(a).getSlider_gambar());
-
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());
@@ -124,11 +139,12 @@ public class NewsFragment extends Fragment implements newsView {
         textSliderView
             .description(name)
             .image(image)
-            .setScaleType(BaseSliderView.ScaleType.CenterCrop)
-            .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+            .setScaleType(ScaleType.CenterCrop)
+            .setOnSliderClickListener(new OnSliderClickListener() {
               @Override
               public void onSliderClick(BaseSliderView slider) {
-                Toast.makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), slider.getBundle().get("extra") + "",
+                    Toast.LENGTH_SHORT).show();
               }
             });
 
@@ -137,8 +153,8 @@ public class NewsFragment extends Fragment implements newsView {
 
         sliderFragmentNews.addSlider(textSliderView);
       }
-      sliderFragmentNews.setPresetTransformer(SliderLayout.Transformer.Default);
-      sliderFragmentNews.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+      sliderFragmentNews.setPresetTransformer(Transformer.Default);
+      sliderFragmentNews.setPresetIndicator(PresetIndicators.Center_Bottom);
       sliderFragmentNews.setCustomAnimation(new ChildAnimationExample());
       sliderFragmentNews.setDuration(2000);
       sliderFragmentNews.addOnPageChangeListener(getActivity());
@@ -147,6 +163,7 @@ public class NewsFragment extends Fragment implements newsView {
 
   @Override
   public void onErrorSlider(String msg) {
-    Log.i("responseerror",msg);
+    Log.i("responseerror", msg);
   }
+
 }

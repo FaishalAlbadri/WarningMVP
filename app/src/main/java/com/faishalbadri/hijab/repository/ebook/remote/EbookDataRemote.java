@@ -16,10 +16,10 @@ import com.google.gson.Gson;
  * Created by fikriimaduddin on 11/3/17.
  */
 
-public class EbookDataRemote implements EbookDataResource{
+public class EbookDataRemote implements EbookDataResource {
 
+  private static final String URL_EBOOK = Server.BASE_URL + "getTbEbook.php";
   private Context context;
-  private static final String URL_EBOOK = Server.BASE_URL+"getTbEbook.php";
 
   public EbookDataRemote(Context context) {
     this.context = context;
@@ -32,12 +32,17 @@ public class EbookDataRemote implements EbookDataResource{
         response -> {
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
           Log.i("response", response);
-          if (pojoEbook == null) {
-            ebookGetCallBack.onNullEbook("Internal Server error");
-          } else {
-            ebookGetCallBack.onSuccessEbook(pojoEbook.getEbook(), "Data Semua Ebook");
-            Log.i(pojoEbook.getEbook().toString(), "Data Semua Ebook");
+          try {
+            if (pojoEbook == null) {
+              ebookGetCallBack.onNullEbook("Internal Server error");
+            } else {
+              ebookGetCallBack.onSuccessEbook(pojoEbook.getEbook(), "Data Semua Ebook");
+              Log.i(pojoEbook.getEbook().toString(), "Data Semua Ebook");
+            }
+          } catch (Exception e) {
+
           }
+
         }, error -> ebookGetCallBack.onErrorEbook(String.valueOf(error)));
     requestQueue.add(stringRequest);
   }

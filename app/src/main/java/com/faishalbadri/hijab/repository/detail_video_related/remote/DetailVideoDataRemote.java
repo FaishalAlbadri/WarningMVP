@@ -17,10 +17,10 @@ import org.json.JSONObject;
  * Created by fikriimaduddin on 11/6/17.
  */
 
-public class DetailVideoDataRemote implements DetailVideoDataResource{
+public class DetailVideoDataRemote implements DetailVideoDataResource {
 
+  private static final String URL_VIDEO = Server.BASE_URL + "getVideoLimit.php";
   private Context context;
-  private static final String URL_VIDEO = Server.BASE_URL+"getVideoLimit.php";
 
   public DetailVideoDataRemote(Context context) {
     this.context = context;
@@ -32,7 +32,8 @@ public class DetailVideoDataRemote implements DetailVideoDataResource{
     StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL_VIDEO),
         response -> {
           try {
-            if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Video")) {
+            if (String.valueOf(new JSONObject(response).getString("msg"))
+                .equals("Data Semua Video")) {
               try {
                 final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
                 detailVideoGetDataCallBack.onSuccessDetailVideo(pojoVideo.getVideo(), "Success");

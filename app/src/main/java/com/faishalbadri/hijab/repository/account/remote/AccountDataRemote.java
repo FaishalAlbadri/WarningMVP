@@ -24,11 +24,11 @@ import net.gotev.uploadservice.UploadNotificationConfig;
  * Created by fikriimaduddin on 10/30/17.
  */
 
-public class AccountDataRemote implements AccountDataResource{
+public class AccountDataRemote implements AccountDataResource {
 
+  private static final String URL = Server.BASE_URL + "getUser.php";
+  private static final String URL_EDIT_IMAGE = Server.BASE_URL + "uploadimage.php";
   Context context;
-  private static final String URL = Server.BASE_URL+ "getUser.php";
-  private static final String URL_EDIT_IMAGE = Server.BASE_URL+ "uploadimage.php";
 
   public AccountDataRemote(Context context) {
     this.context = context;
@@ -36,20 +36,26 @@ public class AccountDataRemote implements AccountDataResource{
 
 
   @Override
-  public void getAccountResult(final String email, @NonNull final AccountGetCallback accountGetCallback) {
+  public void getAccountResult(final String email,
+      @NonNull final AccountGetCallback accountGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
       final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
-      if (pojoUser == null) {
-        accountGetCallback.onError("No Account");
-      } else {
-        for (int a = 0; a < pojoUser.getUser().size(); a++) {
-          String id = pojoUser.getUser().get(a).getId_user();
-          String username = pojoUser.getUser().get(a).getUsername();
-          String image = pojoUser.getUser().get(a).getImg_user();
-          accountGetCallback.onSucces(pojoUser.getUser(), username, image, id);
+      try {
+        if (pojoUser == null) {
+          accountGetCallback.onError("No Account");
+        } else {
+          for (int a = 0; a < pojoUser.getUser().size(); a++) {
+            String id = pojoUser.getUser().get(a).getId_user();
+            String username = pojoUser.getUser().get(a).getUsername();
+            String image = pojoUser.getUser().get(a).getImg_user();
+            accountGetCallback.onSucces(pojoUser.getUser(), username, image, id);
+          }
         }
+      } catch (Exception e) {
+
       }
+
     }, error -> accountGetCallback.onError(String.valueOf(error))) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
@@ -62,7 +68,8 @@ public class AccountDataRemote implements AccountDataResource{
   }
 
   @Override
-  public void getEditImageResult(String id,String path, @NonNull final EditImageGetCallback editImageGetCallback) {
+  public void getEditImageResult(String id, String path,
+      @NonNull final EditImageGetCallback editImageGetCallback) {
     try {
       String uploadId = UUID.randomUUID().toString();
       new MultipartUploadRequest(context, uploadId, URL_EDIT_IMAGE)
