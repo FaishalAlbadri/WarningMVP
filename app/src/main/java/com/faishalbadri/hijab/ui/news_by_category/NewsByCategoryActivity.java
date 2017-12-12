@@ -2,6 +2,8 @@ package com.faishalbadri.hijab.ui.news_by_category;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +32,9 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   String id, title;
   NewsByCategoryAdapter newsByCategoryAdapter;
   NewsByCategoryPresenter newsByCategoryPresenter;
-  ArrayList<PojoNews.IsiBean> list_data;
+  ArrayList<IsiBean> list_data;
+  @BindView(R.id.refresh_news_by_category)
+  SwipeRefreshLayout refreshNewsByCategory;
 
 
   @Override
@@ -40,7 +44,7 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<PojoNews.IsiBean> resultArray = savedInstanceState
+      ArrayList<IsiBean> resultArray = savedInstanceState
           .getParcelableArrayList(save_news_category);
       this.list_data.clear();
       this.list_data.addAll(resultArray);
@@ -48,6 +52,14 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     } else {
       newsByCategoryPresenter.getDataNewsByCategory(id);
     }
+
+    refreshNewsByCategory.setOnRefreshListener(new OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        refreshNewsByCategory.setRefreshing(false);
+        newsByCategoryPresenter.getDataNewsByCategory(id);
+      }
+    });
   }
 
   private void setView() {
@@ -61,6 +73,11 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     newsByCategoryAdapter = new NewsByCategoryAdapter(this, list_data);
     recyclerviewActivityNewsByCategory.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivityNewsByCategory.setAdapter(newsByCategoryAdapter);
+    refreshNewsByCategory.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override

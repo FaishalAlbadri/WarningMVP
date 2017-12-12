@@ -1,11 +1,14 @@
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/recyclerview_activity_ebook"
+  android:id="@+id/refresh_fragment_ebook"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookFragment">
+  tools:context="com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookFragment">
 
-  <!-- TODO: Update blank fragment layout -->
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerview_activity_ebook"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 
-
-</android.support.v7.widget.RecyclerView>
+</android.support.v4.widget.SwipeRefreshLayout>

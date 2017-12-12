@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.voting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,8 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
+  @BindView(R.id.refresh_voting)
+  SwipeRefreshLayout refreshVoting;
 
 
   @Override
@@ -48,6 +51,11 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     } else {
       votingPresenter.getDataVoting();
     }
+
+    refreshVoting.setOnRefreshListener(() -> {
+      refreshVoting.setRefreshing(false);
+      votingPresenter.getDataVoting();
+    });
   }
 
   private void setView() {
@@ -61,6 +69,11 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     voting.setOrientation(GridLayoutManager.VERTICAL);
     recyclerviewActivityVoting.setLayoutManager(voting);
     recyclerviewActivityVoting.setAdapter(votingAdapter);
+    refreshVoting.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override

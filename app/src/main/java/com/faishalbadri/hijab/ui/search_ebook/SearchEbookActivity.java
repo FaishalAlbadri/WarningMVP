@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
-import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter;
+import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import java.util.ArrayList;
 import java.util.List;

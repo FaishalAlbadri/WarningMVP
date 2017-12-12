@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.ebook_by_category;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +35,8 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   EbookByCategoryPresenter ebookCategoryPresenter;
   EbookByCategoryAdapter adapter;
   ArrayList<EbookBean> resultItem;
+  @BindView(R.id.refresh_ebook_by_category)
+  SwipeRefreshLayout refreshEbookByCategory;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,12 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     ButterKnife.bind(this);
     setView();
     ebookCategoryPresenter.getDataEbookByCategory(id);
+
+    refreshEbookByCategory.setOnRefreshListener(() -> {
+      refreshEbookByCategory.setRefreshing(false);
+      ebookCategoryPresenter.getDataEbookByCategory(id);
+
+    });
   }
 
   @Override
@@ -62,6 +71,11 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     adapter = new EbookByCategoryAdapter(this, resultItem);
     recyclerviewActivityEbookByCategory.setLayoutManager(new GridLayoutManager(this, 3));
     recyclerviewActivityEbookByCategory.setAdapter(adapter);
+    refreshEbookByCategory.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override

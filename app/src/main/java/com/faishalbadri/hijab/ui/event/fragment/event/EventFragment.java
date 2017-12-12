@@ -3,6 +3,8 @@ package com.faishalbadri.hijab.ui.event.fragment.event;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,8 +30,10 @@ public class EventFragment extends Fragment implements eventView {
   @BindView(R.id.recyclerview_fragment_event)
   RecyclerView recyclerviewFragmentEvent;
   EventPresenter eventPresenter;
-  ArrayList<PojoEvent.EventBean> list_data;
+  ArrayList<EventBean> list_data;
   EventAdapter eventAdapter;
+  @BindView(R.id.refresh_fragment_event)
+  SwipeRefreshLayout refreshFragmentEvent;
 
 
   public EventFragment() {
@@ -52,13 +56,19 @@ public class EventFragment extends Fragment implements eventView {
     eventPresenter.onAttachView(this);
 
     if (savedInstanceState != null) {
-      ArrayList<PojoEvent.EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
+      ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
       this.list_data.clear();
       this.list_data.addAll(data);
       eventAdapter.notifyDataSetChanged();
     } else {
       eventPresenter.getDataEvent();
     }
+
+    refreshFragmentEvent.setOnRefreshListener(() -> {
+      refreshFragmentEvent.setRefreshing(false);
+      eventPresenter.getDataEvent();
+    });
+
     return v;
   }
 
@@ -77,6 +87,11 @@ public class EventFragment extends Fragment implements eventView {
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentEvent.setLayoutManager(llm);
     recyclerviewFragmentEvent.setAdapter(eventAdapter);
+    refreshFragmentEvent.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override
@@ -90,5 +105,4 @@ public class EventFragment extends Fragment implements eventView {
   public void onErrorEvent(String msg) {
 
   }
-
 }

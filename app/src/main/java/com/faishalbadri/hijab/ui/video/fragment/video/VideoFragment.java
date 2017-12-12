@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.video.fragment.video;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,8 @@ public class VideoFragment extends Fragment implements VideoView {
   View v;
   @BindView(R.id.recyclerview_fragment_video)
   RecyclerView recyclerviewFragmentVideo;
+  @BindView(R.id.refresh_fragment_video)
+  SwipeRefreshLayout refreshFragmentVideo;
 
   public VideoFragment() {
     // Required empty public constructor
@@ -55,6 +58,11 @@ public class VideoFragment extends Fragment implements VideoView {
     } else {
       videoPresenter.getDataVideo();
     }
+
+    refreshFragmentVideo.setOnRefreshListener(() -> {
+      refreshFragmentVideo.setRefreshing(false);
+      videoPresenter.getDataVideo();
+    });
     return v;
   }
 
@@ -66,6 +74,11 @@ public class VideoFragment extends Fragment implements VideoView {
     videoAdapter = new VideoAdapter(getActivity(), resultItem);
     recyclerviewFragmentVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
     recyclerviewFragmentVideo.setAdapter(videoAdapter);
+    refreshFragmentVideo.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override

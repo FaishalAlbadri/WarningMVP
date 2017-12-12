@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
+package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,7 +22,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
-import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.video_by_category;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   private static final String SAVE_DATA_VIDEO_PERKAT = "save";
   VideoByCategoryPresenter videoByCategoryPresenter;
   VideoByCategoryAdapter videoByCategoryAdapter;
-  ArrayList<PojoVideo.VideoBean> resultItem;
+  ArrayList<VideoBean> resultItem;
   String id, title;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
@@ -31,6 +32,8 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.recyclerview_activity_video_by_category)
   RecyclerView recyclerviewActivityVideoByCategory;
+  @BindView(R.id.refresh_video_by_category)
+  SwipeRefreshLayout refreshVideoByCategory;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<PojoVideo.VideoBean> resultArray = savedInstanceState
+      ArrayList<VideoBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -47,6 +50,11 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     } else {
       videoByCategoryPresenter.getDataVideoByCategory(id);
     }
+
+    refreshVideoByCategory.setOnRefreshListener(() -> {
+      refreshVideoByCategory.setRefreshing(false);
+      videoByCategoryPresenter.getDataVideoByCategory(id);
+    });
   }
 
   private void setView() {
@@ -60,6 +68,11 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     videoByCategoryAdapter = new VideoByCategoryAdapter(this, resultItem);
     recyclerviewActivityVideoByCategory.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivityVideoByCategory.setAdapter(videoByCategoryAdapter);
+    refreshVideoByCategory.setColorSchemeResources(
+        android.R.color.holo_blue_bright,
+        android.R.color.holo_green_light,
+        android.R.color.holo_orange_light,
+        android.R.color.holo_red_light);
   }
 
   @Override
@@ -81,7 +94,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   }
 
   @Override
-  public void onSuccesVideoByCategory(List<PojoVideo.VideoBean> data, String msg) {
+  public void onSuccesVideoByCategory(List<VideoBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     videoByCategoryAdapter.notifyDataSetChanged();
