@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DetailNewsDataResource {
 
-  void getDetailNewsPopularResult(
-      @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback);
+  void getDetailNewsPopularResult(String id_isi,@NonNull DetailNewsPopularGetCallback
+      detailNewsPopularGetCallback);
 
   interface DetailNewsPopularGetCallback {
 

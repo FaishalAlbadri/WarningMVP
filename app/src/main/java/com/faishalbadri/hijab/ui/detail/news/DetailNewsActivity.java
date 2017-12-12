@@ -49,7 +49,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   DetailNewsAdapter detailNewsAdapter;
   ArrayList<IsiBean> resultItem;
   String share = "";
-  private String title, image, desc;
+  private String title, image, desc, id_isi;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
       this.resultItem.addAll(resultArray);
       detailNewsAdapter.notifyDataSetChanged();
     } else {
-      detailNewsPresenter.getData();
+      detailNewsPresenter.getData(id_isi);
     }
   }
 
@@ -76,6 +76,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     detailNewsAdapter = new DetailNewsAdapter(this, resultItem);
     recyclerviewActivityNewsDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
+    id_isi = getIntent().getStringExtra("id_isi");
     title = getIntent().getStringExtra("title");
     image = getIntent().getStringExtra("image");
     desc = getIntent().getStringExtra("desc");

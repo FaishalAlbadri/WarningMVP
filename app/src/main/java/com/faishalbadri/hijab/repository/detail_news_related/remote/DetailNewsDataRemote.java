@@ -2,7 +2,8 @@ package com.faishalbadri.hijab.repository.detail_news_related.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.Request;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -10,6 +11,8 @@ import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,10 +30,10 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
   }
 
   @Override
-  public void getDetailNewsPopularResult(
+  public void getDetailNewsPopularResult(String id_isi,
       @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL),
+    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
           try {
             if (String.valueOf(new JSONObject(response).getString("msg"))
@@ -47,7 +50,14 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
             }
           } catch (JSONException e) {
           }
-        }, error -> detailNewsPopularGetCallback.onErrorDetailNewsPopular(String.valueOf(error)));
+        }, error -> detailNewsPopularGetCallback.onErrorDetailNewsPopular(String.valueOf(error))) {
+      @Override
+      protected Map<String, String> getParams() throws AuthFailureError {
+        Map<String, String> params = new HashMap<>();
+        params.put("id_isi", id_isi);
+        return params;
+      }
+    };
 
     requestQueue.add(stringRequest);
   }

@@ -30,8 +30,9 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
   }
 
   @Override
-  public void getData() {
-    detailNewsRepository.getDetailNewsPopularResult(new DetailNewsPopularGetCallback() {
+  public void getData(String id_isi) {
+    detailNewsRepository.getDetailNewsPopularResult(id_isi,new DetailNewsPopularGetCallback
+        () {
       @Override
       public void onSuccesDetailNewsPopular(List<IsiBean> data, String msg) {
         detailNewsView.onSuccessDetailNews(data, msg);
@@ -43,4 +44,5 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
       }
     });
   }
+
 }

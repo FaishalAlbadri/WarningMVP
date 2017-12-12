@@ -57,7 +57,8 @@ public class DetailNewsAdapter extends Adapter<ViewHolder> {
     holder.txtTitleDetailVideoGrid.setText(listitem.getIsi_judul());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
-      i.putExtra("title", listitem.getIsi_gambar());
+      i.putExtra("id_isi", listitem.getId_isi());
+      i.putExtra("title", listitem.getIsi_judul());
       i.putExtra("image", listitem.getIsi_gambar());
       i.putExtra("desc", listitem.getIsi_keterangan());
       v.getContext().startActivity(i);

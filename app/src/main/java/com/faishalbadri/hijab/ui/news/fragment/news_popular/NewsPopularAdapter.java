@@ -63,6 +63,7 @@ public class NewsPopularAdapter extends Adapter<NewsPopularAdapter.ViewHolder> {
       @Override
       public void onClick(View v) {
         v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
+            .putExtra("id_isi", listitem.getId_isi())
             .putExtra("title", listitem.getIsi_judul())
             .putExtra("image", listitem.getIsi_gambar())
             .putExtra("desc", listitem.getIsi_keterangan()));

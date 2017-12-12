@@ -15,8 +15,8 @@ public class DetailNewsRepository implements DetailNewsDataResource {
   }
 
   @Override
-  public void getDetailNewsPopularResult(
+  public void getDetailNewsPopularResult(String id_isi,
       @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback) {
-    detailNewsDataResource.getDetailNewsPopularResult(detailNewsPopularGetCallback);
+    detailNewsDataResource.getDetailNewsPopularResult(id_isi,detailNewsPopularGetCallback);
   }
 }
