@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.search_ebook.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -24,8 +23,8 @@ import org.json.JSONObject;
 
 public class SearchEbookDataRemote implements SearchEbookDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "searchEbook.php";
+  Context context;
 
 
   public SearchEbookDataRemote(Context context) {

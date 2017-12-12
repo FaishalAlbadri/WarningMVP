@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DetailNewsContract {
 
-  public interface DetailNewsView{
+  public interface DetailNewsView {
 
     void onSuccessDetailNews(List<IsiBean> data, String msg);
 

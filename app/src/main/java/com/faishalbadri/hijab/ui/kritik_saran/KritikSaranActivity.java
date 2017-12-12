@@ -13,10 +13,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
-import java.net.URI;
 
 public class KritikSaranActivity extends AppCompatActivity {
 
+  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
+  private static final String SUBJECT_EMAIL = "Saran";
   @BindView(R.id.textview_general_toolbar_with_button)
   TextView textviewGeneralToolbarWithButton;
   @BindView(R.id.button_send_general_toolbar_with_button)
@@ -24,9 +25,6 @@ public class KritikSaranActivity extends AppCompatActivity {
   @BindView(R.id.edittext_kritik_saran)
   EditText edittextKritikSaran;
   String edittextValue;
-  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
-  private static final String SUBJECT_EMAIL = "Saran";
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,8 @@ public class KritikSaranActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","1"));
+    startActivity(
+        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
   }
 }

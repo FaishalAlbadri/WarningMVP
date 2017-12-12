@@ -19,14 +19,14 @@
       android:padding="@dimen/ten_dp"
       android:gravity="center_vertical"
       android:textColor="@color/colorPrimary"
-      android:textSize="@dimen/normal_tittle_text_size" />
+      android:textSize="@dimen/normal_tittle_text_size"/>
 
     <ImageView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="7"
       android:padding="@dimen/ten_dp"
-      android:src="@drawable/ic_next_primary_color" />
+      android:src="@drawable/ic_next_primary_color"/>
 
   </LinearLayout>
 

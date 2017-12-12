@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface SearchVideoDataResource {
 
+  void getSearchVideoResult(String key, @NonNull SearchVideoGetCallback searchVideoGetCallback);
+
   interface SearchVideoGetCallback {
 
     void onSuccesSearchVideo(List<PojoVideo.VideoBean> data, String msg);
@@ -18,7 +20,5 @@ public interface SearchVideoDataResource {
 
     void onErrorSearchVideo(String msg);
   }
-
-  void getSearchVideoResult(String key , @NonNull SearchVideoGetCallback searchVideoGetCallback);
 
 }

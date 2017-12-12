@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
@@ -46,23 +45,6 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     this.datalist = datalist;
   }
 
-
-  public class ViewHolder extends RecyclerView.ViewHolder {
-
-    @BindView(R.id.card_view_other_item)
-    CardView cardViewOtherItem;
-    @BindView(R.id.textview_title_other_item)
-    TextView textviewTitleOtherItem;
-    @BindView(R.id.img_title_other_item)
-    AppCompatImageView imgTitleOtherItem;
-
-    public ViewHolder(View itemView) {
-      super(itemView);
-      ButterKnife.bind(this, itemView);
-
-    }
-  }
-
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
@@ -75,15 +57,14 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
   public void onBindViewHolder(ViewHolder holder, int position) {
     final DataOtherFragment dataOtherFragment = datalist.get(position);
 
-
-    kritiksaran = ((Activity) context).getResources().getString(R.string.text_other_kritik_saran);
-    kirimartikel = ((Activity) context).getResources().getString(R.string.text_other_kirim_artikel);
-    share = ((Activity) context).getResources().getString(R.string.text_other_share);
-    about = ((Activity) context).getResources().getString(R.string.text_other_about);
-    rate = ((Activity) context).getResources().getString(R.string.text_rate);
-    sponsor = ((Activity) context).getResources().getString(R.string.text_sponsor);
-    shareSubject = ((Activity) context).getResources().getString(R.string.text_share_app_subject);
-    shareText = ((Activity) context).getResources().getString(R.string.text_share_app_text);
+    kritiksaran = context.getResources().getString(R.string.text_other_kritik_saran);
+    kirimartikel = context.getResources().getString(R.string.text_other_kirim_artikel);
+    share = context.getResources().getString(R.string.text_other_share);
+    about = context.getResources().getString(R.string.text_other_about);
+    rate = context.getResources().getString(R.string.text_rate);
+    sponsor = context.getResources().getString(R.string.text_sponsor);
+    shareSubject = context.getResources().getString(R.string.text_share_app_subject);
+    shareText = context.getResources().getString(R.string.text_share_app_text);
 
     holder.textviewTitleOtherItem.setText(dataOtherFragment.getTitle());
     holder.imgTitleOtherItem.setImageResource(dataOtherFragment.getImage());
@@ -94,21 +75,21 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
       @Override
       public void onClick(View v) {
         if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
-          ((Activity) context).startActivity(new Intent(context, KritikSaranActivity.class));
+          context.startActivity(new Intent(context, KritikSaranActivity.class));
           ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
-          ((Activity) context).startActivity(new Intent(context, SendArticleActivity.class));
+          context.startActivity(new Intent(context, SendArticleActivity.class));
           ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
           Intent sharing = new Intent(Intent.ACTION_SEND);
           sharing.setType("text/plain");
           sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
           sharing.putExtra(Intent.EXTRA_TEXT, shareText);
-          ((Activity) context).startActivity(Intent.createChooser(sharing, "Share Via"));
+          context.startActivity(Intent.createChooser(sharing, "Share Via"));
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
           rateApp();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
-          ((Activity) context).startActivity(new Intent(context, SponsorActivity.class));
+          context.startActivity(new Intent(context, SponsorActivity.class));
           ((Activity) context).finish();
         } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
@@ -126,9 +107,9 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 //        | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
     try {
-      ((Activity) context).startActivity(rate);
+      context.startActivity(rate);
     } catch (ActivityNotFoundException e) {
-      ((Activity) context).startActivity(new Intent(Intent.ACTION_VIEW,
+      context.startActivity(new Intent(Intent.ACTION_VIEW,
           Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
     }
   }
@@ -140,10 +121,26 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
   public Drawable getSelectedItemDrawable() {
     int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    TypedArray ta = context.obtainStyledAttributes(attrs);
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  public class ViewHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.card_view_other_item)
+    CardView cardViewOtherItem;
+    @BindView(R.id.textview_title_other_item)
+    TextView textviewTitleOtherItem;
+    @BindView(R.id.img_title_other_item)
+    AppCompatImageView imgTitleOtherItem;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+
+    }
   }
 
 }

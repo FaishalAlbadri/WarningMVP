@@ -41,20 +41,6 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     this.data = data;
   }
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
-    @BindView(R.id.imageview_news_item)
-    ImageView imageviewNewsItem;
-    @BindView(R.id.textview_title_news_item)
-    TextView textviewTitleNewsItem;
-    @BindView(R.id.cardview_news_fragment_news)
-    CardView cardviewNewsFragmentNews;
-    public ViewHolder(View itemView) {
-      super(itemView);
-      ButterKnife.bind(this, itemView);
-
-    }
-  }
-
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(context).inflate(R.layout.item_news, parent, false);
@@ -76,10 +62,11 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     holder.cardviewNewsFragmentNews.setClickable(true);
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
       v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-      .putExtra("title", listitem.getIsi_judul())
-      .putExtra("image", listitem.getIsi_gambar())
-      .putExtra("desc", listitem.getIsi_keterangan()));
-      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
+          .putExtra("title", listitem.getIsi_judul())
+          .putExtra("image", listitem.getIsi_gambar())
+          .putExtra("desc", listitem.getIsi_keterangan()));
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 
@@ -90,9 +77,25 @@ public class NewsAdapter extends Adapter<ViewHolder> {
 
   public Drawable getSelectedItemDrawable() {
     int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    TypedArray ta = context.obtainStyledAttributes(attrs);
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  public class ViewHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.imageview_news_item)
+    ImageView imageviewNewsItem;
+    @BindView(R.id.textview_title_news_item)
+    TextView textviewTitleNewsItem;
+    @BindView(R.id.cardview_news_fragment_news)
+    CardView cardviewNewsFragmentNews;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+
+    }
   }
 }

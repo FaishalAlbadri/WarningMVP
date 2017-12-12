@@ -15,9 +15,9 @@ public class LoginRepository implements LoginDataResource {
   }
 
 
-
   @Override
-  public void getLoginResult(String email, String password, @NonNull LoginGetCallback loginGetCallback) {
+  public void getLoginResult(String email, String password,
+      @NonNull LoginGetCallback loginGetCallback) {
     loginDataResource.getLoginResult(email, password, loginGetCallback);
   }
 }

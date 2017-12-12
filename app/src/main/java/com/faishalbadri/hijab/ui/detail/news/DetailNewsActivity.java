@@ -28,6 +28,7 @@ import java.util.List;
 
 public class DetailNewsActivity extends AppCompatActivity implements DetailNewsView {
 
+  private static final String SAVE_DATA_NEWS_DETAIL = "save";
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.txt_title_news_detail)
@@ -44,12 +45,11 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.imageview_share_general_toolbar_with_back_button)
   ImageView imageviewShareGeneralToolbarWithBackButton;
-  private String title, image, desc;
-  private static final String SAVE_DATA_NEWS_DETAIL = "save";
   DetailNewsPresenter detailNewsPresenter;
   DetailNewsAdapter detailNewsAdapter;
   ArrayList<IsiBean> resultItem;
   String share = "";
+  private String title, image, desc;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

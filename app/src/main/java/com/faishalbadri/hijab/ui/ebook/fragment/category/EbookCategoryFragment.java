@@ -21,25 +21,24 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EbookCategoryFragment extends Fragment implements EbookCategoryView{
+public class EbookCategoryFragment extends Fragment implements EbookCategoryView {
 
 
+  private static final String SAVE_DATA_CATEGORY_EBOOK = "save";
   @BindView(R.id.recyclerview_fragment_category_ebook)
   RecyclerView recyclerviewFragmentCategoryEbook;
   View view;
   EbookCategoryPresenter ebookCategoryPresenter;
   EbookCategoryAdapter adapter;
   ArrayList<KategoriEbookBean> resultItem;
-  private static final String SAVE_DATA_CATEGORY_EBOOK = "save";
-
-  public static EbookCategoryFragment instance() {
-    return new EbookCategoryFragment();
-  }
 
   public EbookCategoryFragment() {
     // Required empty public constructor
   }
 
+  public static EbookCategoryFragment instance() {
+    return new EbookCategoryFragment();
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,

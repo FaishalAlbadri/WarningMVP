@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.repository.detail_news_related;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.repository.detail_video_related.DetailVideoDataResource;
 
 /**
  * Created by fikriimaduddin on 11/8/17.

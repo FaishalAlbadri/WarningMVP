@@ -10,16 +10,16 @@ import java.util.List;
 
 public interface EbookDataResource {
 
+  void getEbookList(@NonNull EbookGetCallBack ebookGetCallBack);
+
   interface EbookGetCallBack {
 
     void onSuccessEbook(List<PojoEbook.EbookBean> data, String msg);
 
-    void onNullEbook( String msg);
+    void onNullEbook(String msg);
 
-    void onErrorEbook( String msg);
+    void onErrorEbook(String msg);
 
   }
-
-  void getEbookList(@NonNull EbookGetCallBack ebookGetCallBack);
 
 }

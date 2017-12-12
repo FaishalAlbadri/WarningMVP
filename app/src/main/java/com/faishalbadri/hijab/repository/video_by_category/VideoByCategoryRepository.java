@@ -18,6 +18,7 @@ public class VideoByCategoryRepository implements VideoByCategoryDataResource {
   @Override
   public void getVideoByCategoryGetDataCallBack(String id,
       @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
-    videoByCategoryDataResource.getVideoByCategoryGetDataCallBack(id,videoByCategoryGetDataCallBack);
+    videoByCategoryDataResource
+        .getVideoByCategoryGetDataCallBack(id, videoByCategoryGetDataCallBack);
   }
 }

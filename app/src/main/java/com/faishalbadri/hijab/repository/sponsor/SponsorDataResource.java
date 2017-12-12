@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface SponsorDataResource {
 
+  void getSponsorResult(@NonNull SponsorGetCallback sponsorGetCallback);
+
   interface SponsorGetCallback {
 
     void onSuccesSponsor(List<SponsorBean> data, String msg);
 
     void onErrorSponsor(String msg);
   }
-
-  void getSponsorResult(@NonNull SponsorGetCallback sponsorGetCallback);
 
 }

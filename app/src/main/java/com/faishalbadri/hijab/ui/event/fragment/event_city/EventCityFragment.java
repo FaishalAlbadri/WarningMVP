@@ -13,13 +13,8 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCityEvent;
 import com.faishalbadri.hijab.data.PojoCityEvent.CityEventBean;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.CityEventRepositoryInject;
-import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
-import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityContract.eventCityView;
-import com.faishalbadri.hijab.ui.news.fragment.news.NewsAdapter;
-import com.faishalbadri.hijab.ui.news.fragment.news.NewsPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +24,12 @@ import java.util.List;
 public class EventCityFragment extends Fragment implements eventCityView {
 
 
+  private static final String save_city_event = "saveCityEvent";
   @BindView(R.id.recyclerview_fragment_event_city)
   RecyclerView recyclerviewFragmentEventCity;
   EventCityPresenter eventCityPresenter;
   ArrayList<PojoCityEvent.CityEventBean> list_data;
   EventCityAdapter eventCityAdapter;
-  private static final String save_city_event = "saveCityEvent";
 
   public EventCityFragment() {
     // Required empty public constructor

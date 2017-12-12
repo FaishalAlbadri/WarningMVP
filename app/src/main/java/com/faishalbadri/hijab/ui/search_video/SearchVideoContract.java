@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.ui.search_video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoVideo;
-import com.faishalbadri.hijab.ui.search_news.SearchNewsContract;
 import java.util.List;
 
 /**

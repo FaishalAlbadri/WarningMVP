@@ -8,7 +8,9 @@ import android.support.annotation.NonNull;
 
 public interface LoginDataResource {
 
-  public interface LoginGetCallback {
+  void getLoginResult(String email, String password, @NonNull LoginGetCallback loginGetCallback);
+
+  interface LoginGetCallback {
 
     void onSuccesLogin(String msg, String id, String username, String image);
 
@@ -17,7 +19,5 @@ public interface LoginDataResource {
     void onErrorLogin(String msg);
 
   }
-
-  void getLoginResult(String email, String password, @NonNull LoginGetCallback loginGetCallback);
 
 }

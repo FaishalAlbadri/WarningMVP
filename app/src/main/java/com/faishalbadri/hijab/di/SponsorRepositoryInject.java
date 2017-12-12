@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.sponsor.remote.SponsorDataRemote;
  */
 
 public class SponsorRepositoryInject {
-  public static SponsorRepository provideToSponsorRepository(Context context){
+
+  public static SponsorRepository provideToSponsorRepository(Context context) {
     return new SponsorRepository(new SponsorDataRemote(context));
   }
 }

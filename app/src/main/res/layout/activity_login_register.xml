@@ -14,7 +14,7 @@
     app:layout_constraintBottom_toTopOf="@+id/view_activity_login_register"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"/>
 
   <View
     android:id="@+id/view_activity_login_register"
@@ -23,7 +23,7 @@
     android:background="@color/color_white_ff"
     app:layout_constraintBottom_toTopOf="@+id/button_login_activity_login_register"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent" />
+    app:layout_constraintRight_toRightOf="parent"/>
 
   <Button
     android:id="@+id/button_login_activity_login_register"
@@ -36,7 +36,7 @@
     android:textColor="@color/color_white_ff"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toLeftOf="@+id/view_activity_login_register_center" />
+    app:layout_constraintRight_toLeftOf="@+id/view_activity_login_register_center"/>
 
   <View
     android:id="@+id/view_activity_login_register_center"
@@ -46,7 +46,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/view_activity_login_register" />
+    app:layout_constraintTop_toBottomOf="@+id/view_activity_login_register"/>
 
   <View
     android:id="@+id/view_segment_login"
@@ -56,7 +56,7 @@
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toLeftOf="@+id/view_activity_login_register_center" />
+    app:layout_constraintRight_toLeftOf="@+id/view_activity_login_register_center"/>
 
   <View
     android:id="@+id/view_segment_register"
@@ -66,7 +66,7 @@
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@+id/view_activity_login_register_center"
-    app:layout_constraintRight_toRightOf="parent" />
+    app:layout_constraintRight_toRightOf="parent"/>
 
   <Button
     android:id="@+id/button_register_activity_login_register"
@@ -79,6 +79,6 @@
     android:textColor="@color/color_white_ff"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@+id/view_activity_login_register_center"
-    app:layout_constraintRight_toRightOf="parent" />
+    app:layout_constraintRight_toRightOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

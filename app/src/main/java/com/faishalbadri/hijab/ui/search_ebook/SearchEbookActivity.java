@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.search_ebook;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
@@ -17,7 +16,6 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
-import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookAdapter;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import java.util.ArrayList;
@@ -25,10 +23,10 @@ import java.util.List;
 
 public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
 
+  private static final String SAVE_DATA_EBOOK_SEARCH = "save";
   SearchEbookPresenter searchEbookPresenter;
   EbookAdapter adapter;
   ArrayList<EbookBean> resultItem;
-  private static final String SAVE_DATA_EBOOK_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_ebook)
   RecyclerView recyclerviewActivitySearchEbook;
   String key;
@@ -47,7 +45,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     adapter = new EbookAdapter(this, resultItem);
-    recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this,3));
+    recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this, 3));
     recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
 
@@ -73,6 +71,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   public void onErrorSearchEbook(String msg) {
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
   }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();

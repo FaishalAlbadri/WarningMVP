@@ -9,6 +9,7 @@ import com.faishalbadri.hijab.repository.ebook_category.remote.EbookCategoryData
  */
 
 public class EbookCategoryRepositoryInject {
+
   public static EbookCategoryRepository provideToEbookCategoryRepositories(Context context) {
     return new EbookCategoryRepository(new EbookCategoryDataRemote(context));
   }

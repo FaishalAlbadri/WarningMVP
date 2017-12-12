@@ -63,22 +63,24 @@ public class EbookCategoryAdapter extends Adapter<ViewHolder> {
     return list_data.size();
   }
 
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
   public class ViewHolder extends RecyclerView.ViewHolder {
+
     @BindView(R.id.textview_title_category_item)
     TextView textviewTitleCategoryItem;
     @BindView(R.id.card_view_category_item)
     CardView cardViewCategoryItem;
+
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

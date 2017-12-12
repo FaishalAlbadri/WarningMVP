@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -13,8 +12,7 @@ public class PojoVoting {
 
   /**
    * voting : [{"id_voting":"1","voting_nickname":"Faishal","voting_img":"Hijab-Muslimah.jpg","voting_like":"1"},{"id_voting":"2","voting_nickname":"Faishal","voting_img":"Hijab-Muslimah.jpg","voting_like":"0"},{"id_voting":"3","voting_nickname":"Faishal","voting_img":"Hijab-Muslimah.jpg","voting_like":"0"},{"id_voting":"4","voting_nickname":"Faishal","voting_img":"Hijab-Muslimah.jpg","voting_like":"0"},{"id_voting":"5","voting_nickname":"Faishal","voting_img":"Hijab-Muslimah.jpg","voting_like":"0"},{"id_voting":"6","voting_nickname":"Faishal","voting_img":"example.png","voting_like":"0"}]
-   * status : 1
-   * msg : Data Semua Voting
+   * status : 1 msg : Data Semua Voting
    */
 
   private String status;
@@ -47,6 +45,17 @@ public class PojoVoting {
 
   public static class VotingBean implements android.os.Parcelable {
 
+    public static final Creator<VotingBean> CREATOR = new Creator<VotingBean>() {
+      @Override
+      public VotingBean createFromParcel(Parcel source) {
+        return new VotingBean(source);
+      }
+
+      @Override
+      public VotingBean[] newArray(int size) {
+        return new VotingBean[size];
+      }
+    };
     /**
      * id_voting : 1
      * voting_nickname : Faishal
@@ -58,6 +67,16 @@ public class PojoVoting {
     private String voting_nickname;
     private String voting_img;
     private Double voting_like;
+
+    public VotingBean() {
+    }
+
+    protected VotingBean(Parcel in) {
+      this.id_voting = in.readString();
+      this.voting_nickname = in.readString();
+      this.voting_img = in.readString();
+      this.voting_like = (Double) in.readValue(Double.class.getClassLoader());
+    }
 
     public String getId_voting() {
       return id_voting;
@@ -103,27 +122,5 @@ public class PojoVoting {
       dest.writeString(this.voting_img);
       dest.writeValue(this.voting_like);
     }
-
-    public VotingBean() {
-    }
-
-    protected VotingBean(Parcel in) {
-      this.id_voting = in.readString();
-      this.voting_nickname = in.readString();
-      this.voting_img = in.readString();
-      this.voting_like = (Double) in.readValue(Double.class.getClassLoader());
-    }
-
-    public static final Creator<VotingBean> CREATOR = new Creator<VotingBean>() {
-      @Override
-      public VotingBean createFromParcel(Parcel source) {
-        return new VotingBean(source);
-      }
-
-      @Override
-      public VotingBean[] newArray(int size) {
-        return new VotingBean[size];
-      }
-    };
   }
 }

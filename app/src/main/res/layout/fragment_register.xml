@@ -20,7 +20,7 @@
     android:textSize="@dimen/app_name_text_size"
     app:layout_constraintBottom_toTopOf="@+id/materialedittext_username_fragment_register"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent" />
+    app:layout_constraintRight_toRightOf="parent"/>
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_username_fragment_register"
@@ -39,7 +39,7 @@
     app:met_floatingLabel="highlight"
     app:met_primaryColor="@color/color_white_ff"
     app:met_textColorHint="@color/color_white_ff"
-    app:met_underlineColor="@color/color_white_ff" />
+    app:met_underlineColor="@color/color_white_ff"/>
 
 
   <com.rengwuxian.materialedittext.MaterialEditText
@@ -61,7 +61,7 @@
     app:met_floatingLabel="highlight"
     app:met_primaryColor="@color/color_white_ff"
     app:met_textColorHint="@color/color_white_ff"
-    app:met_underlineColor="@color/color_white_ff" />
+    app:met_underlineColor="@color/color_white_ff"/>
 
   <com.rengwuxian.materialedittext.MaterialEditText
     android:id="@+id/materialedittext_password_fragment_register"
@@ -81,7 +81,7 @@
     app:met_floatingLabel="highlight"
     app:met_primaryColor="@color/color_white_ff"
     app:met_textColorHint="@color/color_white_ff"
-    app:met_underlineColor="@color/color_white_ff" />
+    app:met_underlineColor="@color/color_white_ff"/>
 
   <Button
     android:id="@+id/button_register_fragment_register"
@@ -95,7 +95,7 @@
     android:textColor="@color/color_white_ff"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/materialedittext_password_fragment_register" />
+    app:layout_constraintTop_toBottomOf="@+id/materialedittext_password_fragment_register"/>
 
 
 </android.support.constraint.ConstraintLayout>

@@ -10,12 +10,12 @@ import java.util.List;
 
 public interface EventCityDataResource {
 
+  void getEventCityResult(@NonNull EventCityGetCallback eventCityGetCallback);
+
   interface EventCityGetCallback {
 
     void onSuccesEventCity(List<PojoCityEvent.CityEventBean> data, String msg);
 
     void onErrorEventCity(String msg);
   }
-
-  void getEventCityResult(@NonNull EventCityGetCallback eventCityGetCallback);
 }

@@ -14,7 +14,7 @@
 
     <include
       android:id="@+id/toolbar_activity_detail_ebook"
-      layout="@layout/general_toolbar_with_back_button" />
+      layout="@layout/general_toolbar_with_back_button"/>
 
     <ImageView
       android:id="@+id/imageview_detail_ebook"
@@ -22,7 +22,7 @@
       android:layout_height="200dp"
       android:layout_margin="@dimen/padding_widget"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook"/>
 
     <TextView
       android:id="@+id/textview_title_detal_ebook"
@@ -35,7 +35,7 @@
       android:textSize="@dimen/normal_tittle_text_size"
       app:layout_constraintLeft_toRightOf="@+id/imageview_detail_ebook"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_ebook"/>
 
     <TextView
       android:id="@+id/textview_writer_detail_ebook"
@@ -46,7 +46,7 @@
       android:textColor="@color/colorPrimary"
       app:layout_constraintLeft_toRightOf="@+id/imageview_detail_ebook"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textview_title_detal_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/textview_title_detal_ebook"/>
 
     <TextView
       android:id="@+id/textview_publisher_detail_ebook"
@@ -57,7 +57,7 @@
       android:textColor="@color/colorPrimary"
       app:layout_constraintLeft_toRightOf="@+id/imageview_detail_ebook"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textview_writer_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/textview_writer_detail_ebook"/>
 
     <TextView
       android:id="@+id/textview_time_detail_ebook"
@@ -68,7 +68,7 @@
       android:textColor="@color/colorPrimary"
       app:layout_constraintLeft_toRightOf="@+id/imageview_detail_ebook"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textview_publisher_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/textview_publisher_detail_ebook"/>
 
     <Button
       android:id="@+id/button_read_ebok_detail_ebook"
@@ -81,7 +81,7 @@
       android:textSize="@dimen/normal_tittle_text_size"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imageview_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/imageview_detail_ebook"/>
 
     <WebView
       android:id="@+id/web_view_description_ebook_detail"
@@ -91,7 +91,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/button_read_ebok_detail_ebook" />
+      app:layout_constraintTop_toBottomOf="@+id/button_read_ebok_detail_ebook"/>
 
   </android.support.constraint.ConstraintLayout>
 

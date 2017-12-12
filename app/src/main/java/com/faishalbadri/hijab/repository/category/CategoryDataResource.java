@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface CategoryDataResource {
 
+  void getCategoryResult(@NonNull CategoryGetCallback categoryGetCallback);
+
   interface CategoryGetCallback {
 
     void onSuccesCategory(List<PojoCategory.KategoriBean> data, String msg);
 
     void onErrorCategory(String msg);
   }
-
-  void getCategoryResult(@NonNull CategoryGetCallback categoryGetCallback);
 
 }

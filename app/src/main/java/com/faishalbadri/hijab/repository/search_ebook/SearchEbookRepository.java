@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by faishal on 10/11/17.
  */
 
-public class SearchEbookRepository implements SearchEbookDataResource{
+public class SearchEbookRepository implements SearchEbookDataResource {
 
   SearchEbookDataResource searchEbookDataResource;
 

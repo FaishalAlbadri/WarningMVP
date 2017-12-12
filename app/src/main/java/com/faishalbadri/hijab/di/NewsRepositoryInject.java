@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.news.remote.NewsDataRemote;
  */
 
 public class NewsRepositoryInject {
-  public static NewsRepository provideToNewsRepository(Context context){
+
+  public static NewsRepository provideToNewsRepository(Context context) {
     return new NewsRepository(new NewsDataRemote(context));
   }
 }

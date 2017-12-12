@@ -6,7 +6,8 @@ import com.faishalbadri.hijab.repository.category.remote.CategoryDataRemote;
 
 
 public class CategoryRepositoryInject {
-  public static CategoryRepository provideToCategoryInject(Context context){
+
+  public static CategoryRepository provideToCategoryInject(Context context) {
     return new CategoryRepository(new CategoryDataRemote(context));
   }
 }

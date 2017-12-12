@@ -16,7 +16,6 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoUser;
 import com.faishalbadri.hijab.repository.login.LoginDataResource;
 import com.faishalbadri.hijab.util.Server;
-import com.faishalbadri.hijab.util.SessionManager;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +28,8 @@ import org.json.JSONObject;
 
 public class LoginDataRemote implements LoginDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "login.php";
+  Context context;
 
   public LoginDataRemote(Context context) {
     this.context = context;
@@ -44,7 +43,7 @@ public class LoginDataRemote implements LoginDataResource {
         Method.POST, String.valueOf(URL), new Listener<String>() {
       @Override
       public void onResponse(String response) {
-        Log.i("response",response);
+        Log.i("response", response);
         try {
           if (String.valueOf(new JSONObject(response).getString("msg")).equals("login berhasil")) {
             try {
@@ -53,7 +52,8 @@ public class LoginDataRemote implements LoginDataResource {
                 String id = pojoUser.getUser().get(a).getId_user();
                 String username = pojoUser.getUser().get(a).getUsername();
                 String image = pojoUser.getUser().get(a).getImg_user();
-                loginGetCallback.onSuccesLogin(context.getString(R.string.text_succes),id,username,image);
+                loginGetCallback
+                    .onSuccesLogin(context.getString(R.string.text_succes), id, username, image);
               }
             } catch (Exception e) {
               e.printStackTrace();

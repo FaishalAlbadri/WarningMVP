@@ -32,7 +32,8 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
   Context context;
   List<EbookBean> list_data;
 
-  public EbookByCategoryAdapter(EbookByCategoryActivity ebookByCategoryActivity, ArrayList<EbookBean> resultItem) {
+  public EbookByCategoryAdapter(EbookByCategoryActivity ebookByCategoryActivity,
+      ArrayList<EbookBean> resultItem) {
     context = ebookByCategoryActivity;
     list_data = resultItem;
   }
@@ -56,14 +57,15 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
     holder.txtEbookGrid.setText(listitem.getJudul_ebook());
     holder.imageviewEbookGrid.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
-      .putExtra("name", listitem.getJudul_ebook())
-      .putExtra("image", listitem.getGambar_ebook())
-      .putExtra("description", listitem.getDescription())
-      .putExtra("publisher", listitem.getPenerbit_ebook())
-      .putExtra("writer", listitem.getPenulis_ebook())
-      .putExtra("time", listitem.getTanggal_terbit_ebook())
-      .putExtra("link", listitem.getLink()));
-      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
+          .putExtra("name", listitem.getJudul_ebook())
+          .putExtra("image", listitem.getGambar_ebook())
+          .putExtra("description", listitem.getDescription())
+          .putExtra("publisher", listitem.getPenerbit_ebook())
+          .putExtra("writer", listitem.getPenulis_ebook())
+          .putExtra("time", listitem.getTanggal_terbit_ebook())
+          .putExtra("link", listitem.getLink()));
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 

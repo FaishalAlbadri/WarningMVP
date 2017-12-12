@@ -32,21 +32,11 @@ public class VotingAdapter extends Adapter<ViewHolder> {
   String id_user;
 
 
-  public VotingAdapter(Context context, List<VotingBean> list_voting, FragmentActivity fragmentActivity) {
+  public VotingAdapter(Context context, List<VotingBean> list_voting,
+      FragmentActivity fragmentActivity) {
     this.context = context;
     this.list_voting = list_voting;
     this.context = fragmentActivity;
-  }
-
-  public class ViewHolder extends RecyclerView.ViewHolder {
-
-    @BindView(R.id.imageview_voting_grid)
-    ImageView imageviewVotingGrid;
-
-    public ViewHolder(View itemView) {
-      super(itemView);
-      ButterKnife.bind(this, itemView);
-    }
   }
 
   @Override
@@ -70,21 +60,32 @@ public class VotingAdapter extends Adapter<ViewHolder> {
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {
       Bundle bundle = new Bundle();
-      bundle.putString("id_voting",listitem.getId_voting());
-      bundle.putString("nama",listitem.getVoting_nickname());
-      bundle.putString("img",listitem.getVoting_img());
-      bundle.putString("id_user",id_user);
+      bundle.putString("id_voting", listitem.getId_voting());
+      bundle.putString("nama", listitem.getVoting_nickname());
+      bundle.putString("img", listitem.getVoting_img());
+      bundle.putString("id_user", id_user);
       FragmentActivity activity = (FragmentActivity) (context);
       android.support.v4.app.FragmentManager fm = activity.getSupportFragmentManager();
       VotingDialogFragment alert = new VotingDialogFragment();
       alert.setArguments(bundle);
-      alert.show(fm,"");
+      alert.show(fm, "");
     });
   }
 
   @Override
   public int getItemCount() {
     return list_voting.size();
+  }
+
+  public class ViewHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.imageview_voting_grid)
+    ImageView imageviewVotingGrid;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+    }
   }
 
 }

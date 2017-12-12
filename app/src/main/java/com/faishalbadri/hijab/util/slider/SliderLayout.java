@@ -114,6 +114,13 @@ public class SliderLayout extends RelativeLayout {
    * @see BaseAnimationInterface
    */
   private BaseAnimationInterface mCustomAnimation;
+  private android.os.Handler mh = new android.os.Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+      super.handleMessage(msg);
+      moveNextPosition(true);
+    }
+  };
 
   /**
    * {@link PagerIndicator} shape, rect or oval.
@@ -156,7 +163,7 @@ public class SliderLayout extends RelativeLayout {
     mSliderAdapter = new SliderAdapter(mContext);
     PagerAdapter wrappedAdapter = new InfinitePagerAdapter(mSliderAdapter);
 
-    mViewPager = (InfiniteViewPager) findViewById(
+    mViewPager = findViewById(
         com.daimajia.slider.library.R.id.daimajia_slider_viewpager);
     mViewPager.setAdapter(wrappedAdapter);
 
@@ -207,14 +214,6 @@ public class SliderLayout extends RelativeLayout {
   public <T extends BaseSliderView> void addSlider(T imageContent) {
     mSliderAdapter.addSlider(imageContent);
   }
-
-  private android.os.Handler mh = new android.os.Handler() {
-    @Override
-    public void handleMessage(Message msg) {
-      super.handleMessage(msg);
-      moveNextPosition(true);
-    }
-  };
 
   public void startAutoCycle() {
     startAutoCycle(mSliderDuration, mSliderDuration, mAutoRecover);
@@ -368,44 +367,6 @@ public class SliderLayout extends RelativeLayout {
   }
 
   /**
-   * preset transformers and their names
-   */
-  public enum Transformer {
-    Default("Default"),
-    Accordion("Accordion"),
-    Background2Foreground("Background2Foreground"),
-    CubeIn("CubeIn"),
-    DepthPage("DepthPage"),
-    Fade("Fade"),
-    FlipHorizontal("FlipHorizontal"),
-    FlipPage("FlipPage"),
-    Foreground2Background("Foreground2Background"),
-    RotateDown("RotateDown"),
-    RotateUp("RotateUp"),
-    Stack("Stack"),
-    Tablet("Tablet"),
-    ZoomIn("ZoomIn"),
-    ZoomOutSlide("ZoomOutSlide"),
-    ZoomOut("ZoomOut");
-
-    private final String name;
-
-    private Transformer(String s) {
-      name = s;
-    }
-
-    public String toString() {
-      return name;
-    }
-
-    public boolean equals(String other) {
-      return (other == null) ? false : name.equals(other);
-    }
-  }
-
-  ;
-
-  /**
    * set a preset viewpager transformer by id.
    */
   public void setPresetTransformer(int transformerId) {
@@ -501,6 +462,13 @@ public class SliderLayout extends RelativeLayout {
     setPagerTransformer(true, t);
   }
 
+  public PagerIndicator.IndicatorVisibility getIndicatorVisibility() {
+    if (mIndicator == null) {
+      return mIndicator.getIndicatorVisibility();
+    }
+    return PagerIndicator.IndicatorVisibility.Invisible;
+
+  }
 
   /**
    * Set the visibility of the indicators.
@@ -513,14 +481,6 @@ public class SliderLayout extends RelativeLayout {
     mIndicator.setIndicatorVisibility(visibility);
   }
 
-  public PagerIndicator.IndicatorVisibility getIndicatorVisibility() {
-    if (mIndicator == null) {
-      return mIndicator.getIndicatorVisibility();
-    }
-    return PagerIndicator.IndicatorVisibility.Invisible;
-
-  }
-
   /**
    * get the {@link PagerIndicator} instance.
    * You can manipulate the properties of the indicator.
@@ -529,34 +489,8 @@ public class SliderLayout extends RelativeLayout {
     return mIndicator;
   }
 
-  public enum PresetIndicators {
-    Center_Bottom("Center_Bottom",
-        com.daimajia.slider.library.R.id.default_center_bottom_indicator),
-    Right_Bottom("Right_Bottom", com.daimajia.slider.library.R.id.default_bottom_right_indicator),
-    Left_Bottom("Left_Bottom", com.daimajia.slider.library.R.id.default_bottom_left_indicator),
-    Center_Top("Center_Top", com.daimajia.slider.library.R.id.default_center_top_indicator),
-    Right_Top("Right_Top", com.daimajia.slider.library.R.id.default_center_top_right_indicator),
-    Left_Top("Left_Top", com.daimajia.slider.library.R.id.default_center_top_left_indicator);
-
-    private final String name;
-    private final int id;
-
-    private PresetIndicators(String name, int id) {
-      this.name = name;
-      this.id = id;
-    }
-
-    public String toString() {
-      return name;
-    }
-
-    public int getResourceId() {
-      return id;
-    }
-  }
-
   public void setPresetIndicator(PresetIndicators presetIndicator) {
-    PagerIndicator pagerIndicator = (PagerIndicator) findViewById(presetIndicator.getResourceId());
+    PagerIndicator pagerIndicator = findViewById(presetIndicator.getResourceId());
     setCustomIndicator(pagerIndicator);
   }
 
@@ -588,6 +522,10 @@ public class SliderLayout extends RelativeLayout {
 
     return mViewPager.getCurrentItem() % getRealAdapter().getCount();
 
+  }
+
+  public void setCurrentPosition(int position) {
+    setCurrentPosition(position, true);
   }
 
   /**
@@ -643,10 +581,6 @@ public class SliderLayout extends RelativeLayout {
     mViewPager.setCurrentItem(n, smooth);
   }
 
-  public void setCurrentPosition(int position) {
-    setCurrentPosition(position, true);
-  }
-
   /**
    * move to prev slide.
    */
@@ -677,6 +611,68 @@ public class SliderLayout extends RelativeLayout {
 
   public void moveNextPosition() {
     moveNextPosition(true);
+  }
+
+  /**
+   * preset transformers and their names
+   */
+  public enum Transformer {
+    Default("Default"),
+    Accordion("Accordion"),
+    Background2Foreground("Background2Foreground"),
+    CubeIn("CubeIn"),
+    DepthPage("DepthPage"),
+    Fade("Fade"),
+    FlipHorizontal("FlipHorizontal"),
+    FlipPage("FlipPage"),
+    Foreground2Background("Foreground2Background"),
+    RotateDown("RotateDown"),
+    RotateUp("RotateUp"),
+    Stack("Stack"),
+    Tablet("Tablet"),
+    ZoomIn("ZoomIn"),
+    ZoomOutSlide("ZoomOutSlide"),
+    ZoomOut("ZoomOut");
+
+    private final String name;
+
+    Transformer(String s) {
+      name = s;
+    }
+
+    public String toString() {
+      return name;
+    }
+
+    public boolean equals(String other) {
+      return other != null && name.equals(other);
+    }
+  }
+
+  public enum PresetIndicators {
+    Center_Bottom("Center_Bottom",
+        com.daimajia.slider.library.R.id.default_center_bottom_indicator),
+    Right_Bottom("Right_Bottom", com.daimajia.slider.library.R.id.default_bottom_right_indicator),
+    Left_Bottom("Left_Bottom", com.daimajia.slider.library.R.id.default_bottom_left_indicator),
+    Center_Top("Center_Top", com.daimajia.slider.library.R.id.default_center_top_indicator),
+    Right_Top("Right_Top", com.daimajia.slider.library.R.id.default_center_top_right_indicator),
+    Left_Top("Left_Top", com.daimajia.slider.library.R.id.default_center_top_left_indicator);
+
+    private final String name;
+    private final int id;
+
+    PresetIndicators(String name, int id) {
+      this.name = name;
+      this.id = id;
+    }
+
+    public String toString() {
+      return name;
+    }
+
+    public int getResourceId() {
+      return id;
+    }
   }
 
 }

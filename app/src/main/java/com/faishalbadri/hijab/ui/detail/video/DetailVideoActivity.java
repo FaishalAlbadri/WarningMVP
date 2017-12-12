@@ -35,9 +35,9 @@ import java.util.List;
 public class DetailVideoActivity extends YouTubeBaseActivity implements
     OnInitializedListener, DetailVideoView {
 
-  String title, video, duration, description;
   private static final String SAVE_DATA_VIDEO_DETAIL = "save";
   private static final int RECOVERY_DIALOG_REQUEST = 1;
+  String title, video, duration, description;
   @BindView(R.id.youtube_video_detail)
   YouTubePlayerView youtubeVideoDetail;
   @BindView(R.id.txt_title_video_detail)

@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface EventDataResource {
 
+  void getEventResult(@NonNull EventGetCallback eventGetCallback);
+
   interface EventGetCallback {
 
     void onSuccesEvent(List<PojoEvent.EventBean> data, String msg);
 
     void onErrorEvent(String msg);
   }
-
-  void getEventResult(@NonNull EventGetCallback eventGetCallback);
 
 }

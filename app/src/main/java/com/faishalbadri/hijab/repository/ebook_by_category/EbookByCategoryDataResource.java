@@ -10,14 +10,15 @@ import java.util.List;
 
 public interface EbookByCategoryDataResource {
 
-  interface EbookByCategoryDataCallBack{
+  void getByCategoryGetDataCallBack(String id,
+      @NonNull EbookByCategoryDataResource.EbookByCategoryDataCallBack newsByCategoryGetDataCallBack);
+
+  interface EbookByCategoryDataCallBack {
 
     void onSuccessEbookByCategory(List<EbookBean> video, String msg);
 
     void onErrorEbookByCategory(String msg);
 
   }
-
-  void getByCategoryGetDataCallBack(String id, @NonNull EbookByCategoryDataResource.EbookByCategoryDataCallBack newsByCategoryGetDataCallBack);
 
 }

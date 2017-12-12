@@ -10,7 +10,7 @@ import com.faishalbadri.hijab.repository.search_news.remote.SearchNewsDataRemote
 
 public class SearchNewsRepositoryInject {
 
-  public static SearchNewsRepository provideToSearchNewsRepository(Context context){
+  public static SearchNewsRepository provideToSearchNewsRepository(Context context) {
     return new SearchNewsRepository(new SearchNewsDataRemote(context));
   }
 

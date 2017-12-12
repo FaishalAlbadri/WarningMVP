@@ -25,7 +25,7 @@ public class OtherFragment extends Fragment {
   RecyclerView recyclerviewFragmentOther;
   OtherFragmentAdapter otherFragmentAdapter;
   List<DataOtherFragment> data_list_other;
-  String kritiksaran, kirimartikel, share,rate, about, sponsor;
+  String kritiksaran, kirimartikel, share, rate, about, sponsor;
   private int[] image;
 
   public OtherFragment() {

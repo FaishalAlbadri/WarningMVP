@@ -10,16 +10,16 @@ import java.util.List;
 
 public interface EbookCategoryDataResource {
 
+  void getEbookCategoryList(@NonNull EbookCategoryGetCallBack ebookCategoryGetCallBack);
+
   interface EbookCategoryGetCallBack {
 
     void onSuccessCategoryEbook(List<KategoriEbookBean> data, String msg);
 
-    void onNullCategoryEbook( String msg);
+    void onNullCategoryEbook(String msg);
 
-    void onErrorCategoryEbook( String msg);
+    void onErrorCategoryEbook(String msg);
 
   }
-
-  void getEbookCategoryList(@NonNull EbookCategoryGetCallBack ebookCategoryGetCallBack);
 
 }

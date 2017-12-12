@@ -12,15 +12,19 @@ import java.util.List;
 
 public interface AccountDataResource {
 
+  void getAccountResult(String email,
+      @NonNull AccountDataResource.AccountGetCallback accountGetCallback);
+
+  void getEditImageResult(String id, String path,
+      @NonNull AccountDataResource.EditImageGetCallback editImageGetCallback);
+
   interface AccountGetCallback {
 
-    void onSucces(List<PojoUser.UserBean> user, String username, String image , String id);
+    void onSucces(List<PojoUser.UserBean> user, String username, String image, String id);
 
     void onError(String msg);
 
   }
-
-  void getAccountResult(String email, @NonNull AccountDataResource.AccountGetCallback accountGetCallback);
 
   interface EditImageGetCallback {
 
@@ -29,7 +33,5 @@ public interface AccountDataResource {
     void onError(String msg);
 
   }
-
-  void getEditImageResult(String id,String path, @NonNull AccountDataResource.EditImageGetCallback editImageGetCallback);
 
 }

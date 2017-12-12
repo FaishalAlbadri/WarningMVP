@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
       <!--android:background="#6a50c7ff"-->
 
@@ -33,10 +33,10 @@
       <View
         android:layout_width="@dimen/match_parent_size"
         android:layout_height="?attr/actionBarSize"
+        android:background="#50ff4081"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="#50ff4081"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
       <ImageView
         android:id="@+id/btn_before_like_voting"
@@ -46,7 +46,7 @@
         android:src="@drawable/ic_before_like_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textview_name_dialog_fragment_voting" />
+        app:layout_constraintRight_toLeftOf="@+id/textview_name_dialog_fragment_voting"/>
 
       <ImageView
         android:id="@+id/button_after_like_voting"
@@ -57,7 +57,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textview_name_dialog_fragment_voting" />
+        app:layout_constraintRight_toLeftOf="@+id/textview_name_dialog_fragment_voting"/>
 
       <TextView
         android:id="@+id/textview_name_dialog_fragment_voting"
@@ -69,7 +69,7 @@
         android:textSize="@dimen/normal_tittle_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/btn_before_like_voting"
-        app:layout_constraintRight_toLeftOf="@+id/button_share_voting" />
+        app:layout_constraintRight_toLeftOf="@+id/button_share_voting"/>
 
       <ImageView
         android:id="@+id/button_share_voting"
@@ -81,7 +81,7 @@
         android:src="@drawable/ic_share_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/textview_name_dialog_fragment_voting"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -91,6 +91,6 @@
     android:id="@+id/progress"
     android:layout_width="match_parent"
     android:layout_height="@dimen/normal_button_size"
-    android:layout_margin="@dimen/margin_pd" />
+    android:layout_margin="@dimen/margin_pd"/>
 
 </android.support.v7.widget.CardView>

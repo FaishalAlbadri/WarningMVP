@@ -10,9 +10,9 @@
     android:id="@+id/recyclerview_activity_search_video"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

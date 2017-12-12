@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.intro.IntroActivity;
-import com.faishalbadri.hijab.util.SessionManager;
 
 public class SplashScreen extends AppCompatActivity {
 

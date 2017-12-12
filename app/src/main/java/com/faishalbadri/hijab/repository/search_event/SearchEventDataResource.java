@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface SearchEventDataResource {
 
+  void getSearchEventResult(String key, @NonNull SearchEventGetCallback searchEventGetCallback);
+
   interface SearchEventGetCallback {
 
     void onSuccesSearchEvent(List<EventBean> data, String msg);
@@ -18,6 +20,4 @@ public interface SearchEventDataResource {
 
     void onErrorSearchEvent(String msg);
   }
-
-  void getSearchEventResult(String key , @NonNull SearchEventGetCallback searchEventGetCallback);
 }

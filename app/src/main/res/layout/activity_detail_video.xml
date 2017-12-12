@@ -15,7 +15,7 @@
 
     <include
       android:id="@+id/toolbar_activity_detail_video"
-      layout="@layout/general_toolbar_with_back_button" />
+      layout="@layout/general_toolbar_with_back_button"/>
 
     <ScrollView
       android:layout_width="@dimen/match_parent_size"
@@ -43,7 +43,7 @@
           app:layout_constraintBottom_toTopOf="@+id/youtube_video_detail"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+          app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.youtube.player.YouTubePlayerView
           android:id="@+id/youtube_video_detail"
@@ -66,7 +66,7 @@
           android:textSize="@dimen/normal_tittle_text_size_detail"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/youtube_video_detail" />
+          app:layout_constraintTop_toBottomOf="@+id/youtube_video_detail"/>
 
         <com.google.android.gms.ads.AdView
           android:id="@+id/ad_view_detail_video"
@@ -76,7 +76,7 @@
           ads:adUnitId="@string/ads_footer"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txt_description_video_detail" />
+          app:layout_constraintTop_toBottomOf="@+id/txt_description_video_detail"/>
 
 
         <TextView
@@ -89,7 +89,7 @@
           android:textColor="@color/colorPrimaryDark"
           android:textSize="@dimen/toolbar_title_text_size"
           app:layout_constraintLeft_toLeftOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/ad_view_detail_video" />
+          app:layout_constraintTop_toBottomOf="@+id/ad_view_detail_video"/>
 
         <android.support.v7.widget.RecyclerView
           android:id="@+id/recyclerview_activity_video_detail"
@@ -99,7 +99,7 @@
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txt_related_video_detail" />
+          app:layout_constraintTop_toBottomOf="@+id/txt_related_video_detail"/>
 
       </android.support.constraint.ConstraintLayout>
 

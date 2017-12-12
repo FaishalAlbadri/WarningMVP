@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.video_by_category.remote.VideoByCategor
  */
 
 public class VideoByCategoryRepositoryInject {
-  public static VideoByCategoryRepository provideToVideoByCategoryRepository(Context context){
+
+  public static VideoByCategoryRepository provideToVideoByCategoryRepository(Context context) {
     return new VideoByCategoryRepository(new VideoByCategoryRemote(context));
   }
 }

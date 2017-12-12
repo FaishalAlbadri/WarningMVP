@@ -8,7 +8,10 @@ import android.support.annotation.NonNull;
 
 public interface RegisterDataResource {
 
-  public interface RegisterGetCallback {
+  void getRegisterResult(String username, String email, String password,
+      @NonNull RegisterGetCallback registerGetCallback);
+
+  interface RegisterGetCallback {
 
     void onSuccesRegister(String msg);
 
@@ -16,8 +19,5 @@ public interface RegisterDataResource {
 
     void onErrorRegister(String msg);
   }
-
-  void getRegisterResult(String username, String email, String password,
-      @NonNull RegisterGetCallback registerGetCallback);
 
 }

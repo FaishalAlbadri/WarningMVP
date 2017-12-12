@@ -10,14 +10,15 @@ import java.util.List;
 
 public interface NewsByCategoryDataResource {
 
-  interface NewsByCategoryGetDataCallBack{
+  void getNewsByCategoryGetDataCallBack(String id,
+      @NonNull NewsByCategoryDataResource.NewsByCategoryGetDataCallBack newsByCategoryGetDataCallBack);
+
+  interface NewsByCategoryGetDataCallBack {
 
     void onSuccessNewsByCategory(List<PojoNews.IsiBean> video, String msg);
 
     void onErrorNewsByCategory(String msg);
 
   }
-
-  void getNewsByCategoryGetDataCallBack(String id, @NonNull NewsByCategoryDataResource.NewsByCategoryGetDataCallBack newsByCategoryGetDataCallBack);
 
 }

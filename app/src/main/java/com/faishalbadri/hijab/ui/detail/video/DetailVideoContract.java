@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DetailVideoContract {
 
-  public interface DetailVideoView{
+  public interface DetailVideoView {
 
     void onSuccessDetailVideo(List<VideoBean> data, String msg);
 

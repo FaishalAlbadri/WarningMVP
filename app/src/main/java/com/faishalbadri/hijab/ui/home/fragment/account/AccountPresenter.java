@@ -10,7 +10,7 @@ import java.util.List;
  * Created by fikriimaduddin on 10/30/17.
  */
 
-public class AccountPresenter implements AccountContract.accountPresenter{
+public class AccountPresenter implements AccountContract.accountPresenter {
 
   AccountContract.accoutView accoutView;
   AccountRepository accountRepository;

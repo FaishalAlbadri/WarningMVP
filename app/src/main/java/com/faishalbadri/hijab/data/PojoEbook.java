@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -11,9 +10,10 @@ import java.util.List;
 public class PojoEbook {
 
   /**
-   * ebook : [{"id_ebook":"9","judul_ebook":"asdadsada","penulis_ebook":"asdasdas","penerbit_ebook":"asdasdas","tanggal_terbit_ebook":"2017-11-05","gambar_ebook":"norel.png","description":"In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin","link":"faishalbadri.com","id_kategori_ebook":"1"}]
-   * status : 1
-   * msg : Data Semua Ebook
+   * ebook : [{"id_ebook":"9","judul_ebook":"asdadsada","penulis_ebook":"asdasdas","penerbit_ebook":"asdasdas","tanggal_terbit_ebook":"2017-11-05","gambar_ebook":"norel.png","description":"In
+   * order to take full advantage of Kotlin, we have to revisit some best practices we got used to
+   * in Java. Many of them can be replaced with better alternatives that are provided by
+   * Kotlin","link":"faishalbadri.com","id_kategori_ebook":"1"}] status : 1 msg : Data Semua Ebook
    */
 
   private String status;
@@ -46,16 +46,23 @@ public class PojoEbook {
 
   public static class EbookBean implements android.os.Parcelable {
 
+    public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
+      @Override
+      public EbookBean createFromParcel(Parcel source) {
+        return new EbookBean(source);
+      }
+
+      @Override
+      public EbookBean[] newArray(int size) {
+        return new EbookBean[size];
+      }
+    };
     /**
-     * id_ebook : 9
-     * judul_ebook : asdadsada
-     * penulis_ebook : asdasdas
-     * penerbit_ebook : asdasdas
-     * tanggal_terbit_ebook : 2017-11-05
-     * gambar_ebook : norel.png
-     * description : In order to take full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many of them can be replaced with better alternatives that are provided by Kotlin
-     * link : faishalbadri.com
-     * id_kategori_ebook : 1
+     * id_ebook : 9 judul_ebook : asdadsada penulis_ebook : asdasdas penerbit_ebook : asdasdas
+     * tanggal_terbit_ebook : 2017-11-05 gambar_ebook : norel.png description : In order to take
+     * full advantage of Kotlin, we have to revisit some best practices we got used to in Java. Many
+     * of them can be replaced with better alternatives that are provided by Kotlin link :
+     * faishalbadri.com id_kategori_ebook : 1
      */
 
     private String id_ebook;
@@ -67,6 +74,21 @@ public class PojoEbook {
     private String description;
     private String link;
     private String id_kategori_ebook;
+
+    public EbookBean() {
+    }
+
+    protected EbookBean(Parcel in) {
+      this.id_ebook = in.readString();
+      this.judul_ebook = in.readString();
+      this.penulis_ebook = in.readString();
+      this.penerbit_ebook = in.readString();
+      this.tanggal_terbit_ebook = in.readString();
+      this.gambar_ebook = in.readString();
+      this.description = in.readString();
+      this.link = in.readString();
+      this.id_kategori_ebook = in.readString();
+    }
 
     public String getId_ebook() {
       return id_ebook;
@@ -157,32 +179,5 @@ public class PojoEbook {
       dest.writeString(this.link);
       dest.writeString(this.id_kategori_ebook);
     }
-
-    public EbookBean() {
-    }
-
-    protected EbookBean(Parcel in) {
-      this.id_ebook = in.readString();
-      this.judul_ebook = in.readString();
-      this.penulis_ebook = in.readString();
-      this.penerbit_ebook = in.readString();
-      this.tanggal_terbit_ebook = in.readString();
-      this.gambar_ebook = in.readString();
-      this.description = in.readString();
-      this.link = in.readString();
-      this.id_kategori_ebook = in.readString();
-    }
-
-    public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
-      @Override
-      public EbookBean createFromParcel(Parcel source) {
-        return new EbookBean(source);
-      }
-
-      @Override
-      public EbookBean[] newArray(int size) {
-        return new EbookBean[size];
-      }
-    };
   }
 }

@@ -18,18 +18,21 @@ public class VotingDialogRepository implements VotingDialogDataResource {
   @Override
   public void getResulVotingDialogGetSession(String id_user, String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback) {
-    votingDialogDataResource.getResulVotingDialogGetSession(id_user,id_voting,votingDialogGetSessionGetCallback);
+    votingDialogDataResource
+        .getResulVotingDialogGetSession(id_user, id_voting, votingDialogGetSessionGetCallback);
   }
 
   @Override
   public void getResulVotingDialogLike(String id_voting, String id_user,
       @NonNull VotingDialogLikeGetCallback votingDialogLikeGetCallback) {
-    votingDialogDataResource.getResulVotingDialogLike(id_voting,id_user,votingDialogLikeGetCallback);
+    votingDialogDataResource
+        .getResulVotingDialogLike(id_voting, id_user, votingDialogLikeGetCallback);
   }
 
   @Override
   public void getResulVotingDialogUnlike(String id_voting, String id_session,
       @NonNull VotingDialogUnlikeGetCallback votingDialogUnlikeGetCallback) {
-    votingDialogDataResource.getResulVotingDialogUnlike(id_voting,id_session,votingDialogUnlikeGetCallback);
+    votingDialogDataResource
+        .getResulVotingDialogUnlike(id_voting, id_session, votingDialogUnlikeGetCallback);
   }
 }

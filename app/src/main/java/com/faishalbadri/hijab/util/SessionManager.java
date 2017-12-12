@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity;
 import java.util.HashMap;
@@ -15,20 +14,18 @@ import java.util.HashMap;
 
 public class SessionManager {
 
-  SharedPreferences pref, prefIntro;
-  SharedPreferences.Editor editor, editorIntro;
-  Context context;
-  int mode = 0;
-
-  private static final String pref_name = "crudpref";
-  private static final String is_login = "islogin";
   public static final String key_email = "keyemail";
   public static final String key_username = "keyusername";
   public static final String key_image = "keyimage";
   public static final String key_id = "keyid";
-
+  private static final String pref_name = "crudpref";
+  private static final String is_login = "islogin";
   private static final String pref_intro = "intro-welcome";
   private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+  SharedPreferences pref, prefIntro;
+  SharedPreferences.Editor editor, editorIntro;
+  Context context;
+  int mode = 0;
 
   public SessionManager(Context context) {
     this.context = context;
@@ -92,15 +89,14 @@ public class SessionManager {
     return user;
   }
 
+  public boolean isFirstTimeLaunch() {
+    return prefIntro.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+  }
 
   //buat Intro
   public void setFirstTimeLaunch(boolean isFirstTime) {
     editorIntro.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
     editorIntro.commit();
-  }
-
-  public boolean isFirstTimeLaunch() {
-    return prefIntro.getBoolean(IS_FIRST_TIME_LAUNCH, true);
   }
 
 }

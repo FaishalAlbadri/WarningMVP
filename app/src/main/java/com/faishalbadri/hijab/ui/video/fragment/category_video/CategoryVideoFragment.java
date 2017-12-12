@@ -21,12 +21,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoryVideoFragment extends Fragment implements categoryVideoView{
+public class CategoryVideoFragment extends Fragment implements categoryVideoView {
 
 
+  private static final String SAVE_DATA_CATEGORY_VIDEO = "save";
   @BindView(R.id.recyclerview_fragment_category_video)
   RecyclerView recyclerviewFragmentCategoryVideo;
-  private static final String SAVE_DATA_CATEGORY_VIDEO = "save";
   CategoryVideoPresenter categoryVideoPresenter;
   CategoryVideoAdapter categoryVideoAdapter;
   ArrayList<KategoriBean> resultItem;
@@ -47,7 +47,8 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     ButterKnife.bind(this, v);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<KategoriBean> resultArray = savedInstanceState.getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
+      ArrayList<KategoriBean> resultArray = savedInstanceState
+          .getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
       categoryVideoAdapter.notifyDataSetChanged();
@@ -58,7 +59,8 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   }
 
   private void setView() {
-    categoryVideoPresenter = new CategoryVideoPresenter(CategoryRepositoryInject.provideToCategoryInject(getActivity()));
+    categoryVideoPresenter = new CategoryVideoPresenter(
+        CategoryRepositoryInject.provideToCategoryInject(getActivity()));
     categoryVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     categoryVideoAdapter = new CategoryVideoAdapter(getActivity(), resultItem);

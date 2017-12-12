@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -12,8 +11,7 @@ public class PojoCityEvent {
 
   /**
    * city_event : [{"id_city_event":"4","city_event":"Android"},{"id_city_event":"2","city_event":"Bisnis"},{"id_city_event":"1","city_event":"Edukasi"},{"id_city_event":"5","city_event":"IOS"},{"id_city_event":"3","city_event":"Training"}]
-   * status : 1
-   * msg : Data Semua city Event
+   * status : 1 msg : Data Semua city Event
    */
 
   private String status;
@@ -46,6 +44,17 @@ public class PojoCityEvent {
 
   public static class CityEventBean implements android.os.Parcelable {
 
+    public static final Creator<CityEventBean> CREATOR = new Creator<CityEventBean>() {
+      @Override
+      public CityEventBean createFromParcel(Parcel source) {
+        return new CityEventBean(source);
+      }
+
+      @Override
+      public CityEventBean[] newArray(int size) {
+        return new CityEventBean[size];
+      }
+    };
     /**
      * id_city_event : 4
      * city_event : Android
@@ -53,6 +62,14 @@ public class PojoCityEvent {
 
     private String id_city_event;
     private String city_event;
+
+    public CityEventBean() {
+    }
+
+    protected CityEventBean(Parcel in) {
+      this.id_city_event = in.readString();
+      this.city_event = in.readString();
+    }
 
     public String getId_city_event() {
       return id_city_event;
@@ -80,25 +97,5 @@ public class PojoCityEvent {
       dest.writeString(this.id_city_event);
       dest.writeString(this.city_event);
     }
-
-    public CityEventBean() {
-    }
-
-    protected CityEventBean(Parcel in) {
-      this.id_city_event = in.readString();
-      this.city_event = in.readString();
-    }
-
-    public static final Creator<CityEventBean> CREATOR = new Creator<CityEventBean>() {
-      @Override
-      public CityEventBean createFromParcel(Parcel source) {
-        return new CityEventBean(source);
-      }
-
-      @Override
-      public CityEventBean[] newArray(int size) {
-        return new CityEventBean[size];
-      }
-    };
   }
 }

@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_event"
-    layout="@layout/general_toolbar_search" />
+    layout="@layout/general_toolbar_search"/>
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_event"
@@ -49,7 +49,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_event" />
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_event"/>
 
 
 </android.support.constraint.ConstraintLayout>

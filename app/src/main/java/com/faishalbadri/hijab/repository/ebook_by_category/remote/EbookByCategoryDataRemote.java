@@ -10,7 +10,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
-import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.ebook_by_category.EbookByCategoryDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
@@ -25,8 +24,8 @@ import org.json.JSONObject;
 
 public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
 
+  private static final String URL = Server.BASE_URL + "getTbEbookPerKategori.php";
   Context context;
-  private static final String URL = Server.BASE_URL+"getTbEbookPerKategori.php";
 
   public EbookByCategoryDataRemote(Context context) {
     this.context = context;
@@ -40,15 +39,17 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
       try {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua ebook")) {
           try {
-            Log.i("Response",response);
-            PojoEbook pojoEbook = new Gson().fromJson(response,PojoEbook.class);
-            newsByCategoryGetDataCallBack.onSuccessEbookByCategory(pojoEbook.getEbook(),context.getString(
-                R.string.text_succes));
+            Log.i("Response", response);
+            PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
+            newsByCategoryGetDataCallBack
+                .onSuccessEbookByCategory(pojoEbook.getEbook(), context.getString(
+                    R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }
         } else {
-          newsByCategoryGetDataCallBack.onErrorEbookByCategory(context.getString(R.string.text_error));
+          newsByCategoryGetDataCallBack
+              .onErrorEbookByCategory(context.getString(R.string.text_error));
         }
       } catch (JSONException e) {
 
@@ -56,8 +57,7 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
 
       }
 
-    }, error -> newsByCategoryGetDataCallBack.onErrorEbookByCategory(String.valueOf(error)))
-    {
+    }, error -> newsByCategoryGetDataCallBack.onErrorEbookByCategory(String.valueOf(error))) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<>();

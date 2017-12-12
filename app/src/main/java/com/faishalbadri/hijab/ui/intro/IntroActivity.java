@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.intro;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -31,11 +30,38 @@ public class IntroActivity extends AppCompatActivity {
   Button btnNext;
   @BindView(R.id.btn_skip)
   Button btnSkip;
+  SessionManager sessionManager;
   private MyViewPagerAdapter myViewPagerAdapter;
   private TextView[] dots;
   private int[] layouts;
-  SessionManager sessionManager;
+  ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
+    @Override
+    public void onPageSelected(int position) {
+      addBottomDots(position);
+
+      // changing the next button text 'NEXT' / 'GOT IT'
+      if (position == layouts.length - 1) {
+        // last page. make button text to GOT IT
+        btnNext.setText(getString(R.string.text_register));
+        btnSkip.setVisibility(View.GONE);
+      } else {
+        // still pages are left
+        btnNext.setText(getString(R.string.text_next));
+        btnSkip.setVisibility(View.VISIBLE);
+      }
+    }
+
+    @Override
+    public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int arg0) {
+
+    }
+  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -98,37 +124,6 @@ public class IntroActivity extends AppCompatActivity {
     sessionManager.setFirstTimeLaunch(false);
     sessionManager.checkLogin();
   }
-
-
-  ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-    @Override
-    public void onPageSelected(int position) {
-      addBottomDots(position);
-
-      // changing the next button text 'NEXT' / 'GOT IT'
-      if (position == layouts.length - 1) {
-        // last page. make button text to GOT IT
-        btnNext.setText(getString(R.string.text_register));
-        btnSkip.setVisibility(View.GONE);
-      } else {
-        // still pages are left
-        btnNext.setText(getString(R.string.text_next));
-        btnSkip.setVisibility(View.VISIBLE);
-      }
-    }
-
-    @Override
-    public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
-
-    }
-  };
-
 
   @OnClick(R.id.btn_next)
   public void onBtnNextClicked() {

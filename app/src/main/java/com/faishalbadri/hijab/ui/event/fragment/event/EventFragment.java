@@ -13,12 +13,8 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
-import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventContract.eventView;
-import com.faishalbadri.hijab.ui.news.fragment.news.NewsAdapter;
-import com.faishalbadri.hijab.ui.news.fragment.news.NewsPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +24,12 @@ import java.util.List;
 public class EventFragment extends Fragment implements eventView {
 
 
+  private static final String save_event = "saveEvent";
   @BindView(R.id.recyclerview_fragment_event)
   RecyclerView recyclerviewFragmentEvent;
   EventPresenter eventPresenter;
   ArrayList<PojoEvent.EventBean> list_data;
   EventAdapter eventAdapter;
-  private static final String save_event = "saveEvent";
 
 
   public EventFragment() {

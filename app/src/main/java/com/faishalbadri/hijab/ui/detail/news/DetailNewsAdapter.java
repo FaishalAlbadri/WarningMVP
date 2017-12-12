@@ -61,7 +61,7 @@ public class DetailNewsAdapter extends Adapter<ViewHolder> {
       i.putExtra("image", listitem.getIsi_gambar());
       i.putExtra("desc", listitem.getIsi_keterangan());
       v.getContext().startActivity(i);
-      ((Activity)context).finish();
+      ((Activity) context).finish();
     });
   }
 
@@ -71,6 +71,7 @@ public class DetailNewsAdapter extends Adapter<ViewHolder> {
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
+
     @BindView(R.id.imageview_detail_video_grid)
     ImageView imageviewDetailVideoGrid;
     @BindView(R.id.txt_title_detail_video_grid)

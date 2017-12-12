@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by faishal on 11/4/17.
  */
 
-public class NewsByCategoryRepository implements NewsByCategoryDataResource{
+public class NewsByCategoryRepository implements NewsByCategoryDataResource {
 
   NewsByCategoryDataResource newsByCategoryDataResource;
 

@@ -25,8 +25,8 @@ import org.json.JSONObject;
 
 public class RegisterDataRemote implements RegisterDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "register.php";
+  Context context;
 
   public RegisterDataRemote(Context context) {
     this.context = context;
@@ -41,14 +41,16 @@ public class RegisterDataRemote implements RegisterDataResource {
       @Override
       public void onResponse(String response) {
         try {
-          if (String.valueOf(new JSONObject(response).getString("msg")).equals("Register berhasil, silakan login")) {
+          if (String.valueOf(new JSONObject(response).getString("msg"))
+              .equals("Register berhasil, silakan login")) {
             try {
               registerGetCallback.onSuccesRegister(context.getString(R.string.text_succes));
             } catch (Exception e) {
               e.printStackTrace();
             }
           } else {
-            Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai",
+                Toast.LENGTH_SHORT).show();
             registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
           }
         } catch (JSONException e) {

@@ -19,8 +19,8 @@ import org.json.JSONObject;
 
 public class NewsPopularDataRemote implements NewsPopularDataResource {
 
+  private static final String URL = Server.BASE_URL + "getTbPopuler.php";
   Context context;
-  private static final String URL = Server.BASE_URL+"getTbPopuler.php";
 
 
   public NewsPopularDataRemote(Context context) {
@@ -30,16 +30,18 @@ public class NewsPopularDataRemote implements NewsPopularDataResource {
   @Override
   public void getNewsPopularResult(@NonNull NewsPopularGetCallback newsPopularGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL), response -> {
+    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL),
+        response -> {
           try {
-            if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Isi Populer")) {
+            if (String.valueOf(new JSONObject(response).getString("msg"))
+                .equals("Data Semua Isi Populer")) {
               try {
                 final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
                 newsPopularGetCallback.onSuccesNewsPopular(pojoNews.getIsi(), "Success");
               } catch (Exception e) {
 
               }
-            }else {
+            } else {
               newsPopularGetCallback.onErrorNewsPopular("Error");
             }
           } catch (JSONException e) {

@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by fikriimaduddin on 11/3/17.
  */
 
-public class EbookRepository implements EbookDataResource{
+public class EbookRepository implements EbookDataResource {
 
   private EbookDataResource ebookDataResource;
 

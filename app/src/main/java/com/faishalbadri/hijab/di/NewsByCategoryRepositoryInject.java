@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.news_by_category.remote.NewsByCategoryD
  */
 
 public class NewsByCategoryRepositoryInject {
-  public static NewsByCategoryRepository provideToNewsByCategoryRepository (Context context){
+
+  public static NewsByCategoryRepository provideToNewsByCategoryRepository(Context context) {
     return new NewsByCategoryRepository(new NewsByCategoryDataRemote(context));
   }
 }

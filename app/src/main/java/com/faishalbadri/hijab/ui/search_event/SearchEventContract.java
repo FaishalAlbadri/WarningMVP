@@ -12,7 +12,7 @@ public class SearchEventContract {
 
   public interface SearchEventView {
 
-    void onSuccesSearchEvent(List<PojoEvent.EventBean> data,String msg);
+    void onSuccesSearchEvent(List<PojoEvent.EventBean> data, String msg);
 
     void onWrongSearchEvent(String msg);
 

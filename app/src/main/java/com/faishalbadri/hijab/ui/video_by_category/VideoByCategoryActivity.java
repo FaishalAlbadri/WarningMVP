@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.video_by_category;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +13,6 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
-import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
 import java.util.ArrayList;
 import java.util.List;

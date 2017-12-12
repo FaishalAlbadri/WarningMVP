@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.repository.search_event;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.repository.search_event.remote.SearchEventDataRemote;
 
 /**
  * Created by faishal on 10/11/17.

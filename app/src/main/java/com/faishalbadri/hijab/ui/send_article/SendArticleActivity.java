@@ -16,6 +16,8 @@ import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 
 public class SendArticleActivity extends AppCompatActivity {
 
+  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
+  private static final String SUBJECT_EMAIL = "This is my article";
   @BindView(R.id.textview_general_toolbar_with_button)
   TextView textviewGeneralToolbarWithButton;
   @BindView(R.id.button_send_general_toolbar_with_button)
@@ -23,8 +25,6 @@ public class SendArticleActivity extends AppCompatActivity {
   @BindView(R.id.edittext_send_article)
   EditText edittextSendArticle;
   String edittextValue;
-  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
-  private static final String SUBJECT_EMAIL = "This is my article";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,8 @@ public class SendArticleActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","1"));
+    startActivity(
+        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
   }
 }

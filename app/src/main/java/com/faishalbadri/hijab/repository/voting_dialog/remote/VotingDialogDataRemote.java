@@ -40,18 +40,21 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
   public void getResulVotingDialogGetSession(String id_user, String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession), new Listener<String>() {
+    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession),
+        new Listener<String>() {
           @Override
           public void onResponse(String response) {
             try {
-              if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Session")) {
+              if (String.valueOf(new JSONObject(response).getString("msg"))
+                  .equals("Data Semua Session")) {
                 try {
-                  PojoSession pojoSession = new Gson().fromJson(response,PojoSession.class);
-                  Log.i("response",response);
+                  PojoSession pojoSession = new Gson().fromJson(response, PojoSession.class);
+                  Log.i("response", response);
                   for (int a = 0; a < pojoSession.getSession().size(); a++) {
                     String id_session = pojoSession.getSession().get(a).getId_session();
                     String status_session = pojoSession.getSession().get(a).getSession_status();
-                    votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSession("Succes",id_session,status_session);
+                    votingDialogGetSessionGetCallback
+                        .onSuccesVotingDialogGetSession("Succes", id_session, status_session);
                   }
 
                 } catch (Exception e) {
@@ -94,7 +97,10 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
           @Override
           public void onResponse(String response) {
             try {
-              if (String.valueOf(new JSONObject(response).getString("msq")).equals("berhasil update voting") && String.valueOf(new JSONObject(response).getString("msq")).equals("berhasil update voting")) {
+              if (String.valueOf(new JSONObject(response).getString("msq"))
+                  .equals("berhasil update voting") && String
+                  .valueOf(new JSONObject(response).getString("msq"))
+                  .equals("berhasil update voting")) {
                 try {
                   votingDialogLikeGetCallback.onSuccesVotingDialogLike("succes");
                 } catch (Exception e) {
@@ -138,7 +144,10 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
           @Override
           public void onResponse(String response) {
             try {
-              if (String.valueOf(new JSONObject(response).getString("msq")).equals("berhasil delete voting") && String.valueOf(new JSONObject(response).getString("msq")).equals("berhasil update voting")) {
+              if (String.valueOf(new JSONObject(response).getString("msq"))
+                  .equals("berhasil delete voting") && String
+                  .valueOf(new JSONObject(response).getString("msq"))
+                  .equals("berhasil update voting")) {
                 try {
                   votingDialogUnlikeGetCallback.onSuccesVotingDialogUnlike("succes");
                 } catch (Exception e) {

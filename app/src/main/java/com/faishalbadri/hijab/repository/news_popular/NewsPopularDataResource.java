@@ -10,12 +10,12 @@ import java.util.List;
 
 public interface NewsPopularDataResource {
 
+  void getNewsPopularResult(@NonNull NewsPopularGetCallback newsPopularGetCallback);
+
   interface NewsPopularGetCallback {
 
     void onSuccesNewsPopular(List<PojoNews.IsiBean> data, String msg);
 
     void onErrorNewsPopular(String msg);
   }
-
-  void getNewsPopularResult(@NonNull NewsPopularGetCallback newsPopularGetCallback);
 }

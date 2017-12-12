@@ -4,17 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginRegisterActivity extends AppCompatActivity {
 
@@ -53,13 +49,15 @@ public class LoginRegisterActivity extends AppCompatActivity {
   }
 
   private void login() {
-    activityUtil.addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_login_register, LoginFragment.instance());
+    activityUtil.addFragment(getSupportFragmentManager(),
+        R.id.framelayout_for_fragment_activity_login_register, LoginFragment.instance());
     viewSegmentLogin.setVisibility(View.VISIBLE);
     viewSegmentRegister.setVisibility(View.INVISIBLE);
   }
 
   private void register() {
-    activityUtil.addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_login_register, RegisterFragment.instance());
+    activityUtil.addFragment(getSupportFragmentManager(),
+        R.id.framelayout_for_fragment_activity_login_register, RegisterFragment.instance());
     viewSegmentRegister.setVisibility(View.VISIBLE);
     viewSegmentLogin.setVisibility(View.INVISIBLE);
 

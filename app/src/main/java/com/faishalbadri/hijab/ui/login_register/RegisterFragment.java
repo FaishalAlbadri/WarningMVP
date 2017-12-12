@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.login_register;
 
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -45,7 +44,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     // Required empty public constructor
   }
 
-  public static RegisterFragment instance(){
+  public static RegisterFragment instance() {
     return new RegisterFragment();
   }
 
@@ -110,7 +109,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   @Override
   public void onSuccesRegister(String msg) {
     pd.dismiss();
-    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT).show();
+    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
+        .show();
   }
 
   @Override

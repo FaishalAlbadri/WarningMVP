@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.account.remote.AccountDataRemote;
  */
 
 public class AccountRepositoryInject {
-  public static AccountRepository provideToLoginRepository(Context context){
+
+  public static AccountRepository provideToLoginRepository(Context context) {
     return new AccountRepository(new AccountDataRemote(context));
   }
 }

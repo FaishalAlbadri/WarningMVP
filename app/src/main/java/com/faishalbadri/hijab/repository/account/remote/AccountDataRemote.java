@@ -1,10 +1,7 @@
 package com.faishalbadri.hijab.repository.account.remote;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -18,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
 
 /**
  * Created by fikriimaduddin on 10/30/17.

@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
@@ -38,20 +37,6 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     this.data = data;
   }
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
-
-    @BindView(R.id.textview_title_category_item)
-    TextView textviewTitleCategoryItem;
-    @BindView(R.id.card_view_category_item)
-    CardView cardViewCategoryItem;
-
-    public ViewHolder(View itemView) {
-      super(itemView);
-      ButterKnife.bind(this, itemView);
-
-    }
-  }
-
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
@@ -67,7 +52,7 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        ((Activity) context).startActivity(new Intent(context, NewsByCategoryActivity.class)
+        context.startActivity(new Intent(context, NewsByCategoryActivity.class)
             .putExtra("id_kategori", list_item.getId_kategori())
             .putExtra("kategori_title", list_item.getKategori_nama()));
       }
@@ -81,10 +66,24 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   public Drawable getSelectedItemDrawable() {
     int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
+    TypedArray ta = context.obtainStyledAttributes(attrs);
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  public class ViewHolder extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.textview_title_category_item)
+    TextView textviewTitleCategoryItem;
+    @BindView(R.id.card_view_category_item)
+    CardView cardViewCategoryItem;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+
+    }
   }
 
 }

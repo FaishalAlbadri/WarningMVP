@@ -83,6 +83,14 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
     return data.size();
   }
 
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
   public class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.imageview_voting_grid)
@@ -92,13 +100,5 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

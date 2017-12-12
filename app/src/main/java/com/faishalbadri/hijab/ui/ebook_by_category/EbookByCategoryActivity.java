@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.ebook_by_category;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +15,13 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookByCategoryRepositoryInject;
-import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryContract.ebookByCategoryView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EbookByCategoryActivity extends AppCompatActivity implements ebookByCategoryView {
 
+  private static final String SAVE_DATA_EBOOK = "save";
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -35,7 +34,6 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   EbookByCategoryPresenter ebookCategoryPresenter;
   EbookByCategoryAdapter adapter;
   ArrayList<EbookBean> resultItem;
-  private static final String SAVE_DATA_EBOOK = "save";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -17,7 +17,7 @@ public class NewsContract {
 
     void onErrorNews(String msg);
 
-    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider,String msg);
+    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
 
     void onErrorSlider(String msg);
 

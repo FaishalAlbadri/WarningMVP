@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by fikriimaduddin on 11/6/17.
  */
 
-public class DetailVideoDataRepository implements DetailVideoDataResource{
+public class DetailVideoDataRepository implements DetailVideoDataResource {
 
   private DetailVideoDataResource detailVideoDataResource;
 

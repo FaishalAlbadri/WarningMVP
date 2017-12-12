@@ -20,15 +20,16 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsCategoryFragment extends Fragment implements NewsCategoryContract.newsCategoryView {
+public class NewsCategoryFragment extends Fragment implements
+    NewsCategoryContract.newsCategoryView {
 
 
+  private static final String save_category = "saveCategory";
   @BindView(R.id.recyclerview_fragment_news_category)
   RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
   ArrayList<PojoCategory.KategoriBean> list_data;
   NewsCategoryAdapter newsCategoryAdapter;
-  private static final String save_category = "saveCategory";
 
 
   public NewsCategoryFragment() {
@@ -49,21 +50,23 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
     setView();
     newsCategoryPresenter.onAttachView(this);
 
-    if (savedInstanceState != null){
-      ArrayList<PojoCategory.KategoriBean> data = savedInstanceState.getParcelableArrayList(save_category);
+    if (savedInstanceState != null) {
+      ArrayList<PojoCategory.KategoriBean> data = savedInstanceState
+          .getParcelableArrayList(save_category);
       this.list_data.clear();
       this.list_data.addAll(data);
       newsCategoryAdapter.notifyDataSetChanged();
-    }else {
+    } else {
       newsCategoryPresenter.getDataNewsCategory();
     }
     return v;
   }
 
   private void setView() {
-    newsCategoryPresenter = new NewsCategoryPresenter(CategoryRepositoryInject.provideToCategoryInject(getActivity()));
+    newsCategoryPresenter = new NewsCategoryPresenter(
+        CategoryRepositoryInject.provideToCategoryInject(getActivity()));
     list_data = new ArrayList<>();
-    newsCategoryAdapter = new NewsCategoryAdapter(getActivity(),list_data);
+    newsCategoryAdapter = new NewsCategoryAdapter(getActivity(), list_data);
     LinearLayoutManager llm = new LinearLayoutManager(getActivity());
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentNewsCategory.setLayoutManager(llm);
@@ -73,7 +76,7 @@ public class NewsCategoryFragment extends Fragment implements NewsCategoryContra
   @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_category,list_data);
+    outState.putParcelableArrayList(save_category, list_data);
   }
 
   @Override

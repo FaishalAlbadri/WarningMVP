@@ -12,7 +12,7 @@ public class EbookByCategoryContract {
 
   public interface ebookByCategoryView {
 
-    void onSuccesEbookByCategory(List<EbookBean> data,String msg);
+    void onSuccesEbookByCategory(List<EbookBean> data, String msg);
 
     void onErrorEbookByCategory(String msg);
   }

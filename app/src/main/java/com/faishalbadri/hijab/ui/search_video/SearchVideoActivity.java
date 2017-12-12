@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.search_video;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
@@ -11,9 +10,6 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,17 +17,16 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
-import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchVideoActivity extends AppCompatActivity implements SearchVideoView {
 
+  private static final String SAVE_DATA_VIDEO_SEARCH = "save";
   SearchVideoPresenter searchVideoPresenter;
   VideoAdapter adapter;
   ArrayList<VideoBean> resultItem;
-  private static final String SAVE_DATA_VIDEO_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_video)
   RecyclerView recyclerviewActivitySearchVideo;
   String key;

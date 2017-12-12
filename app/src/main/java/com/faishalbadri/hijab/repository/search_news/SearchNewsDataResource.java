@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.repository.search_news;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import java.util.List;
 
@@ -11,6 +10,8 @@ import java.util.List;
 
 public interface SearchNewsDataResource {
 
+  void getSearchNewsResult(String key, @NonNull SearchNewsGetCallback searchNewsGetCallback);
+
   interface SearchNewsGetCallback {
 
     void onSuccesSearchNews(List<IsiBean> data, String msg);
@@ -19,7 +20,5 @@ public interface SearchNewsDataResource {
 
     void onErrorSearchNews(String msg);
   }
-
-  void getSearchNewsResult(String key , @NonNull SearchNewsGetCallback searchNewsGetCallback);
 
 }

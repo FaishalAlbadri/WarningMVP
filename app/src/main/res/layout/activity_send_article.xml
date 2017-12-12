@@ -14,13 +14,13 @@
     android:id="@+id/edittext_send_article"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
-    android:gravity="top"
     android:layout_margin="@dimen/margin_widget"
-    android:hint="@string/text_instruction_type"
     android:background="@android:color/transparent"
+    android:gravity="top"
+    android:hint="@string/text_instruction_type"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_send_article"
-    app:layout_constraintBottom_toBottomOf="parent"
     />
 </android.support.constraint.ConstraintLayout>

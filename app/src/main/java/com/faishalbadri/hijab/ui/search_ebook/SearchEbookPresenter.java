@@ -35,7 +35,7 @@ public class SearchEbookPresenter implements SearchEbookContract.SearchEbookPres
     searchEbookRepository.getSearchEbookResult(key, new SearchEbookGetCallback() {
       @Override
       public void onSuccesSearchEbook(List<EbookBean> data, String msg) {
-        searchEbookView.onSuccesSearchEbook(data,msg);
+        searchEbookView.onSuccesSearchEbook(data, msg);
       }
 
       @Override

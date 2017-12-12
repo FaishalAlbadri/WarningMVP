@@ -12,7 +12,7 @@ public class SearchEbookContract {
 
   public interface SearchEbookView {
 
-    void onSuccesSearchEbook(List<EbookBean> data,String msg);
+    void onSuccesSearchEbook(List<EbookBean> data, String msg);
 
     void onWrongSearchEbook(String msg);
 

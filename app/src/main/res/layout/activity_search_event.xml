@@ -10,9 +10,9 @@
     android:id="@+id/recyclerview_activity_search_event"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@+id/txt_input_layout"
+    android:layout_margin="@dimen/padding_widget"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    android:layout_margin="@dimen/padding_widget"/>
+    app:layout_constraintTop_toBottomOf="@+id/txt_input_layout"/>
 
 </android.support.constraint.ConstraintLayout>

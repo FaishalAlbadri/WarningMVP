@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.register.remote.RegisterDataRemote;
  */
 
 public class RegisterRepositoryInject {
-  public static RegisterRepository provideToRegisterRepository(Context context){
+
+  public static RegisterRepository provideToRegisterRepository(Context context) {
     return new RegisterRepository(new RegisterDataRemote(context));
   }
 }

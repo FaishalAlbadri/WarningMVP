@@ -8,7 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.search_video.SearchVideoDataResource;
 import com.faishalbadri.hijab.util.Server;
@@ -24,8 +23,8 @@ import org.json.JSONObject;
 
 public class SearchVideoDataRemote implements SearchVideoDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "searchVideo.php";
+  Context context;
 
   public SearchVideoDataRemote(Context context) {
     this.context = context;
@@ -40,7 +39,8 @@ public class SearchVideoDataRemote implements SearchVideoDataResource {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Search")) {
           try {
             PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
-            searchVideoGetCallback.onSuccesSearchVideo(pojoVideo.getVideo(), context.getString(R.string.text_succes));
+            searchVideoGetCallback
+                .onSuccesSearchVideo(pojoVideo.getVideo(), context.getString(R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }

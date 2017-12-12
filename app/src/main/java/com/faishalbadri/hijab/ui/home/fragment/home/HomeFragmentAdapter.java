@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
@@ -48,6 +47,75 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     this.dataList = dataList;
   }
 
+  @Override
+  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home, parent, false);
+
+    return new ViewHolder(view);
+  }
+
+  @Override
+  public void onBindViewHolder(final ViewHolder holder, int position) {
+    final DataHomeFragment dataHomeFragment = dataList.get(position);
+
+    news = context.getResources().getString(R.string.text_pinky_hijab_news);
+    voting = context.getResources().getString(R.string.text_pinky_hijab_voting);
+    video = context.getResources().getString(R.string.text_pinky_hijab_video);
+    community = context.getResources().getString(R.string.text_pinky_hijab_community);
+    event = context.getResources().getString(R.string.text_pinky_hijab_event);
+    ebook = context.getResources().getString(R.string.text_pinky_hijab_ebook);
+
+    Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
+      @Override
+      public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+        holder.constraintItemHome.setBackground(resource);
+      }
+    });
+    holder.textviewTitleFragmentHomeAdapter.setText(dataHomeFragment.getJudul());
+    holder.textviewTitleFragmentHomeAdapter.setVisibility(View.GONE);
+    holder.textviewTitleDetailFragmentHomeAdapter.setVisibility(View.GONE);
+    holder.imageviewFragmentHomeAdapter.setVisibility(View.GONE);
+    holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
+    holder.cardviewNewsFragmentHome.setClickable(true);
+    holder.cardviewNewsFragmentHome.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
+          context.startActivity(new Intent(context, NewsActivity.class));
+          ((Activity) context).finish();
+        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
+          context.startActivity(new Intent(context, VotingActivity.class));
+          ((Activity) context).finish();
+        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
+          context.startActivity(new Intent(context, VideoActivity.class));
+          ((Activity) context).finish();
+        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
+
+        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
+          context.startActivity(new Intent(context, EventActivity.class));
+          ((Activity) context).finish();
+        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
+          context.startActivity(new Intent(context, EbookActivity.class));
+          ((Activity) context).finish();
+        }
+      }
+    });
+
+  }
+
+  @Override
+  public int getItemCount() {
+    return dataList.size();
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
   public class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.imageview_fragment_home_adapter)
@@ -66,75 +134,6 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
       ButterKnife.bind(this, itemView);
 
     }
-  }
-
-  @Override
-  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home, parent, false);
-
-    return new ViewHolder(view);
-  }
-
-  @Override
-  public void onBindViewHolder(final ViewHolder holder, int position) {
-    final DataHomeFragment dataHomeFragment = dataList.get(position);
-
-    news = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_news);
-    voting = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_voting);
-    video = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_video);
-    community = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_community);
-    event = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_event);
-    ebook = ((Activity) context).getResources().getString(R.string.text_pinky_hijab_ebook);
-
-    Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
-      @Override
-      public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-        holder.constraintItemHome.setBackground(resource);
-      }
-    });
-    holder.textviewTitleFragmentHomeAdapter.setText(dataHomeFragment.getJudul());
-    holder.textviewTitleFragmentHomeAdapter.setVisibility(View.GONE);
-    holder.textviewTitleDetailFragmentHomeAdapter.setVisibility(View.GONE);
-    holder.imageviewFragmentHomeAdapter.setVisibility(View.GONE);
-    holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
-    holder.cardviewNewsFragmentHome.setClickable(true);
-    holder.cardviewNewsFragmentHome.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
-          ((Activity) context).startActivity(new Intent(context, NewsActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
-          ((Activity) context).startActivity(new Intent(context, VotingActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
-          ((Activity) context).startActivity(new Intent(context, VideoActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
-
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
-          ((Activity) context).startActivity(new Intent(context, EventActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
-          ((Activity) context).startActivity(new Intent(context, EbookActivity.class));
-          ((Activity) context).finish();
-        }
-      }
-    });
-
-  }
-
-  @Override
-  public int getItemCount() {
-    return dataList.size();
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 
 }

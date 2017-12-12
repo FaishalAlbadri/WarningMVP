@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.NewsPopularRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularContract.newsPopularView;

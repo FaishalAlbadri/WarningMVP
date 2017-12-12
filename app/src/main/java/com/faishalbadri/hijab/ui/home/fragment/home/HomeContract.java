@@ -12,7 +12,7 @@ public class HomeContract {
 
   public interface homeView {
 
-    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider,String msg);
+    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
 
     void onErrorSlider(String msg);
 

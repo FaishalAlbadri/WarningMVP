@@ -91,7 +91,8 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
           .putExtra("video", video)
           .putExtra("description", listitem.getDescription())
           .putExtra("duration", listitem.getDuration()));
-      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 

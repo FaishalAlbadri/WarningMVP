@@ -24,30 +24,33 @@ import org.json.JSONObject;
 
 public class VideoByCategoryRemote implements VideoByCategoryDataResource {
 
+  private static final String URL_VIDEO_PERKAT = Server.BASE_URL + "getTbVideoPerKategori.php";
   private Context context;
-  private static final String URL_VIDEO_PERKAT = Server.BASE_URL+"getTbVideoPerKategori.php";
 
   public VideoByCategoryRemote(Context context) {
     this.context = context;
   }
 
   @Override
-  public void getVideoByCategoryGetDataCallBack(String id, @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
+  public void getVideoByCategoryGetDataCallBack(String id,
+      @NonNull VideoByCategoryGetDataCallBack videoByCategoryGetDataCallBack) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(
         Method.POST, String.valueOf(URL_VIDEO_PERKAT), response -> {
       try {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Video")) {
           try {
-            Log.i("Response",response);
-            PojoVideo pojoVideoPerkat = new Gson().fromJson(response,PojoVideo.class);
-            videoByCategoryGetDataCallBack.onSuccessVideoByCategory(pojoVideoPerkat.getVideo(),context.getString(
-                R.string.text_succes));
+            Log.i("Response", response);
+            PojoVideo pojoVideoPerkat = new Gson().fromJson(response, PojoVideo.class);
+            videoByCategoryGetDataCallBack
+                .onSuccessVideoByCategory(pojoVideoPerkat.getVideo(), context.getString(
+                    R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }
         } else {
-          videoByCategoryGetDataCallBack.onErrorVideoByCategory(context.getString(R.string.text_error));
+          videoByCategoryGetDataCallBack
+              .onErrorVideoByCategory(context.getString(R.string.text_error));
         }
       } catch (JSONException e) {
 
@@ -55,8 +58,7 @@ public class VideoByCategoryRemote implements VideoByCategoryDataResource {
 
       }
 
-    }, error -> videoByCategoryGetDataCallBack.onErrorVideoByCategory(String.valueOf(error)))
-    {
+    }, error -> videoByCategoryGetDataCallBack.onErrorVideoByCategory(String.valueOf(error))) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<>();

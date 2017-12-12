@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.news_by_category;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,28 +13,23 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.di.NewsByCategoryRepositoryInject;
-import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
-import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
-import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryAdapter;
-import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NewsByCategoryActivity extends AppCompatActivity implements NewsByCategoryView {
 
+  private static final String save_news_category = "save_news_category";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.recyclerview_activity_news_by_category)
   RecyclerView recyclerviewActivityNewsByCategory;
-  String id , title;
+  String id, title;
   NewsByCategoryAdapter newsByCategoryAdapter;
   NewsByCategoryPresenter newsByCategoryPresenter;
-  private static final String save_news_category = "save_news_category";
   ArrayList<PojoNews.IsiBean> list_data;
 
 
@@ -74,6 +68,7 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     super.onSaveInstanceState(outState, outPersistentState);
     outState.putParcelableArrayList(save_news_category, list_data);
   }
+
   @Override
   public void onSuccesNewsByCategory(List<IsiBean> data, String msg) {
     list_data.clear();

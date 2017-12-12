@@ -20,6 +20,7 @@ import java.util.List;
 
 public class SponsorActivity extends AppCompatActivity implements SponsorContract.SponsorView {
 
+  private static final String save_sponsor = "saveSponsor";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
@@ -29,8 +30,6 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
   SponsorPresenter sponsorPresenter;
   SponsorAdapter sponsorAdapter;
   ArrayList<PojoSponsor.SponsorBean> list_data;
-  private static final String save_sponsor = "saveSponsor";
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +75,8 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
 
   @Override
   public void onBackPressed() {
-    startActivity(new Intent(getApplicationContext(),HomeActivity.class).putExtra("session_home","1"));
+    startActivity(
+        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
   }
 

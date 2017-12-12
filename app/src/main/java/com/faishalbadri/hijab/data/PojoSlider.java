@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -12,8 +11,7 @@ public class PojoSlider {
 
   /**
    * slider : [{"id_slider":"8","slider_judul":"Coba","slider_gambar":"eew.png","slider_keterangan":"COba","slider_view":"0"},{"id_slider":"9","slider_judul":"Coba","slider_gambar":"eew.png","slider_keterangan":"COba","slider_view":"0"},{"id_slider":"10","slider_judul":"Coba","slider_gambar":"eew.png","slider_keterangan":"COba","slider_view":"0"},{"id_slider":"11","slider_judul":"Coba","slider_gambar":"eew.png","slider_keterangan":"COba","slider_view":"0"}]
-   * status : 1
-   * msg : Data Semua Slider
+   * status : 1 msg : Data Semua Slider
    */
 
   private String status;
@@ -46,6 +44,17 @@ public class PojoSlider {
 
   public static class SliderBean implements android.os.Parcelable {
 
+    public static final Creator<SliderBean> CREATOR = new Creator<SliderBean>() {
+      @Override
+      public SliderBean createFromParcel(Parcel source) {
+        return new SliderBean(source);
+      }
+
+      @Override
+      public SliderBean[] newArray(int size) {
+        return new SliderBean[size];
+      }
+    };
     /**
      * id_slider : 8
      * slider_judul : Coba
@@ -59,6 +68,17 @@ public class PojoSlider {
     private String slider_gambar;
     private String slider_keterangan;
     private String slider_view;
+
+    public SliderBean() {
+    }
+
+    protected SliderBean(Parcel in) {
+      this.id_slider = in.readString();
+      this.slider_judul = in.readString();
+      this.slider_gambar = in.readString();
+      this.slider_keterangan = in.readString();
+      this.slider_view = in.readString();
+    }
 
     public String getId_slider() {
       return id_slider;
@@ -113,28 +133,5 @@ public class PojoSlider {
       dest.writeString(this.slider_keterangan);
       dest.writeString(this.slider_view);
     }
-
-    public SliderBean() {
-    }
-
-    protected SliderBean(Parcel in) {
-      this.id_slider = in.readString();
-      this.slider_judul = in.readString();
-      this.slider_gambar = in.readString();
-      this.slider_keterangan = in.readString();
-      this.slider_view = in.readString();
-    }
-
-    public static final Creator<SliderBean> CREATOR = new Creator<SliderBean>() {
-      @Override
-      public SliderBean createFromParcel(Parcel source) {
-        return new SliderBean(source);
-      }
-
-      @Override
-      public SliderBean[] newArray(int size) {
-        return new SliderBean[size];
-      }
-    };
   }
 }

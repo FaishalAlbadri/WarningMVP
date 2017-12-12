@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_news"
-    layout="@layout/general_toolbar_search" />
+    layout="@layout/general_toolbar_search"/>
 
   <LinearLayout
     android:id="@+id/linear_layout_tab_activity_news"
@@ -27,8 +27,8 @@
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:textAllCaps="false"
       android:src="@drawable/ic_news_white"
+      android:textAllCaps="false"
       />
 
     <ImageButton
@@ -38,8 +38,8 @@
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:textAllCaps="false"
       android:src="@drawable/ic_rank_white"
+      android:textAllCaps="false"
       />
 
     <ImageButton
@@ -49,8 +49,8 @@
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:textAllCaps="false"
       android:src="@drawable/ic_category_white"
+      android:textAllCaps="false"
       />
 
 
@@ -63,6 +63,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_news" />
+    app:layout_constraintTop_toBottomOf="@+id/linear_layout_tab_activity_news"/>
 
 </android.support.constraint.ConstraintLayout>

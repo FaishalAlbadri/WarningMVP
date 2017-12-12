@@ -19,7 +19,8 @@ public class AccountRepository implements AccountDataResource {
     accountDataResource.getAccountResult(email, accountGetCallback);
   }
 
-  public void getEditImageResult(String id,String path,@NonNull EditImageGetCallback accountGetCallback) {
+  public void getEditImageResult(String id, String path,
+      @NonNull EditImageGetCallback accountGetCallback) {
     accountDataResource.getEditImageResult(id, path, accountGetCallback);
   }
 }

@@ -12,7 +12,7 @@ public class EventByCityContract {
 
   public interface EventByCityView {
 
-    void onSuccesEventByCity(List<EventBean> data,String msg);
+    void onSuccesEventByCity(List<EventBean> data, String msg);
 
     void onErrorEventByCity(String msg);
   }

@@ -22,7 +22,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
-import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.detail.event.DetailEventActivity;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
@@ -65,13 +64,14 @@ public class EventAdapter extends Adapter<ViewHolder> {
       @Override
       public void onClick(View view) {
         view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
-        .putExtra("title", listitem.getEvent_title())
-        .putExtra("image", listitem.getEvent_image())
-        .putExtra("desc", listitem.getEvent_detail())
-        .putExtra("link", listitem.getEvent_link())
-        .putExtra("place", listitem.getCity_event())
-        .putExtra("time", listitem.getEvent_time()));
-        ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
+            .putExtra("title", listitem.getEvent_title())
+            .putExtra("image", listitem.getEvent_image())
+            .putExtra("desc", listitem.getEvent_detail())
+            .putExtra("link", listitem.getEvent_link())
+            .putExtra("place", listitem.getCity_event())
+            .putExtra("time", listitem.getEvent_time()));
+        ((Activity) context)
+            .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
       }
     });
   }
@@ -79,6 +79,14 @@ public class EventAdapter extends Adapter<ViewHolder> {
   @Override
   public int getItemCount() {
     return data.size();
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
@@ -96,13 +104,5 @@ public class EventAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

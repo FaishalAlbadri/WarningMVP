@@ -10,7 +10,7 @@ import com.faishalbadri.hijab.repository.detail_video_related.remote.DetailVideo
 
 public class DetailVideoRepositoryInject {
 
-  public static DetailVideoDataRepository provideToDetailVideoInject(Context context){
+  public static DetailVideoDataRepository provideToDetailVideoInject(Context context) {
     return new DetailVideoDataRepository(new DetailVideoDataRemote(context));
   }
 

@@ -9,6 +9,7 @@ import com.faishalbadri.hijab.repository.ebook.remote.EbookDataRemote;
  */
 
 public class EbookRepositoryInject {
+
   public static EbookRepository provideToEbookRepositories(Context context) {
     return new EbookRepository(new EbookDataRemote(context));
   }

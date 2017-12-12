@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import java.util.List;
 
 /**

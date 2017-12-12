@@ -12,8 +12,7 @@ public class PojoUser {
 
   /**
    * user : [{"id_user":"10","username":"fikri","email":"fikri.im@gmail.com","password":"57ba172a6be125cca2f449826f9980ca","img_user":"IMG-20171007-WA0002.jpg"}]
-   * status : 1
-   * msg : Data Semua User
+   * status : 1 msg : Data Semua User
    */
 
   private String status;
@@ -44,8 +43,19 @@ public class PojoUser {
     this.user = user;
   }
 
-  public static class UserBean implements Parcelable{
+  public static class UserBean implements Parcelable {
 
+    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
+      @Override
+      public UserBean createFromParcel(Parcel in) {
+        return new UserBean(in);
+      }
+
+      @Override
+      public UserBean[] newArray(int size) {
+        return new UserBean[size];
+      }
+    };
     /**
      * id_user : 10
      * username : fikri
@@ -67,18 +77,6 @@ public class PojoUser {
       password = in.readString();
       img_user = in.readString();
     }
-
-    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
-      @Override
-      public UserBean createFromParcel(Parcel in) {
-        return new UserBean(in);
-      }
-
-      @Override
-      public UserBean[] newArray(int size) {
-        return new UserBean[size];
-      }
-    };
 
     public String getId_user() {
       return id_user;

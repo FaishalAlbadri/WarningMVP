@@ -48,7 +48,7 @@ public class VotingDialogFragment extends DialogFragment implements
   RelativeLayout invisibleRelativeDialogFragmentVoting;
   @BindView(R.id.progress)
   ProgressBar progress;
-  String nama, img, id_user, id_voting, id_session, status_session,voting;
+  String nama, img, id_user, id_voting, id_session, status_session, voting;
   VotingDialogPresenterGetSession votingDialogPresenterGetSession;
   VotingDialogPresenterLike votingDialogPresenterLike;
   VotingDialogPresenterUnlike votingDialogPresenterUnlike;
@@ -78,18 +78,18 @@ public class VotingDialogFragment extends DialogFragment implements
       public void onClick(View v) {
         buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
         buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
-        votingDialogPresenterUnlike.getDataVotingDialogUnlike(id_voting,id_session);
+        votingDialogPresenterUnlike.getDataVotingDialogUnlike(id_voting, id_session);
       }
     });
 
-     buttonBeforeLikeVoting.setOnClickListener(new OnClickListener() {
-       @Override
-       public void onClick(View v) {
-         buttonAfterLikeVoting.setVisibility(View.VISIBLE);
-         buttonBeforeLikeVoting.setVisibility(View.INVISIBLE);
-         votingDialogPresenterLike.getDataVotingDialogLike(id_voting,id_user);
-       }
-     });
+    buttonBeforeLikeVoting.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        buttonAfterLikeVoting.setVisibility(View.VISIBLE);
+        buttonBeforeLikeVoting.setVisibility(View.INVISIBLE);
+        votingDialogPresenterLike.getDataVotingDialogLike(id_voting, id_user);
+      }
+    });
     return v;
   }
 
@@ -100,7 +100,9 @@ public class VotingDialogFragment extends DialogFragment implements
         .load(Server.BASE_IMG + img)
         .apply(options)
         .into(imageFragmentVotingDialog);
-    voting = "Dapatkan aplikasi ini di Google Playstore. \"LINK\" \n Dan jangan lupa untuk mensupport " + nama + " sebagai pemenang \"NAMA AWARDING\" di tahun 2017" ;
+    voting =
+        "Dapatkan aplikasi ini di Google Playstore. \"LINK\" \n Dan jangan lupa untuk mensupport "
+            + nama + " sebagai pemenang \"NAMA AWARDING\" di tahun 2017";
   }
 
   private void setPresenter() {
@@ -113,7 +115,7 @@ public class VotingDialogFragment extends DialogFragment implements
     votingDialogPresenterGetSession.onAttachView(this);
     votingDialogPresenterLike.onAttachView(this);
     votingDialogPresenterUnlike.onAttachView(this);
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user,id_voting);
+    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
   }
 
   @NonNull
@@ -158,9 +160,9 @@ public class VotingDialogFragment extends DialogFragment implements
   private void IntentShare() {
     Intent share = new Intent(Intent.ACTION_SEND);
     share.setType("text/plain");
-    share.putExtra(Intent.EXTRA_SUBJECT,"PINKY HIJAB");
-    share.putExtra(Intent.EXTRA_TEXT,voting);
-    startActivity(Intent.createChooser(share,"Bagikan dengan"));
+    share.putExtra(Intent.EXTRA_SUBJECT, "PINKY HIJAB");
+    share.putExtra(Intent.EXTRA_TEXT, voting);
+    startActivity(Intent.createChooser(share, "Bagikan dengan"));
   }
 
   @Override
@@ -176,7 +178,7 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @Override
   public void onSuccesVotingDialogLike(String msg) {
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user,id_voting);
+    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
   }
 
   @Override
@@ -186,7 +188,7 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @Override
   public void onSuccesVotingDialogUnlike(String msg) {
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user,id_voting);
+    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
   }
 
   @Override

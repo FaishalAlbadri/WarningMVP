@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.event_by_city.remote.EventByCityDataRem
  */
 
 public class EventByCityRepositoryInject {
-  public static EventByCityRepository provideToEventByCityRepository(Context context){
+
+  public static EventByCityRepository provideToEventByCityRepository(Context context) {
     return new EventByCityRepository(new EventByCityDataRemote(context));
   }
 }

@@ -10,13 +10,14 @@ import java.util.List;
 
 public interface DetailNewsDataResource {
 
+  void getDetailNewsPopularResult(
+      @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback);
+
   interface DetailNewsPopularGetCallback {
 
     void onSuccesDetailNewsPopular(List<IsiBean> data, String msg);
 
     void onErrorDetailNewsPopular(String msg);
   }
-
-  void getDetailNewsPopularResult(@NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback);
 
 }

@@ -1,40 +1,31 @@
 package com.faishalbadri.hijab.ui.search_event;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
-import com.faishalbadri.hijab.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter;
-import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchEventActivity extends AppCompatActivity implements SearchEventView{
+public class SearchEventActivity extends AppCompatActivity implements SearchEventView {
 
+  private static final String SAVE_DATA_EVENT_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
-  private static final String SAVE_DATA_EVENT_SEARCH = "save";
   String key;
   SearchEventPresenter searchEventPresenter;
   EventAdapter adapter;

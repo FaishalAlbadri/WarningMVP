@@ -2,9 +2,7 @@ package com.faishalbadri.hijab.ui.home.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -13,8 +11,6 @@ import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
-import com.faishalbadri.hijab.util.SessionManager;
-import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 

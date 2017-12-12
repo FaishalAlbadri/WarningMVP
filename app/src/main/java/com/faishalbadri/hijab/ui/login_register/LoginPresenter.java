@@ -18,7 +18,6 @@ public class LoginPresenter implements LoginContract.loginPresenter {
   }
 
 
-
   @Override
   public void onAttachView(loginView view) {
     this.loginView = view;
@@ -34,7 +33,7 @@ public class LoginPresenter implements LoginContract.loginPresenter {
     loginRepository.getLoginResult(email, password, new LoginGetCallback() {
       @Override
       public void onSuccesLogin(String msg, String id, String username, String image) {
-        loginView.onSuccesLogin(msg,id,username,image);
+        loginView.onSuccesLogin(msg, id, username, image);
       }
 
       @Override

@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.voting;
 
-import android.content.Context;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.repository.voting.VotingDataResource.VotingGetCallback;
 import com.faishalbadri.hijab.repository.voting.VotingRepository;
@@ -35,7 +34,7 @@ public class VotingPresenter implements VotingContract.votingPresenter {
     votingRepository.getVotingResult(new VotingGetCallback() {
       @Override
       public void onSuccesVoting(List<VotingBean> list, String msg) {
-        votingView.onSuccesVoting(list,msg);
+        votingView.onSuccesVoting(list, msg);
       }
 
       @Override

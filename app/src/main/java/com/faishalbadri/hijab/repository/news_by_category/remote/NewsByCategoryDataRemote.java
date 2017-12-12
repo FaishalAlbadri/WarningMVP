@@ -24,8 +24,8 @@ import org.json.JSONObject;
 
 public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
 
+  private static final String URL = Server.BASE_URL + "getTbIsiPerKategori.php";
   Context context;
-  private static final String URL = Server.BASE_URL+"getTbIsiPerKategori.php";
 
   public NewsByCategoryDataRemote(Context context) {
     this.context = context;
@@ -39,14 +39,16 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
       try {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Isi")) {
           try {
-            Log.i("Response",response);
-            PojoNews pojoNews = new Gson().fromJson(response,PojoNews.class);
-            newsByCategoryGetDataCallBack.onSuccessNewsByCategory(pojoNews.getIsi(),context.getString(R.string.text_succes));
+            Log.i("Response", response);
+            PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
+            newsByCategoryGetDataCallBack.onSuccessNewsByCategory(pojoNews.getIsi(),
+                context.getString(R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }
         } else {
-          newsByCategoryGetDataCallBack.onErrorNewsByCategory(context.getString(R.string.text_error));
+          newsByCategoryGetDataCallBack
+              .onErrorNewsByCategory(context.getString(R.string.text_error));
         }
       } catch (JSONException e) {
 
@@ -54,8 +56,7 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
 
       }
 
-    }, error -> newsByCategoryGetDataCallBack.onErrorNewsByCategory(String.valueOf(error)))
-    {
+    }, error -> newsByCategoryGetDataCallBack.onErrorNewsByCategory(String.valueOf(error))) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<>();

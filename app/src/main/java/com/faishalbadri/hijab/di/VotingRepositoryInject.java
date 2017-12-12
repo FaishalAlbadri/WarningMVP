@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.voting.remote.VotingDataRemote;
  */
 
 public class VotingRepositoryInject {
-  public static VotingRepository provideToVotingRepository(Context context){
+
+  public static VotingRepository provideToVotingRepository(Context context) {
     return new VotingRepository(new VotingDataRemote(context));
   }
 

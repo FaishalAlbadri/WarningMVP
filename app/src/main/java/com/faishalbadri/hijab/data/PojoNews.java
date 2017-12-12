@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -11,9 +10,10 @@ import java.util.List;
 public class PojoNews {
 
   /**
-   * isi : [{"id_isi":"41","id_admin":"1","id_kategori":"18","isi_judul":"Tips Tampil Sporty dengan Celana Jeans Buat Hijaber","admin_nama":"admin","kategori_nama":"Sport","isi_keterangan":"asdas","isi_tgl_upload":"2017-11-04 17:34:02","isi_kunjungan":"0","isi_gambar":"hijaber-begini-tampil-sporty-dengan-celana-jeans-171023d_3x2.jpg"}]
-   * status : 1
-   * msg : Data Semua Isi
+   * isi : [{"id_isi":"41","id_admin":"1","id_kategori":"18","isi_judul":"Tips Tampil Sporty dengan
+   * Celana Jeans Buat Hijaber","admin_nama":"admin","kategori_nama":"Sport","isi_keterangan":"asdas","isi_tgl_upload":"2017-11-04
+   * 17:34:02","isi_kunjungan":"0","isi_gambar":"hijaber-begini-tampil-sporty-dengan-celana-jeans-171023d_3x2.jpg"}]
+   * status : 1 msg : Data Semua Isi
    */
 
   private String status;
@@ -46,6 +46,17 @@ public class PojoNews {
 
   public static class IsiBean implements android.os.Parcelable {
 
+    public static final Creator<IsiBean> CREATOR = new Creator<IsiBean>() {
+      @Override
+      public IsiBean createFromParcel(Parcel source) {
+        return new IsiBean(source);
+      }
+
+      @Override
+      public IsiBean[] newArray(int size) {
+        return new IsiBean[size];
+      }
+    };
     /**
      * id_isi : 41
      * id_admin : 1
@@ -69,6 +80,22 @@ public class PojoNews {
     private String isi_tgl_upload;
     private Double isi_kunjungan;
     private String isi_gambar;
+
+    public IsiBean() {
+    }
+
+    protected IsiBean(Parcel in) {
+      this.id_isi = in.readString();
+      this.id_admin = in.readString();
+      this.id_kategori = in.readString();
+      this.isi_judul = in.readString();
+      this.admin_nama = in.readString();
+      this.kategori_nama = in.readString();
+      this.isi_keterangan = in.readString();
+      this.isi_tgl_upload = in.readString();
+      this.isi_kunjungan = (Double) in.readValue(Double.class.getClassLoader());
+      this.isi_gambar = in.readString();
+    }
 
     public String getId_isi() {
       return id_isi;
@@ -168,33 +195,5 @@ public class PojoNews {
       dest.writeValue(this.isi_kunjungan);
       dest.writeString(this.isi_gambar);
     }
-
-    public IsiBean() {
-    }
-
-    protected IsiBean(Parcel in) {
-      this.id_isi = in.readString();
-      this.id_admin = in.readString();
-      this.id_kategori = in.readString();
-      this.isi_judul = in.readString();
-      this.admin_nama = in.readString();
-      this.kategori_nama = in.readString();
-      this.isi_keterangan = in.readString();
-      this.isi_tgl_upload = in.readString();
-      this.isi_kunjungan = (Double) in.readValue(Double.class.getClassLoader());
-      this.isi_gambar = in.readString();
-    }
-
-    public static final Creator<IsiBean> CREATOR = new Creator<IsiBean>() {
-      @Override
-      public IsiBean createFromParcel(Parcel source) {
-        return new IsiBean(source);
-      }
-
-      @Override
-      public IsiBean[] newArray(int size) {
-        return new IsiBean[size];
-      }
-    };
   }
 }

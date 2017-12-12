@@ -12,7 +12,7 @@ public class VideoByCategoryContract {
 
   public interface videoByCategoryView {
 
-    void onSuccesVideoByCategory(List<PojoVideo.VideoBean> data,String msg);
+    void onSuccesVideoByCategory(List<PojoVideo.VideoBean> data, String msg);
 
     void onErrorVideoByCategory(String msg);
   }

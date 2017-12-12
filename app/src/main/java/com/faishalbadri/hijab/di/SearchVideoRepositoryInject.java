@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.search_video.remote.SearchVideoDataRemo
  */
 
 public class SearchVideoRepositoryInject {
-  public static SearchVideoRepository provideToSearchVideoRepository(Context context){
+
+  public static SearchVideoRepository provideToSearchVideoRepository(Context context) {
     return new SearchVideoRepository(new SearchVideoDataRemote(context));
   }
 

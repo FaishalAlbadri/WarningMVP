@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.search_news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
@@ -8,29 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.SearchNewsRepositoryInject;
-import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchNewsActivity extends AppCompatActivity implements SearchNewsView {
 
+  private static final String SAVE_DATA_NEWS_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
-  private static final String SAVE_DATA_NEWS_SEARCH = "save";
   String key;
   SearchNewsPresenter searchNewsPresenter;
   SearchNewsAdapter adapter;

@@ -17,8 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +62,16 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
     return list_category_video.size();
   }
 
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
   public class ViewHolder extends RecyclerView.ViewHolder {
+
     @BindView(R.id.textview_title_category_item)
     TextView textviewTitleCategoryItem;
     @BindView(R.id.card_view_category_item)
@@ -72,13 +81,5 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

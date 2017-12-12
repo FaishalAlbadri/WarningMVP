@@ -11,6 +11,10 @@ import java.util.List;
 
 public interface NewsDataResource {
 
+  void getNewsResult(@NonNull NewsGetCallback newsGetCallback);
+
+  void getSliderResult(@NonNull SliderGetCallback sliderGetCallback);
+
   interface NewsGetCallback {
 
     void onSuccesNews(List<PojoNews.IsiBean> data, String msg);
@@ -19,14 +23,10 @@ public interface NewsDataResource {
 
   }
 
-  void getNewsResult(@NonNull NewsGetCallback newsGetCallback);
-
   interface SliderGetCallback {
 
     void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
 
     void onErrorSlider(String msg);
   }
-
-  void getSliderResult(@NonNull SliderGetCallback sliderGetCallback);
 }

@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.search_event.remote.SearchEventDataRemo
  */
 
 public class SearchEventRepositoryInject {
-  public static SearchEventRepository provideToSearchEventRepository(Context context){
+
+  public static SearchEventRepository provideToSearchEventRepository(Context context) {
     return new SearchEventRepository(new SearchEventDataRemote(context));
   }
 }

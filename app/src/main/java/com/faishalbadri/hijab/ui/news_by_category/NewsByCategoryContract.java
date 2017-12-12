@@ -12,12 +12,13 @@ public class NewsByCategoryContract {
 
   public interface NewsByCategoryView {
 
-    void onSuccesNewsByCategory(List<PojoNews.IsiBean> data,String msg);
+    void onSuccesNewsByCategory(List<PojoNews.IsiBean> data, String msg);
 
     void onErrorNewsByCategory(String msg);
   }
 
-  public interface NewsByCategoryPresenter extends BasePresenter<NewsByCategoryContract.NewsByCategoryView> {
+  public interface NewsByCategoryPresenter extends
+      BasePresenter<NewsByCategoryContract.NewsByCategoryView> {
 
     void getDataNewsByCategory(String id);
   }

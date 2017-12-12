@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface SearchEbookDataResource {
 
+  void getSearchEbookResult(String key, @NonNull SearchEbookGetCallback searchEbookGetCallback);
+
   interface SearchEbookGetCallback {
 
     void onSuccesSearchEbook(List<PojoEbook.EbookBean> data, String msg);
@@ -18,7 +20,5 @@ public interface SearchEbookDataResource {
 
     void onErrorSearchEbook(String msg);
   }
-
-  void getSearchEbookResult(String key , @NonNull SearchEbookGetCallback searchEbookGetCallback);
 
 }

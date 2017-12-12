@@ -13,6 +13,7 @@ public class NewsCategoryContract {
   public interface newsCategoryView {
 
     void onSuccesNewsCategory(List<PojoCategory.KategoriBean> data, String msg);
+
     void onErrorNewsCategory(String msg);
 
   }

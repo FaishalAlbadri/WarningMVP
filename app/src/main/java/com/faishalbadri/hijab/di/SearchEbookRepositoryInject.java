@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.search_ebook.remote.SearchEbookDataRemo
  */
 
 public class SearchEbookRepositoryInject {
-  public static SearchEbookRepository provideToSearchEbookRepository(Context context){
+
+  public static SearchEbookRepository provideToSearchEbookRepository(Context context) {
     return new SearchEbookRepository(new SearchEbookDataRemote(context));
   }
 }

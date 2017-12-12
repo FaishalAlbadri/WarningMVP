@@ -3,7 +3,6 @@ package com.faishalbadri.hijab.ui.home.fragment.account;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +16,6 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -28,7 +26,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -56,6 +53,8 @@ import java.util.List;
 public class AccountFragment extends Fragment implements accoutView, editImageView {
 
 
+  private static final int STORAGE_PERMISSION_CODE = 123;
+  private static final String save = "save";
   @BindView(R.id.img_user_account)
   CircleImageView imgUserAccount;
   @BindView(R.id.img_edit_photo_account)
@@ -67,17 +66,16 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   ProgressDialog pd;
   @BindView(R.id.btn_logout_account)
   Button btnLogoutAccount;
-  private int PICK_IMAGE_REQUEST = 1;
-  private String id, email, username, image;
   Context context;
   ActivityUtil activityUtil;
-
-  private static final int STORAGE_PERMISSION_CODE = 123;
-
+  HashMap<String, String> user;
+  AccountPresenter accountPresenter;
+  EditImagePresenter editImagePresenter;
+  SessionManager sessionAccount;
+  private int PICK_IMAGE_REQUEST = 1;
+  private String id, email, username, image;
   private Uri filePathAccount;
   private Bitmap bitmapAccount;
-  HashMap<String, String> user;
-
   public AccountFragment() {
     // Required empty public constructor
   }
@@ -85,11 +83,6 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   public static AccountFragment instance() {
     return new AccountFragment();
   }
-
-  AccountPresenter accountPresenter;
-  EditImagePresenter editImagePresenter;
-  SessionManager sessionAccount;
-  private static final String save = "save";
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,

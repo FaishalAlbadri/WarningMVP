@@ -8,7 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.search_news.SearchNewsDataResource;
 import com.faishalbadri.hijab.util.Server;
@@ -24,8 +23,8 @@ import org.json.JSONObject;
 
 public class SearchNewsDataRemote implements SearchNewsDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "searchNews.php";
+  Context context;
 
   public SearchNewsDataRemote(Context context) {
     this.context = context;

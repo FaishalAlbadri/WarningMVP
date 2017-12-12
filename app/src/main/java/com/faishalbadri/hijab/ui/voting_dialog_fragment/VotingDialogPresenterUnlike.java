@@ -8,7 +8,8 @@ import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogContract.Vot
  * Created by faishal on 11/2/17.
  */
 
-public class VotingDialogPresenterUnlike implements VotingDialogContract.VotingDialogPresenterUnlike {
+public class VotingDialogPresenterUnlike implements
+    VotingDialogContract.VotingDialogPresenterUnlike {
 
   VotingDialogContract.VotingDialogViewUnlike viewUnlike;
   VotingDialogRepository votingDialogRepository;

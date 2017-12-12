@@ -10,14 +10,14 @@ import java.util.List;
 
 public interface DetailVideoDataResource {
 
-  interface DetailVideoGetDataCallBack{
+  void getDetailVideo(@NonNull DetailVideoGetDataCallBack detailVideoGetDataCallBack);
+
+  interface DetailVideoGetDataCallBack {
 
     void onSuccessDetailVideo(List<VideoBean> data, String msg);
 
     void onError(String msg);
 
   }
-
-  void getDetailVideo(@NonNull DetailVideoGetDataCallBack detailVideoGetDataCallBack);
 
 }

@@ -10,7 +10,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
-import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.event_by_city.EventByCityDataResource;
 import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
@@ -25,8 +24,8 @@ import org.json.JSONObject;
 
 public class EventByCityDataRemote implements EventByCityDataResource {
 
+  private static final String URL = Server.BASE_URL + "getTbEventPerCity.php";
   private Context context;
-  private static final String URL = Server.BASE_URL+"getTbEventPerCity.php";
 
   public EventByCityDataRemote(Context context) {
     this.context = context;
@@ -40,9 +39,10 @@ public class EventByCityDataRemote implements EventByCityDataResource {
       try {
         if (String.valueOf(new JSONObject(response).getString("msg")).equals("Data Semua Event")) {
           try {
-            Log.i("Response",response);
-            PojoEvent pojoEvent = new Gson().fromJson(response,PojoEvent.class);
-            eventByCityGetCallback.onSuccesEventByCity(pojoEvent.getEvent(),context.getString(R.string.text_succes));
+            Log.i("Response", response);
+            PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
+            eventByCityGetCallback
+                .onSuccesEventByCity(pojoEvent.getEvent(), context.getString(R.string.text_succes));
           } catch (Exception e) {
             e.printStackTrace();
           }
@@ -55,8 +55,7 @@ public class EventByCityDataRemote implements EventByCityDataResource {
 
       }
 
-    }, error -> eventByCityGetCallback.onErrorEventByCity(String.valueOf(error)))
-    {
+    }, error -> eventByCityGetCallback.onErrorEventByCity(String.valueOf(error))) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<>();

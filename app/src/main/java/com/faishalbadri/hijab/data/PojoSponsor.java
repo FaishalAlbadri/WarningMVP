@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.data;
 
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import java.util.List;
 
 /**
@@ -13,8 +12,7 @@ public class PojoSponsor {
 
   /**
    * sponsor : [{"id_sponsor":"1","sponsor_title":"asd","sponsor_image":"eew.png","sponsor_link":"google.com"}]
-   * status : 1
-   * msg : Data Semua sponsor
+   * status : 1 msg : Data Semua sponsor
    */
 
   private String status;
@@ -47,6 +45,17 @@ public class PojoSponsor {
 
   public static class SponsorBean implements android.os.Parcelable {
 
+    public static final Creator<SponsorBean> CREATOR = new Creator<SponsorBean>() {
+      @Override
+      public SponsorBean createFromParcel(Parcel source) {
+        return new SponsorBean(source);
+      }
+
+      @Override
+      public SponsorBean[] newArray(int size) {
+        return new SponsorBean[size];
+      }
+    };
     /**
      * id_sponsor : 1
      * sponsor_title : asd
@@ -58,6 +67,16 @@ public class PojoSponsor {
     private String sponsor_title;
     private String sponsor_image;
     private String sponsor_link;
+
+    public SponsorBean() {
+    }
+
+    protected SponsorBean(Parcel in) {
+      this.id_sponsor = in.readString();
+      this.sponsor_title = in.readString();
+      this.sponsor_image = in.readString();
+      this.sponsor_link = in.readString();
+    }
 
     public String getId_sponsor() {
       return id_sponsor;
@@ -103,27 +122,5 @@ public class PojoSponsor {
       dest.writeString(this.sponsor_image);
       dest.writeString(this.sponsor_link);
     }
-
-    public SponsorBean() {
-    }
-
-    protected SponsorBean(Parcel in) {
-      this.id_sponsor = in.readString();
-      this.sponsor_title = in.readString();
-      this.sponsor_image = in.readString();
-      this.sponsor_link = in.readString();
-    }
-
-    public static final Creator<SponsorBean> CREATOR = new Creator<SponsorBean>() {
-      @Override
-      public SponsorBean createFromParcel(Parcel source) {
-        return new SponsorBean(source);
-      }
-
-      @Override
-      public SponsorBean[] newArray(int size) {
-        return new SponsorBean[size];
-      }
-    };
   }
 }

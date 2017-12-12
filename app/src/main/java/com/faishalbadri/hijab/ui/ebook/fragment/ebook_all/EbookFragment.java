@@ -21,20 +21,19 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EbookFragment extends Fragment implements EbookView{
+public class EbookFragment extends Fragment implements EbookView {
 
 
-  public EbookFragment() {
-    // Required empty public constructor
-  }
-
+  private static final String SAVE_DATA_EBOOK = "save";
   View v;
   @BindView(R.id.recyclerview_activity_ebook)
   RecyclerView recyclerviewActivityEbook;
   EbookPresenter ebookPresenter;
   EbookAdapter ebookAdapter;
   ArrayList<EbookBean> resultItem;
-  private static final String SAVE_DATA_EBOOK = "save";
+  public EbookFragment() {
+    // Required empty public constructor
+  }
 
   public static EbookFragment instance() {
     return new EbookFragment();

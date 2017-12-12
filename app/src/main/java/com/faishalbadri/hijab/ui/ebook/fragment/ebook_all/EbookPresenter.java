@@ -3,7 +3,6 @@ package com.faishalbadri.hijab.ui.ebook.fragment.ebook_all;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.repository.ebook.EbookDataResource.EbookGetCallBack;
 import com.faishalbadri.hijab.repository.ebook.EbookRepository;
-import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookContract;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook_all.EbookContract.EbookView;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class EbookPresenter implements EbookContract.EbookPresenter {
 
   @Override
   public void onAttachView(EbookView view) {
-    this.ebookView  = view;
+    this.ebookView = view;
   }
 
   @Override

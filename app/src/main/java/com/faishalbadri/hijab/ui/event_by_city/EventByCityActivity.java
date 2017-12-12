@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.event_by_city;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,10 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
-import com.faishalbadri.hijab.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityContract.EventByCityView;
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ import java.util.List;
 
 public class EventByCityActivity extends AppCompatActivity implements EventByCityView {
 
+  private static final String save_event_by_city = "saveEventByCity";
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -35,7 +33,6 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   EventByCityPresenter eventByCityPresenter;
   EventAdapter eventByCityAdapter;
   String id, city;
-  private static final String save_event_by_city = "saveEventByCity";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

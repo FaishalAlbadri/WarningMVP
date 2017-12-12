@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -63,20 +61,29 @@ public class EbookAdapter extends Adapter<ViewHolder> {
     holder.constraintItemGrid.setBackground(getSelectedItemDrawable());
     holder.constraintItemGrid.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
-      .putExtra("name", listitem.getJudul_ebook())
-      .putExtra("image", listitem.getGambar_ebook())
-      .putExtra("description", listitem.getDescription())
-      .putExtra("link", listitem.getLink())
-      .putExtra("publisher", listitem.getPenerbit_ebook())
-      .putExtra("writer", listitem.getPenulis_ebook())
-      .putExtra("time", listitem.getTanggal_terbit_ebook()));
-      ((Activity)context).overridePendingTransition(R.anim.slide_from_right,R.anim.slide_from_right);
+          .putExtra("name", listitem.getJudul_ebook())
+          .putExtra("image", listitem.getGambar_ebook())
+          .putExtra("description", listitem.getDescription())
+          .putExtra("link", listitem.getLink())
+          .putExtra("publisher", listitem.getPenerbit_ebook())
+          .putExtra("writer", listitem.getPenulis_ebook())
+          .putExtra("time", listitem.getTanggal_terbit_ebook()));
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 
   @Override
   public int getItemCount() {
     return list_ebook.size();
+  }
+
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {
@@ -92,13 +99,5 @@ public class EbookAdapter extends Adapter<ViewHolder> {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

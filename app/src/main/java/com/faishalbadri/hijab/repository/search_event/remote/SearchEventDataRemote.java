@@ -23,8 +23,8 @@ import org.json.JSONObject;
 
 public class SearchEventDataRemote implements SearchEventDataResource {
 
-  Context context;
   private static final String URL = Server.BASE_URL + "searchEvent.php";
+  Context context;
 
   public SearchEventDataRemote(Context context) {
     this.context = context;

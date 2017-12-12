@@ -21,12 +21,12 @@ import java.util.List;
 
 public class VotingActivity extends AppCompatActivity implements votingView {
 
+  private static final String save_data_voting = "save_data_voting";
   @BindView(R.id.recyclerview_activity_voting)
   RecyclerView recyclerviewActivityVoting;
   VotingPresenter votingPresenter;
   ArrayList<VotingBean> list_data;
   VotingAdapter votingAdapter;
-  private static final String save_data_voting = "save_data_voting";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)

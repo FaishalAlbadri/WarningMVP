@@ -1,7 +1,5 @@
 package com.faishalbadri.hijab.util;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 /**
@@ -18,13 +16,7 @@ public class Server {
 
   public static boolean isEmpty(MaterialEditText materialEditText) {
         /*jika banyak huruf lebih dari 0*/
-    if (materialEditText.getText().toString().trim().length() > 0) {
-            /*tidak dikembalikan*/
-      return false;
-    } else {
-            /*kembalikan*/
-      return true;
-    }
+    return materialEditText.getText().toString().trim().length() <= 0;
   }
 
 }

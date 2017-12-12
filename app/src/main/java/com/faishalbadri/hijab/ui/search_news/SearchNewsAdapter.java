@@ -74,24 +74,26 @@ public class SearchNewsAdapter extends Adapter<ViewHolder> {
     return list_data.size();
   }
 
+  public Drawable getSelectedItemDrawable() {
+    int[] attrs = new int[]{R.attr.selectableItemBackground};
+    TypedArray ta = context.obtainStyledAttributes(attrs);
+    Drawable selectedItemDrawable = ta.getDrawable(0);
+    ta.recycle();
+    return selectedItemDrawable;
+  }
+
   public class ViewHolder extends RecyclerView.ViewHolder {
+
     @BindView(R.id.imageview_news_item)
     ImageView imageviewNewsItem;
     @BindView(R.id.textview_title_news_item)
     TextView textviewTitleNewsItem;
     @BindView(R.id.cardview_news_fragment_news)
     CardView cardviewNewsFragmentNews;
+
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = ((Activity) context).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
   }
 }

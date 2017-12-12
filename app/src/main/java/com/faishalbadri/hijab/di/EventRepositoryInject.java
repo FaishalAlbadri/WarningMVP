@@ -9,7 +9,8 @@ import com.faishalbadri.hijab.repository.event.remote.EventDataRemote;
  */
 
 public class EventRepositoryInject {
-  public static EventRepository provideToEventRepository(Context context){
+
+  public static EventRepository provideToEventRepository(Context context) {
     return new EventRepository(new EventDataRemote(context));
   }
 }
