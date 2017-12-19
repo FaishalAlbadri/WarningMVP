@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.ui.search_event;
+package com.faishalbadri.hijab.revamp.ui.search_event;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoEvent;
+import com.faishalbadri.hijab.revamp.data.PojoEvent;
 import java.util.List;
 
 /**

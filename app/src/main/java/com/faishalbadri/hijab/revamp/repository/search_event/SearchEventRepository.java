@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.search_event;
+package com.faishalbadri.hijab.revamp.repository.search_event;
 
 import android.support.annotation.NonNull;
 

@@ -1,9 +1,9 @@
-package com.faishalbadri.hijab.ui.search_event;
+package com.faishalbadri.hijab.revamp.ui.search_event;
 
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
-import com.faishalbadri.hijab.repository.search_event.SearchEventDataResource.SearchEventGetCallback;
-import com.faishalbadri.hijab.repository.search_event.SearchEventRepository;
-import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
+import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.revamp.repository.search_event.SearchEventDataResource.SearchEventGetCallback;
+import com.faishalbadri.hijab.revamp.repository.search_event.SearchEventRepository;
+import com.faishalbadri.hijab.revamp.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.List;
 
 /**

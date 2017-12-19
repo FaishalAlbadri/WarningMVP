@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.repository.search_event;
+package com.faishalbadri.hijab.revamp.repository.search_event;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
 import java.util.List;
 
 /**

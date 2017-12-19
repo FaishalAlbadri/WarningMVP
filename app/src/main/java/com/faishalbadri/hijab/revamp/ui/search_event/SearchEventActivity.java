@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.search_event;
+package com.faishalbadri.hijab.revamp.ui.search_event;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -14,10 +14,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
-import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter;
-import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
+import com.faishalbadri.hijab.revamp.ui.event.fragment.event.EventAdapter;
+import com.faishalbadri.hijab.revamp.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.ArrayList;
 import java.util.List;
 
