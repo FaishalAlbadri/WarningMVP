@@ -24,7 +24,7 @@ import com.faishalbadri.hijab.data.DataOtherFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.kritik_saran.KritikSaranActivity;
 import com.faishalbadri.hijab.ui.send_article.SendArticleActivity;
-import com.faishalbadri.hijab.ui.sponsor.SponsorActivity;
+import com.faishalbadri.hijab.revamp.ui.sponsor.SponsorActivity;
 import java.util.List;
 
 /**
