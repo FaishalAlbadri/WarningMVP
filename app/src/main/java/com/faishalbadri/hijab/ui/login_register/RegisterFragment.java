@@ -18,8 +18,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.RegisterRepositoryInject;
+import com.faishalbadri.hijab.util.SendMail;
 import com.faishalbadri.hijab.util.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +40,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   @BindView(R.id.button_register_fragment_register)
   Button buttonRegisterFragmentRegister;
   RegisterPresenter registerPresenter;
-  String username, email, password;
+  String username, email, password, verify_code;
   ProgressDialog pd;
 
 
@@ -102,12 +106,15 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
       username = materialedittextUsernameFragmentRegister.getText().toString();
       email = materialedittextEmailFragmentRegister.getText().toString();
       password = materialedittextPasswordFragmentRegister.getText().toString();
-      registerPresenter.getDataRegister(username, email, password);
+      DateFormat df = new SimpleDateFormat("ssmmHH");
+      verify_code = df.format(Calendar.getInstance().getTime());
+      registerPresenter.getDataRegister(username, email, password, verify_code);
     }
   }
 
   @Override
   public void onSuccesRegister(String msg) {
+    sendMail();
     pd.dismiss();
     Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
         .show();
@@ -130,6 +137,13 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  private void sendMail() {
+    String subject = "Your Verification Account Key From Pink Muslimah";
+    String message = "Your verification code : " + verify_code;
+    SendMail sm = new SendMail(getActivity(), email, subject, message);
+    sm.execute();
   }
 
 }

@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.register;
+package com.faishalbadri.hijab.revamp.repository.register;
 
 import android.support.annotation.NonNull;
 
@@ -16,8 +16,9 @@ public class RegisterRepository implements RegisterDataResource {
   }
 
   @Override
-  public void getRegisterResult(String username, String email, String password,
+  public void getRegisterResult(String username, String email, String password, String verify_code,
       @NonNull RegisterGetCallback registerGetCallback) {
-    registerDataResource.getRegisterResult(username, email, password, registerGetCallback);
+    registerDataResource.getRegisterResult(username, email, password, verify_code,
+        registerGetCallback);
   }
 }

@@ -19,7 +19,7 @@ public class RegisterContract {
 
   public interface registerPresenter extends BasePresenter<registerView> {
 
-    void getDataRegister(String username, String email, String password);
+    void getDataRegister(String username, String email, String password, String verify_code);
   }
 
 }
