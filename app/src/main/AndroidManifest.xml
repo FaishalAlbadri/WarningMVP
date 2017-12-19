@@ -71,7 +71,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".ui.event.activity.EventActivity"
+      android:name=".revamp.ui.event.activity.EventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -87,14 +87,14 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".ui.event_by_city.EventByCityActivity"
+      android:name=".revamp.ui.event_by_city.EventByCityActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.search_ebook.SearchEbookActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".ui.search_event.SearchEventActivity"
+      android:name=".revamp.ui.search_event.SearchEventActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".ui.search_news.SearchNewsActivity"
@@ -103,7 +103,7 @@
       android:name=".ui.search_video.SearchVideoActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".ui.sponsor.SponsorActivity"
+      android:name=".revamp.ui.sponsor.SponsorActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
