@@ -6,16 +6,13 @@ package com.faishalbadri.hijab;
 
 public class BacaSebelumMengerjakan {
 
-  /**
-   klo udah selesai dan finish Migration-server nya tulis sini.. per-API tulisnya
+  /*
+  Rules :
+   1. Klo udah selesai dan finish Migration-server nya tulis sini.. per-API tulisnya
+   2. Klo mau migrasi yang dikerjain pertama pojo -> repo -> XxxContract -> XxxPresenter ->
+      XxxAdapter -> XxxFragment/XxxActivity.
+   3. Pindahin folder yang mau di migrasi kedalam revamp WAJIB
 
-   klo mau migrasi yang dikerjain pertama pojo -> repo -> XxxContract -> XxxPresenter ->
-   XxxAdapter -> XxxFragment/XxxActivity.
-
-   pindahin folder yang mau di migrasi kedalam revamp WAJIB
-   */
-
-  /**
    Migration-server yang udah gw kerjain (Faishal)
    1. categories
    2. city_event
@@ -25,9 +22,8 @@ public class BacaSebelumMengerjakan {
    6. event
    7. event_city
    8. search_event
-   */
 
-  /**
+
    Migration-server yang udah gw kerjain (Fikri)
    1.
    2.
@@ -37,6 +33,6 @@ public class BacaSebelumMengerjakan {
    6.
    7.
    8.
-   */
 
+   */
 }
