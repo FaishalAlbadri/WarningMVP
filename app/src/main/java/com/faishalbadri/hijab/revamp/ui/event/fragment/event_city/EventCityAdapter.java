@@ -1,40 +1,36 @@
-package com.faishalbadri.hijab.ui.ebook.fragment.category;
+package com.faishalbadri.hijab.revamp.ui.event.fragment.event_city;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
-import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryAdapter.ViewHolder;
-import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryActivity;
-import java.util.ArrayList;
+import com.faishalbadri.hijab.revamp.data.PojoCityEvent;
+import com.faishalbadri.hijab.revamp.ui.event.fragment.event_city.EventCityAdapter.ViewHolder;
+import com.faishalbadri.hijab.revamp.ui.event_by_city.EventByCityActivity;
 import java.util.List;
 
-/**
- * Created by fikriimaduddin on 10/11/17.
- */
 
-public class EbookCategoryAdapter extends Adapter<ViewHolder> {
+public class EventCityAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<PojoEbookCategory.EbookCategoriesBean> list_data;
+  List<PojoCityEvent.EventCityBean> data;
 
 
-  public EbookCategoryAdapter(FragmentActivity activity,
-      ArrayList<PojoEbookCategory.EbookCategoriesBean> resultItem) {
-    context = activity;
-    list_data = resultItem;
+  public EventCityAdapter(Context context,
+      List<PojoCityEvent.EventCityBean> data) {
+    this.context = context;
+    this.data = data;
   }
 
   @Override
@@ -46,21 +42,23 @@ public class EbookCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final PojoEbookCategory.EbookCategoriesBean listitem = list_data.get(position);
-    holder.textviewTitleCategoryItem.setText(listitem.getEbook_category_name());
+    final PojoCityEvent.EventCityBean listitem = data.get(position);
+    holder.textviewTitleCategoryItem.setText(listitem.getEvent_city_name());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setClickable(true);
-    holder.cardViewCategoryItem.setOnClickListener(v -> {
-      Intent i = new Intent(v.getContext(), EbookByCategoryActivity.class);
-      i.putExtra("id_category_ebook", listitem.getEbook_category_id());
-      i.putExtra("title", listitem.getEbook_category_name());
-      v.getContext().startActivity(i);
+    holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        context.startActivity(new Intent(context, EventByCityActivity.class)
+            .putExtra("id", listitem.getEvent_city_id())
+            .putExtra("city", listitem.getEvent_city_name()));
+      }
     });
   }
 
   @Override
   public int getItemCount() {
-    return list_data.size();
+    return data.size();
   }
 
   public Drawable getSelectedItemDrawable() {

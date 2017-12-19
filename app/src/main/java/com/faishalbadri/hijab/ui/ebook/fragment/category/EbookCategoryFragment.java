@@ -12,7 +12,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookCategory.KategoriEbookBean;
+import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
 import com.faishalbadri.hijab.di.EbookCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
   View view;
   EbookCategoryPresenter ebookCategoryPresenter;
   EbookCategoryAdapter adapter;
-  ArrayList<KategoriEbookBean> resultItem;
+  ArrayList<PojoEbookCategory.EbookCategoriesBean> resultItem;
 
   public EbookCategoryFragment() {
     // Required empty public constructor
@@ -68,7 +68,8 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
   }
 
   @Override
-  public void onSuccessCategoryEbook(List<KategoriEbookBean> ebook, String msg) {
+  public void onSuccessCategoryEbook(List<PojoEbookCategory.EbookCategoriesBean> ebook,
+      String msg) {
     resultItem.clear();
     resultItem.addAll(ebook);
     adapter.notifyDataSetChanged();

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.category;
 
+import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoEbookCategory.KategoriEbookBean;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class EbookCategoryContract {
 
   public interface EbookCategoryView {
 
-    void onSuccessCategoryEbook(List<KategoriEbookBean> ebook, String msg);
+    void onSuccessCategoryEbook(List<PojoEbookCategory.EbookCategoriesBean> ebook, String msg);
 
     void onNullCategoryEbook(String msg);
 

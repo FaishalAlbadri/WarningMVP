@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
+import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryActivity;
 import java.util.List;
@@ -28,11 +27,11 @@ import java.util.List;
 public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<KategoriBean> data;
+  List<PojoCategory.CategoriesBean> data;
 
 
   public NewsCategoryAdapter(Context context,
-      List<KategoriBean> data) {
+      List<PojoCategory.CategoriesBean> data) {
     this.context = context;
     this.data = data;
   }
@@ -46,15 +45,15 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final KategoriBean list_item = data.get(position);
-    holder.textviewTitleCategoryItem.setText(list_item.getKategori_nama());
+    final PojoCategory.CategoriesBean list_item = data.get(position);
+    holder.textviewTitleCategoryItem.setText(list_item.getCategory_name());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         context.startActivity(new Intent(context, NewsByCategoryActivity.class)
-            .putExtra("id_kategori", list_item.getId_kategori())
-            .putExtra("kategori_title", list_item.getKategori_nama()));
+            .putExtra("id_kategori", list_item.getCategory_id())
+            .putExtra("kategori_title", list_item.getCategory_name()));
       }
     });
   }

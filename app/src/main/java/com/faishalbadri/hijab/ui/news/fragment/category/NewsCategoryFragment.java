@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory;
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
+import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class NewsCategoryFragment extends Fragment implements
   @BindView(R.id.recyclerview_fragment_news_category)
   RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
-  ArrayList<PojoCategory.KategoriBean> list_data;
+  ArrayList<PojoCategory.CategoriesBean> list_data;
   NewsCategoryAdapter newsCategoryAdapter;
 
 
@@ -51,7 +50,7 @@ public class NewsCategoryFragment extends Fragment implements
     newsCategoryPresenter.onAttachView(this);
 
     if (savedInstanceState != null) {
-      ArrayList<PojoCategory.KategoriBean> data = savedInstanceState
+      ArrayList<PojoCategory.CategoriesBean> data = savedInstanceState
           .getParcelableArrayList(save_category);
       this.list_data.clear();
       this.list_data.addAll(data);
@@ -80,7 +79,7 @@ public class NewsCategoryFragment extends Fragment implements
   }
 
   @Override
-  public void onSuccesNewsCategory(List<KategoriBean> data, String msg) {
+  public void onSuccesNewsCategory(List<PojoCategory.CategoriesBean> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     newsCategoryAdapter.notifyDataSetChanged();

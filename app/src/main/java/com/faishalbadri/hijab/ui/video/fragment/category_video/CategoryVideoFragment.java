@@ -12,7 +12,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
+import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   RecyclerView recyclerviewFragmentCategoryVideo;
   CategoryVideoPresenter categoryVideoPresenter;
   CategoryVideoAdapter categoryVideoAdapter;
-  ArrayList<KategoriBean> resultItem;
+  ArrayList<PojoCategory.CategoriesBean> resultItem;
   View v;
 
   public CategoryVideoFragment() {
@@ -47,7 +47,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     ButterKnife.bind(this, v);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<KategoriBean> resultArray = savedInstanceState
+      ArrayList<PojoCategory.CategoriesBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -75,7 +75,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   }
 
   @Override
-  public void onSuccesCategoryVideo(List<KategoriBean> category, String msg) {
+  public void onSuccesCategoryVideo(List<PojoCategory.CategoriesBean> category, String msg) {
     resultItem.clear();
     resultItem.addAll(category);
     categoryVideoAdapter.notifyDataSetChanged();

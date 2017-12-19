@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
-import com.faishalbadri.hijab.repository.category.CategoryDataResource.CategoryGetCallback;
-import com.faishalbadri.hijab.repository.category.CategoryRepository;
+import com.faishalbadri.hijab.revamp.data.PojoCategory;
+import com.faishalbadri.hijab.revamp.repository.category.CategoryDataResource.CategoryGetCallback;
+import com.faishalbadri.hijab.revamp.repository.category.CategoryRepository;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoPresenter;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
 import java.util.List;
@@ -35,7 +35,7 @@ public class CategoryVideoPresenter implements categoryVideoPresenter {
   public void getDataCategoryVideo() {
     categoryRepository.getCategoryResult(new CategoryGetCallback() {
       @Override
-      public void onSuccesCategory(List<KategoriBean> data, String msg) {
+      public void onSuccesCategory(List<PojoCategory.CategoriesBean> data, String msg) {
         categoryVideoView.onSuccesCategoryVideo(data, msg);
       }
 

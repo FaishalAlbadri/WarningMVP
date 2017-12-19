@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.news_by_category;
+package com.faishalbadri.hijab.revamp.ui.event.fragment.event;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,55 +20,56 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
-import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryAdapter.ViewHolder;
+import com.faishalbadri.hijab.revamp.data.PojoEvent;
+import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.ui.detail.event.DetailEventActivity;
+import com.faishalbadri.hijab.revamp.ui.event.fragment.event.EventAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;
 
-/**
- * Created by faishal on 11/4/17.
- */
-
-public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
+public class EventAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<IsiBean> data;
+  List<EventBean> data;
 
 
-  public NewsByCategoryAdapter(Context context,
-      List<IsiBean> data) {
+  public EventAdapter(Context context,
+      List<EventBean> data) {
     this.context = context;
     this.data = data;
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_news, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final IsiBean listitem = data.get(position);
+    final PojoEvent.EventBean listitem = data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_IMG + listitem.getIsi_gambar())
+        .load(Server.BASE_API + listitem.getEvent_image())
         .apply(options)
-        .into(holder.imageviewNewsItem);
-    holder.textviewTitleNewsItem.setText(listitem.getIsi_judul());
-    holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
-    holder.cardviewNewsFragmentNews.setClickable(true);
-    holder.cardviewNewsFragmentNews.setOnClickListener(new OnClickListener() {
+        .into(holder.imageviewEventItemEvent);
+    holder.textviewPlaceTimeEventItem
+        .setText(listitem.getEvent_city_name() + ", " + listitem.getEvent_date());
+    holder.textviewTitleEventItem.setText(listitem.getEvent_title());
+    holder.cardViewEventItem.setForeground(getSelectedItemDrawable());
+    holder.cardViewEventItem.setClickable(true);
+    holder.cardViewEventItem.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View v) {
-        v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-            .putExtra("id_isi",listitem.getId_isi())
-            .putExtra("title", listitem.getIsi_judul())
-            .putExtra("image", listitem.getIsi_gambar())
-            .putExtra("desc", listitem.getIsi_keterangan()));
+      public void onClick(View view) {
+        view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
+            .putExtra("title", listitem.getEvent_title())
+            .putExtra("image", listitem.getEvent_image())
+            .putExtra("desc", listitem.getEvent_detail())
+            .putExtra("link", listitem.getEvent_link())
+            .putExtra("place", listitem.getEvent_city_name())
+            .putExtra("time", listitem.getEvent_date()));
         ((Activity) context)
             .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
       }
@@ -90,18 +91,18 @@ public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
 
   public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.imageview_news_item)
-    ImageView imageviewNewsItem;
-    @BindView(R.id.textview_title_news_item)
-    TextView textviewTitleNewsItem;
-    @BindView(R.id.cardview_news_fragment_news)
-    CardView cardviewNewsFragmentNews;
+    @BindView(R.id.imageview_event_item_event)
+    ImageView imageviewEventItemEvent;
+    @BindView(R.id.textview_title_event_item)
+    TextView textviewTitleEventItem;
+    @BindView(R.id.textview_place_time_event_item)
+    TextView textviewPlaceTimeEventItem;
+    @BindView(R.id.card_view_event_item)
+    CardView cardViewEventItem;
 
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
-
     }
   }
-
 }

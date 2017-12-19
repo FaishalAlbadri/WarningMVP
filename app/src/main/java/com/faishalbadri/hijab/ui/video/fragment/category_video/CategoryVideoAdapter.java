@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.KategoriBean;
+import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryActivity;
 import java.util.ArrayList;
@@ -29,9 +28,10 @@ import java.util.List;
 public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  List<KategoriBean> list_category_video;
+  List<PojoCategory.CategoriesBean> list_category_video;
 
-  public CategoryVideoAdapter(FragmentActivity activity, ArrayList<KategoriBean> resultItem) {
+  public CategoryVideoAdapter(FragmentActivity activity,
+      ArrayList<PojoCategory.CategoriesBean> resultItem) {
     this.context = activity;
     this.list_category_video = resultItem;
   }
@@ -45,14 +45,14 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final KategoriBean listitem = list_category_video.get(position);
-    holder.textviewTitleCategoryItem.setText(listitem.getKategori_nama());
+    final PojoCategory.CategoriesBean listitem = list_category_video.get(position);
+    holder.textviewTitleCategoryItem.setText(listitem.getCategory_name());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setClickable(true);
     holder.cardViewCategoryItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), VideoByCategoryActivity.class);
-      i.putExtra("id", listitem.getId_kategori());
-      i.putExtra("kategori", listitem.getKategori_nama());
+      i.putExtra("id", listitem.getCategory_id());
+      i.putExtra("kategori", listitem.getCategory_name());
       v.getContext().startActivity(i);
     });
   }

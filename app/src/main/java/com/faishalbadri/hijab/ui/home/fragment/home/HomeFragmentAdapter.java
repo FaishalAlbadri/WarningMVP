@@ -23,7 +23,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
-import com.faishalbadri.hijab.ui.event.activity.EventActivity;
+import com.faishalbadri.hijab.revamp.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.ui.video.activity.VideoActivity;

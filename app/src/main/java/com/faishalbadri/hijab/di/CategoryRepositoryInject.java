@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.category.CategoryRepository;
-import com.faishalbadri.hijab.repository.category.remote.CategoryDataRemote;
+import com.faishalbadri.hijab.revamp.repository.category.CategoryRepository;
+import com.faishalbadri.hijab.revamp.repository.category.remote.CategoryDataRemote;
 
 
 public class CategoryRepositoryInject {

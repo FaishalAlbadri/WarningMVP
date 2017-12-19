@@ -33,8 +33,7 @@ public class NewsDataRemote implements NewsDataResource {
   @Override
   public void getNewsResult(@NonNull NewsGetCallback newsGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL),
-        response -> {
+    StringRequest stringRequest = new StringRequest(Request.Method.GET, String.valueOf(URL), response -> {
           try {
             if (String.valueOf(new JSONObject(response).getString("msg"))
                 .equals("Data Semua Isi")) {

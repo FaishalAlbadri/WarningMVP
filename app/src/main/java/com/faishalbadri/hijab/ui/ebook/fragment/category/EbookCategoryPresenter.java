@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.category;
 
-import com.faishalbadri.hijab.data.PojoEbookCategory.KategoriEbookBean;
-import com.faishalbadri.hijab.repository.ebook_category.EbookCategoryDataResource.EbookCategoryGetCallBack;
-import com.faishalbadri.hijab.repository.ebook_category.EbookCategoryRepository;
+import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
+import com.faishalbadri.hijab.revamp.repository.ebook_category.EbookCategoryDataResource.EbookCategoryGetCallBack;
+import com.faishalbadri.hijab.revamp.repository.ebook_category.EbookCategoryRepository;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
 import java.util.List;
 
@@ -33,7 +33,8 @@ public class EbookCategoryPresenter implements EbookCategoryContract.EbookCatego
   public void getData() {
     ebookCategoryRepository.getEbookCategoryList(new EbookCategoryGetCallBack() {
       @Override
-      public void onSuccessCategoryEbook(List<KategoriEbookBean> data, String msg) {
+      public void onSuccessCategoryEbook(List<PojoEbookCategory.EbookCategoriesBean> data,
+          String msg) {
         ebookCategoryView.onSuccessCategoryEbook(data, msg);
       }
 
