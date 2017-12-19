@@ -1,9 +1,9 @@
-package com.faishalbadri.hijab.ui.sponsor;
+package com.faishalbadri.hijab.revamp.ui.sponsor;
 
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
-import com.faishalbadri.hijab.repository.sponsor.SponsorDataResource.SponsorGetCallback;
-import com.faishalbadri.hijab.repository.sponsor.SponsorRepository;
-import com.faishalbadri.hijab.ui.sponsor.SponsorContract.SponsorView;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.revamp.repository.sponsor.SponsorDataResource.SponsorGetCallback;
+import com.faishalbadri.hijab.revamp.repository.sponsor.SponsorRepository;
+import com.faishalbadri.hijab.revamp.ui.sponsor.SponsorContract.SponsorView;
 import java.util.List;
 
 /**

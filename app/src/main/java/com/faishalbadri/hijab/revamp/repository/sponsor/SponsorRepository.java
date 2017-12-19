@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.sponsor;
+package com.faishalbadri.hijab.revamp.repository.sponsor;
 
 import android.support.annotation.NonNull;
 

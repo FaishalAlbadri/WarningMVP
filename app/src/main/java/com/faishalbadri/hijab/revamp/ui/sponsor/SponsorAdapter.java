@@ -1,6 +1,5 @@
-package com.faishalbadri.hijab.ui.sponsor;
+package com.faishalbadri.hijab.revamp.ui.sponsor;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -19,9 +18,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoSponsor;
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
-import com.faishalbadri.hijab.ui.sponsor.SponsorAdapter.ViewHolder;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.revamp.ui.sponsor.SponsorAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;
 
@@ -53,7 +52,7 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_IMG + datalist.getSponsor_image())
+        .load(Server.BASE_API + datalist.getSponsor_image())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(new OnClickListener() {

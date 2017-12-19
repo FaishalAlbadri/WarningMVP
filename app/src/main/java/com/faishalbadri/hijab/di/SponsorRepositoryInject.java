@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.sponsor.SponsorRepository;
-import com.faishalbadri.hijab.repository.sponsor.remote.SponsorDataRemote;
+import com.faishalbadri.hijab.revamp.repository.sponsor.SponsorRepository;
+import com.faishalbadri.hijab.revamp.repository.sponsor.remote.SponsorDataRemote;
 
 /**
  * Created by faishal on 15/11/17.

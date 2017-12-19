@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.ui.sponsor;
+package com.faishalbadri.hijab.revamp.ui.sponsor;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoSponsor;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor;
 import java.util.List;
 
 /**

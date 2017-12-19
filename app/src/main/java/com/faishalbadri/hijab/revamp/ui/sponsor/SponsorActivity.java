@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.sponsor;
+package com.faishalbadri.hijab.revamp.ui.sponsor;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoSponsor;
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor;
+import com.faishalbadri.hijab.revamp.data.PojoSponsor.SponsorBean;
 import com.faishalbadri.hijab.di.SponsorRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import java.util.ArrayList;
