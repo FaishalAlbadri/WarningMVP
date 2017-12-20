@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.repository.voting;
+package com.faishalbadri.hijab.revamp.repository.voting;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.revamp.data.PojoVoting.VotingBean;
 import java.util.List;
 
 /**

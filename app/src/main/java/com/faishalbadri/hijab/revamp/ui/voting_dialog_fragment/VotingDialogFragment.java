@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.voting_dialog_fragment;
+package com.faishalbadri.hijab.revamp.ui.voting_dialog_fragment;
 
 
 import android.app.Dialog;
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -30,8 +30,8 @@ import com.faishalbadri.hijab.revamp.util.Server;
  * A simple {@link Fragment} subclass.
  */
 public class VotingDialogFragment extends DialogFragment implements
-    VotingDialogContract.VotingDialogViewGetSession, VotingDialogContract.VotingDialogViewLike,
-    VotingDialogContract.VotingDialogViewUnlike {
+    VotingDialogContract.VotingDialogViewGetSession,
+    VotingDialogContract.VotingDialogViewVotingRate {
 
 
   @BindView(R.id.image_fragment_voting_dialog)
@@ -50,8 +50,7 @@ public class VotingDialogFragment extends DialogFragment implements
   ProgressBar progress;
   String nama, img, id_user, id_voting, id_session, status_session, voting;
   VotingDialogPresenterGetSession votingDialogPresenterGetSession;
-  VotingDialogPresenterLike votingDialogPresenterLike;
-  VotingDialogPresenterUnlike votingDialogPresenterUnlike;
+  VotingDialogPresenterVotingRate votingDialogPresenterVotingRate;
 
   public VotingDialogFragment() {
     // Required empty public constructor
@@ -67,28 +66,19 @@ public class VotingDialogFragment extends DialogFragment implements
     getIntent();
     setPresenter();
     setView();
-    buttonShareVoting.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        IntentShare();
-      }
+    buttonShareVoting.setOnClickListener(v1 -> {
+      IntentShare();
     });
-    buttonAfterLikeVoting.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
-        buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
-        votingDialogPresenterUnlike.getDataVotingDialogUnlike(id_voting, id_session);
-      }
+    buttonAfterLikeVoting.setOnClickListener(v12 -> {
+      buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
+      buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
+      votingDialogPresenterVotingRate.getDataVotingDialogViewVotingRate(id_voting, id_user, "unvote", id_session);
     });
 
-    buttonBeforeLikeVoting.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        buttonAfterLikeVoting.setVisibility(View.VISIBLE);
-        buttonBeforeLikeVoting.setVisibility(View.INVISIBLE);
-        votingDialogPresenterLike.getDataVotingDialogLike(id_voting, id_user);
-      }
+    buttonBeforeLikeVoting.setOnClickListener(v13 -> {
+      buttonAfterLikeVoting.setVisibility(View.VISIBLE);
+      buttonBeforeLikeVoting.setVisibility(View.INVISIBLE);
+      votingDialogPresenterVotingRate.getDataVotingDialogViewVotingRate(id_voting, id_user, "vote", "0");
     });
     return v;
   }
@@ -97,7 +87,7 @@ public class VotingDialogFragment extends DialogFragment implements
     textviewNameDialogFragmentVoting.setText(nama);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
     Glide.with(getActivity())
-        .load(Server.BASE_IMG + img)
+        .load(Server.BASE_API + img)
         .apply(options)
         .into(imageFragmentVotingDialog);
     voting =
@@ -108,13 +98,10 @@ public class VotingDialogFragment extends DialogFragment implements
   private void setPresenter() {
     votingDialogPresenterGetSession = new VotingDialogPresenterGetSession(
         VotingDialogRepositoryInject.provideToVotingDialogRepository(getActivity()));
-    votingDialogPresenterLike = new VotingDialogPresenterLike(
-        VotingDialogRepositoryInject.provideToVotingDialogRepository(getActivity()));
-    votingDialogPresenterUnlike = new VotingDialogPresenterUnlike(
+    votingDialogPresenterVotingRate = new VotingDialogPresenterVotingRate(
         VotingDialogRepositoryInject.provideToVotingDialogRepository(getActivity()));
     votingDialogPresenterGetSession.onAttachView(this);
-    votingDialogPresenterLike.onAttachView(this);
-    votingDialogPresenterUnlike.onAttachView(this);
+    votingDialogPresenterVotingRate.onAttachView(this);
     votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
   }
 
@@ -177,22 +164,12 @@ public class VotingDialogFragment extends DialogFragment implements
   }
 
   @Override
-  public void onSuccesVotingDialogLike(String msg) {
+  public void onSuccesVotingDialogViewVotingRate(String msg) {
     votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
   }
 
   @Override
-  public void onErrorVotingDialogLike(String msg) {
-    dismiss();
-  }
-
-  @Override
-  public void onSuccesVotingDialogUnlike(String msg) {
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
-  }
-
-  @Override
-  public void onErrorVotingDialogUnlike(String msg) {
+  public void onErrorVotingDialogViewVotingRate(String msg) {
 
   }
 }

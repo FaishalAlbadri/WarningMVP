@@ -26,6 +26,8 @@ public class BacaSebelumMengerjakan {
    10. slider_home
    11. login
    12. reload account + upload image
+   13. voting
+   14. voting_dialog
 
 
    Migration-server yang udah gw kerjain (Fikri)

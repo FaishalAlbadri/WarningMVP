@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +23,9 @@ import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.revamp.util.Server;
 import com.faishalbadri.hijab.revamp.util.SessionManager;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +43,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   String email, password;
   SessionManager sessionManagerLogin;
   ProgressDialog pd;
+
 
   public LoginFragment() {
     // Required empty public constructor
@@ -69,11 +72,8 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
       buttonLoginFragmentLogin.setForeground(getSelectedItemDrawable());
     }
     buttonLoginFragmentLogin.setClickable(true);
-    buttonLoginFragmentLogin.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        loginOnClick();
-      }
+    buttonLoginFragmentLogin.setOnClickListener(v -> {
+      loginOnClick();
     });
 
     return view;
@@ -97,7 +97,8 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     } else {
       pd.show();
       email = materialedittextEmailFragmentLogin.getText().toString();
-      password = materialedittextPasswordFragmentLogin.getText().toString();
+      password = convertPassMd5(materialedittextPasswordFragmentLogin.getText().toString());
+      Log.i("md5", email);
       loginPresenter.getDataLogin(email, password);
     }
   }
@@ -108,9 +109,9 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
       String user_handphone_number, String user_image, String user_password,
       String user_verify_code, String user_verified_code, String user_gender, String user_apikey) {
     pd.dismiss();
-    Log.i("OK",msg);
+    Log.i("OK", msg);
     sessionManagerLogin.createSession(id_user, user_name, user_email, user_handphone_number,
-        user_image, password, user_verify_code, user_verified_code, user_gender, user_apikey);
+        user_image, user_password, user_verify_code, user_verified_code, user_gender, user_apikey);
     startActivity(new Intent(getActivity(), HomeActivity.class));
     getActivity().finish();
   }
@@ -118,6 +119,11 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   @Override
   public void onWrongLogin(String msg) {
     pd.dismiss();
+    if (msg == "Data Ada") {
+
+    } else {
+      Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
   }
 
   @Override
@@ -132,6 +138,23 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  public static String convertPassMd5(String pass) {
+    String password = null;
+    MessageDigest mdEnc;
+    try {
+      mdEnc = MessageDigest.getInstance("MD5");
+      mdEnc.update(pass.getBytes(), 0, pass.length());
+      pass = new BigInteger(1, mdEnc.digest()).toString(16);
+      while (pass.length() < 32) {
+        pass = "0" + pass;
+      }
+      password = pass;
+    } catch (NoSuchAlgorithmException e1) {
+      e1.printStackTrace();
+    }
+    return password;
   }
 
 }

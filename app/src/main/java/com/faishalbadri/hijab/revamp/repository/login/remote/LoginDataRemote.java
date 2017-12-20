@@ -34,7 +34,7 @@ public class LoginDataRemote implements LoginDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
+          loginGetCallback.onWrongLogin("Data Ada");
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
           try {
             if (pojoUser == null) {
@@ -57,7 +57,7 @@ public class LoginDataRemote implements LoginDataResource {
               }
             }
           } catch (Exception e) {
-
+            loginGetCallback.onWrongLogin("Email Atau Password Salah");
           }
         }, error -> loginGetCallback.onErrorLogin(String.valueOf(error))) {
 
@@ -65,7 +65,7 @@ public class LoginDataRemote implements LoginDataResource {
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", username);
-        params.put("password", password);
+        params.put("password", "e47ca7a09cf6781e29634502345930a7");
         return params;
       }
 

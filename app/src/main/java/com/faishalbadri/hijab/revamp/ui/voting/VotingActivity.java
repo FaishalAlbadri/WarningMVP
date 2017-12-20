@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.voting;
+package com.faishalbadri.hijab.revamp.ui.voting;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.revamp.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.revamp.di.VotingRepositoryInject;
 import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
-import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
+import com.faishalbadri.hijab.revamp.ui.voting.VotingContract.votingView;
 import java.util.ArrayList;
 import java.util.List;
 

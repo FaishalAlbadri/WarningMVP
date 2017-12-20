@@ -2,6 +2,9 @@ package com.faishalbadri.hijab.revamp.util;
 
 import android.content.Context;
 import android.content.Intent;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by faishal on 18/11/17.
@@ -22,4 +25,6 @@ public class IntentUtil {
     share.putExtra(Intent.EXTRA_TEXT, text);
     context.startActivity(Intent.createChooser(share, "Bagikan dengan"));
   }
+
+
 }

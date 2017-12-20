@@ -1,9 +1,8 @@
-package com.faishalbadri.hijab.ui.voting;
+package com.faishalbadri.hijab.revamp.ui.voting;
 
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
-import com.faishalbadri.hijab.repository.voting.VotingDataResource.VotingGetCallback;
-import com.faishalbadri.hijab.repository.voting.VotingRepository;
-import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
+import com.faishalbadri.hijab.revamp.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.revamp.repository.voting.VotingDataResource.VotingGetCallback;
+import com.faishalbadri.hijab.revamp.repository.voting.VotingRepository;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ public class VotingPresenter implements VotingContract.votingPresenter {
   }
 
   @Override
-  public void onAttachView(votingView view) {
+  public void onAttachView(VotingContract.votingView view) {
     this.votingView = view;
   }
 

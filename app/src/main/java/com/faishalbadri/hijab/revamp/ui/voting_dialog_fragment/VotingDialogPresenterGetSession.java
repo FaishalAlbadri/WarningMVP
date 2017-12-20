@@ -1,8 +1,8 @@
-package com.faishalbadri.hijab.ui.voting_dialog_fragment;
+package com.faishalbadri.hijab.revamp.ui.voting_dialog_fragment;
 
-import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogDataResource.VotingDialogGetSessionGetCallback;
-import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogRepository;
-import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogContract.VotingDialogViewGetSession;
+import com.faishalbadri.hijab.revamp.repository.voting_dialog.VotingDialogDataResource.VotingDialogGetSessionGetCallback;
+import com.faishalbadri.hijab.revamp.repository.voting_dialog.VotingDialogRepository;
+import com.faishalbadri.hijab.revamp.ui.voting_dialog_fragment.VotingDialogContract.VotingDialogViewGetSession;
 
 /**
  * Created by faishal on 11/2/17.

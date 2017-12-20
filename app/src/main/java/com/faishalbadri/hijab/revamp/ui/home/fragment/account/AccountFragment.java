@@ -52,7 +52,6 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
 
   private static final int STORAGE_PERMISSION_CODE = 123;
-  private static final String save = "save";
   @BindView(R.id.img_user_account)
   CircleImageView imgUserAccount;
   @BindView(R.id.img_edit_photo_account)
@@ -90,7 +89,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     getSession();
     setView();
     requestStoragePermission();
-    accountPresenter.getDataAccount(user_name,user_password);
+    accountPresenter.getDataAccount(user_name, user_password);
 
     return v;
   }
@@ -116,7 +115,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
       String user_verify_code, String user_verified_code, String user_gender, String user_apikey) {
     sessionManager.clear();
     sessionManager.createSession(id_user, user_name, user_email, user_handphone_number, user_image,
-            this.user_password, user_verify_code, user_verified_code, user_gender, user_apikey);
+        user_password, user_verify_code, user_verified_code, user_gender, user_apikey);
     getSession();
     RequestOptions options = new RequestOptions().circleCrop()
         .error(R.drawable.ic_account_circle_primary_color).format(

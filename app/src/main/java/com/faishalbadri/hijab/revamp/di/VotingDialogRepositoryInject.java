@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.revamp.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogRepository;
-import com.faishalbadri.hijab.repository.voting_dialog.remote.VotingDialogDataRemote;
+import com.faishalbadri.hijab.revamp.repository.voting_dialog.VotingDialogRepository;
+import com.faishalbadri.hijab.revamp.repository.voting_dialog.remote.VotingDialogDataRemote;
 
 /**
  * Created by faishal on 11/2/17.

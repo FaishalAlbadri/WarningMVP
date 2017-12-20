@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.voting_dialog;
+package com.faishalbadri.hijab.revamp.repository.voting_dialog;
 
 import android.support.annotation.NonNull;
 
@@ -23,16 +23,10 @@ public class VotingDialogRepository implements VotingDialogDataResource {
   }
 
   @Override
-  public void getResulVotingDialogLike(String id_voting, String id_user,
-      @NonNull VotingDialogLikeGetCallback votingDialogLikeGetCallback) {
-    votingDialogDataResource
-        .getResulVotingDialogLike(id_voting, id_user, votingDialogLikeGetCallback);
+  public void getResulVotingDialogVotingRate(String voting_id, String user_id, String type,
+      String voting_session_id,
+      @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback) {
+    votingDialogDataResource.getResulVotingDialogVotingRate(voting_id, user_id, type, voting_session_id, votingDialogVotingRateGetCallback);
   }
 
-  @Override
-  public void getResulVotingDialogUnlike(String id_voting, String id_session,
-      @NonNull VotingDialogUnlikeGetCallback votingDialogUnlikeGetCallback) {
-    votingDialogDataResource
-        .getResulVotingDialogUnlike(id_voting, id_session, votingDialogUnlikeGetCallback);
-  }
 }

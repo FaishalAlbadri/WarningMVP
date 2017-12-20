@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.voting;
+package com.faishalbadri.hijab.revamp.repository.voting;
 
 import android.support.annotation.NonNull;
 

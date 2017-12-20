@@ -39,7 +39,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.voting.VotingActivity"
+      android:name=".revamp.ui.voting.VotingActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity

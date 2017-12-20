@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.voting;
+package com.faishalbadri.hijab.revamp.ui.voting;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVoting;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
-import com.faishalbadri.hijab.ui.voting.VotingAdapter.ViewHolder;
-import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogFragment;
+import com.faishalbadri.hijab.revamp.data.PojoVoting;
+import com.faishalbadri.hijab.revamp.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.revamp.ui.voting.VotingAdapter.ViewHolder;
+import com.faishalbadri.hijab.revamp.ui.voting_dialog_fragment.VotingDialogFragment;
 import com.faishalbadri.hijab.revamp.util.Server;
 import com.faishalbadri.hijab.revamp.util.SessionManager;
 import java.util.HashMap;
@@ -55,12 +55,12 @@ public class VotingAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_IMG + listitem.getVoting_img())
+        .load(Server.BASE_API + listitem.getVoting_img())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {
       Bundle bundle = new Bundle();
-      bundle.putString("id_voting", listitem.getId_voting());
+      bundle.putString("id_voting", listitem.getVoting_id());
       bundle.putString("nama", listitem.getVoting_nickname());
       bundle.putString("img", listitem.getVoting_img());
       bundle.putString("id_user", id_user);

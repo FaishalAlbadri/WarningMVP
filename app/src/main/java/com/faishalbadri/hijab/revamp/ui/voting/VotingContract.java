@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.ui.voting;
+package com.faishalbadri.hijab.revamp.ui.voting;
 
 import com.faishalbadri.hijab.revamp.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.revamp.data.PojoVoting.VotingBean;
 import java.util.List;
 
 /**
