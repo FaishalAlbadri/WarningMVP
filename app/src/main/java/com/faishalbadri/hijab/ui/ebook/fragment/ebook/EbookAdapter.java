@@ -23,7 +23,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.revamp.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.ArrayList;
 import java.util.List;
 

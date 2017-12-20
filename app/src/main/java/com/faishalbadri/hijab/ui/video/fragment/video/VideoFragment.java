@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
-import com.faishalbadri.hijab.di.VideoRepositoryInject;
+import com.faishalbadri.hijab.revamp.di.VideoRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
 import java.util.ArrayList;
 import java.util.List;

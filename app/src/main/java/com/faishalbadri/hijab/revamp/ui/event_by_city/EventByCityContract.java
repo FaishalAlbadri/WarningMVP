@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.revamp.ui.event_by_city;
 
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
 import java.util.List;
 

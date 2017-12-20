@@ -3,9 +3,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment">
+  tools:context="com.faishalbadri.hijab.revamp.ui.home.fragment.home.HomeFragment">
 
-  <com.faishalbadri.hijab.util.slider.SliderLayout
+  <com.faishalbadri.hijab.revamp.util.slider.SliderLayout
     android:id="@+id/slider_fragment_home"
     android:layout_width="0dp"
     android:layout_height="@dimen/slider_size"

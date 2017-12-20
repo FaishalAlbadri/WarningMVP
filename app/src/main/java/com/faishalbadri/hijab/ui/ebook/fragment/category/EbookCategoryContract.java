@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.category;
 
 import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.video.fragment.video;
 
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import java.util.List;
 

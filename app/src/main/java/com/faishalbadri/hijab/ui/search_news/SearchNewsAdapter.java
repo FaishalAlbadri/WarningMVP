@@ -21,7 +21,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.ArrayList;
 import java.util.List;
 

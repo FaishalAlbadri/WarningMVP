@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.revamp.ui.event.fragment.event_city;
 
 import com.faishalbadri.hijab.revamp.data.PojoCityEvent;
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import java.util.List;
 
 /**

@@ -20,14 +20,14 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
-import com.faishalbadri.hijab.di.NewsRepositoryInject;
+import com.faishalbadri.hijab.revamp.data.PojoSlider.SliderBean;
+import com.faishalbadri.hijab.revamp.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
-import com.faishalbadri.hijab.util.Server;
-import com.faishalbadri.hijab.util.slider.ChildAnimationExample;
-import com.faishalbadri.hijab.util.slider.SliderLayout;
-import com.faishalbadri.hijab.util.slider.SliderLayout.PresetIndicators;
-import com.faishalbadri.hijab.util.slider.SliderLayout.Transformer;
+import com.faishalbadri.hijab.revamp.util.Server;
+import com.faishalbadri.hijab.revamp.util.slider.ChildAnimationExample;
+import com.faishalbadri.hijab.revamp.util.slider.SliderLayout;
+import com.faishalbadri.hijab.revamp.util.slider.SliderLayout.PresetIndicators;
+import com.faishalbadri.hijab.revamp.util.slider.SliderLayout.Transformer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -128,8 +128,8 @@ public class NewsFragment extends Fragment implements newsView {
     Log.i("responsesucces", msg);
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
-      file_maps.put(dataSlider.get(a).getSlider_judul(),
-          Server.BASE_IMG + dataSlider.get(a).getSlider_gambar());
+      file_maps.put(dataSlider.get(a).getSlider_title(),
+          Server.BASE_IMG + dataSlider.get(a).getSlider_img());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());

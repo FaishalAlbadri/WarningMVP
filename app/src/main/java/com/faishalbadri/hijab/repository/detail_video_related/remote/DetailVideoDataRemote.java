@@ -8,7 +8,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.detail_video_related.DetailVideoDataResource;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -10,7 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import com.faishalbadri.hijab.revamp.repository.category.CategoryDataResource;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;

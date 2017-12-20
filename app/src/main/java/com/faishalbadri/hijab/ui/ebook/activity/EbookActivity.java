@@ -13,9 +13,9 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryFragment;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookFragment;
-import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookActivity;
-import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.revamp.util.ActivityUtil;
 
 public class EbookActivity extends AppCompatActivity {
 

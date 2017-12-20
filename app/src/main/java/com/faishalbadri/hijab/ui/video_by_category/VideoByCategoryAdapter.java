@@ -20,7 +20,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoActivity;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.ArrayList;
 import java.util.List;
 

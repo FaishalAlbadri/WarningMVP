@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.data.PojoCityEvent;
-import com.faishalbadri.hijab.di.CityEventRepositoryInject;
+import com.faishalbadri.hijab.revamp.di.CityEventRepositoryInject;
 import com.faishalbadri.hijab.revamp.ui.event.fragment.event_city.EventCityContract.eventCityView;
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.news_popular.NewsPopularDataResource;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;

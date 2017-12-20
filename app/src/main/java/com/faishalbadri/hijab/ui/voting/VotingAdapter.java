@@ -19,8 +19,8 @@ import com.faishalbadri.hijab.data.PojoVoting;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.ui.voting.VotingAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogFragment;
-import com.faishalbadri.hijab.util.Server;
-import com.faishalbadri.hijab.util.SessionManager;
+import com.faishalbadri.hijab.revamp.util.Server;
+import com.faishalbadri.hijab.revamp.util.SessionManager;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,8 +50,8 @@ public class VotingAdapter extends Adapter<ViewHolder> {
   public void onBindViewHolder(ViewHolder holder, int position) {
     final PojoVoting.VotingBean listitem = list_voting.get(position);
     sessionManager = new SessionManager(context);
-    HashMap<String, String> user = sessionManager.getUserDetails();
-    id_user = user.get(SessionManager.key_id);
+    HashMap<String, String> user = sessionManager.getUser();
+    id_user = user.get(SessionManager.key_id_user);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)

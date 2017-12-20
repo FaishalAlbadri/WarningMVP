@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import com.faishalbadri.hijab.revamp.data.PojoCategory;
 import java.util.List;
 

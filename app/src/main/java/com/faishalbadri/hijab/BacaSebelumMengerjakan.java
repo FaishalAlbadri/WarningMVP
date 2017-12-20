@@ -22,6 +22,10 @@ public class BacaSebelumMengerjakan {
    6. event
    7. event_city
    8. search_event
+   9. Detail
+   10. slider_home
+   11. login
+   12. reload account + upload image
 
 
    Migration-server yang udah gw kerjain (Fikri)

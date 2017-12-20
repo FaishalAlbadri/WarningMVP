@@ -24,7 +24,7 @@ import com.faishalbadri.hijab.revamp.data.PojoEvent;
 import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.revamp.ui.detail.event.DetailEventActivity;
 import com.faishalbadri.hijab.revamp.ui.event.fragment.event.EventAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.List;
 
 public class EventAdapter extends Adapter<ViewHolder> {

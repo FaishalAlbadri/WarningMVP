@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.voting_dialog_fragment;
 
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 
 /**
  * Created by faishal on 11/2/17.

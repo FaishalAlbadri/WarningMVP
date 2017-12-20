@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
-import com.faishalbadri.hijab.di.EbookCategoryRepositoryInject;
+import com.faishalbadri.hijab.revamp.di.EbookCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
 import java.util.ArrayList;
 import java.util.List;

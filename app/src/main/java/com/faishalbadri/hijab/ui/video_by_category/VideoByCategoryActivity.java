@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
-import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
+import com.faishalbadri.hijab.revamp.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
 import java.util.ArrayList;
 import java.util.List;

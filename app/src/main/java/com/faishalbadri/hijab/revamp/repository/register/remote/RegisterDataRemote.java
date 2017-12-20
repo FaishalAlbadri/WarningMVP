@@ -13,7 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.repository.register.RegisterDataResource;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;

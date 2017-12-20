@@ -13,7 +13,7 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".ui.splash_screen.SplashScreen"
+      android:name=".revamp.ui.splash_screen.SplashScreen"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
@@ -23,19 +23,19 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".ui.login_register.LoginRegisterActivity"
+      android:name=".revamp.ui.login_register.LoginRegisterActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.home.activity.HomeActivity"
+      android:name=".revamp.ui.home.activity.HomeActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.kritik_saran.KritikSaranActivity"
+      android:name=".revamp.ui.kritik_saran.KritikSaranActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.send_article.SendArticleActivity"
+      android:name=".revamp.ui.send_article.SendArticleActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -107,7 +107,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.intro.IntroActivity"
+      android:name=".revamp.ui.intro.IntroActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
 

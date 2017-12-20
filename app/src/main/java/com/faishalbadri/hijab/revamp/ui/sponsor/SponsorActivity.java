@@ -13,8 +13,8 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.data.PojoSponsor;
 import com.faishalbadri.hijab.revamp.data.PojoSponsor.SponsorBean;
-import com.faishalbadri.hijab.di.SponsorRepositoryInject;
-import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.revamp.di.SponsorRepositoryInject;
+import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
 import java.util.ArrayList;
 import java.util.List;
 

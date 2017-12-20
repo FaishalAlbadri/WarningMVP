@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.news_by_category;
 
-import com.faishalbadri.hijab.base.BasePresenter;
+import com.faishalbadri.hijab.revamp.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoNews;
 import java.util.List;
 

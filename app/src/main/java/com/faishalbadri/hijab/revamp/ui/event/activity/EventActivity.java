@@ -12,9 +12,9 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.ui.event.fragment.event.EventFragment;
 import com.faishalbadri.hijab.revamp.ui.event.fragment.event_city.EventCityFragment;
-import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.revamp.ui.search_event.SearchEventActivity;
-import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.revamp.util.ActivityUtil;
 
 public class EventActivity extends AppCompatActivity {
 

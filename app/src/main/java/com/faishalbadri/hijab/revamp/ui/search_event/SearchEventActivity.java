@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.revamp.data.PojoEvent.EventBean;
-import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
+import com.faishalbadri.hijab.revamp.di.SearchEventRepositoryInject;
 import com.faishalbadri.hijab.revamp.ui.event.fragment.event.EventAdapter;
 import com.faishalbadri.hijab.revamp.ui.search_event.SearchEventContract.SearchEventView;
 import java.util.ArrayList;
