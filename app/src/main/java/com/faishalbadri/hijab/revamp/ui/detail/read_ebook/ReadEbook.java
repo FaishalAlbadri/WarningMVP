@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.read_ebook;
+package com.faishalbadri.hijab.revamp.ui.detail.read_ebook;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +21,7 @@ public class ReadEbook extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_read_ebook);
     ButterKnife.bind(this);
-    ebook = "http://docs.google.com/gview?embedded=true&url=" + Server.BASE_IMG + getIntent()
+    ebook = "http://docs.google.com/gview?embedded=true&url=" + Server.BASE_API + getIntent()
         .getStringExtra("ebook");
     webViewReadEbook.setWebViewClient(new WebViewClient());
     webViewReadEbook.getSettings().setJavaScriptEnabled(true);

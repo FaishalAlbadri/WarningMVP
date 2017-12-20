@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.news;
+package com.faishalbadri.hijab.revamp.ui.detail.news;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.ui.detail.news.DetailNewsAdapter.ViewHolder;
+import com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.ArrayList;
 

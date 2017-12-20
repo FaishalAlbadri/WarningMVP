@@ -21,7 +21,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
+import com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.Server;
 import java.util.List;

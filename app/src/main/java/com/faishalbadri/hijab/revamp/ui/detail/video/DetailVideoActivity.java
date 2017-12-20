@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.video;
+package com.faishalbadri.hijab.revamp.ui.detail.video;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
-import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
+import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.google.android.gms.ads.AdRequest;

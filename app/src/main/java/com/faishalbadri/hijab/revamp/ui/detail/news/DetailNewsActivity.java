@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.news;
+package com.faishalbadri.hijab.revamp.ui.detail.news;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -19,7 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
-import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
+import com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
@@ -86,7 +86,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(500, 500);
     Glide.with(getApplicationContext())
-        .load(Server.BASE_IMG + image)
+        .load(Server.BASE_API + image)
         .apply(options)
         .into(imgDetailNews);
     webViewDescriptionNewsDetail.loadData(desc, "text/html", "uutf/-8");

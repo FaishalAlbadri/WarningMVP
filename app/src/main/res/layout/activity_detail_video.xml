@@ -6,7 +6,7 @@
   android:id="@+id/swipe_back_detail_video"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity">
+  tools:context="com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoActivity">
 
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.news;
+package com.faishalbadri.hijab.revamp.ui.detail.news;
 
 import com.faishalbadri.hijab.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;

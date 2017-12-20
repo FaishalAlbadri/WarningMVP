@@ -55,7 +55,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.detail.video.DetailVideoActivity"
+      android:name=".revamp.ui.detail.video.DetailVideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -67,7 +67,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.detail.news.DetailNewsActivity"
+      android:name=".revamp.ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
@@ -75,7 +75,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.detail.ebook.DetailEbookActivity"
+      android:name=".revamp.ui.detail.ebook.DetailEbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
@@ -83,7 +83,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.detail.event.DetailEventActivity"
+      android:name=".revamp.ui.detail.event.DetailEventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
@@ -112,7 +112,7 @@
       android:theme="@style/AppTheme.NoActionBar"/>
 
     <activity
-      android:name=".ui.detail.read_ebook.ReadEbook"
+      android:name=".revamp.ui.detail.read_ebook.ReadEbook"
       android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 </manifest>

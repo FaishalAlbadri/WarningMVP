@@ -5,7 +5,7 @@
   android:id="@+id/swipe_back_detail_news"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity">
+  tools:context="com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsActivity">
 
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

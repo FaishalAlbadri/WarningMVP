@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.ui.detail.event;
+package com.faishalbadri.hijab.revamp.ui.detail.event;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -65,7 +65,7 @@ public class DetailEventActivity extends AppCompatActivity {
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
     Glide.with(getApplicationContext())
-        .load(Server.BASE_IMG + image)
+        .load(Server.BASE_API + image)
         .apply(options)
         .into(imageviewDetailEvent);
     webViewDescriptionEventDetail.loadData(desc, "text/html", "uutf/-8");

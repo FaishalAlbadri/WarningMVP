@@ -1,9 +1,9 @@
-package com.faishalbadri.hijab.ui.detail.news;
+package com.faishalbadri.hijab.revamp.ui.detail.news;
 
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource.DetailNewsPopularGetCallback;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsRepository;
-import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
+import com.faishalbadri.hijab.revamp.ui.detail.news.DetailNewsContract.DetailNewsView;
 import java.util.List;
 
 /**
