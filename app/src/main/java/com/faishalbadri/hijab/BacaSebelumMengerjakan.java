@@ -28,6 +28,7 @@ public class BacaSebelumMengerjakan {
    12. reload account + upload image
    13. voting
    14. voting_dialog
+   15. session
 
 
    Migration-server yang udah gw kerjain (Fikri)
