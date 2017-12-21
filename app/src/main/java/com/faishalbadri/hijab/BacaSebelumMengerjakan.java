@@ -29,7 +29,10 @@ public class BacaSebelumMengerjakan {
    13. voting
    14. voting_dialog
    15. session
-
+   16. video
+   17. video by category
+   18. video limit
+   19. search video
 
    Migration-server yang udah gw kerjain (Fikri)
    1.
