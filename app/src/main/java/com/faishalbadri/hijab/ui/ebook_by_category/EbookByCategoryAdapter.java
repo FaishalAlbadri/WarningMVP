@@ -17,9 +17,9 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.revamp.ui.detail.ebook.DetailEbookActivity;
+import com.faishalbadri.hijab.aaa_migration_server.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryAdapter.ViewHolder;
-import com.faishalbadri.hijab.revamp.util.Server;
+import com.faishalbadri.hijab.aaa_migration_server.util.Server;
 import java.util.ArrayList;
 import java.util.List;
 

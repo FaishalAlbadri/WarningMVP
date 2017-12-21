@@ -2,7 +2,7 @@ package com.faishalbadri.hijab.repository.news;
 
 import android.support.annotation.NonNull;
 import com.faishalbadri.hijab.data.PojoNews;
-import com.faishalbadri.hijab.revamp.data.PojoSlider;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider;
 import java.util.List;
 
 /**

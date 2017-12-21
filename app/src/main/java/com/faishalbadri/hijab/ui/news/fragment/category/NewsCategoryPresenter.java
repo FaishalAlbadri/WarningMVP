@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
-import com.faishalbadri.hijab.revamp.data.PojoCategory;
-import com.faishalbadri.hijab.revamp.repository.category.CategoryDataResource.CategoryGetCallback;
-import com.faishalbadri.hijab.revamp.repository.category.CategoryRepository;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoCategory;
+import com.faishalbadri.hijab.aaa_migration_server.repository.category.CategoryDataResource.CategoryGetCallback;
+import com.faishalbadri.hijab.aaa_migration_server.repository.category.CategoryRepository;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
 import java.util.List;
 

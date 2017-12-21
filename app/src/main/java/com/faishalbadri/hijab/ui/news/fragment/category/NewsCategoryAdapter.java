@@ -15,7 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.data.PojoCategory;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoCategory;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryActivity;
 import java.util.List;

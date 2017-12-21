@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.revamp.data.PojoSlider.SliderBean;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.repository.news.NewsDataResource.NewsGetCallback;
 import com.faishalbadri.hijab.repository.news.NewsDataResource.SliderGetCallback;
 import com.faishalbadri.hijab.repository.news.NewsRepository;

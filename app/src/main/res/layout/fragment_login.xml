@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@null"
-  tools:context="com.faishalbadri.hijab.revamp.ui.login_register.LoginFragment">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.login_register.LoginFragment">
 
   <TextView
     android:id="@+id/textview_app_name_fragment_login"

@@ -13,7 +13,7 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".revamp.ui.splash_screen.SplashScreen"
+      android:name=".aaa_migration_server.ui.splash_screen.SplashScreen"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
@@ -23,23 +23,23 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".revamp.ui.login_register.LoginRegisterActivity"
+      android:name=".aaa_migration_server.ui.login_register.LoginRegisterActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.home.activity.HomeActivity"
+      android:name=".aaa_migration_server.ui.home.activity.HomeActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.kritik_saran.KritikSaranActivity"
+      android:name=".aaa_migration_server.ui.kritik_saran.KritikSaranActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.send_article.SendArticleActivity"
+      android:name=".aaa_migration_server.ui.send_article.SendArticleActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.voting.VotingActivity"
+      android:name=".aaa_migration_server.ui.voting.VotingActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -47,7 +47,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.video.activity.VideoActivity"
+      android:name=".aaa_migration_server.ui.video.activity.VideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -55,11 +55,11 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.detail.video.DetailVideoActivity"
+      android:name=".aaa_migration_server.ui.detail.video.DetailVideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.video_by_category.VideoByCategoryActivity"
+      android:name=".aaa_migration_server.ui.video_by_category.VideoByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -67,15 +67,15 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.detail.news.DetailNewsActivity"
+      android:name=".aaa_migration_server.ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".revamp.ui.event.activity.EventActivity"
+      android:name=".aaa_migration_server.ui.event.activity.EventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.detail.ebook.DetailEbookActivity"
+      android:name=".aaa_migration_server.ui.detail.ebook.DetailEbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
@@ -83,36 +83,36 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.detail.event.DetailEventActivity"
+      android:name=".aaa_migration_server.ui.detail.event.DetailEventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".revamp.ui.event_by_city.EventByCityActivity"
+      android:name=".aaa_migration_server.ui.event_by_city.EventByCityActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.search_ebook.SearchEbookActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".revamp.ui.search_event.SearchEventActivity"
+      android:name=".aaa_migration_server.ui.search_event.SearchEventActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".ui.search_news.SearchNewsActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".revamp.ui.search_video.SearchVideoActivity"
+      android:name=".aaa_migration_server.ui.search_video.SearchVideoActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".revamp.ui.sponsor.SponsorActivity"
+      android:name=".aaa_migration_server.ui.sponsor.SponsorActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".revamp.ui.intro.IntroActivity"
+      android:name=".aaa_migration_server.ui.intro.IntroActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
 
     <activity
-      android:name=".revamp.ui.detail.read_ebook.ReadEbook"
+      android:name=".aaa_migration_server.ui.detail.read_ebook.ReadEbook"
       android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 </manifest>

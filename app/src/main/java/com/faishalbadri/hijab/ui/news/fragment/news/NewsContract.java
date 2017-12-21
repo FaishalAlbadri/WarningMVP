@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
-import com.faishalbadri.hijab.revamp.base.BasePresenter;
+import com.faishalbadri.hijab.aaa_migration_server.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoNews;
-import com.faishalbadri.hijab.revamp.data.PojoSlider;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider;
 import java.util.List;
 
 /**

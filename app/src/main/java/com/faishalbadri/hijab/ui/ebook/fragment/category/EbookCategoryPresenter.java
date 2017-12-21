@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.category;
 
-import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
-import com.faishalbadri.hijab.revamp.repository.ebook_category.EbookCategoryDataResource.EbookCategoryGetCallBack;
-import com.faishalbadri.hijab.revamp.repository.ebook_category.EbookCategoryRepository;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoEbookCategory;
+import com.faishalbadri.hijab.aaa_migration_server.repository.ebook_category.EbookCategoryDataResource.EbookCategoryGetCallBack;
+import com.faishalbadri.hijab.aaa_migration_server.repository.ebook_category.EbookCategoryRepository;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
 import java.util.List;
 

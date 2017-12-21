@@ -15,7 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.data.PojoEbookCategory;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoEbookCategory;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryActivity;
 import java.util.ArrayList;

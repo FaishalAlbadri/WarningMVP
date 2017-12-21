@@ -10,12 +10,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.aaa_migration_server.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryFragment;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsFragment;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularFragment;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsActivity;
-import com.faishalbadri.hijab.revamp.util.ActivityUtil;
+import com.faishalbadri.hijab.aaa_migration_server.util.ActivityUtil;
 
 public class NewsActivity extends AppCompatActivity {
 

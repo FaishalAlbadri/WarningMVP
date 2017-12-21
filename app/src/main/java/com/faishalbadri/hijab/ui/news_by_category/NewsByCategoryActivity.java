@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.revamp.di.NewsByCategoryRepositoryInject;
+import com.faishalbadri.hijab.aaa_migration_server.di.NewsByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
 import java.util.ArrayList;
 import java.util.List;

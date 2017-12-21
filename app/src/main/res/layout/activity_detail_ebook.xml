@@ -5,7 +5,7 @@
   android:id="@+id/swipe_back_detail_ebook"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.revamp.ui.detail.ebook.DetailEbookActivity">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.detail.ebook.DetailEbookActivity">
 
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

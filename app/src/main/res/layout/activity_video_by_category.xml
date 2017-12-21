@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".revamp.ui.video_by_category.VideoByCategoryActivity">
+  tools:context=".aaa_migration_server.ui.video_by_category.VideoByCategoryActivity">
 
   <include
     android:id="@+id/toolbar_activity_video_by_category"

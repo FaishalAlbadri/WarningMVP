@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.data.PojoCategory;
-import com.faishalbadri.hijab.revamp.di.CategoryRepositoryInject;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoCategory;
+import com.faishalbadri.hijab.aaa_migration_server.di.CategoryRepositoryInject;
 import java.util.ArrayList;
 import java.util.List;
 

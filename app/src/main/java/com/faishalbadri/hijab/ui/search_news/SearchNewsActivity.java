@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.revamp.di.SearchNewsRepositoryInject;
+import com.faishalbadri.hijab.aaa_migration_server.di.SearchNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import java.util.ArrayList;
 import java.util.List;

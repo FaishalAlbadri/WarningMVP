@@ -4,6 +4,6 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@drawable/splashscreen_logo"
-  tools:context="com.faishalbadri.hijab.revamp.ui.splash_screen.SplashScreen"/>
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.splash_screen.SplashScreen"/>
 
 

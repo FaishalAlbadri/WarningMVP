@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.repository.search_ebook.SearchEbookDataResource;
-import com.faishalbadri.hijab.revamp.util.Server;
+import com.faishalbadri.hijab.aaa_migration_server.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;

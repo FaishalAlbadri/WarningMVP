@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 
-import com.faishalbadri.hijab.revamp.base.BasePresenter;
+import com.faishalbadri.hijab.aaa_migration_server.base.BasePresenter;
 import com.faishalbadri.hijab.data.PojoEbook;
 import java.util.List;
 

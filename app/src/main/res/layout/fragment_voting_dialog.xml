@@ -3,7 +3,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  tools:context="com.faishalbadri.hijab.revamp.ui.voting_dialog_fragment.VotingDialogFragment">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.voting_dialog_fragment.VotingDialogFragment">
 
   <RelativeLayout
     android:id="@+id/invisible_relative_dialog_fragment_voting"

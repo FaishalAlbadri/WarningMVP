@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.revamp.ui.detail.read_ebook.ReadEbook">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.detail.read_ebook.ReadEbook">
 
   <WebView
     android:id="@+id/web_view_read_ebook"

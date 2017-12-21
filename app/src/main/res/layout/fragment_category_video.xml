@@ -3,7 +3,7 @@
   android:id="@+id/recyclerview_fragment_category_video"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.revamp.ui.video.fragment.category_video.CategoryVideoFragment">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.video.fragment.category_video.CategoryVideoFragment">
 
   <!-- TODO: Update blank fragment layout -->
 
