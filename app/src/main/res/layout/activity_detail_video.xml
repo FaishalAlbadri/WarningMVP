@@ -55,8 +55,8 @@
 
         </com.google.android.youtube.player.YouTubePlayerView>
 
-        <TextView
-          android:id="@+id/txt_description_video_detail"
+        <WebView
+          android:id="@+id/webview_description_video_detail"
           android:layout_width="@dimen/match_parent_size"
           android:layout_height="wrap_content"
           android:layout_marginTop="@dimen/padding_widget"
@@ -77,7 +77,6 @@
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/txt_description_video_detail"/>
-
 
         <TextView
           android:id="@+id/txt_related_video_detail"

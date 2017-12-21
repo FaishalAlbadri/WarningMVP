@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.revamp.data.PojoVideo;
+import com.faishalbadri.hijab.revamp.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.revamp.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.revamp.util.IntentUtil;
@@ -42,8 +43,6 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   YouTubePlayerView youtubeVideoDetail;
   @BindView(R.id.txt_title_video_detail)
   TextView txtTitleVideoDetail;
-  @BindView(R.id.txt_description_video_detail)
-  TextView txtDescriptionVideoDetail;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
@@ -51,7 +50,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @BindView(R.id.recyclerview_activity_video_detail)
   RecyclerView recyclerviewActivityVideoDetail;
   DetailVideoAdapter detailVideoAdapter;
-  ArrayList<PojoVideo.VideosBean> resultItem;
+  ArrayList<VideosBean> resultItem;
   DetailVideoPresenter detailVideoPresenter;
   @BindView(R.id.ad_view_detail_video)
   AdView adViewDetailVideo;
@@ -60,6 +59,8 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @BindView(R.id.imageview_share_general_toolbar_with_back_button)
   ImageView imageviewShareGeneralToolbarWithBackButton;
   String share = "";
+  @BindView(R.id.webview_description_video_detail)
+  WebView webviewDescriptionVideoDetail;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<PojoVideo.VideosBean> resultArray = savedInstanceState
+      ArrayList<VideosBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_DETAIL);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -92,7 +93,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     duration = getIntent().getStringExtra("duration");
     txtTitleVideoDetail.setText(title);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_video);
-    txtDescriptionVideoDetail.setText(description);
+    webviewDescriptionVideoDetail.loadData(description, "text/html", "uutf/-8");
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     youtubeVideoDetail.initialize(Server.YT_CODE, this);
     setAdView();
@@ -144,7 +145,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
 
 
   @Override
-  public void onSuccessDetailVideo(List<PojoVideo.VideosBean> data, String msg) {
+  public void onSuccessDetailVideo(List<VideosBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     detailVideoAdapter.notifyDataSetChanged();
