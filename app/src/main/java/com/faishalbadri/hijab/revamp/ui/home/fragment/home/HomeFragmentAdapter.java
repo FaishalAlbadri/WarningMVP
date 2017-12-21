@@ -26,7 +26,7 @@ import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
 import com.faishalbadri.hijab.revamp.ui.event.activity.EventActivity;
 import com.faishalbadri.hijab.revamp.ui.home.fragment.home.HomeFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
-import com.faishalbadri.hijab.ui.video.activity.VideoActivity;
+import com.faishalbadri.hijab.revamp.ui.video.activity.VideoActivity;
 import com.faishalbadri.hijab.revamp.ui.voting.VotingActivity;
 import java.util.List;
 

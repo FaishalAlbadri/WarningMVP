@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.revamp.ui.detail.video;
 
 import com.faishalbadri.hijab.revamp.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
+import com.faishalbadri.hijab.revamp.data.PojoVideo;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class DetailVideoContract {
 
   public interface DetailVideoView {
 
-    void onSuccessDetailVideo(List<VideoBean> data, String msg);
+    void onSuccessDetailVideo(List<PojoVideo.VideosBean> data, String msg);
 
     void onError(String msg);
 
@@ -20,7 +20,7 @@ public class DetailVideoContract {
 
   public interface DetailVideoPresenter extends BasePresenter<DetailVideoView> {
 
-    void getData();
+    void getData(String limit);
 
   }
 

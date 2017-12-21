@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.revamp.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.search_video.SearchVideoRepository;
-import com.faishalbadri.hijab.repository.search_video.remote.SearchVideoDataRemote;
+import com.faishalbadri.hijab.revamp.repository.search_video.SearchVideoRepository;
+import com.faishalbadri.hijab.revamp.repository.search_video.remote.SearchVideoDataRemote;
 
 /**
  * Created by faishal on 10/11/17.

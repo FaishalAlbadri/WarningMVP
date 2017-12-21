@@ -47,7 +47,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.video.activity.VideoActivity"
+      android:name=".revamp.ui.video.activity.VideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -59,7 +59,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.video_by_category.VideoByCategoryActivity"
+      android:name=".revamp.ui.video_by_category.VideoByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -100,7 +100,7 @@
       android:name=".ui.search_news.SearchNewsActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".ui.search_video.SearchVideoActivity"
+      android:name=".revamp.ui.search_video.SearchVideoActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".revamp.ui.sponsor.SponsorActivity"

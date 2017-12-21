@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.revamp.ui.detail.video;
 
-import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
-import com.faishalbadri.hijab.repository.detail_video_related.DetailVideoDataRepository;
-import com.faishalbadri.hijab.repository.detail_video_related.DetailVideoDataResource.DetailVideoGetDataCallBack;
+import com.faishalbadri.hijab.revamp.data.PojoVideo;
+import com.faishalbadri.hijab.revamp.repository.detail_video_related.DetailVideoDataRepository;
+import com.faishalbadri.hijab.revamp.repository.detail_video_related.DetailVideoDataResource.DetailVideoGetDataCallBack;
 import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoContract.DetailVideoView;
 import java.util.List;
 
@@ -30,10 +30,10 @@ public class DetailVideoPresenter implements DetailVideoContract.DetailVideoPres
   }
 
   @Override
-  public void getData() {
-    detailVideoDataRepository.getDetailVideo(new DetailVideoGetDataCallBack() {
+  public void getData(String limit) {
+    detailVideoDataRepository.getDetailVideo(limit, new DetailVideoGetDataCallBack() {
       @Override
-      public void onSuccessDetailVideo(List<VideoBean> data, String msg) {
+      public void onSuccessDetailVideo(List<PojoVideo.VideosBean> data, String msg) {
         detailVideoView.onSuccessDetailVideo(data, msg);
       }
 

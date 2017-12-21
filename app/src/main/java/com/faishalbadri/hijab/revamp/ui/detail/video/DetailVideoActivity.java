@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
+import com.faishalbadri.hijab.revamp.data.PojoVideo;
 import com.faishalbadri.hijab.revamp.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.revamp.util.IntentUtil;
@@ -51,7 +51,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @BindView(R.id.recyclerview_activity_video_detail)
   RecyclerView recyclerviewActivityVideoDetail;
   DetailVideoAdapter detailVideoAdapter;
-  ArrayList<VideoBean> resultItem;
+  ArrayList<PojoVideo.VideosBean> resultItem;
   DetailVideoPresenter detailVideoPresenter;
   @BindView(R.id.ad_view_detail_video)
   AdView adViewDetailVideo;
@@ -68,13 +68,13 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<VideoBean> resultArray = savedInstanceState
+      ArrayList<PojoVideo.VideosBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_DETAIL);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
       detailVideoAdapter.notifyDataSetChanged();
     } else {
-      detailVideoPresenter.getData();
+      detailVideoPresenter.getData("4");
     }
   }
 
@@ -144,7 +144,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
 
 
   @Override
-  public void onSuccessDetailVideo(List<VideoBean> data, String msg) {
+  public void onSuccessDetailVideo(List<PojoVideo.VideosBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     detailVideoAdapter.notifyDataSetChanged();

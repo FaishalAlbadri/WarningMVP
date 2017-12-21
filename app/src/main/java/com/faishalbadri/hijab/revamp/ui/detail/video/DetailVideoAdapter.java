@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideoBean;
+import com.faishalbadri.hijab.revamp.data.PojoVideo;
 import com.faishalbadri.hijab.revamp.ui.detail.video.DetailVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.revamp.util.Server;
 import java.util.ArrayList;
@@ -28,11 +28,10 @@ import java.util.ArrayList;
 public class DetailVideoAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  ArrayList<VideoBean> list_data;
-  String video;
+  ArrayList<PojoVideo.VideosBean> list_data;
 
   public DetailVideoAdapter(DetailVideoActivity detailVideoActivity,
-      ArrayList<VideoBean> resultItem) {
+      ArrayList<PojoVideo.VideosBean> resultItem) {
     context = detailVideoActivity;
     list_data = resultItem;
   }
@@ -48,45 +47,21 @@ public class DetailVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final VideoBean listitem = list_data.get(position);
-    if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=") || listitem.getVideo()
-        .startsWith("https://youtu.be/") || listitem.getVideo()
-        .startsWith("www.youtube.com/watch?v=")) {
-
-      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
-        video = listitem.getVideo().substring(32, listitem.getVideo().length());
-      }
-
-      if (listitem.getVideo().startsWith("https://youtu.be/")) {
-        video = listitem.getVideo().substring(17, listitem.getVideo().length());
-      }
-
-      if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
-        video = listitem.getVideo().substring(24, listitem.getVideo().length());
-      }
-    }
+    final PojoVideo.VideosBean listitem = list_data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_IMG_YT + video + Server.IMG_YT_FORMAT)
+        .load(Server.BASE_IMG_YT + listitem.getVideo_url() + Server.IMG_YT_FORMAT)
         .apply(options)
         .into(holder.imageviewDetailVideoGrid);
-    holder.txtTitleDetailVideoGrid.setText(listitem.getJudul_video());
+    holder.txtTitleDetailVideoGrid.setText(listitem.getVideo_title());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
 
-      if (listitem.getVideo().startsWith("https://www.youtube.com/watch?v=")) {
-        video = listitem.getVideo().substring(32, listitem.getVideo().length());
-      } else if (listitem.getVideo().startsWith("https://youtu.be/")) {
-        video = listitem.getVideo().substring(17, listitem.getVideo().length());
-      } else if (listitem.getVideo().startsWith("www.youtube.com/watch?v=")) {
-        video = listitem.getVideo().substring(24, listitem.getVideo().length());
-      }
-
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
-      i.putExtra("title", listitem.getJudul_video());
-      i.putExtra("video", video);
-      i.putExtra("description", listitem.getDescription());
-      i.putExtra("duration", listitem.getDuration());
+      i.putExtra("title", listitem.getVideo_title());
+      i.putExtra("video", listitem.getVideo_url());
+      i.putExtra("description", listitem.getVideo_description());
+      i.putExtra("duration", listitem.getVideo_duration());
       v.getContext().startActivity(i);
       ((Activity) context).finish();
     });
