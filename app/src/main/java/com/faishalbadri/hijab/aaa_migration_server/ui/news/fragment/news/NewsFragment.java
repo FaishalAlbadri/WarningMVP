@@ -19,8 +19,8 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView.OnSliderClickListe
 import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews;
 import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.aaa_migration_server.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.aaa_migration_server.util.Server;
@@ -123,13 +123,13 @@ public class NewsFragment extends Fragment implements newsView {
   }
 
   @Override
-  public void onSuccesSlider(List<SliderBean> dataSlider, String msg) {
+  public void onSuccesSlider(List<PojoNews.NewsBean> dataSlider, String msg) {
 
     Log.i("responsesucces", msg);
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
-      file_maps.put(dataSlider.get(a).getSlider_title(),
-          Server.BASE_API + dataSlider.get(a).getSlider_img());
+      file_maps.put(dataSlider.get(a).getNews_title(),
+          Server.BASE_API + dataSlider.get(a).getNews_images());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());

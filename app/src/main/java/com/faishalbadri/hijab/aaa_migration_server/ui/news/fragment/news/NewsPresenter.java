@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.news;
 
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews;
 import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.aaa_migration_server.repository.news.NewsDataResource.NewsGetCallback;
 import com.faishalbadri.hijab.aaa_migration_server.repository.news.NewsDataResource.SliderGetCallback;
 import com.faishalbadri.hijab.aaa_migration_server.repository.news.NewsRepository;
@@ -51,7 +51,7 @@ public class NewsPresenter implements NewsContract.newsPresenter {
   public void getDataSlider() {
     newsRepository.getSliderResult(new SliderGetCallback() {
       @Override
-      public void onSuccesSlider(List<SliderBean> dataSlider, String msg) {
+      public void onSuccesSlider(List<PojoNews.NewsBean> dataSlider, String msg) {
         newsView.onSuccesSlider(dataSlider, msg);
       }
 

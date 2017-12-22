@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.news;
 
 import com.faishalbadri.hijab.aaa_migration_server.base.BasePresenter;
 import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews;
-import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class NewsContract {
 
     void onErrorNews(String msg);
 
-    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
+    void onSuccesSlider(List<PojoNews.NewsBean> dataSlider, String msg);
 
     void onErrorSlider(String msg);
 

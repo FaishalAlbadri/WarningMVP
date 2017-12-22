@@ -64,7 +64,7 @@ public class LoginDataRemote implements LoginDataResource {
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", username);
-        params.put("password", "e47ca7a09cf6781e29634502345930a7");
+        params.put("password", password);
         return params;
       }
 

@@ -9,7 +9,6 @@ public class BacaSebelumMengerjakan {
   /*
      Sisa yang belum :
      1. verify_code
-     2. news_slider
 
      Planning :
      1. cleancode variable, package, anything name in this project (fikri)

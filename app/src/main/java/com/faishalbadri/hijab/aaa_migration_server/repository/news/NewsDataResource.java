@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.aaa_migration_server.repository.news;
 
 import android.support.annotation.NonNull;
 import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews;
-import com.faishalbadri.hijab.aaa_migration_server.data.PojoSlider;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public interface NewsDataResource {
 
   interface SliderGetCallback {
 
-    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
+    void onSuccesSlider(List<PojoNews.NewsBean> dataSlider, String msg);
 
     void onErrorSlider(String msg);
   }
