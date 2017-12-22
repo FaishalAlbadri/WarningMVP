@@ -7,6 +7,9 @@ package com.faishalbadri.hijab;
 public class BacaSebelumMengerjakan {
 
   /*
+    * Klo mau ngerjain sesuatu bikin branch baru sesuai planning nanti klo udah tinggal di merge
+      ke branch develop.
+
      Sisa yang belum :
      1. verify_code
 
