@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.aaa_migration_server.ui.detail.news;
 
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
-import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource.DetailNewsPopularGetCallback;
-import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsRepository;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.aaa_migration_server.repository.detail_news_related.DetailNewsDataResource.DetailNewsPopularGetCallback;
+import com.faishalbadri.hijab.aaa_migration_server.repository.detail_news_related.DetailNewsRepository;
 import com.faishalbadri.hijab.aaa_migration_server.ui.detail.news.DetailNewsContract.DetailNewsView;
 import java.util.List;
 
@@ -31,10 +31,10 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
 
   @Override
   public void getData(String id_isi) {
-    detailNewsRepository.getDetailNewsPopularResult(id_isi,new DetailNewsPopularGetCallback
+    detailNewsRepository.getDetailNewsPopularResult(id_isi, new DetailNewsPopularGetCallback
         () {
       @Override
-      public void onSuccesDetailNewsPopular(List<IsiBean> data, String msg) {
+      public void onSuccesDetailNewsPopular(List<NewsBean> data, String msg) {
         detailNewsView.onSuccessDetailNews(data, msg);
       }
 

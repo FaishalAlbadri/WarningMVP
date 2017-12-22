@@ -43,7 +43,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.ebook.activity.EbookActivity"
+      android:name=".aaa_migration_server.ui.ebook.activity.EbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -51,7 +51,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.news.activity.NewsActivity"
+      android:name=".aaa_migration_server.ui.news.activity.NewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -63,7 +63,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.news_by_category.NewsByCategoryActivity"
+      android:name=".aaa_migration_server.ui.news_by_category.NewsByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -79,7 +79,7 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".ui.ebook_by_category.EbookByCategoryActivity"
+      android:name=".aaa_migration_server.ui.ebook_by_category.EbookByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
@@ -91,13 +91,13 @@
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".ui.search_ebook.SearchEbookActivity"
+      android:name=".aaa_migration_server.ui.search_ebook.SearchEbookActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".aaa_migration_server.ui.search_event.SearchEventActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".ui.search_news.SearchNewsActivity"
+      android:name=".aaa_migration_server.ui.search_news.SearchNewsActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:name=".aaa_migration_server.ui.search_video.SearchVideoActivity"

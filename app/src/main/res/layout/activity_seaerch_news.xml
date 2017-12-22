@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.search_news.SearchNewsActivity">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.search_news.SearchNewsActivity">
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview_activity_search_event"
     android:layout_width="@dimen/match_parent_size"

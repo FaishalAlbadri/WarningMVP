@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.aaa_migration_server.data.PojoVideo;
 import com.faishalbadri.hijab.aaa_migration_server.repository.video_by_category.VideoByCategoryDataResource;
+import com.faishalbadri.hijab.aaa_migration_server.util.ApiKey;
 import com.faishalbadri.hijab.aaa_migration_server.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class VideoByCategoryRemote implements VideoByCategoryDataResource {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", "57b44757920f9b2544cd57f1d998e7f7");
+        params.put("Authorization", ApiKey.getInstance(context).getApiKey());
         return params;
       }
     };

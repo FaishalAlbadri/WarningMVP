@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.aaa_migration_server.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.ebook_by_category.EbookByCategoryRepository;
-import com.faishalbadri.hijab.repository.ebook_by_category.remote.EbookByCategoryDataRemote;
+import com.faishalbadri.hijab.aaa_migration_server.repository.ebook_by_category.EbookByCategoryRepository;
+import com.faishalbadri.hijab.aaa_migration_server.repository.ebook_by_category.remote.EbookByCategoryDataRemote;
 
 /**
  * Created by fikriimaduddin on 10/11/17.

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.aaa_migration_server.ui.detail.news;
 
 import com.faishalbadri.hijab.aaa_migration_server.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class DetailNewsContract {
 
   public interface DetailNewsView {
 
-    void onSuccessDetailNews(List<IsiBean> data, String msg);
+    void onSuccessDetailNews(List<NewsBean> data, String msg);
 
     void onError(String msg);
 

@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.aaa_migration_server.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.aaa_migration_server.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.aaa_migration_server.util.IntentUtil;
@@ -47,7 +47,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ImageView imageviewShareGeneralToolbarWithBackButton;
   DetailNewsPresenter detailNewsPresenter;
   DetailNewsAdapter detailNewsAdapter;
-  ArrayList<IsiBean> resultItem;
+  ArrayList<NewsBean> resultItem;
   String share = "";
   private String title, image, desc, id_isi;
 
@@ -58,7 +58,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<IsiBean> resultArray = savedInstanceState
+      ArrayList<NewsBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_NEWS_DETAIL);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -112,7 +112,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   }
 
   @Override
-  public void onSuccessDetailNews(List<IsiBean> data, String msg) {
+  public void onSuccessDetailNews(List<NewsBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     detailNewsAdapter.notifyDataSetChanged();

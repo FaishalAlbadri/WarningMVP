@@ -3,7 +3,7 @@
   android:id="@+id/recyclerview_fragment_category_ebook"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryFragment">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.ebook.fragment.category.EbookCategoryFragment">
 
 
 </android.support.v7.widget.RecyclerView>

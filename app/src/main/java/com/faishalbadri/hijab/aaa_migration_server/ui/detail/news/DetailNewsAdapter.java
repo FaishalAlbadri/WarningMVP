@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.IsiBean;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.aaa_migration_server.ui.detail.news.DetailNewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.aaa_migration_server.util.Server;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ import java.util.ArrayList;
 public class DetailNewsAdapter extends Adapter<ViewHolder> {
 
   Context context;
-  ArrayList<IsiBean> list_data;
+  ArrayList<NewsBean> list_data;
 
   public DetailNewsAdapter(DetailNewsActivity detailNewsActivity,
-      ArrayList<IsiBean> resultItem) {
+      ArrayList<NewsBean> resultItem) {
     context = detailNewsActivity;
     list_data = resultItem;
   }
@@ -47,20 +47,20 @@ public class DetailNewsAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final IsiBean listitem = list_data.get(position);
+    final NewsBean listitem = list_data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_IMG + listitem.getIsi_gambar())
+        .load(Server.BASE_API + listitem.getNews_images())
         .apply(options)
         .into(holder.imageviewDetailVideoGrid);
-    holder.txtTitleDetailVideoGrid.setText(listitem.getIsi_judul());
+    holder.txtTitleDetailVideoGrid.setText(listitem.getNews_title());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
-      i.putExtra("id_isi", listitem.getId_isi());
-      i.putExtra("title", listitem.getIsi_judul());
-      i.putExtra("image", listitem.getIsi_gambar());
-      i.putExtra("desc", listitem.getIsi_keterangan());
+      i.putExtra("id_isi", listitem.getNews_id());
+      i.putExtra("title", listitem.getNews_title());
+      i.putExtra("image", listitem.getNews_images());
+      i.putExtra("desc", listitem.getNews_description());
       v.getContext().startActivity(i);
       ((Activity) context).finish();
     });

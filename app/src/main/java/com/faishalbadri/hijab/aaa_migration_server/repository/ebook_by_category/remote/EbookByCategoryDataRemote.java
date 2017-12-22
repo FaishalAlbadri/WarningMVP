@@ -1,0 +1,60 @@
+package com.faishalbadri.hijab.aaa_migration_server.repository.ebook_by_category.remote;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.aaa_migration_server.data.PojoEbook;
+import com.faishalbadri.hijab.aaa_migration_server.repository.ebook_by_category.EbookByCategoryDataResource;
+import com.faishalbadri.hijab.aaa_migration_server.util.ApiKey;
+import com.faishalbadri.hijab.aaa_migration_server.util.Server;
+import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by fikriimaduddin on 10/11/17.
+ */
+
+public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
+
+  private static final String URL = Server.BASE_URL_REVAMP + "ebook/";
+  Context context;
+
+  public EbookByCategoryDataRemote(Context context) {
+    this.context = context;
+  }
+
+  @Override
+  public void getByCategoryGetDataCallBack(String id,
+      @NonNull EbookByCategoryDataCallBack newsByCategoryGetDataCallBack) {
+    RequestQueue requestQueue = Volley.newRequestQueue(context);
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + id),
+        response -> {
+          Log.i("response", response);
+          final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
+          try {
+            if (pojoEbook == null) {
+              newsByCategoryGetDataCallBack.onErrorEbookByCategory("Error");
+            } else {
+              newsByCategoryGetDataCallBack
+                  .onSuccessEbookByCategory(pojoEbook.getEbook(), "Ok");
+            }
+          } catch (Exception e) {
+
+          }
+        }, error -> newsByCategoryGetDataCallBack.onErrorEbookByCategory(String.valueOf(error))) {
+      @Override
+      public Map<String, String> getHeaders() throws AuthFailureError {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("Authorization", ApiKey.getInstance(context).getApiKey());
+        return params;
+      }
+    };
+    requestQueue.add(stringRequest);
+  }
+}

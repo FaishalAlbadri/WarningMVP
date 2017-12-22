@@ -3,7 +3,7 @@
   android:id="@+id/refresh_fragment_news_popular"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularFragment">
+  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.news_popular.NewsPopularFragment">
 
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview_fragment_news_popular"
