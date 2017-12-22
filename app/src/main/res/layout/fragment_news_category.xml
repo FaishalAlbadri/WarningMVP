@@ -3,6 +3,6 @@
   android:id="@+id/recyclerview_fragment_news_category"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.category.NewsCategoryFragment"/>
+  tools:context="com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryFragment"/>
 
 

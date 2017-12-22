@@ -3,7 +3,7 @@
   android:id="@+id/refresh_fragment_event"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.event.fragment.event.EventFragment">
+  tools:context="com.faishalbadri.hijab.ui.event.fragment.event.EventFragment">
 
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview_fragment_event"

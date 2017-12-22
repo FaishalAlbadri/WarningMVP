@@ -3,4 +3,4 @@
   android:id="@+id/recyclerview_fragment_event_city"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.event.fragment.event_city.EventCityFragment"/>
+  tools:context="com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityFragment"/>

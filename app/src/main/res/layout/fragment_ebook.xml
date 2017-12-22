@@ -4,7 +4,7 @@
   android:id="@+id/refresh_fragment_ebook"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.ebook.fragment.ebook.EbookFragment">
+  tools:context="com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookFragment">
 
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerview_activity_ebook"

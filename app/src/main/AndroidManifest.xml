@@ -13,7 +13,7 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".aaa_migration_server.ui.splash_screen.SplashScreen"
+      android:name=".ui.splash_screen.SplashScreen"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
@@ -23,96 +23,96 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".aaa_migration_server.ui.login_register.LoginRegisterActivity"
+      android:name=".ui.login_register.LoginRegisterActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.home.activity.HomeActivity"
+      android:name=".ui.home.activity.HomeActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.kritik_saran.KritikSaranActivity"
+      android:name=".ui.kritik_saran.KritikSaranActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.send_article.SendArticleActivity"
+      android:name=".ui.send_article.SendArticleActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.voting.VotingActivity"
+      android:name=".ui.voting.VotingActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.ebook.activity.EbookActivity"
+      android:name=".ui.ebook.activity.EbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.video.activity.VideoActivity"
+      android:name=".ui.video.activity.VideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.news.activity.NewsActivity"
+      android:name=".ui.news.activity.NewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.detail.video.DetailVideoActivity"
+      android:name=".ui.detail.video.DetailVideoActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.video_by_category.VideoByCategoryActivity"
+      android:name=".ui.video_by_category.VideoByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.news_by_category.NewsByCategoryActivity"
+      android:name=".ui.news_by_category.NewsByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.detail.news.DetailNewsActivity"
+      android:name=".ui.detail.news.DetailNewsActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".aaa_migration_server.ui.event.activity.EventActivity"
+      android:name=".ui.event.activity.EventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.detail.ebook.DetailEbookActivity"
+      android:name=".ui.detail.ebook.DetailEbookActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".aaa_migration_server.ui.ebook_by_category.EbookByCategoryActivity"
+      android:name=".ui.ebook_by_category.EbookByCategoryActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.detail.event.DetailEventActivity"
+      android:name=".ui.detail.event.DetailEventActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
-      android:name=".aaa_migration_server.ui.event_by_city.EventByCityActivity"
+      android:name=".ui.event_by_city.EventByCityActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.search_ebook.SearchEbookActivity"
+      android:name=".ui.search_ebook.SearchEbookActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".aaa_migration_server.ui.search_event.SearchEventActivity"
+      android:name=".ui.search_event.SearchEventActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".aaa_migration_server.ui.search_news.SearchNewsActivity"
+      android:name=".ui.search_news.SearchNewsActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".aaa_migration_server.ui.search_video.SearchVideoActivity"
+      android:name=".ui.search_video.SearchVideoActivity"
       android:screenOrientation="portrait"/>
     <activity
-      android:name=".aaa_migration_server.ui.sponsor.SponsorActivity"
+      android:name=".ui.sponsor.SponsorActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
-      android:name=".aaa_migration_server.ui.intro.IntroActivity"
+      android:name=".ui.intro.IntroActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
 
     <activity
-      android:name=".aaa_migration_server.ui.detail.read_ebook.ReadEbook"
+      android:name=".ui.detail.read_ebook.ReadEbook"
       android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 </manifest>

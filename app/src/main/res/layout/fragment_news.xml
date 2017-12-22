@@ -4,7 +4,7 @@
   android:id="@+id/refresh_fragment_news"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.news.fragment.news.NewsFragment">
+  tools:context="com.faishalbadri.hijab.ui.news.fragment.news.NewsFragment">
 
   <ScrollView
     android:layout_width="match_parent"
@@ -14,7 +14,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <com.faishalbadri.hijab.aaa_migration_server.util.slider.SliderLayout
+      <com.faishalbadri.hijab.util.slider.SliderLayout
         android:id="@+id/slider_fragment_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/slider_size"

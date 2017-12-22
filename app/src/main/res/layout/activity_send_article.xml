@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.faishalbadri.hijab.aaa_migration_server.ui.send_article.SendArticleActivity">
+  tools:context="com.faishalbadri.hijab.ui.send_article.SendArticleActivity">
 
   <include
     android:id="@+id/toolbar_activity_send_article"
