@@ -29,8 +29,8 @@ public class VerifyCodePresenter implements VerifyCodeContract.VerifyCodePresent
   }
 
   @Override
-  public void getDataVerifyCode(String user_id, String verify_code) {
-    verifyCodeRepository.getVerifyCodeResult(user_id, verify_code, new VerifyCodeGetCallback() {
+  public void getDataVerifyCode() {
+    verifyCodeRepository.getVerifyCodeResult(new VerifyCodeGetCallback() {
       @Override
       public void onSuccesVerifyCode(String msg) {
         verifyCodeView.onSuccesVerifyCode(msg);

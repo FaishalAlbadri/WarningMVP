@@ -8,8 +8,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.intro.IntroActivity;
+import com.faishalbadri.hijab.util.SessionManager;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
+import java.util.HashMap;
 
 public class SplashScreen extends AppCompatActivity {
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +22,29 @@ public class SplashScreen extends AppCompatActivity {
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_splash_screen);
-
+    setSingletonData();
     Handler handler = new Handler();
-    handler.postDelayed(new Runnable() {
-      @Override
-      public void run() {
-        startActivity(new Intent(getApplicationContext(), IntroActivity.class));
-        finish();
-      }
+    handler.postDelayed(() -> {
+      startActivity(new Intent(getApplicationContext(), IntroActivity.class));
+      finish();
     }, 3000);
 
   }
+
+  private void setSingletonData() {
+    SessionManager sessionManager = new SessionManager(getApplicationContext());
+    HashMap<String, String> hashMap = sessionManager.getUser();
+    DataUser.getInstance().setUserId(hashMap.get(SessionManager.key_id_user));
+    DataUser.getInstance().setUserName(hashMap.get(SessionManager.key_user_name));
+    DataUser.getInstance().setUserEmail(hashMap.get(SessionManager.key_user_email));
+    DataUser.getInstance().setUserPassword(hashMap.get(SessionManager.key_user_password));
+    DataUser.getInstance()
+        .setUserHandphoneNumber(hashMap.get(SessionManager.key_user_handphone_number));
+    DataUser.getInstance().setUserImage(hashMap.get(SessionManager.key_user_image));
+    DataUser.getInstance().setUserVerifyCode(hashMap.get(SessionManager.key_user_verify_code));
+    DataUser.getInstance().setUserVerifiedCode(hashMap.get(SessionManager.key_user_verified_code));
+    DataUser.getInstance().setUserGender(hashMap.get(SessionManager.key_user_gender));
+    DataUser.getInstance().setUserApiKey(hashMap.get(SessionManager.key_user_apikey));
+  }
+
 }

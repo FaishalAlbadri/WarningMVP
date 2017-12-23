@@ -17,7 +17,7 @@ public class VerifyCodeContract {
 
   public interface VerifyCodePresenter extends BasePresenter<VerifyCodeView> {
 
-    void getDataVerifyCode(String user_id, String verify_code);
+    void getDataVerifyCode();
   }
 
 }

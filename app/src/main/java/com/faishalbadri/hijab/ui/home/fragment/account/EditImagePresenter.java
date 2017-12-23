@@ -29,9 +29,9 @@ public class EditImagePresenter implements AccountContract.editImagePresenter {
   }
 
   @Override
-  public void getEditImage(String id, String path) {
+  public void getEditImage(String path) {
 
-    accountRepository.getEditImageResult(id, path, new EditImageGetCallback() {
+    accountRepository.getEditImageResult(path, new EditImageGetCallback() {
       @Override
       public void onSucces(ActivityUtil activityUtil) {
         editImageView.onSuccessEditImage(activityUtil);

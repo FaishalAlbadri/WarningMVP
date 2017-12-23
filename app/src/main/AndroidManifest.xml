@@ -113,8 +113,10 @@
     <activity
       android:name=".ui.detail.read_ebook.ReadEbook"
       android:theme="@style/AppTheme.NoActionBar"/>
-    <activity android:name=".ui.verify_code.VerifyCodeActivity">
-    </activity>
+
+    <activity
+      android:name=".ui.verify_code.VerifyCodeActivity"
+      android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 
 </manifest>

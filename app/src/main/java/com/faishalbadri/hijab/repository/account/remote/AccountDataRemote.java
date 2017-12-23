@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoUser;
 import com.faishalbadri.hijab.repository.account.AccountDataResource;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -32,8 +33,7 @@ public class AccountDataRemote implements AccountDataResource {
   }
 
   @Override
-  public void getAccountResult(String username, String password,
-      @NonNull AccountGetCallback accountGetCallback) {
+  public void getAccountResult(@NonNull AccountGetCallback accountGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
@@ -67,8 +67,8 @@ public class AccountDataRemote implements AccountDataResource {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("username", username);
-        params.put("password", password);
+        params.put("username", DataUser.getInstance().getUserName());
+        params.put("password", DataUser.getInstance().getUserPassword());
         return params;
       }
 
@@ -78,13 +78,13 @@ public class AccountDataRemote implements AccountDataResource {
 
 
   @Override
-  public void getEditImageResult(String id, String path,
+  public void getEditImageResult(String path,
       @NonNull final EditImageGetCallback editImageGetCallback) {
     try {
       String uploadId = UUID.randomUUID().toString();
       new MultipartUploadRequest(context, uploadId, URL_EDIT_IMAGE)
           .addFileToUpload(path, "user_image")
-          .addParameter("user_id", id)
+          .addParameter("user_id", DataUser.getInstance().getUserId())
           .setMaxRetries(2)
           .startUpload();
     } catch (Exception ignored) {

@@ -16,8 +16,7 @@ public class VerifyCodeRepository implements VerifyCodeDataResource {
   }
 
   @Override
-  public void getVerifyCodeResult(String user_id, String verify_code,
-      @NonNull VerifyCodeGetCallback verifyCodeGetCallback) {
-    verifyCodeDataResource.getVerifyCodeResult(user_id, verify_code, verifyCodeGetCallback);
+  public void getVerifyCodeResult(@NonNull VerifyCodeGetCallback verifyCodeGetCallback) {
+    verifyCodeDataResource.getVerifyCodeResult(verifyCodeGetCallback);
   }
 }

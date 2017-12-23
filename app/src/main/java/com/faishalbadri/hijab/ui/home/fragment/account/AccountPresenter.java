@@ -28,8 +28,8 @@ public class AccountPresenter implements AccountContract.accountPresenter {
   }
 
   @Override
-  public void getDataAccount(String username, String password) {
-    accountRepository.getAccountResult(username, password, new AccountGetCallback() {
+  public void getDataAccount() {
+    accountRepository.getAccountResult(new AccountGetCallback() {
       @Override
       public void onSucces(String msg, String id_user, String user_name, String user_email,
           String user_handphone_number, String user_image, String user_password,

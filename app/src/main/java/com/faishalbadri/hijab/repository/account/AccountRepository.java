@@ -15,13 +15,12 @@ public class AccountRepository implements AccountDataResource {
   }
 
   @Override
-  public void getAccountResult(String username, String password,
-      @NonNull AccountGetCallback accountGetCallback) {
-    accountDataResource.getAccountResult(username, password, accountGetCallback);
+  public void getAccountResult(@NonNull AccountGetCallback accountGetCallback) {
+    accountDataResource.getAccountResult(accountGetCallback);
   }
 
-  public void getEditImageResult(String id, String path,
+  public void getEditImageResult(String path,
       @NonNull EditImageGetCallback accountGetCallback) {
-    accountDataResource.getEditImageResult(id, path, accountGetCallback);
+    accountDataResource.getEditImageResult(path, accountGetCallback);
   }
 }

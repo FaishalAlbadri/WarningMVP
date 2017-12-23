@@ -19,7 +19,7 @@ public class VotingDialogContract {
 
   public interface VotingDialogPresenterGetSession extends BasePresenter<VotingDialogContract.VotingDialogViewGetSession> {
 
-    void getDataVotingDialogGetSession(String id_user, String id_voting);
+    void getDataVotingDialogGetSession(String id_voting);
   }
 
 
@@ -33,7 +33,7 @@ public class VotingDialogContract {
   public interface VotingDialogPresenterVotingRate extends BasePresenter<VotingDialogContract
       .VotingDialogViewVotingRate> {
 
-    void getDataVotingDialogViewVotingRate(String voting_id, String user_id, String type, String voting_session_id);
+    void getDataVotingDialogViewVotingRate(String voting_id, String type, String voting_session_id);
   }
 
 }

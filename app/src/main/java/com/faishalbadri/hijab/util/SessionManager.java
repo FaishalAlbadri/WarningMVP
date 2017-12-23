@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity;
+import com.faishalbadri.hijab.ui.verify_code.VerifyCodeActivity;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
 import java.util.HashMap;
 
 
@@ -98,6 +100,27 @@ public class SessionManager {
     user_verified_codeEditor.commit();
     user_genderEditor.commit();
     user_apikeyEditor.commit();
+
+    DataUser.getInstance().setUserId(id_user);
+    DataUser.getInstance().setUserName(user_name);
+    DataUser.getInstance().setUserEmail(user_email);
+    DataUser.getInstance().setUserPassword(user_password);
+    DataUser.getInstance().setUserHandphoneNumber(user_handphone_number);
+    DataUser.getInstance().setUserImage(user_image);
+    DataUser.getInstance().setUserVerifyCode(user_verify_code);
+    DataUser.getInstance().setUserVerifiedCode(user_verified_code);
+    DataUser.getInstance().setUserGender(user_gender);
+    DataUser.getInstance().setUserApiKey(user_apikey);
+  }
+
+  public void editVerifiedCode(String user_verified_code) {
+    user_verified_codeEditor.clear();
+    user_verified_codeEditor.putString(key_user_verified_code, user_verified_code);
+    user_verified_codeEditor.commit();
+    DataUser.getInstance().setUserVerifiedCode(user_verified_code);
+    context.startActivity(new Intent(context, HomeActivity.class)
+        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+    ((Activity) context).finish();
   }
 
   public HashMap<String, String> getUser() {
@@ -125,7 +148,7 @@ public class SessionManager {
       context.startActivity(i);
       ((Activity) context).finish();
     } else {
-      Intent i = new Intent(context, HomeActivity.class);
+      Intent i = new Intent(context, VerifyCodeActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       context.startActivity(i);

@@ -71,13 +71,14 @@ public class VotingDialogFragment extends DialogFragment implements
     buttonAfterLikeVoting.setOnClickListener(v12 -> {
       buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
       buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
-      votingDialogPresenterVotingRate.getDataVotingDialogViewVotingRate(id_voting, id_user, "unvote", id_session);
+      votingDialogPresenterVotingRate
+          .getDataVotingDialogViewVotingRate(id_voting, "unvote", id_session);
     });
 
     buttonBeforeLikeVoting.setOnClickListener(v13 -> {
       buttonAfterLikeVoting.setVisibility(View.VISIBLE);
       buttonBeforeLikeVoting.setVisibility(View.INVISIBLE);
-      votingDialogPresenterVotingRate.getDataVotingDialogViewVotingRate(id_voting, id_user, "vote", "0");
+      votingDialogPresenterVotingRate.getDataVotingDialogViewVotingRate(id_voting, "vote", "0");
     });
     return v;
   }
@@ -101,7 +102,7 @@ public class VotingDialogFragment extends DialogFragment implements
         VotingDialogRepositoryInject.provideToVotingDialogRepository(getActivity()));
     votingDialogPresenterGetSession.onAttachView(this);
     votingDialogPresenterVotingRate.onAttachView(this);
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
+    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_voting);
   }
 
   @NonNull
@@ -127,7 +128,6 @@ public class VotingDialogFragment extends DialogFragment implements
     Bundle mArgs = getArguments();
     nama = mArgs.getString("nama");
     id_voting = mArgs.getString("id_voting");
-    id_user = mArgs.getString("id_user");
     img = mArgs.getString("img");
   }
 
@@ -164,7 +164,7 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @Override
   public void onSuccesVotingDialogViewVotingRate(String msg) {
-    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_user, id_voting);
+    votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_voting);
   }
 
   @Override

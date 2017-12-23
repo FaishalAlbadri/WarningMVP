@@ -8,8 +8,7 @@ import android.support.annotation.NonNull;
 
 public interface VerifyCodeDataResource {
 
-  void getVerifyCodeResult(String user_id, String verify_code, @NonNull VerifyCodeGetCallback
-      verifyCodeGetCallback);
+  void getVerifyCodeResult(@NonNull VerifyCodeGetCallback verifyCodeGetCallback);
 
   interface VerifyCodeGetCallback {
 

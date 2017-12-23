@@ -10,7 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoSponsor;
 import com.faishalbadri.hijab.repository.sponsor.SponsorDataResource;
-import com.faishalbadri.hijab.util.ApiKey;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class SponsorDataRemote implements SponsorDataResource {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", ApiKey.getInstance(context).getApiKey());
+        params.put("Authorization", DataUser.getInstance().getUserApiKey());
         return params;
       }
     };

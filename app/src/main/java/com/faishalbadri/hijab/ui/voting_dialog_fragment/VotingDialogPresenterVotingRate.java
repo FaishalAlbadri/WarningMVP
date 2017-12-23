@@ -29,9 +29,9 @@ public class VotingDialogPresenterVotingRate implements
   }
 
   @Override
-  public void getDataVotingDialogViewVotingRate(String voting_id, String user_id, String type,
+  public void getDataVotingDialogViewVotingRate(String voting_id, String type,
       String voting_session_id) {
-    votingDialogRepository.getResulVotingDialogVotingRate(voting_id, user_id, type,
+    votingDialogRepository.getResulVotingDialogVotingRate(voting_id, type,
         voting_session_id, new VotingDialogVotingRateGetCallback() {
           @Override
           public void onSuccesVotingDialogVotingRate(String msg) {

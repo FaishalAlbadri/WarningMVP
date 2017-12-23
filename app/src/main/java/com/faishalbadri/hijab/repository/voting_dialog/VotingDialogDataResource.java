@@ -8,10 +8,10 @@ import android.support.annotation.NonNull;
 
 public interface VotingDialogDataResource {
 
-  void getResulVotingDialogGetSession(String id_user, String id_voting,
+  void getResulVotingDialogGetSession(String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback);
 
-  void getResulVotingDialogVotingRate(String voting_id, String user_id, String type, String
+  void getResulVotingDialogVotingRate(String voting_id, String type, String
       voting_session_id, @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback);
 
 

@@ -10,10 +10,9 @@ import com.faishalbadri.hijab.util.ActivityUtil;
 
 public interface AccountDataResource {
 
-  void getAccountResult(String username, String password,
-      @NonNull AccountDataResource.AccountGetCallback accountGetCallback);
+  void getAccountResult(@NonNull AccountDataResource.AccountGetCallback accountGetCallback);
 
-  void getEditImageResult(String id, String path,
+  void getEditImageResult(String path,
       @NonNull AccountDataResource.EditImageGetCallback editImageGetCallback);
 
   interface AccountGetCallback {

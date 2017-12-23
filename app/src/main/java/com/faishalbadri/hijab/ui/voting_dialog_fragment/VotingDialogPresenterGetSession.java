@@ -30,8 +30,8 @@ public class VotingDialogPresenterGetSession implements
   }
 
   @Override
-  public void getDataVotingDialogGetSession(String id_user, String id_voting) {
-    votingDialogRepository.getResulVotingDialogGetSession(id_user, id_voting,
+  public void getDataVotingDialogGetSession(String id_voting) {
+    votingDialogRepository.getResulVotingDialogGetSession(id_voting,
         new VotingDialogGetSessionGetCallback() {
           @Override
           public void onSuccesVotingDialogGetSession(String msg, String id_session,

@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
   ActivityUtil activityUtil;
   String sessionHome;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     setFragment();
   }
+
 
   private void setFragment() {
     try {

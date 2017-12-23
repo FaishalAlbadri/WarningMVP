@@ -18,17 +18,13 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.ui.voting.VotingAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogFragment;
-import com.faishalbadri.hijab.util.SessionManager;
 import com.faishalbadri.hijab.util.server.Server;
-import java.util.HashMap;
 import java.util.List;
 
 public class VotingAdapter extends Adapter<ViewHolder> {
 
   Context context;
   List<VotingBean> list_voting;
-  SessionManager sessionManager;
-  String id_user;
 
 
   public VotingAdapter(Context context, List<VotingBean> list_voting,
@@ -48,9 +44,6 @@ public class VotingAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final VotingBean listitem = list_voting.get(position);
-    sessionManager = new SessionManager(context);
-    HashMap<String, String> user = sessionManager.getUser();
-    id_user = user.get(SessionManager.key_id_user);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
@@ -62,7 +55,6 @@ public class VotingAdapter extends Adapter<ViewHolder> {
       bundle.putString("id_voting", listitem.getVoting_id());
       bundle.putString("nama", listitem.getVoting_nickname());
       bundle.putString("img", listitem.getVoting_img());
-      bundle.putString("id_user", id_user);
       FragmentActivity activity = (FragmentActivity) (context);
       android.support.v4.app.FragmentManager fm = activity.getSupportFragmentManager();
       VotingDialogFragment alert = new VotingDialogFragment();

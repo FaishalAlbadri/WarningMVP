@@ -160,5 +160,4 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     ta.recycle();
     return selectedItemDrawable;
   }
-
 }

@@ -2,7 +2,8 @@
   <string name="email_developer">pinkyhijabdeveloper@gmail.com</string>
   <string name="app_name">Pink Muslimah</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="text_email">Email</string>
+  <string name="text_email">Gmail</string>
+  <string name="text_email_register">Gmail (You just can use Gmail)</string>
   <string name="text_username">Username</string>
   <string name="text_password">Password</string>
   <string name="text_login">Login</string>
@@ -11,7 +12,7 @@
   <string name="text_error">Error</string>
   <string name="text_wrong_login">Wrong Email or Password</string>
   <string name="text_name_with_dot">Name :</string>
-  <string name="text_email_with_dot">Email :</string>
+  <string name="text_email_with_dot">Gmail :</string>
   <string name="text_logout">Logout</string>
   <string name="text_home">Home</string>
   <string name="text_video">Video</string>

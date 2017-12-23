@@ -28,7 +28,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
-    android:hint="@string/text_email"
+    android:hint="@string/text_username"
     android:inputType="textEmailAddress"
     android:maxLines="1"
     android:textCursorDrawable="@null"

@@ -89,7 +89,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     getSession();
     setView();
     requestStoragePermission();
-    accountPresenter.getDataAccount(user_name, user_password);
+    accountPresenter.getDataAccount();
 
     return v;
   }
@@ -193,7 +193,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null
         && data.getData() != null) {
       filePathAccount = data.getData();
-      editImagePresenter.getEditImage(id_user, getPath(filePathAccount));
+      editImagePresenter.getEditImage(getPath(filePathAccount));
       sessionManager.clear();
 
       try {

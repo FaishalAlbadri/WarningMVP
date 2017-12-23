@@ -10,7 +10,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoSession;
 import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogDataResource;
-import com.faishalbadri.hijab.util.ApiKey;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
   }
 
   @Override
-  public void getResulVotingDialogGetSession(String id_user, String id_voting,
+  public void getResulVotingDialogGetSession(String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession),
@@ -59,7 +59,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", id_user);
+        params.put("user_id", DataUser.getInstance().getUserApiKey());
         params.put("voting_id", id_voting);
         return params;
       }
@@ -67,7 +67,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", ApiKey.getInstance(context).getApiKey());
+        params.put("Authorization", DataUser.getInstance().getUserApiKey());
         return params;
       }
     };
@@ -75,7 +75,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
   }
 
   @Override
-  public void getResulVotingDialogVotingRate(String voting_id, String user_id, String type,
+  public void getResulVotingDialogVotingRate(String voting_id, String type,
       String voting_session_id,
       @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -93,7 +93,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", user_id);
+        params.put("user_id", DataUser.getInstance().getUserApiKey());
         params.put("voting_id", voting_id);
         params.put("type", type);
         params.put("voting_session_id", voting_session_id);
@@ -103,7 +103,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", ApiKey.getInstance(context).getApiKey());
+        params.put("Authorization", DataUser.getInstance().getUserApiKey());
         return params;
       }
     };

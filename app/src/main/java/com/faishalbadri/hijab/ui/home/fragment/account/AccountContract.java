@@ -19,7 +19,7 @@ public class AccountContract {
 
   public interface accountPresenter extends BasePresenter<accoutView> {
 
-    void getDataAccount(String username, String password);
+    void getDataAccount();
   }
 
   public interface editImageView {
@@ -31,7 +31,7 @@ public class AccountContract {
 
   public interface editImagePresenter extends BasePresenter<editImageView> {
 
-    void getEditImage(String id, String path);
+    void getEditImage(String path);
   }
 
 }

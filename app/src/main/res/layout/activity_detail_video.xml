@@ -76,7 +76,7 @@
           ads:adUnitId="@string/ads_footer"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/txt_description_video_detail"/>
+          app:layout_constraintTop_toBottomOf="@+id/webview_description_video_detail"/>
 
         <TextView
           android:id="@+id/txt_related_video_detail"
