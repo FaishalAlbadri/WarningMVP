@@ -39,7 +39,7 @@ import com.faishalbadri.hijab.di.AccountRepositoryInject;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.accoutView;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.editImageView;
 import com.faishalbadri.hijab.util.ActivityUtil;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.io.IOException;

@@ -21,7 +21,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.LoginRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.verify_code.VerifyCodeActivity;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import java.math.BigInteger;

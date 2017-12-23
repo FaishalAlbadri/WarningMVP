@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.news_popular.NewsPopularDataResource;
 import com.faishalbadri.hijab.util.ApiKey;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;

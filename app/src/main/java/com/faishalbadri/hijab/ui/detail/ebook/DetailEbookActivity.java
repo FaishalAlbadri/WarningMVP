@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.detail.read_ebook.ReadEbook;
 import com.faishalbadri.hijab.util.IntentUtil;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
 
 public class DetailEbookActivity extends AppCompatActivity {

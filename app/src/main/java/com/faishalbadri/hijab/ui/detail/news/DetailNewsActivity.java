@@ -21,7 +21,7 @@ import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.util.IntentUtil;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
 import java.util.List;

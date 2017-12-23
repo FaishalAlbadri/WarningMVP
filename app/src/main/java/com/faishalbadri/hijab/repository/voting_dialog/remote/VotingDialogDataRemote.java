@@ -11,7 +11,7 @@ import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoSession;
 import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogDataResource;
 import com.faishalbadri.hijab.util.ApiKey;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;

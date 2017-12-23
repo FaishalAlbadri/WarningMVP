@@ -22,7 +22,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
-import com.faishalbadri.hijab.util.server.Server;
+import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
 import com.faishalbadri.hijab.util.widget.slider.SliderLayout;
 import com.faishalbadri.hijab.util.widget.slider.SliderLayout.PresetIndicators;
