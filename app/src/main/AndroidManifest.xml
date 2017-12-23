@@ -110,9 +110,11 @@
       android:name=".ui.intro.IntroActivity"
       android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
-
     <activity
       android:name=".ui.detail.read_ebook.ReadEbook"
       android:theme="@style/AppTheme.NoActionBar"/>
+    <activity android:name=".ui.verify_code.VerifyCodeActivity">
+    </activity>
   </application>
+
 </manifest>

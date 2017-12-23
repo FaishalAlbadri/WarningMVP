@@ -11,7 +11,7 @@ import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.repository.search_event.SearchEventDataResource;
 import com.faishalbadri.hijab.util.ApiKey;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,8 +33,7 @@ public class SearchEventDataRemote implements SearchEventDataResource {
   public void getSearchEventResult(String key,
       @NonNull SearchEventGetCallback searchEventGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
-        response -> {
+    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
           Log.i("response", response);
           final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
           try {

@@ -14,7 +14,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <com.faishalbadri.hijab.util.slider.SliderLayout
+      <com.faishalbadri.hijab.util.widget.slider.SliderLayout
         android:id="@+id/slider_fragment_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/slider_size"

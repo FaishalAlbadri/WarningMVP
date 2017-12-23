@@ -6,14 +6,12 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.repository.register.RegisterDataResource;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -60,11 +58,8 @@ public class RegisterDataRemote implements RegisterDataResource {
         }
 
       }
-    }, new ErrorListener() {
-      @Override
-      public void onErrorResponse(VolleyError error) {
-        registerGetCallback.onErrorRegister(String.valueOf(error));
-      }
+    }, error -> {
+      registerGetCallback.onErrorRegister(String.valueOf(error));
     }) {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

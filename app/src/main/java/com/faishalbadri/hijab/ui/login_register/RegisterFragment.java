@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.RegisterRepositoryInject;
 import com.faishalbadri.hijab.util.SendMail;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

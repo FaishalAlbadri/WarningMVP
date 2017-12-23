@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.util.slider;
+package com.faishalbadri.hijab.util.widget.slider;
 
 import android.view.View;
 import com.daimajia.slider.library.Animations.BaseAnimationInterface;
