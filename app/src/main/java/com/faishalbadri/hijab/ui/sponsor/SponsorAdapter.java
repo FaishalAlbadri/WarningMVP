@@ -21,7 +21,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoSponsor;
 import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
 import com.faishalbadri.hijab.ui.sponsor.SponsorAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
 
 /**

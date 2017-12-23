@@ -17,7 +17,7 @@ import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
 import com.faishalbadri.hijab.di.SliderHomeRepositoryInject;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeContract.homeView;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
 import com.faishalbadri.hijab.util.widget.slider.SliderLayout;
 import com.faishalbadri.hijab.util.widget.slider.SliderLayout.PresetIndicators;

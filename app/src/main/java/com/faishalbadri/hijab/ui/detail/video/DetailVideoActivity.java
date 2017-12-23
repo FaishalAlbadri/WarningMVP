@@ -18,7 +18,7 @@ import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.util.IntentUtil;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
 import com.google.android.gms.ads.AdView;

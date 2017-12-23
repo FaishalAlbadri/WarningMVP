@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import com.faishalbadri.hijab.util.server.Server;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;

@@ -23,7 +23,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.VotingDialogRepositoryInject;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 
 /**
  * A simple {@link Fragment} subclass.

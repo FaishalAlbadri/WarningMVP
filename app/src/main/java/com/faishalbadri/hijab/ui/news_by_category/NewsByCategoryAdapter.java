@@ -23,7 +23,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.Server;
+import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
 
 /**

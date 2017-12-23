@@ -18,8 +18,8 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.ui.voting.VotingAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogFragment;
-import com.faishalbadri.hijab.util.Server;
 import com.faishalbadri.hijab.util.SessionManager;
+import com.faishalbadri.hijab.util.server.Server;
 import java.util.HashMap;
 import java.util.List;
 

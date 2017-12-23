@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.util;
+package com.faishalbadri.hijab.util.server;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
