@@ -3,7 +3,6 @@ package com.faishalbadri.hijab.ui.news_by_category;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,12 +51,9 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
       newsByCategoryPresenter.getDataNewsByCategory(id);
     }
 
-    refreshNewsByCategory.setOnRefreshListener(new OnRefreshListener() {
-      @Override
-      public void onRefresh() {
-        refreshNewsByCategory.setRefreshing(false);
-        newsByCategoryPresenter.getDataNewsByCategory(id);
-      }
+    refreshNewsByCategory.setOnRefreshListener(() -> {
+      refreshNewsByCategory.setRefreshing(false);
+      newsByCategoryPresenter.getDataNewsByCategory(id);
     });
   }
 

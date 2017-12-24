@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -46,13 +45,10 @@ public class EventCityAdapter extends Adapter<ViewHolder> {
     holder.textviewTitleCategoryItem.setText(listitem.getEvent_city_name());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setClickable(true);
-    holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        context.startActivity(new Intent(context, EventByCityActivity.class)
-            .putExtra("id", listitem.getEvent_city_id())
-            .putExtra("city", listitem.getEvent_city_name()));
-      }
+    holder.cardViewCategoryItem.setOnClickListener(v -> {
+      context.startActivity(new Intent(context, EventByCityActivity.class)
+          .putExtra("id", listitem.getEvent_city_id())
+          .putExtra("city", listitem.getEvent_city_name()));
     });
   }
 

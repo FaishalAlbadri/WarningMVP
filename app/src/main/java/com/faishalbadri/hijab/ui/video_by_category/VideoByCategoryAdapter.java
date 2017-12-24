@@ -60,7 +60,6 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
     holder.txtDurationVideo.setText(listitem.getVideo_duration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
-
       v.getContext().startActivity(new Intent(v.getContext(), DetailVideoActivity.class)
           .putExtra("title", listitem.getVideo_title())
           .putExtra("video", listitem.getVideo_url())

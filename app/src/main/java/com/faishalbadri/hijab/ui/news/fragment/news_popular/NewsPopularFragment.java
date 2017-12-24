@@ -4,7 +4,6 @@ package com.faishalbadri.hijab.ui.news.fragment.news_popular;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,12 +59,9 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
       newsPopularPresenter.getDataNewsPopular();
     }
 
-    refreshFragmentNewsPopular.setOnRefreshListener(new OnRefreshListener() {
-      @Override
-      public void onRefresh() {
-        refreshFragmentNewsPopular.setRefreshing(false);
-        newsPopularPresenter.getDataNewsPopular();
-      }
+    refreshFragmentNewsPopular.setOnRefreshListener(() -> {
+      refreshFragmentNewsPopular.setRefreshing(false);
+      newsPopularPresenter.getDataNewsPopular();
     });
     return v;
   }

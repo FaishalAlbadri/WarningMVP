@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response.Listener;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
@@ -35,29 +34,26 @@ public class RegisterDataRemote implements RegisterDataResource {
       final String verify_code, @NonNull final RegisterGetCallback registerGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(
-        Method.POST, String.valueOf(URL), new Listener<String>() {
-      @Override
-      public void onResponse(String response) {
-        try {
-          if (String.valueOf(new JSONObject(response).getString("message"))
-              .equals("You're successfully registered")) {
-            try {
-              registerGetCallback.onSuccesRegister(context.getString(R.string.text_succes));
-            } catch (Exception e) {
-              e.printStackTrace();
-            }
-          } else {
-            Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai",
-                Toast.LENGTH_SHORT).show();
-            registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
+        Method.POST, String.valueOf(URL), response -> {
+      try {
+        if (String.valueOf(new JSONObject(response).getString("message"))
+            .equals("You're successfully registered")) {
+          try {
+            registerGetCallback.onSuccesRegister(context.getString(R.string.text_succes));
+          } catch (Exception e) {
+            e.printStackTrace();
           }
-        } catch (JSONException e) {
-
-        } catch (Exception e) {
-
+        } else {
+          Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai",
+              Toast.LENGTH_SHORT).show();
+          registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
         }
+      } catch (JSONException e) {
+
+      } catch (Exception e) {
 
       }
+
     }, error -> {
       registerGetCallback.onErrorRegister(String.valueOf(error));
     }) {

@@ -4,7 +4,6 @@ package com.faishalbadri.hijab.ui.news.fragment.news;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,8 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView.OnSliderClickListener;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
@@ -77,13 +74,10 @@ public class NewsFragment extends Fragment implements newsView {
       newsPresenter.getDataSlider();
     }
 
-    refreshFragmentNews.setOnRefreshListener(new OnRefreshListener() {
-      @Override
-      public void onRefresh() {
-        refreshFragmentNews.setRefreshing(false);
-        newsPresenter.getDataNews();
-        newsPresenter.getDataSlider();
-      }
+    refreshFragmentNews.setOnRefreshListener(() -> {
+      refreshFragmentNews.setRefreshing(false);
+      newsPresenter.getDataNews();
+      newsPresenter.getDataSlider();
     });
     return view;
   }
@@ -139,12 +133,9 @@ public class NewsFragment extends Fragment implements newsView {
             .description(name)
             .image(image)
             .setScaleType(ScaleType.CenterCrop)
-            .setOnSliderClickListener(new OnSliderClickListener() {
-              @Override
-              public void onSliderClick(BaseSliderView slider) {
-                Toast.makeText(getActivity(), slider.getBundle().get("extra") + "",
-                    Toast.LENGTH_SHORT).show();
-              }
+            .setOnSliderClickListener(slider -> {
+              Toast.makeText(getActivity(), slider.getBundle().get("extra") + "",
+                  Toast.LENGTH_SHORT).show();
             });
 
         textSliderView.bundle(new Bundle());

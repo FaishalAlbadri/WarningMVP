@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -48,13 +47,10 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     final PojoCategory.CategoriesBean list_item = data.get(position);
     holder.textviewTitleCategoryItem.setText(list_item.getCategory_name());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
-    holder.cardViewCategoryItem.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        context.startActivity(new Intent(context, NewsByCategoryActivity.class)
-            .putExtra("id_kategori", list_item.getCategory_id())
-            .putExtra("kategori_title", list_item.getCategory_name()));
-      }
+    holder.cardViewCategoryItem.setOnClickListener(v -> {
+      context.startActivity(new Intent(context, NewsByCategoryActivity.class)
+          .putExtra("id_kategori", list_item.getCategory_id())
+          .putExtra("kategori_title", list_item.getCategory_name()));
     });
   }
 

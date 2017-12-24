@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,17 +60,14 @@ public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
     holder.textviewTitleNewsItem.setText(listitem.getNews_title());
     holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentNews.setClickable(true);
-    holder.cardviewNewsFragmentNews.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-            .putExtra("id_isi", listitem.getNews_id())
-            .putExtra("title", listitem.getNews_title())
-            .putExtra("image", listitem.getNews_images())
-            .putExtra("desc", listitem.getNews_description()));
-        ((Activity) context)
-            .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
-      }
+    holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
+      v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
+          .putExtra("id_isi", listitem.getNews_id())
+          .putExtra("title", listitem.getNews_title())
+          .putExtra("image", listitem.getNews_images())
+          .putExtra("desc", listitem.getNews_description()));
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 

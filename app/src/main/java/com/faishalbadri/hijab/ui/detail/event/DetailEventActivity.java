@@ -59,6 +59,9 @@ public class DetailEventActivity extends AppCompatActivity {
     image = getIntent().getStringExtra("image");
     desc = getIntent().getStringExtra("desc");
     link = getIntent().getStringExtra("link");
+    if (!link.startsWith("http://") || !link.startsWith("https://")) {
+      link = "http://" + link;
+    }
     textviewGeneralToolbarWithBackButton.setText("Deskripsi Event");
     textviewTitleDetailEvent.setText(title);
     textviewPlaceTimeEventDetail.setText(place + ", " + time);

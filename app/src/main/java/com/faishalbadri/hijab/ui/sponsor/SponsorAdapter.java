@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import butterknife.BindView;
@@ -55,24 +54,21 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
         .load(Server.BASE_API + datalist.getSponsor_image())
         .apply(options)
         .into(holder.imageviewVotingGrid);
-    holder.imageviewVotingGrid.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String url = datalist.getSponsor_link();
-        if (datalist.getSponsor_link().startsWith("http://") || datalist.getSponsor_link()
-            .startsWith("https://")) {
-          Intent i = new Intent(Intent.ACTION_VIEW);
-          i.setData(Uri.parse(url));
-          context.startActivity(i);
-        } else if (datalist.getSponsor_link().startsWith("www.")) {
-          Intent i = new Intent(Intent.ACTION_VIEW);
-          i.setData(Uri.parse("http://" + url));
-          context.startActivity(i);
-        } else {
-          Intent i = new Intent(Intent.ACTION_VIEW);
-          i.setData(Uri.parse("http://www." + url));
-          context.startActivity(i);
-        }
+    holder.imageviewVotingGrid.setOnClickListener(v -> {
+      String url = datalist.getSponsor_link();
+      if (datalist.getSponsor_link().startsWith("http://") || datalist.getSponsor_link()
+          .startsWith("https://")) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        context.startActivity(i);
+      } else if (datalist.getSponsor_link().startsWith("www.")) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("http://" + url));
+        context.startActivity(i);
+      } else {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("http://www." + url));
+        context.startActivity(i);
       }
     });
   }

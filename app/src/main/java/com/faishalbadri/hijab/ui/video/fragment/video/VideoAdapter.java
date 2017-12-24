@@ -64,7 +64,6 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     holder.txtDurationVideo.setText(listitem.getVideo_duration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
-
       context.startActivity(new Intent(context, DetailVideoActivity.class)
           .putExtra("title", listitem.getVideo_title())
           .putExtra("video", listitem.getVideo_url())

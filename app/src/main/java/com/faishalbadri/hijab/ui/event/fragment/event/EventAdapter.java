@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,19 +58,16 @@ public class EventAdapter extends Adapter<ViewHolder> {
     holder.textviewTitleEventItem.setText(listitem.getEvent_title());
     holder.cardViewEventItem.setForeground(getSelectedItemDrawable());
     holder.cardViewEventItem.setClickable(true);
-    holder.cardViewEventItem.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
-            .putExtra("title", listitem.getEvent_title())
-            .putExtra("image", listitem.getEvent_image())
-            .putExtra("desc", listitem.getEvent_detail())
-            .putExtra("link", listitem.getEvent_link())
-            .putExtra("place", listitem.getEvent_city_name())
-            .putExtra("time", listitem.getEvent_date()));
-        ((Activity) context)
-            .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
-      }
+    holder.cardViewEventItem.setOnClickListener(view -> {
+      view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
+          .putExtra("title", listitem.getEvent_title())
+          .putExtra("image", listitem.getEvent_image())
+          .putExtra("desc", listitem.getEvent_detail())
+          .putExtra("link", listitem.getEvent_link())
+          .putExtra("place", listitem.getEvent_city_name())
+          .putExtra("time", listitem.getEvent_date()));
+      ((Activity) context)
+          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
   }
 

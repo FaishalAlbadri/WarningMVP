@@ -14,7 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -71,29 +70,26 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 //    Glide.with(context).load(dataOtherFragment.getImage()).into(holder.imgTitleOtherItem);
     holder.cardViewOtherItem.setForeground(getSelectedItemDrawable());
     holder.cardViewOtherItem.setClickable(true);
-    holder.cardViewOtherItem.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
-          context.startActivity(new Intent(context, KritikSaranActivity.class));
-          ((Activity) context).finish();
-        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
-          context.startActivity(new Intent(context, SendArticleActivity.class));
-          ((Activity) context).finish();
-        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
-          Intent sharing = new Intent(Intent.ACTION_SEND);
-          sharing.setType("text/plain");
-          sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
-          sharing.putExtra(Intent.EXTRA_TEXT, shareText);
-          context.startActivity(Intent.createChooser(sharing, "Share Via"));
-        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
-          rateApp();
-        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
-          context.startActivity(new Intent(context, SponsorActivity.class));
-          ((Activity) context).finish();
-        } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
+    holder.cardViewOtherItem.setOnClickListener(v -> {
+      if (dataOtherFragment.getTitle().equalsIgnoreCase(kritiksaran)) {
+        context.startActivity(new Intent(context, KritikSaranActivity.class));
+        ((Activity) context).finish();
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(kirimartikel)) {
+        context.startActivity(new Intent(context, SendArticleActivity.class));
+        ((Activity) context).finish();
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(share)) {
+        Intent sharing = new Intent(Intent.ACTION_SEND);
+        sharing.setType("text/plain");
+        sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+        sharing.putExtra(Intent.EXTRA_TEXT, shareText);
+        context.startActivity(Intent.createChooser(sharing, "Share Via"));
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
+        rateApp();
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {
+        context.startActivity(new Intent(context, SponsorActivity.class));
+        ((Activity) context).finish();
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
 
-        }
       }
     });
 

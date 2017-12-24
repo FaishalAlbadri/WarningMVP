@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,27 +76,24 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     holder.imageviewFragmentHomeAdapter.setVisibility(View.GONE);
     holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentHome.setClickable(true);
-    holder.cardviewNewsFragmentHome.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
-          context.startActivity(new Intent(context, NewsActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
-          context.startActivity(new Intent(context, VotingActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
-          context.startActivity(new Intent(context, VideoActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
+    holder.cardviewNewsFragmentHome.setOnClickListener(v -> {
+      if (dataHomeFragment.getJudul().equalsIgnoreCase(news)) {
+        context.startActivity(new Intent(context, NewsActivity.class));
+        ((Activity) context).finish();
+      } else if (dataHomeFragment.getJudul().equalsIgnoreCase(voting)) {
+        context.startActivity(new Intent(context, VotingActivity.class));
+        ((Activity) context).finish();
+      } else if (dataHomeFragment.getJudul().equalsIgnoreCase(video)) {
+        context.startActivity(new Intent(context, VideoActivity.class));
+        ((Activity) context).finish();
+      } else if (dataHomeFragment.getJudul().equalsIgnoreCase(community)) {
 
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
-          context.startActivity(new Intent(context, EventActivity.class));
-          ((Activity) context).finish();
-        } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
-          context.startActivity(new Intent(context, EbookActivity.class));
-          ((Activity) context).finish();
-        }
+      } else if (dataHomeFragment.getJudul().equalsIgnoreCase(event)) {
+        context.startActivity(new Intent(context, EventActivity.class));
+        ((Activity) context).finish();
+      } else if (dataHomeFragment.getJudul().equalsIgnoreCase(ebook)) {
+        context.startActivity(new Intent(context, EbookActivity.class));
+        ((Activity) context).finish();
       }
     });
 
