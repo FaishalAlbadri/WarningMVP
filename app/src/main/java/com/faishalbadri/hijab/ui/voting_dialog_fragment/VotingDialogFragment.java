@@ -35,7 +35,7 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @BindView(R.id.image_fragment_voting_dialog)
   ImageView imageFragmentVotingDialog;
-  @BindView(R.id.btn_before_like_voting)
+  @BindView(R.id.button_before_like_voting)
   ImageView buttonBeforeLikeVoting;
   @BindView(R.id.button_after_like_voting)
   ImageView buttonAfterLikeVoting;

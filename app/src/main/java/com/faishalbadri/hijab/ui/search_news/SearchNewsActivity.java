@@ -33,7 +33,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_seaerch_news);
+    setContentView(R.layout.activity_search_news);
     ButterKnife.bind(this);
     setView();
   }

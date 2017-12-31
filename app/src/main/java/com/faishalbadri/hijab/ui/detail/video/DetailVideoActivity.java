@@ -41,7 +41,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   String title, video, duration, description;
   @BindView(R.id.youtube_video_detail)
   YouTubePlayerView youtubeVideoDetail;
-  @BindView(R.id.txt_title_video_detail)
+  @BindView(R.id.textview_title_video_detail)
   TextView txtTitleVideoDetail;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;

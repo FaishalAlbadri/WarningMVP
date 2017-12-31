@@ -31,9 +31,9 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   private static final String SAVE_DATA_NEWS_DETAIL = "save";
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
-  @BindView(R.id.txt_title_news_detail)
+  @BindView(R.id.textview_title_news_detail)
   TextView txtTitleNewsDetail;
-  @BindView(R.id.img_detail_news)
+  @BindView(R.id.imageview_detail_news)
   ImageView imgDetailNews;
   @BindView(R.id.web_view_description_news_detail)
   WebView webViewDescriptionNewsDetail;

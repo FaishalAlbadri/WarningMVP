@@ -39,7 +39,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
       <ImageView
-        android:id="@+id/btn_before_like_voting"
+        android:id="@+id/button_before_like_voting"
         android:layout_width="@dimen/card_account"
         android:layout_height="?attr/actionBarSize"
         android:padding="10dp"
@@ -68,7 +68,7 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/normal_tittle_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/btn_before_like_voting"
+        app:layout_constraintLeft_toRightOf="@+id/button_before_like_voting"
         app:layout_constraintRight_toLeftOf="@+id/button_share_voting"/>
 
       <ImageView
