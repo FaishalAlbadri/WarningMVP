@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +37,8 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   String id, city;
   @BindView(R.id.refresh_fragment_event_by_city)
   SwipeRefreshLayout refreshFragmentEventByCity;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +94,14 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     list_data.clear();
     list_data.addAll(data);
     eventByCityAdapter.notifyDataSetChanged();
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    refreshFragmentEventByCity.setVisibility(View.VISIBLE);
   }
 
   @Override
   public void onErrorEventByCity(String msg) {
-
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    refreshFragmentEventByCity.setVisibility(View.GONE);
   }
 
   @Override
@@ -107,5 +113,10 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   @OnClick(R.id.button_back_general_toolbar_search)
   public void onButtonBackGeneralToolbarSearchClicked() {
     onBackPressed();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    eventByCityPresenter.getDataEventByCity(id);
   }
 }

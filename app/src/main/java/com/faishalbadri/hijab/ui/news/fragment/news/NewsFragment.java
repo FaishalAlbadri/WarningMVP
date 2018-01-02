@@ -6,13 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
@@ -44,6 +45,8 @@ public class NewsFragment extends Fragment implements newsView {
   TextSliderView textSliderView;
   @BindView(R.id.refresh_fragment_news)
   SwipeRefreshLayout refreshFragmentNews;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
 
   public NewsFragment() {
@@ -108,17 +111,18 @@ public class NewsFragment extends Fragment implements newsView {
     list_data.clear();
     list_data.addAll(data);
     newsAdapter.notifyDataSetChanged();
+    refreshFragmentNews.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorNews(String msg) {
-
+    refreshFragmentNews.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
   @Override
   public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
-
-    Log.i("responsesucces", msg);
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.put(dataSlider.get(a).getNews_title(),
@@ -149,11 +153,20 @@ public class NewsFragment extends Fragment implements newsView {
       sliderFragmentNews.setDuration(2000);
       sliderFragmentNews.addOnPageChangeListener(getActivity());
     }
+    refreshFragmentNews.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorSlider(String msg) {
-    Log.i("responseerror", msg);
+    refreshFragmentNews.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    newsPresenter.getDataNews();
+    newsPresenter.getDataSlider();
+  }
 }

@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.voting.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVoting;
 import com.faishalbadri.hijab.repository.voting.VotingDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -41,12 +41,12 @@ public class VotingDataRemote implements VotingDataResource {
               votingGetCallback.onDataVotingNull("Data Voting Null");
             } else {
               votingGetCallback.onSuccesVoting(pojoVoting.getVoting(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 
           }
-        }, error -> votingGetCallback.onErrorVoting(String.valueOf(error))){
+        }, error -> votingGetCallback.onErrorVoting(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

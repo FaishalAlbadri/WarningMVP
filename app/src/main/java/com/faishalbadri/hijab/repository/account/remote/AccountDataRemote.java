@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.account.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -37,7 +36,6 @@ public class AccountDataRemote implements AccountDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
           try {
             if (pojoUser == null) {

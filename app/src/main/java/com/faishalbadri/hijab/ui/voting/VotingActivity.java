@@ -6,7 +6,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -34,6 +36,8 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.refresh_voting)
   SwipeRefreshLayout refreshVoting;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
 
   @Override
@@ -87,6 +91,8 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     list_data.clear();
     list_data.addAll(list);
     votingAdapter.notifyDataSetChanged();
+    refreshVoting.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -96,7 +102,8 @@ public class VotingActivity extends AppCompatActivity implements votingView {
 
   @Override
   public void onErrorVoting(String msg) {
-    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    refreshVoting.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -106,8 +113,12 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-    finish();
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onLayoutNoInternetAccesClicked() {
+    votingPresenter.getDataVoting();
   }
 }

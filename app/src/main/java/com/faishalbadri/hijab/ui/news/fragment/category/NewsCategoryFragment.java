@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
@@ -25,11 +27,13 @@ public class NewsCategoryFragment extends Fragment implements
 
 
   private static final String save_category = "saveCategory";
+  @BindView(R.id.recyclerview_fragment_news_category)
+  RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
   ArrayList<CategoriesBean> list_data;
   NewsCategoryAdapter newsCategoryAdapter;
-  @BindView(R.id.recyclerview_fragment_news_category)
-  RecyclerView recyclerviewFragmentNewsCategory;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
 
   public NewsCategoryFragment() {
@@ -84,10 +88,18 @@ public class NewsCategoryFragment extends Fragment implements
     list_data.clear();
     list_data.addAll(data);
     newsCategoryAdapter.notifyDataSetChanged();
+    recyclerviewFragmentNewsCategory.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorNewsCategory(String msg) {
+    recyclerviewFragmentNewsCategory.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    newsCategoryPresenter.getDataNewsCategory();
   }
 }

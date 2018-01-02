@@ -1,13 +1,46 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/refresh_fragment_video"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context="com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment">
 
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_fragment_video"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_fragment_video"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-</android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/recyclerview_fragment_video"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+  </android.support.v4.widget.SwipeRefreshLayout>
+
+  <RelativeLayout
+    android:id="@+id/layout_no_internet_acces"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="?attr/actionBarSize"
+    android:gravity="center"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+
+    <include
+      android:id="@+id/no_internet_acces"
+      layout="@layout/layout_no_internet_acces"/>
+
+  </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
+

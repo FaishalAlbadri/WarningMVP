@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.event_by_city.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.repository.event_by_city.EventByCityDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -36,7 +36,6 @@ public class EventByCityDataRemote implements EventByCityDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + id_city_event),
         response -> {
-          Log.i("response", response);
           final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
           try {
             if (pojoEvent == null) {
@@ -47,7 +46,8 @@ public class EventByCityDataRemote implements EventByCityDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> eventByCityGetCallback.onErrorEventByCity(String.valueOf(error))) {
+        }, error -> eventByCityGetCallback.onErrorEventByCity(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

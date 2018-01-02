@@ -6,13 +6,15 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   private static final String SAVE_DATA_VIDEO_PERKAT = "save";
   VideoByCategoryPresenter videoByCategoryPresenter;
   VideoByCategoryAdapter videoByCategoryAdapter;
-  ArrayList<PojoVideo.VideosBean> resultItem;
+  ArrayList<VideosBean> resultItem;
   String id, title;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
@@ -34,6 +36,8 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   RecyclerView recyclerviewActivityVideoByCategory;
   @BindView(R.id.refresh_video_by_category)
   SwipeRefreshLayout refreshVideoByCategory;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     ButterKnife.bind(this);
     setView();
     if (savedInstanceState != null) {
-      ArrayList<PojoVideo.VideosBean> resultArray = savedInstanceState
+      ArrayList<VideosBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
       this.resultItem.clear();
       this.resultItem.addAll(resultArray);
@@ -81,12 +85,6 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     outState.putParcelableArrayList(SAVE_DATA_VIDEO_PERKAT, resultItem);
   }
 
-
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    onBackPressed();
-  }
-
   @Override
   public void onBackPressed() {
     super.onBackPressed();
@@ -94,14 +92,27 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   }
 
   @Override
-  public void onSuccesVideoByCategory(List<PojoVideo.VideosBean> data, String msg) {
+  public void onSuccesVideoByCategory(List<VideosBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     videoByCategoryAdapter.notifyDataSetChanged();
+    refreshVideoByCategory.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorVideoByCategory(String msg) {
+    refreshVideoByCategory.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onLayoutNoInternetAccesClicked() {
+    videoByCategoryPresenter.getDataVideoByCategory(id);
   }
 }

@@ -8,9 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
@@ -31,6 +32,8 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   CategoryVideoAdapter categoryVideoAdapter;
   ArrayList<CategoriesBean> resultItem;
   View v;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public CategoryVideoFragment() {
     // Required empty public constructor
@@ -79,10 +82,18 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     resultItem.clear();
     resultItem.addAll(category);
     categoryVideoAdapter.notifyDataSetChanged();
+    recyclerviewFragmentCategoryVideo.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorCategoryVideo(String msg) {
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    recyclerviewFragmentCategoryVideo.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    categoryVideoPresenter.getDataCategoryVideo();
   }
 }

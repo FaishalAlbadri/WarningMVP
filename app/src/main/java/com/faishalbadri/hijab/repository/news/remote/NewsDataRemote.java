@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.news.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.news.NewsDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -42,12 +42,12 @@ public class NewsDataRemote implements NewsDataResource {
               newsGetCallback.onErrorNews("Data Null");
             } else {
               newsGetCallback.onSuccesNews(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 
           }
-        }, error -> newsGetCallback.onErrorNews(String.valueOf(error))) {
+        }, error -> newsGetCallback.onErrorNews(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
@@ -69,12 +69,12 @@ public class NewsDataRemote implements NewsDataResource {
               sliderGetCallback.onErrorSlider("Data Null");
             } else {
               sliderGetCallback.onSuccesSlider(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 
           }
-        }, error -> sliderGetCallback.onErrorSlider(String.valueOf(error))) {
+        }, error -> sliderGetCallback.onErrorSlider(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

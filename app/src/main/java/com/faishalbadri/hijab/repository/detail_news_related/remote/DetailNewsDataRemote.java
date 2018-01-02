@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.detail_news_related.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -41,12 +41,13 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
               detailNewsPopularGetCallback.onErrorDetailNewsPopular("Data Null");
             } else {
               detailNewsPopularGetCallback.onSuccesDetailNewsPopular(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 
           }
-        }, error -> detailNewsPopularGetCallback.onErrorDetailNewsPopular(String.valueOf(error))) {
+        }, error -> detailNewsPopularGetCallback
+        .onErrorDetailNewsPopular(
+            context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

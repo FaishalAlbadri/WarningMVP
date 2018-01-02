@@ -9,9 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoRepositoryInject;
@@ -34,6 +35,8 @@ public class VideoFragment extends Fragment implements VideoView {
   RecyclerView recyclerviewFragmentVideo;
   @BindView(R.id.refresh_fragment_video)
   SwipeRefreshLayout refreshFragmentVideo;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public VideoFragment() {
     // Required empty public constructor
@@ -93,10 +96,18 @@ public class VideoFragment extends Fragment implements VideoView {
     resultItem.clear();
     resultItem.addAll(video);
     videoAdapter.notifyDataSetChanged();
+    refreshFragmentVideo.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorVideo(String msg) {
-    Toast.makeText(getActivity(), "check your internet", Toast.LENGTH_SHORT).show();
+    refreshFragmentVideo.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    videoPresenter.getDataVideo();
   }
 }

@@ -8,10 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCityEvent;
+import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
 import com.faishalbadri.hijab.di.CityEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityContract.eventCityView;
 import java.util.ArrayList;
@@ -27,8 +29,10 @@ public class EventCityFragment extends Fragment implements eventCityView {
   @BindView(R.id.recyclerview_fragment_event_city)
   RecyclerView recyclerviewFragmentEventCity;
   EventCityPresenter eventCityPresenter;
-  ArrayList<PojoCityEvent.EventCityBean> list_data;
+  ArrayList<EventCityBean> list_data;
   EventCityAdapter eventCityAdapter;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public EventCityFragment() {
     // Required empty public constructor
@@ -49,7 +53,7 @@ public class EventCityFragment extends Fragment implements eventCityView {
     eventCityPresenter.onAttachView(this);
 
     if (savedInstanceState != null) {
-      ArrayList<PojoCityEvent.EventCityBean> data = savedInstanceState
+      ArrayList<EventCityBean> data = savedInstanceState
           .getParcelableArrayList(save_city_event);
       this.list_data.clear();
       this.list_data.addAll(data);
@@ -78,14 +82,22 @@ public class EventCityFragment extends Fragment implements eventCityView {
   }
 
   @Override
-  public void onSuccesEventCity(List<PojoCityEvent.EventCityBean> data, String msg) {
+  public void onSuccesEventCity(List<EventCityBean> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     eventCityAdapter.notifyDataSetChanged();
+    recyclerviewFragmentEventCity.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorEventCity(String msg) {
+    recyclerviewFragmentEventCity.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    eventCityPresenter.getDataEventCity();
   }
 }

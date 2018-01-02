@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.sponsor.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoSponsor;
 import com.faishalbadri.hijab.repository.sponsor.SponsorDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -35,7 +35,6 @@ public class SponsorDataRemote implements SponsorDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoSponsor pojoSponsor = new Gson().fromJson(response, PojoSponsor.class);
           try {
             if (pojoSponsor == null) {
@@ -47,7 +46,8 @@ public class SponsorDataRemote implements SponsorDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> sponsorGetCallback.onErrorSponsor(String.valueOf(error))) {
+        }, error -> sponsorGetCallback.onErrorSponsor(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsPopularRepositoryInject;
@@ -32,6 +34,8 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
   NewsPopularAdapter newsPopularAdapter;
   @BindView(R.id.refresh_fragment_news_popular)
   SwipeRefreshLayout refreshFragmentNewsPopular;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public NewsPopularFragment() {
     // Required empty public constructor
@@ -93,11 +97,18 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
     list_data.clear();
     list_data.addAll(data);
     newsPopularAdapter.notifyDataSetChanged();
-
+    refreshFragmentNewsPopular.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorNewsPopular(String msg) {
+    refreshFragmentNewsPopular.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    newsPopularPresenter.getDataNewsPopular();
   }
 }

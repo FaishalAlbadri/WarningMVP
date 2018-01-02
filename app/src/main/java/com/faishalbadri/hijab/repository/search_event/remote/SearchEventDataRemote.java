@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.search_event.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.repository.search_event.SearchEventDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -34,7 +34,6 @@ public class SearchEventDataRemote implements SearchEventDataResource {
       @NonNull SearchEventGetCallback searchEventGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
-          Log.i("response", response);
           final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
           try {
             if (pojoEvent == null) {
@@ -46,7 +45,8 @@ public class SearchEventDataRemote implements SearchEventDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchEventGetCallback.onErrorSearchEvent(String.valueOf(error))) {
+    }, error -> searchEventGetCallback.onErrorSearchEvent(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

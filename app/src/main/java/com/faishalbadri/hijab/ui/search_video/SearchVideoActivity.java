@@ -7,14 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter;
@@ -26,10 +30,12 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   private static final String SAVE_DATA_VIDEO_SEARCH = "save";
   SearchVideoPresenter searchVideoPresenter;
   VideoAdapter adapter;
-  ArrayList<PojoVideo.VideosBean> resultItem;
+  ArrayList<VideosBean> resultItem;
   @BindView(R.id.recyclerview_activity_search_video)
   RecyclerView recyclerviewActivitySearchVideo;
   String key;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +63,12 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   }
 
   @Override
-  public void onSuccesSearchVideo(List<PojoVideo.VideosBean> data, String msg) {
+  public void onSuccesSearchVideo(List<VideosBean> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
+    recyclerviewActivitySearchVideo.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -70,7 +78,8 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
 
   @Override
   public void onErrorSearchVideo(String msg) {
-    Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+    recyclerviewActivitySearchVideo.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -79,7 +88,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
     inflater.inflate(R.menu.menu_search, menu);
     MenuItem searchItem = menu.findItem(R.id.search);
     final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    searchView.setOnQueryTextListener(new OnQueryTextListener() {
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
@@ -104,5 +113,10 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   public void onBackPressed() {
     super.onBackPressed();
     finish();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    searchVideoPresenter.getDataSearchVideo(key);
   }
 }

@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.voting_dialog.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -37,7 +36,6 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession),
         response -> {
           votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
-          Log.i("response session", response);
           final PojoSession pojoSession = new Gson().fromJson(response, PojoSession.class);
           try {
             if (pojoSession == null) {
@@ -81,7 +79,6 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlRate),
         response -> {
-      Log.i("response rate", response);
           try {
             votingDialogVotingRateGetCallback.onSuccesVotingDialogVotingRate("Ok");
           } catch (Exception e) {

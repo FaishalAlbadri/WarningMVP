@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.slider_home.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoSlider;
 import com.faishalbadri.hijab.repository.slider_home.SliderHomeDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -34,7 +34,6 @@ public class SliderHomeDataRemote implements SliderHomeDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoSlider pojoSlider = new Gson().fromJson(response, PojoSlider.class);
           try {
             if (pojoSlider == null) {
@@ -46,7 +45,8 @@ public class SliderHomeDataRemote implements SliderHomeDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> sliderHomeGetCallback.onErrorSliderHome(String.valueOf(error))) {
+        }, error -> sliderHomeGetCallback.onErrorSliderHome(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

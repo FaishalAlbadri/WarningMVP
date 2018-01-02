@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.search_ebook.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.repository.search_ebook.SearchEbookDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -36,7 +36,6 @@ public class SearchEbookDataRemote implements SearchEbookDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
           try {
             if (pojoEbook == null) {
@@ -48,7 +47,8 @@ public class SearchEbookDataRemote implements SearchEbookDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchEbookGetCallback.onErrorSearchEbook(String.valueOf(error))) {
+        }, error -> searchEbookGetCallback.onErrorSearchEbook(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

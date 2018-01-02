@@ -2,12 +2,12 @@ package com.faishalbadri.hijab.repository.ebook_by_category.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.repository.ebook_by_category.EbookByCategoryDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -35,7 +35,6 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + id),
         response -> {
-          Log.i("response", response);
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
           try {
             if (pojoEbook == null) {
@@ -47,7 +46,8 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> newsByCategoryGetDataCallBack.onErrorEbookByCategory(String.valueOf(error))) {
+        }, error -> newsByCategoryGetDataCallBack.onErrorEbookByCategory(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
