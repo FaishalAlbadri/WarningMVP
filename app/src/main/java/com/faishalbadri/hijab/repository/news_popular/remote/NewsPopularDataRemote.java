@@ -7,6 +7,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.news_popular.NewsPopularDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -44,7 +45,8 @@ public class NewsPopularDataRemote implements NewsPopularDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> newsPopularGetCallback.onErrorNewsPopular(String.valueOf(error))) {
+        }, error -> newsPopularGetCallback.onErrorNewsPopular(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

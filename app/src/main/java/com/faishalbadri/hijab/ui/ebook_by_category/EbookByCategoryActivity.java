@@ -8,8 +8,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +37,8 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   ArrayList<EbookBean> resultItem;
   @BindView(R.id.refresh_ebook_by_category)
   SwipeRefreshLayout refreshEbookByCategory;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +85,14 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    refreshEbookByCategory.setVisibility(View.VISIBLE);
   }
 
   @Override
   public void onErrorEbookByCategory(String msg) {
-    Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    refreshEbookByCategory.setVisibility(View.GONE);
   }
 
   @OnClick(R.id.button_back_general_toolbar_search)
@@ -99,5 +104,10 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   public void onBackPressed() {
     super.onBackPressed();
     finish();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    ebookCategoryPresenter.getDataEbookByCategory(id);
   }
 }

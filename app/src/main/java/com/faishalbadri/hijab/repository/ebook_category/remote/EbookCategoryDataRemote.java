@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbookCategory;
 import com.faishalbadri.hijab.repository.ebook_category.EbookCategoryDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -47,7 +48,8 @@ public class EbookCategoryDataRemote implements EbookCategoryDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> ebookCategoryGetCallBack.onErrorCategoryEbook(String.valueOf(error))) {
+        }, error -> ebookCategoryGetCallBack.onErrorCategoryEbook(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

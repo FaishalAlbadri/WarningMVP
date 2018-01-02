@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.repository.ebook.EbookDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -46,7 +47,8 @@ public class EbookDataRemote implements EbookDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> ebookGetCallBack.onErrorEbook(String.valueOf(error))) {
+        }, error -> ebookGetCallBack
+        .onErrorEbook(context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

@@ -7,12 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
@@ -30,6 +34,8 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   SearchEventPresenter searchEventPresenter;
   EventAdapter adapter;
   ArrayList<EventBean> resultItem;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,8 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
+    recyclerviewActivitySearchEvent.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -69,7 +77,8 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
 
   @Override
   public void onErrorSearchEvent(String msg) {
-    Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+    recyclerviewActivitySearchEvent.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -78,7 +87,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
     inflater.inflate(R.menu.menu_search, menu);
     MenuItem searchItem = menu.findItem(R.id.search);
     final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    searchView.setOnQueryTextListener(new OnQueryTextListener() {
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
@@ -103,5 +112,10 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   public void onBackPressed() {
     super.onBackPressed();
     finish();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    searchEventPresenter.getDataSearchEvent(key);
   }
 }

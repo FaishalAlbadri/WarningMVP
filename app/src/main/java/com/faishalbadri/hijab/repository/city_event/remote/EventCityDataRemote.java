@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCityEvent;
 import com.faishalbadri.hijab.repository.city_event.EventCityDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -45,7 +46,8 @@ public class EventCityDataRemote implements EventCityDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> eventCityGetCallback.onErrorEventCity(String.valueOf(error))) {
+        }, error -> eventCityGetCallback.onErrorEventCity(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

@@ -55,12 +55,16 @@
   <string name="text_instruction_type">Type in here</string>
   <string name="text_next">Next</string>
   <string name="text_skip">Skip</string>
+  <string name="caption_error_internet_acces">No Internet Acces</string>
 
   <string name="text_share_app_subject">Share This App To Your Friends</string>
   <string name="text_share_app_text">Get the last update women news from Pinky Hijab</string>
 
   <string name="text_kritik_saran_instruction">Kami sangat membutuhkan kritik &amp; saran dari pengguna semua, supaya kami dapat mengembangkan aplikasi yang lebih baik dan disukai oleh pengguna semua. Terima Kasih</string>
   <string name="title_activity_ebook">EbookActivity</string>
+
+  <string name="no_internet_acces">Sorry… You dont have internet connection \nPlease check your
+    internet connection \n Tap your screen to refresh this app</string>
 
 </resources>
 

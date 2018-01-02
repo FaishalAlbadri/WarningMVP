@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.repository.search_event.SearchEventDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -46,7 +47,8 @@ public class SearchEventDataRemote implements SearchEventDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchEventGetCallback.onErrorSearchEvent(String.valueOf(error))) {
+    }, error -> searchEventGetCallback.onErrorSearchEvent(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

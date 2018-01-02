@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent;
 import com.faishalbadri.hijab.repository.event.EventDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -47,7 +48,8 @@ public class EventDataRemote implements EventDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> eventGetCallback.onErrorEvent(String.valueOf(error))) {
+        }, error -> eventGetCallback
+        .onErrorEvent(context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

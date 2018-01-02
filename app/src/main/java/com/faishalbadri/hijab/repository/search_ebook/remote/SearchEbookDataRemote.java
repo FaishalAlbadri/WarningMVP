@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook;
 import com.faishalbadri.hijab.repository.search_ebook.SearchEbookDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -48,7 +49,8 @@ public class SearchEbookDataRemote implements SearchEbookDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchEbookGetCallback.onErrorSearchEbook(String.valueOf(error))) {
+        }, error -> searchEbookGetCallback.onErrorSearchEbook(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

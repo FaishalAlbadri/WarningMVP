@@ -5,20 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoSponsor;
 import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
 import com.faishalbadri.hijab.di.SponsorRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.ui.sponsor.SponsorContract.SponsorView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SponsorActivity extends AppCompatActivity implements SponsorContract.SponsorView {
+public class SponsorActivity extends AppCompatActivity implements SponsorView {
 
   private static final String save_sponsor = "saveSponsor";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
@@ -29,7 +31,9 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
   RecyclerView recyclerviewActivitySponsor;
   SponsorPresenter sponsorPresenter;
   SponsorAdapter sponsorAdapter;
-  ArrayList<PojoSponsor.SponsorBean> list_data;
+  ArrayList<SponsorBean> list_data;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
     sponsorPresenter.onAttachView(this);
 
     if (savedInstanceState != null) {
-      ArrayList<PojoSponsor.SponsorBean> data = savedInstanceState
+      ArrayList<SponsorBean> data = savedInstanceState
           .getParcelableArrayList(save_sponsor);
       this.list_data.clear();
       this.list_data.addAll(data);
@@ -68,11 +72,6 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
     outState.putParcelableArrayList(save_sponsor, list_data);
   }
 
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    onBackPressed();
-  }
-
   @Override
   public void onBackPressed() {
     startActivity(
@@ -85,10 +84,23 @@ public class SponsorActivity extends AppCompatActivity implements SponsorContrac
     list_data.clear();
     list_data.addAll(data);
     sponsorAdapter.notifyDataSetChanged();
+    recyclerviewActivitySponsor.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorSponsor(String msg) {
+    recyclerviewActivitySponsor.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onLayoutNoInternetAccesClicked() {
+    sponsorPresenter.getDataSponsor();
   }
 }

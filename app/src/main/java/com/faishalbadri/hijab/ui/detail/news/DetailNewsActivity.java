@@ -8,8 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,6 +50,10 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   DetailNewsAdapter detailNewsAdapter;
   ArrayList<NewsBean> resultItem;
   String share = "";
+  @BindView(R.id.scrollview_detail_news)
+  ScrollView scrollviewDetailNews;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
   private String title, image, desc, id_isi;
 
   @Override
@@ -116,11 +121,15 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     resultItem.clear();
     resultItem.addAll(data);
     detailNewsAdapter.notifyDataSetChanged();
+    scrollviewDetailNews.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onError(String msg) {
-    Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
+    scrollviewDetailNews.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
@@ -132,5 +141,10 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
     IntentUtil intentUtil = new IntentUtil(this);
     intentUtil.IntentShare("", share);
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    detailNewsPresenter.getData(id_isi);
   }
 }

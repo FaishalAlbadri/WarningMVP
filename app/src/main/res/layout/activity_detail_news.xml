@@ -17,9 +17,11 @@
       layout="@layout/general_toolbar_with_back_button"/>
 
     <ScrollView
+      android:id="@+id/scrollview_detail_news"
       android:layout_width="@dimen/match_parent_size"
       android:layout_height="@dimen/match_parent_size"
       android:nestedScrollingEnabled="false"
+      android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
@@ -87,6 +89,24 @@
       </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
+
+    <RelativeLayout
+      android:id="@+id/layout_no_internet_acces"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="?attr/actionBarSize"
+      android:gravity="center"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_news">
+
+      <include
+        android:id="@+id/no_internet_acces"
+        layout="@layout/layout_no_internet_acces"/>
+
+    </RelativeLayout>
 
   </android.support.constraint.ConstraintLayout>
 

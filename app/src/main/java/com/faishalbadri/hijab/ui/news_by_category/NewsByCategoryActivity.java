@@ -6,7 +6,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +35,8 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   ArrayList<NewsBean> list_data;
   @BindView(R.id.refresh_news_by_category)
   SwipeRefreshLayout refreshNewsByCategory;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
 
   @Override
@@ -86,21 +90,30 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     list_data.clear();
     list_data.addAll(data);
     newsByCategoryAdapter.notifyDataSetChanged();
+    refreshNewsByCategory.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorNewsByCategory(String msg) {
-
+    refreshNewsByCategory.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
-  @OnClick(R.id.button_back_general_toolbar_with_back_button)
-  public void onViewClicked() {
-    onBackPressed();
-  }
 
   @Override
   public void onBackPressed() {
     super.onBackPressed();
     finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackGeneralToolbarWithBackButtonClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onLayoutNoInternetAccesClicked() {
+    newsByCategoryPresenter.getDataNewsByCategory(id);
   }
 }

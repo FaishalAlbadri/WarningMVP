@@ -7,12 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
@@ -30,6 +34,8 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   @BindView(R.id.recyclerview_activity_search_ebook)
   RecyclerView recyclerviewActivitySearchEbook;
   String key;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,8 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
+    recyclerviewActivitySearchEbook.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -69,7 +77,8 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
 
   @Override
   public void onErrorSearchEbook(String msg) {
-    Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+    recyclerviewActivitySearchEbook.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -78,7 +87,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     inflater.inflate(R.menu.menu_search, menu);
     MenuItem searchItem = menu.findItem(R.id.search);
     final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    searchView.setOnQueryTextListener(new OnQueryTextListener() {
       @Override
       public boolean onQueryTextSubmit(String query) {
         key = query;
@@ -103,5 +112,10 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   public void onBackPressed() {
     super.onBackPressed();
     finish();
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    searchEbookPresenter.getDataSearchEbook(key);
   }
 }

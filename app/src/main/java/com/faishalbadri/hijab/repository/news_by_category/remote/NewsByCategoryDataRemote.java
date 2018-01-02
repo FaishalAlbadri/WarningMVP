@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.news_by_category.NewsByCategoryDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -46,7 +47,8 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> newsByCategoryGetDataCallBack.onErrorNewsByCategory(String.valueOf(error))) {
+        }, error -> newsByCategoryGetDataCallBack.onErrorNewsByCategory(
+        context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

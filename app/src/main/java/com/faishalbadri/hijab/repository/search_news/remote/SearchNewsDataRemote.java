@@ -7,6 +7,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews;
 import com.faishalbadri.hijab.repository.search_news.SearchNewsDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -45,7 +46,8 @@ public class SearchNewsDataRemote implements SearchNewsDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchNewsGetCallback.onErrorSearchNews(String.valueOf(error))) {
+        }, error -> searchNewsGetCallback.onErrorSearchNews(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

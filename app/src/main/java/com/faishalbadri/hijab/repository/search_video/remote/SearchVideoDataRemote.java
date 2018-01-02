@@ -8,6 +8,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.search_video.SearchVideoDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
@@ -46,7 +47,8 @@ public class SearchVideoDataRemote implements SearchVideoDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> searchVideoGetCallback.onErrorSearchVideo(String.valueOf(error))) {
+        }, error -> searchVideoGetCallback.onErrorSearchVideo(context.getResources().getString(R
+        .string.caption_error_internet_acces))) {
 
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {

@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -61,6 +63,10 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   String share = "";
   @BindView(R.id.webview_description_video_detail)
   WebView webviewDescriptionVideoDetail;
+  @BindView(R.id.scrollview_detail_video)
+  ScrollView scrollviewDetailVideo;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -149,11 +155,15 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     resultItem.clear();
     resultItem.addAll(data);
     detailVideoAdapter.notifyDataSetChanged();
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    scrollviewDetailVideo.setVisibility(View.VISIBLE);
   }
 
   @Override
   public void onError(String msg) {
     Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    scrollviewDetailVideo.setVisibility(View.GONE);
   }
 
   private void setSwipeBack() {
@@ -178,5 +188,10 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
     IntentUtil intentUtil = new IntentUtil(this);
     intentUtil.IntentShare("", share);
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    detailVideoPresenter.getData("4");
   }
 }
