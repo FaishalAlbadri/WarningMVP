@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.ebook_category.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -35,7 +34,6 @@ public class EbookCategoryDataRemote implements EbookCategoryDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoEbookCategory pojoEbookCategory = new Gson()
               .fromJson(response, PojoEbookCategory.class);
           try {

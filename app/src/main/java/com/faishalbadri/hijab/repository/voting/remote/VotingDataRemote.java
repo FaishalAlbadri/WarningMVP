@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.voting.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -42,7 +41,6 @@ public class VotingDataRemote implements VotingDataResource {
               votingGetCallback.onDataVotingNull("Data Voting Null");
             } else {
               votingGetCallback.onSuccesVoting(pojoVoting.getVoting(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 

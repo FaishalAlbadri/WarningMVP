@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.news_by_category.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -42,7 +41,6 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
               newsByCategoryGetDataCallBack.onErrorNewsByCategory("Data Null");
             } else {
               newsByCategoryGetDataCallBack.onSuccessNewsByCategory(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 

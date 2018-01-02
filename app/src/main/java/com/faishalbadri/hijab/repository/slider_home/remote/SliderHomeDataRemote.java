@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.slider_home.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -35,7 +34,6 @@ public class SliderHomeDataRemote implements SliderHomeDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
-          Log.i("response", response);
           final PojoSlider pojoSlider = new Gson().fromJson(response, PojoSlider.class);
           try {
             if (pojoSlider == null) {

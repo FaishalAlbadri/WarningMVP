@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.detail_news_related.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -42,7 +41,6 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
               detailNewsPopularGetCallback.onErrorDetailNewsPopular("Data Null");
             } else {
               detailNewsPopularGetCallback.onSuccesDetailNewsPopular(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 

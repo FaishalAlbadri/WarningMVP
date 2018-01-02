@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.news.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -43,7 +42,6 @@ public class NewsDataRemote implements NewsDataResource {
               newsGetCallback.onErrorNews("Data Null");
             } else {
               newsGetCallback.onSuccesNews(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 
@@ -71,7 +69,6 @@ public class NewsDataRemote implements NewsDataResource {
               sliderGetCallback.onErrorSlider("Data Null");
             } else {
               sliderGetCallback.onSuccesSlider(pojoNews.getNews(), "Succes");
-              Log.i("response", response);
             }
           } catch (Exception e) {
 

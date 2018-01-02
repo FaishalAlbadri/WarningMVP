@@ -9,7 +9,6 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,7 +114,6 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
       pd.show();
       email = materialedittextEmailFragmentLogin.getText().toString();
       password = convertPassMd5(materialedittextPasswordFragmentLogin.getText().toString());
-      Log.i("md5", email);
       loginPresenter.getDataLogin(email, password);
     }
   }
@@ -125,7 +123,6 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
       String user_handphone_number, String user_image, String user_password,
       String user_verify_code, String user_verified_code, String user_gender, String user_apikey) {
     pd.dismiss();
-    Log.i("OK", msg);
     sessionManagerLogin.createSession(id_user, user_name, user_email, user_handphone_number,
         user_image, user_password, user_verify_code, user_verified_code, user_gender, user_apikey);
     if (user_verified_code == null) {
