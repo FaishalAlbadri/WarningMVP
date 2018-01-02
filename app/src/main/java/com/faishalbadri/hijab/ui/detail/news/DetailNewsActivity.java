@@ -54,7 +54,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ScrollView scrollviewDetailNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-  private String title, image, desc, id_isi;
+  private String title, image, desc, id_content;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +145,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    detailNewsPresenter.getData(id_isi);
+    detailNewsPresenter.getData(id_content);
   }
 }
