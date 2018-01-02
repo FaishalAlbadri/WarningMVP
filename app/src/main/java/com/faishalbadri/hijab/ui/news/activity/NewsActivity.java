@@ -20,18 +20,18 @@ import com.faishalbadri.hijab.util.ActivityUtil;
 public class NewsActivity extends AppCompatActivity {
 
   ActivityUtil activityUtil;
-  @BindView(R.id.button_news_activity_news)
-  ImageButton buttonNewsActivityNews;
-  @BindView(R.id.button_category_activity_news)
-  ImageButton buttonCategoryActivityNews;
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
   TextView textviewGeneralToolbarSearch;
   @BindView(R.id.button_search_general_toolbar_search)
   ImageView buttonSearchGeneralToolbarSearch;
+  @BindView(R.id.button_news_activity_news)
+  ImageButton buttonNewsActivityNews;
   @BindView(R.id.button_rank_activity_news)
   ImageButton buttonRankActivityNews;
+  @BindView(R.id.button_category_activity_news)
+  ImageButton buttonCategoryActivityNews;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

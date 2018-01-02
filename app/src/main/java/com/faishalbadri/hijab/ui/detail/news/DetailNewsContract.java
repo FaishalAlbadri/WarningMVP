@@ -20,7 +20,7 @@ public class DetailNewsContract {
 
   public interface DetailNewsPresenter extends BasePresenter<DetailNewsView> {
 
-    void getData(String id_isi);
+    void getData(String id_content);
 
   }
 

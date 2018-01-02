@@ -30,8 +30,8 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
   }
 
   @Override
-  public void getData(String id_isi) {
-    detailNewsRepository.getDetailNewsPopularResult(id_isi, new DetailNewsPopularGetCallback
+  public void getData(String id_content) {
+    detailNewsRepository.getDetailNewsPopularResult(id_content, new DetailNewsPopularGetCallback
         () {
       @Override
       public void onSuccesDetailNewsPopular(List<NewsBean> data, String msg) {

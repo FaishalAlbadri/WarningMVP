@@ -126,7 +126,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
       youTubeInitializationResult.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
     } else {
       String errorMessage = String
-          .format(getString(R.string.error_player), youTubeInitializationResult.toString());
+          .format(getString(R.string.text_error_player), youTubeInitializationResult.toString());
       Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
   }

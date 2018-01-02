@@ -20,7 +20,7 @@
   <string name="text_other">Other</string>
   <string name="text_category">Category</string>
   <string name="text_search">Search</string>
-  <string name="error_player">Cant play this video</string>
+  <string name="text_error_player">Cant play this video</string>
   <string name="text_account">Account</string>
   <string name="text_send">Send</string>
   <string name="text_related">Related</string>
@@ -64,7 +64,16 @@
 
 </resources>
 
-  <!--Rules :--><!--1. Semua nama package harus huruf kecil dan spasi diganti "_"--><!--2. Penamaan id = "namawidget_kegunaan_dilayoutmana" , contoh ="button_intenttologin_activity_login_register"--><!--3. Semua harus menggunakan bahasa inggris--><!--4. Gunakan semua fasilitas yang ada di values--><!--5. Harus se-CleanCode mungkin--><!--6. Setiap selesai mengerjakan jangan lupa di "cmd + alt + l" dan "alt + control + i"--><!--7. Wajib MVP--><!--8. Penamaan Drawable = "tipe(ic/logo/background/dll)_kegunaan" contoh = "logo_pinky_hijab" / "background_button_color"--><!--9. Selalu Custom ActionBar kecuali jika menggunakan Navigation--><!--10. Gunakan Fragment-->
+  <!--Rules :-->
+  <!--1. Semua nama package harus huruf kecil dan spasi diganti "_"-->
+  <!--2. Penamaan id = "namawidget_kegunaan_dilayoutmana" , contoh ="button_intenttologin_activity_login_register"-->
+  <!--3. Semua harus menggunakan bahasa inggris--><!--4. Gunakan semua fasilitas yang ada di values-->
+  <!--5. Harus se-CleanCode mungkin-->
+  <!--6. Setiap selesai mengerjakan jangan lupa di "cmd + alt + l" dan "alt + control + i"-->
+  <!--7. Wajib MVP-->
+  <!--8. Penamaan Drawable = "tipe(ic/logo/background/dll)_kegunaan" contoh = "logo_pinky_hijab" / "background_button_color"-->
+  <!--9. Selalu Custom ActionBar kecuali jika menggunakan Navigation-->
+  <!--10. Gunakan Fragment-->
 
 
   <!--other : --><!--1. Kritik dan Saran--><!--2. Kirim Artikel--><!--3. Share This App--><!--4. About-->

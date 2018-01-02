@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
+import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +21,15 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class NewsCategoryFragment extends Fragment implements
-    NewsCategoryContract.newsCategoryView {
+    newsCategoryView {
 
 
   private static final String save_category = "saveCategory";
-  @BindView(R.id.recyclerview_fragment_news_category)
-  RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
   ArrayList<CategoriesBean> list_data;
   NewsCategoryAdapter newsCategoryAdapter;
+  @BindView(R.id.recyclerview_fragment_news_category)
+  RecyclerView recyclerviewFragmentNewsCategory;
 
 
   public NewsCategoryFragment() {
@@ -89,5 +90,4 @@ public class NewsCategoryFragment extends Fragment implements
   public void onErrorNewsCategory(String msg) {
 
   }
-
 }
