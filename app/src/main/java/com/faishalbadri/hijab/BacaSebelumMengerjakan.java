@@ -16,7 +16,6 @@ public class BacaSebelumMengerjakan {
      Planning :
      1. cleancode variable, package, anything name in this project (fikri)
      2. revamp ui & ux.. if needed
-     2. condition layout when no internet access or data null (faishal)
      3. change volley to retrofit (faishal)
      4. forget password(faishal)
      5. must using paggination on recyclerview (faishal & fikri)

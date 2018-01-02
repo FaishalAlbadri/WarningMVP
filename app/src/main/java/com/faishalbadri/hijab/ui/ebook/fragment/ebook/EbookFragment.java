@@ -9,9 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
@@ -34,6 +36,8 @@ public class EbookFragment extends Fragment implements EbookView {
   ArrayList<EbookBean> resultItem;
   @BindView(R.id.refresh_fragment_ebook)
   SwipeRefreshLayout refreshFragmentEbook;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public EbookFragment() {
     // Required empty public constructor
@@ -91,6 +95,8 @@ public class EbookFragment extends Fragment implements EbookView {
     resultItem.clear();
     resultItem.addAll(ebook);
     ebookAdapter.notifyDataSetChanged();
+    refreshFragmentEbook.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -100,7 +106,12 @@ public class EbookFragment extends Fragment implements EbookView {
 
   @Override
   public void onErrorEbook(String msg) {
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    refreshFragmentEbook.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
   }
 
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    ebookPresenter.getData();
+  }
 }

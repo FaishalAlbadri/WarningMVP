@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookCategory;
+import com.faishalbadri.hijab.data.PojoEbookCategory.EbookCategoriesBean;
 import com.faishalbadri.hijab.di.EbookCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
 import java.util.ArrayList;
@@ -30,7 +32,9 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
   View view;
   EbookCategoryPresenter ebookCategoryPresenter;
   EbookCategoryAdapter adapter;
-  ArrayList<PojoEbookCategory.EbookCategoriesBean> resultItem;
+  ArrayList<EbookCategoriesBean> resultItem;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
   public EbookCategoryFragment() {
     // Required empty public constructor
@@ -68,11 +72,13 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
   }
 
   @Override
-  public void onSuccessCategoryEbook(List<PojoEbookCategory.EbookCategoriesBean> ebook,
+  public void onSuccessCategoryEbook(List<EbookCategoriesBean> ebook,
       String msg) {
     resultItem.clear();
     resultItem.addAll(ebook);
     adapter.notifyDataSetChanged();
+    recyclerviewFragmentCategoryEbook.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
@@ -82,6 +88,12 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
 
   @Override
   public void onErrorCategoryEbook(String msg) {
-    Toast.makeText(getActivity(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+    recyclerviewFragmentCategoryEbook.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
+
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    ebookCategoryPresenter.getData();
   }
 }

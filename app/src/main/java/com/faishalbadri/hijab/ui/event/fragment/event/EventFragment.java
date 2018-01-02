@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
@@ -32,6 +34,8 @@ public class EventFragment extends Fragment implements eventView {
   EventAdapter eventAdapter;
   @BindView(R.id.refresh_fragment_event)
   SwipeRefreshLayout refreshFragmentEvent;
+  @BindView(R.id.layout_no_internet_acces)
+  RelativeLayout layoutNoInternetAcces;
 
 
   public EventFragment() {
@@ -97,10 +101,18 @@ public class EventFragment extends Fragment implements eventView {
     list_data.clear();
     list_data.addAll(data);
     eventAdapter.notifyDataSetChanged();
+    refreshFragmentEvent.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
   public void onErrorEvent(String msg) {
+    refreshFragmentEvent.setVisibility(View.GONE);
+    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+  }
 
+  @OnClick(R.id.layout_no_internet_acces)
+  public void onViewClicked() {
+    eventPresenter.getDataEvent();
   }
 }
