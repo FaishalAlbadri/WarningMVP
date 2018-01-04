@@ -19,7 +19,6 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
-import com.faishalbadri.hijab.ui.news.fragment.NewsAdapter;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.util.server.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
@@ -40,7 +39,7 @@ public class NewsFragment extends Fragment implements newsView {
   RecyclerView recyclerviewFragmentNews;
   NewsPresenter newsPresenter;
   ArrayList<NewsBean> list_data;
-  com.faishalbadri.hijab.ui.news.fragment.NewsAdapter newsAdapter;
+  NewsAdapter newsAdapter;
   @BindView(R.id.slider_fragment_news)
   SliderLayout sliderFragmentNews;
   TextSliderView textSliderView;

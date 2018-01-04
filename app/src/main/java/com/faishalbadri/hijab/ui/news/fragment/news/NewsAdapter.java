@@ -5,13 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,53 +24,98 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
-import com.faishalbadri.hijab.ui.news.fragment.news.NewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
 
 /**
- * Created by faishal on 11/4/17.
+ * Created by faishal on 04/01/18.
  */
 
 public class NewsAdapter extends Adapter<ViewHolder> {
 
+  private static final int ITEM = 0;
+  private static final int LOADING = 1;
+
   Context context;
   List<NewsBean> data;
+  NewsFragment newsFragment;
 
   public NewsAdapter(Context context,
-      List<NewsBean> data) {
+      List<NewsBean> data, NewsFragment newsFragment) {
     this.context = context;
     this.data = data;
+    this.newsFragment = newsFragment;
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_news, parent, false);
-    final ViewHolder viewHolder = new ViewHolder(view);
+    ViewHolder viewHolder = null;
+    LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+    switch (viewType) {
+      case ITEM:
+        viewHolder = getViewHolder(parent, inflater);
+        break;
+      case LOADING:
+        View viewLoading = inflater.inflate(R.layout.item_loading, parent, false);
+        viewHolder = new ViewHolderLoading(viewLoading);
+        break;
+    }
+    return viewHolder;
+  }
+
+  @NonNull
+  private ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
+    ViewHolder viewHolder;
+    View viewItem = inflater.inflate(R.layout.item_news, parent, false);
+    viewHolder = new ViewHolderItem(viewItem);
     return viewHolder;
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final NewsBean listitem = data.get(position);
-    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-        .override(200, 200);
-    Glide.with(context)
-        .load(Server.BASE_API + listitem.getNews_images())
-        .apply(options)
-        .into(holder.imageviewNewsItem);
-    holder.textviewTitleNewsItem.setText(listitem.getNews_title());
-    holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
-    holder.cardviewNewsFragmentNews.setClickable(true);
-    holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
-      v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-          .putExtra("id_isi", listitem.getNews_id())
-          .putExtra("title", listitem.getNews_title())
-          .putExtra("image", listitem.getNews_images())
-          .putExtra("desc", listitem.getNews_description()));
-      ((Activity) context)
-          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
-    });
+
+    NewsBean datalist = data.get(position);
+
+    switch (getItemViewType(position)) {
+      case ITEM:
+        ViewHolderItem viewHolderItem = (ViewHolderItem) holder;
+        RequestOptions options = new RequestOptions().fitCenter()
+            .format(DecodeFormat.PREFER_ARGB_8888)
+            .override(200, 200);
+        Glide.with(context)
+            .load(Server.BASE_API + datalist.getNews_images())
+            .apply(options)
+            .into(viewHolderItem.imageviewNewsItem);
+        viewHolderItem.textviewTitleNewsItem.setText(datalist.getNews_title());
+        viewHolderItem.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
+        viewHolderItem.cardviewNewsFragmentNews.setClickable(true);
+        viewHolderItem.cardviewNewsFragmentNews.setOnClickListener(v -> {
+          v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
+              .putExtra("id_isi", datalist.getNews_id())
+              .putExtra("title", datalist.getNews_title())
+              .putExtra("image", datalist.getNews_images())
+              .putExtra("desc", datalist.getNews_description()));
+          ((Activity) context)
+              .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
+        });
+        break;
+      case LOADING:
+        ViewHolderLoading viewHolderLoading = (ViewHolderLoading) holder;
+        viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
+        viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+        viewHolderLoading.buttonLoadData.setOnClickListener(v -> {
+          viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
+          viewHolderLoading.progressLoadData.setVisibility(View.VISIBLE);
+          newsFragment.getData();
+        });
+        break;
+    }
+  }
+
+  @Override
+  public int getItemViewType(int position) {
+    return (position == data.size() - 1) ? LOADING : ITEM;
   }
 
   @Override
@@ -83,7 +131,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     return selectedItemDrawable;
   }
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
+  protected class ViewHolderItem extends ViewHolder {
 
     @BindView(R.id.imageview_news_item)
     ImageView imageviewNewsItem;
@@ -92,10 +140,23 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     @BindView(R.id.cardview_news_fragment_news)
     CardView cardviewNewsFragmentNews;
 
-    public ViewHolder(View itemView) {
+    public ViewHolderItem(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
 
+    }
+  }
+
+  protected class ViewHolderLoading extends ViewHolder {
+
+    @BindView(R.id.button_load_data)
+    ImageButton buttonLoadData;
+    @BindView(R.id.progress_load_data)
+    ProgressBar progressLoadData;
+
+    public ViewHolderLoading(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
     }
   }
 }
