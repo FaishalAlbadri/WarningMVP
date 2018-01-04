@@ -21,7 +21,7 @@ public class EventContract {
 
   public interface eventPresenter extends BasePresenter<EventContract.eventView> {
 
-    void getDataEvent();
+    void getDataEvent(int PAGE);
 
 
   }

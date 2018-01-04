@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface EventDataResource {
 
-  void getEventResult(@NonNull EventGetCallback eventGetCallback);
+  void getEventResult(int PAGE, @NonNull EventGetCallback eventGetCallback);
 
   interface EventGetCallback {
 

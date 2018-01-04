@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventContract.eventView;
+import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class EventFragment extends Fragment implements eventView {
   SwipeRefreshLayout refreshFragmentEvent;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-
+  private int PAGE = 1;
 
   public EventFragment() {
     // Required empty public constructor
@@ -59,16 +60,18 @@ public class EventFragment extends Fragment implements eventView {
 
     if (savedInstanceState != null) {
       ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
-      this.list_data.clear();
       this.list_data.addAll(data);
       eventAdapter.notifyDataSetChanged();
     } else {
-      eventPresenter.getDataEvent();
+      eventPresenter.getDataEvent(1);
     }
 
     refreshFragmentEvent.setOnRefreshListener(() -> {
+      PAGE = 1;
+      PAGE++;
+      this.list_data.clear();
       refreshFragmentEvent.setRefreshing(false);
-      eventPresenter.getDataEvent();
+      eventPresenter.getDataEvent(1);
     });
 
     return v;
@@ -84,7 +87,7 @@ public class EventFragment extends Fragment implements eventView {
     eventPresenter = new EventPresenter(
         EventRepositoryInject.provideToEventRepository(getActivity()));
     list_data = new ArrayList<>();
-    eventAdapter = new EventAdapter(getActivity(), list_data);
+    eventAdapter = new EventAdapter(getActivity(), list_data, EventFragment.this);
     LinearLayoutManager llm = new LinearLayoutManager(getActivity());
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentEvent.setLayoutManager(llm);
@@ -98,8 +101,8 @@ public class EventFragment extends Fragment implements eventView {
 
   @Override
   public void onSuccesEvent(List<EventBean> data, String msg) {
-    list_data.clear();
     list_data.addAll(data);
+    LoadingStatus.getInstance().setStatus(null);
     eventAdapter.notifyDataSetChanged();
     refreshFragmentEvent.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
@@ -107,12 +110,21 @@ public class EventFragment extends Fragment implements eventView {
 
   @Override
   public void onErrorEvent(String msg) {
-    refreshFragmentEvent.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    if (msg.equals("Data Null")) {
+      LoadingStatus.getInstance().setStatus("error");
+      eventAdapter.notifyDataSetChanged();
+    } else {
+      refreshFragmentEvent.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
+  }
+
+  public void getData() {
+    eventPresenter.getDataEvent(PAGE++);
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    eventPresenter.getDataEvent();
+    eventPresenter.getDataEvent(PAGE);
   }
 }

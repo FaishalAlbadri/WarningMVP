@@ -15,7 +15,7 @@ public class EventRepository implements EventDataResource {
   }
 
   @Override
-  public void getEventResult(@NonNull EventGetCallback eventGetCallback) {
-    eventDataResource.getEventResult(eventGetCallback);
+  public void getEventResult(int PAGE, @NonNull EventGetCallback eventGetCallback) {
+    eventDataResource.getEventResult(PAGE, eventGetCallback);
   }
 }

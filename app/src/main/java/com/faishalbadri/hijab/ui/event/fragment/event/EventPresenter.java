@@ -29,8 +29,8 @@ public class EventPresenter implements EventContract.eventPresenter {
   }
 
   @Override
-  public void getDataEvent() {
-    eventRepository.getEventResult(new EventGetCallback() {
+  public void getDataEvent(int PAGE) {
+    eventRepository.getEventResult(PAGE, new EventGetCallback() {
       @Override
       public void onSuccesEvent(List<EventBean> data, String msg) {
         eventView.onSuccesEvent(data, msg);

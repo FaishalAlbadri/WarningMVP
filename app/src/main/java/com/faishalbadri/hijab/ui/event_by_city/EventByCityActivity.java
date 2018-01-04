@@ -15,7 +15,6 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
-import com.faishalbadri.hijab.ui.event.fragment.event.EventAdapter;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityContract.EventByCityView;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   RecyclerView recyclerviewActivityEventByCity;
   ArrayList<EventBean> list_data;
   EventByCityPresenter eventByCityPresenter;
-  EventAdapter eventByCityAdapter;
+  EventByCityAdapter eventByCityAdapter;
   String id, city;
   @BindView(R.id.refresh_fragment_event_by_city)
   SwipeRefreshLayout refreshFragmentEventByCity;
@@ -79,7 +78,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     eventByCityPresenter = new EventByCityPresenter(
         EventByCityRepositoryInject.provideToEventByCityRepository(this));
     list_data = new ArrayList<>();
-    eventByCityAdapter = new EventAdapter(this, list_data);
+    eventByCityAdapter = new EventByCityAdapter(this, list_data);
     recyclerviewActivityEventByCity.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivityEventByCity.setAdapter(eventByCityAdapter);
     refreshFragmentEventByCity.setColorSchemeResources(

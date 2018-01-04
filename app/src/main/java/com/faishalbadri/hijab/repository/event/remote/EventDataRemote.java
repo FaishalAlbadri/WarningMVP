@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class EventDataRemote implements EventDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "event";
+  private static final String URL = Server.BASE_URL_REVAMP + "event?page=";
   Context context;
 
   public EventDataRemote(Context context) {
@@ -30,15 +30,15 @@ public class EventDataRemote implements EventDataResource {
   }
 
   @Override
-  public void getEventResult(@NonNull EventGetCallback eventGetCallback) {
+  public void getEventResult(int PAGE, @NonNull EventGetCallback eventGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoEvent pojoEvent = new Gson()
               .fromJson(response, PojoEvent.class);
           try {
             if (pojoEvent == null) {
-              eventGetCallback.onErrorEvent("Error");
+              eventGetCallback.onErrorEvent("Data Null");
             } else {
               eventGetCallback
                   .onSuccesEvent(pojoEvent.getEvent(), "Ok");
