@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.repository.news.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -22,8 +23,8 @@ import java.util.Map;
 
 public class NewsDataRemote implements NewsDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "newsfeed";
-  private static final String URL_SLIDER = Server.BASE_URL_REVAMP + "newsfeed/popular";
+  private static final String URL = Server.BASE_URL_REVAMP + "newsfeed?page=";
+  private static final String URL_SLIDER = Server.BASE_URL_REVAMP + "newsfeed/1";
   Context context;
 
 
@@ -32,11 +33,13 @@ public class NewsDataRemote implements NewsDataResource {
   }
 
   @Override
-  public void getNewsResult(@NonNull NewsGetCallback newsGetCallback) {
+  public void getNewsResult(int PAGE, @NonNull NewsGetCallback newsGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
+          Log.i("page", String.valueOf(PAGE));
+          Log.i("response", response);
           try {
             if (pojoNews == null) {
               newsGetCallback.onErrorNews("Data Null");
@@ -61,7 +64,7 @@ public class NewsDataRemote implements NewsDataResource {
   @Override
   public void getSliderResult(@NonNull SliderGetCallback sliderGetCallback) {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL_SLIDER),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           try {

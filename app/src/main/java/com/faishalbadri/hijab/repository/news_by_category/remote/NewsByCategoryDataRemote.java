@@ -36,7 +36,6 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + id),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
-          Log.i("response", response);
           try {
             if (pojoNews == null) {
               newsByCategoryGetDataCallBack.onErrorNewsByCategory("Data Null");

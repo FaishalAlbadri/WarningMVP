@@ -24,7 +24,7 @@ public class NewsContract {
 
   public interface newsPresenter extends BasePresenter<NewsContract.newsView> {
 
-    void getDataNews();
+    void getDataNews(int PAGE);
 
     void getDataSlider();
 

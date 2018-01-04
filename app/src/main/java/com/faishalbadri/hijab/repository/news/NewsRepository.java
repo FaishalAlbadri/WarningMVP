@@ -15,8 +15,8 @@ public class NewsRepository implements NewsDataResource {
   }
 
   @Override
-  public void getNewsResult(@NonNull NewsGetCallback newsGetCallback) {
-    newsDataResource.getNewsResult(newsGetCallback);
+  public void getNewsResult(int PAGE, @NonNull NewsGetCallback newsGetCallback) {
+    newsDataResource.getNewsResult(PAGE, newsGetCallback);
   }
 
   @Override

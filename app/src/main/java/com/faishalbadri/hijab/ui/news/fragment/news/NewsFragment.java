@@ -19,6 +19,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
+import com.faishalbadri.hijab.ui.news.fragment.NewsAdapter;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.util.server.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
@@ -39,7 +40,7 @@ public class NewsFragment extends Fragment implements newsView {
   RecyclerView recyclerviewFragmentNews;
   NewsPresenter newsPresenter;
   ArrayList<NewsBean> list_data;
-  NewsAdapter newsAdapter;
+  com.faishalbadri.hijab.ui.news.fragment.NewsAdapter newsAdapter;
   @BindView(R.id.slider_fragment_news)
   SliderLayout sliderFragmentNews;
   TextSliderView textSliderView;
@@ -47,6 +48,7 @@ public class NewsFragment extends Fragment implements newsView {
   SwipeRefreshLayout refreshFragmentNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private int PAGE = 1;
 
 
   public NewsFragment() {
@@ -69,18 +71,15 @@ public class NewsFragment extends Fragment implements newsView {
 
     if (savedInstanceState != null) {
       ArrayList<NewsBean> data = savedInstanceState.getParcelableArrayList(save_news);
-      this.list_data.clear();
       this.list_data.addAll(data);
       newsAdapter.notifyDataSetChanged();
     } else {
-      newsPresenter.getDataNews();
-      newsPresenter.getDataSlider();
+      getData();
     }
 
     refreshFragmentNews.setOnRefreshListener(() -> {
       refreshFragmentNews.setRefreshing(false);
-      newsPresenter.getDataNews();
-      newsPresenter.getDataSlider();
+      getData();
     });
     return view;
   }
@@ -88,7 +87,7 @@ public class NewsFragment extends Fragment implements newsView {
   private void setView() {
     newsPresenter = new NewsPresenter(NewsRepositoryInject.provideToNewsRepository(getActivity()));
     list_data = new ArrayList<>();
-    newsAdapter = new NewsAdapter(getActivity(), list_data);
+    newsAdapter = new NewsAdapter(getActivity(), list_data, NewsFragment.this);
     LinearLayoutManager llm = new LinearLayoutManager(getActivity());
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentNews.setLayoutManager(llm);
@@ -108,7 +107,6 @@ public class NewsFragment extends Fragment implements newsView {
 
   @Override
   public void onSuccesNews(List<NewsBean> data, String msg) {
-    list_data.clear();
     list_data.addAll(data);
     newsAdapter.notifyDataSetChanged();
     refreshFragmentNews.setVisibility(View.VISIBLE);
@@ -166,7 +164,11 @@ public class NewsFragment extends Fragment implements newsView {
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    newsPresenter.getDataNews();
+    getData();
+  }
+
+  public void getData() {
+    newsPresenter.getDataNews(PAGE++);
     newsPresenter.getDataSlider();
   }
 }

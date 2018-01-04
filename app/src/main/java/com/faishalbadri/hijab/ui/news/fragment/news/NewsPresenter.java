@@ -30,8 +30,8 @@ public class NewsPresenter implements NewsContract.newsPresenter {
   }
 
   @Override
-  public void getDataNews() {
-    newsRepository.getNewsResult(new NewsGetCallback() {
+  public void getDataNews(int PAGE) {
+    newsRepository.getNewsResult(PAGE, new NewsGetCallback() {
       @Override
       public void onSuccesNews(List<NewsBean> data, String msg) {
         newsView.onSuccesNews(data, msg);

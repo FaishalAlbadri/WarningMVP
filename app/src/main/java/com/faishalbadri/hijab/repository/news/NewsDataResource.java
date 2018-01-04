@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface NewsDataResource {
 
-  void getNewsResult(@NonNull NewsGetCallback newsGetCallback);
+  void getNewsResult(int PAGE, @NonNull NewsGetCallback newsGetCallback);
 
   void getSliderResult(@NonNull SliderGetCallback sliderGetCallback);
 
