@@ -80,6 +80,8 @@ public class NewsFragment extends Fragment implements newsView {
 
     refreshFragmentNews.setOnRefreshListener(() -> {
       refreshFragmentNews.setRefreshing(false);
+      PAGE = 1;
+      PAGE++;
       this.list_data.clear();
       newsPresenter.getDataNews(1);
       newsPresenter.getDataSlider();
