@@ -65,6 +65,7 @@ public class NewsFragment extends Fragment implements newsView {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_news, container, false);
     ButterKnife.bind(this, view);
+    PAGE++;
     setView();
     newsPresenter.onAttachView(this);
 
@@ -73,12 +74,15 @@ public class NewsFragment extends Fragment implements newsView {
       this.list_data.addAll(data);
       newsAdapter.notifyDataSetChanged();
     } else {
-      getData();
+      newsPresenter.getDataNews(1);
+      newsPresenter.getDataSlider();
     }
 
     refreshFragmentNews.setOnRefreshListener(() -> {
       refreshFragmentNews.setRefreshing(false);
-      getData();
+      this.list_data.clear();
+      newsPresenter.getDataNews(1);
+      newsPresenter.getDataSlider();
     });
     return view;
   }
@@ -163,11 +167,11 @@ public class NewsFragment extends Fragment implements newsView {
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    getData();
+    newsPresenter.getDataNews(PAGE);
+    newsPresenter.getDataSlider();
   }
 
   public void getData() {
     newsPresenter.getDataNews(PAGE++);
-    newsPresenter.getDataSlider();
   }
 }
