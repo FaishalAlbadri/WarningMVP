@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface VideoDataResource {
 
-  void getVideoList(@NonNull VideoGetCallBack videoGetCallBack);
+  void getVideoList(int PAGE,@NonNull VideoGetCallBack videoGetCallBack);
 
   interface VideoGetCallBack {
 

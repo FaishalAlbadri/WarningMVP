@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +14,9 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +26,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity;
-import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter.ViewHolder;
+import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,47 +35,98 @@ import java.util.List;
  * Created by fikriimaduddin on 11/4/17.
  */
 
-public class VideoAdapter extends Adapter<ViewHolder> {
+public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
+
+  private static final int ITEM = 0;
+  private static final int LOADING = 1;
+  private String error;
 
   Context context;
   List<PojoVideo.VideosBean> list_video;
+  VideoFragment videoFragment;
 
-  public VideoAdapter(FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
+  public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
     this.context = activity;
     this.list_video = resultItem;
+    this.videoFragment = videoFragment;
   }
 
   @Override
-  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-    final ViewHolder viewHolder = new ViewHolder(view);
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    RecyclerView.ViewHolder viewHolder = null;
+    LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
+    switch (viewType) {
+      case ITEM:
+        viewHolder = getViewHolder(parent, inflater);
+        break;
+      case LOADING:
+        View viewLoading = inflater.inflate(R.layout.item_loading, parent, false);
+        viewHolder = new ViewHolderLoading(viewLoading);
+        break;
+    }
+    return viewHolder;
+  }
+
+  @NonNull
+  private RecyclerView.ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
+    RecyclerView.ViewHolder viewHolder;
+    View viewItem = inflater.inflate(R.layout.item_video, parent, false);
+    viewHolder = new ViewHolder(viewItem);
     return viewHolder;
   }
 
   @Override
-  public void onBindViewHolder(ViewHolder holder, int position) {
+  public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     final PojoVideo.VideosBean listitem = list_video.get(position);
-    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-        .override(200, 200);
-    Glide.with(context)
-        .load(Server.BASE_IMG_YT + listitem.getVideo_url() + Server.IMG_YT_FORMAT)
-        .apply(options)
-        .into(holder.imgListVideo);
-    holder.txtJudulListVideo.setText(listitem.getVideo_title());
-    holder.txtJudulListVideo.setMaxLines(3);
-    holder.cardViewVideoItem.setForeground(getSelectedItemDrawable());
-    holder.txtDurationVideo.setText(listitem.getVideo_duration().toString());
-    holder.cardViewVideoItem.setClickable(true);
-    holder.cardViewVideoItem.setOnClickListener(v -> {
-      context.startActivity(new Intent(context, DetailVideoActivity.class)
-          .putExtra("title", listitem.getVideo_title())
-          .putExtra("video", listitem.getVideo_url())
-          .putExtra("description", listitem.getVideo_description())
-          .putExtra("duration", listitem.getVideo_duration()));
-      ((Activity) context)
-          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
-    });
+
+    switch (getItemViewType(position)) {
+      case ITEM:
+        ViewHolder viewHolderItem = (ViewHolder) holder;
+        RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
+            .override(200, 200);
+        Glide.with(context)
+            .load(Server.BASE_IMG_YT + listitem.getVideo_url() + Server.IMG_YT_FORMAT)
+            .apply(options)
+            .into(viewHolderItem.imgListVideo);
+        viewHolderItem.txtJudulListVideo.setText(listitem.getVideo_title());
+        viewHolderItem.txtJudulListVideo.setMaxLines(3);
+        viewHolderItem.cardViewVideoItem.setForeground(getSelectedItemDrawable());
+        viewHolderItem.txtDurationVideo.setText(listitem.getVideo_duration().toString());
+        viewHolderItem.cardViewVideoItem.setClickable(true);
+        viewHolderItem.cardViewVideoItem.setOnClickListener(v -> {
+          context.startActivity(new Intent(context, DetailVideoActivity.class)
+              .putExtra("title", listitem.getVideo_title())
+              .putExtra("video", listitem.getVideo_url())
+              .putExtra("description", listitem.getVideo_description())
+              .putExtra("duration", listitem.getVideo_duration()));
+          ((Activity) context)
+              .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
+        });
+        break;
+      case LOADING:
+        VideoAdapter.ViewHolderLoading viewHolderLoading = (VideoAdapter.ViewHolderLoading) holder;
+        error = LoadingStatus.getInstance().getStatus();
+        if (error != null) {
+          viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
+          viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+          viewHolderLoading.textviewThanksItemLoading.setVisibility(View.VISIBLE);
+        } else {
+          viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
+          viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+        }
+        viewHolderLoading.buttonLoadData.setOnClickListener(v -> {
+          viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
+          viewHolderLoading.progressLoadData.setVisibility(View.VISIBLE);
+          videoFragment.getDataVideo();
+        });
+        break;
+    }
+  }
+
+  @Override
+  public int getItemViewType(int position) {
+    return (position == list_video.size() - 1) ? LOADING : ITEM;
   }
 
   @Override
@@ -87,7 +142,7 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     return selectedItemDrawable;
   }
 
-  public class ViewHolder extends RecyclerView.ViewHolder {
+  protected class ViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_list_video)
     ImageView imgListVideo;
@@ -99,6 +154,22 @@ public class VideoAdapter extends Adapter<ViewHolder> {
     CardView cardViewVideoItem;
 
     public ViewHolder(View itemView) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+    }
+  }
+  protected class ViewHolderLoading extends RecyclerView.ViewHolder {
+
+    @BindView(R.id.button_load_data)
+    ImageButton buttonLoadData;
+    @BindView(R.id.progress_load_data)
+    ProgressBar progressLoadData;
+    @BindView(R.id.constraint_item_loading)
+    ConstraintLayout constraintItemLoading;
+    @BindView(R.id.textview_thanks_item_loading)
+    TextView textviewThanksItemLoading;
+
+    public ViewHolderLoading(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }

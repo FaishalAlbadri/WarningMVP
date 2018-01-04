@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
+import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class VideoFragment extends Fragment implements VideoView {
   SwipeRefreshLayout refreshFragmentVideo;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private int PAGE = 1;
 
   public VideoFragment() {
     // Required empty public constructor
@@ -53,19 +56,22 @@ public class VideoFragment extends Fragment implements VideoView {
     v = inflater.inflate(R.layout.fragment_video, container, false);
     ButterKnife.bind(this, v);
     setView();
+    PAGE++;
     if (savedInstanceState != null) {
       ArrayList<VideosBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_VIDEO);
-      this.resultItem.clear();
       this.resultItem.addAll(resultArray);
       videoAdapter.notifyDataSetChanged();
     } else {
-      videoPresenter.getDataVideo();
+      videoPresenter.getDataVideo(1);
     }
 
     refreshFragmentVideo.setOnRefreshListener(() -> {
       refreshFragmentVideo.setRefreshing(false);
-      videoPresenter.getDataVideo();
+      PAGE = 1;
+      PAGE++;
+      this.resultItem.clear();
+      videoPresenter.getDataVideo(1);
     });
     return v;
   }
@@ -75,7 +81,7 @@ public class VideoFragment extends Fragment implements VideoView {
         VideoRepositoryInject.provideToCategoryVideoRepositories(getActivity()));
     videoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    videoAdapter = new VideoAdapter(getActivity(), resultItem);
+    videoAdapter = new VideoAdapter(VideoFragment.this,getActivity(), resultItem);
     recyclerviewFragmentVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
     recyclerviewFragmentVideo.setAdapter(videoAdapter);
     refreshFragmentVideo.setColorSchemeResources(
@@ -93,8 +99,9 @@ public class VideoFragment extends Fragment implements VideoView {
 
   @Override
   public void onSuccesVideo(List<VideosBean> video, String msg) {
-    resultItem.clear();
+    Log.i("succes","succes");
     resultItem.addAll(video);
+    LoadingStatus.getInstance().setStatus(null);
     videoAdapter.notifyDataSetChanged();
     refreshFragmentVideo.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
@@ -102,12 +109,22 @@ public class VideoFragment extends Fragment implements VideoView {
 
   @Override
   public void onErrorVideo(String msg) {
-    refreshFragmentVideo.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    Log.i("msg", msg);
+    if (msg.equals("Data Null")) {
+      LoadingStatus.getInstance().setStatus("error");
+      videoAdapter.notifyDataSetChanged();
+    } else {
+      refreshFragmentVideo.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    videoPresenter.getDataVideo();
+    videoPresenter.getDataVideo(PAGE);
+  }
+
+  public void getDataVideo() {
+    videoPresenter.getDataVideo(PAGE++);
   }
 }

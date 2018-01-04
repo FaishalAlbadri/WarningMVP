@@ -22,6 +22,7 @@ import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter;
+import com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
         SearchVideoRepositoryInject.provideToSearchVideoRepository(this));
     searchVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new VideoAdapter(this, resultItem);
+    adapter = new VideoAdapter(VideoFragment.instance(),this, resultItem);
     recyclerviewActivitySearchVideo.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivitySearchVideo.setAdapter(adapter);
   }

@@ -15,7 +15,7 @@ public class VideoRepository implements VideoDataResource {
   }
 
   @Override
-  public void getVideoList(@NonNull VideoGetCallBack videoGetCallBack) {
-    videoDataResource.getVideoList(videoGetCallBack);
+  public void getVideoList(int PAGE,@NonNull VideoGetCallBack videoGetCallBack) {
+    videoDataResource.getVideoList(PAGE,videoGetCallBack);
   }
 }

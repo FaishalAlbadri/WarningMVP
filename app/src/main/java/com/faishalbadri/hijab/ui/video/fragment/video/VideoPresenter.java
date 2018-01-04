@@ -30,8 +30,8 @@ public class VideoPresenter implements VideoContract.VideoPresenter {
   }
 
   @Override
-  public void getDataVideo() {
-    videoRepository.getVideoList(new VideoGetCallBack() {
+  public void getDataVideo(int PAGE) {
+    videoRepository.getVideoList(PAGE ,new VideoGetCallBack() {
       @Override
       public void onSuccessVideo(List<VideosBean> data, String msg) {
         videoView.onSuccesVideo(data, msg);

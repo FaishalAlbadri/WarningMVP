@@ -19,7 +19,7 @@ public class VideoContract {
 
   public interface VideoPresenter extends BasePresenter<VideoView> {
 
-    void getDataVideo();
+    void getDataVideo(int PAGE);
   }
 
 }
