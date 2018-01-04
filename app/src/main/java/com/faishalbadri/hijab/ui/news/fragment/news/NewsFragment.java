@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,9 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
+import com.faishalbadri.hijab.ui.news.activity.NewsActivity;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
+import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
 import com.faishalbadri.hijab.util.widget.slider.SliderLayout;
@@ -48,7 +51,7 @@ public class NewsFragment extends Fragment implements newsView {
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
   private int PAGE = 1;
-
+  private boolean loading;
 
   public NewsFragment() {
     // Required empty public constructor
@@ -97,12 +100,29 @@ public class NewsFragment extends Fragment implements newsView {
     llm.setOrientation(LinearLayoutManager.VERTICAL);
     recyclerviewFragmentNews.setLayoutManager(llm);
     recyclerviewFragmentNews.setAdapter(newsAdapter);
+    recyclerviewFragmentNews.addOnScrollListener(new OnScrollListener() {
+      @Override
+      public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+      }
+
+      @Override
+      public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        super.onScrolled(recyclerView, dx, dy);
+        int totalItemCount = llm.getItemCount();
+        int lastVisibleItem  = llm.findLastVisibleItemPosition();
+        if (!loading && totalItemCount <= (lastVisibleItem + 10)) {
+          getData();
+        }
+      }
+    });
     refreshFragmentNews.setColorSchemeResources(
         android.R.color.holo_blue_bright,
         android.R.color.holo_green_light,
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
   }
+
 
   @Override
   public void onSaveInstanceState(Bundle outState) {
@@ -120,8 +140,13 @@ public class NewsFragment extends Fragment implements newsView {
 
   @Override
   public void onErrorNews(String msg) {
-    refreshFragmentNews.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    if (msg.equals("Data Null")){
+      LoadingStatus.getInstance().setStatus("error");
+      newsAdapter.notifyDataSetChanged();
+    } else {
+      refreshFragmentNews.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -24,6 +25,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
+import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
+  private String error;
 
   Context context;
   List<NewsBean> data;
@@ -102,8 +105,15 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         break;
       case LOADING:
         ViewHolderLoading viewHolderLoading = (ViewHolderLoading) holder;
-        viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
-        viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+        error = LoadingStatus.getInstance().getStatus();
+        if (error != null) {
+          viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
+          viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+          viewHolderLoading.textviewThanksItemLoading.setVisibility(View.VISIBLE);
+        } else {
+          viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
+          viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+        }
         viewHolderLoading.buttonLoadData.setOnClickListener(v -> {
           viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
           viewHolderLoading.progressLoadData.setVisibility(View.VISIBLE);
@@ -112,6 +122,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         break;
     }
   }
+
 
   @Override
   public int getItemViewType(int position) {
@@ -153,6 +164,10 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     ImageButton buttonLoadData;
     @BindView(R.id.progress_load_data)
     ProgressBar progressLoadData;
+    @BindView(R.id.constraint_item_loading)
+    ConstraintLayout constraintItemLoading;
+    @BindView(R.id.textview_thanks_item_loading)
+    TextView textviewThanksItemLoading;
 
     public ViewHolderLoading(View itemView) {
       super(itemView);

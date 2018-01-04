@@ -2,15 +2,16 @@
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/constraint_item_loading"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="10dp"
   android:background="@null">
 
   <ImageButton
     android:id="@+id/button_load_data"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:background="?attr/selectableItemBackground"
     android:src="@drawable/ic_add_circular_outlined_button"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +24,29 @@
     android:id="@+id/progress_load_data"
     android:layout_width="32dp"
     android:layout_height="32dp"
+    android:layout_margin="10dp"
     android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <TextView
+    android:id="@+id/textview_thanks_item_loading"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginEnd="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:gravity="center"
+    android:visibility="gone"
+    android:minLines="2"
+    android:text="Terima Kasih. Kamu telah membaca semua berita yang ada di aplikasi ini"
+    android:textColor="@android:color/black"
+    android:textSize="12sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
