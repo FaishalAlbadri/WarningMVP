@@ -55,11 +55,11 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_EBOOK_SEARCH, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//    super.onSaveInstanceState(outState, outPersistentState);
+//    outState.putParcelableArrayList(SAVE_DATA_EBOOK_SEARCH, resultItem);
+//  }
 
   @Override
   public void onSuccesSearchEbook(List<EbookBean> data, String msg) {

@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.data;
 
-import android.os.Parcel;
 import java.util.List;
 
 /**
@@ -10,7 +9,9 @@ import java.util.List;
 public class PojoCityEvent {
 
   /**
-   * error : false message : ADA event_city : [{"event_city_id":1,"event_city_name":"Jakarta"},{"event_city_id":2,"event_city_name":"Bogor"},{"event_city_id":3,"event_city_name":"Depok"},{"event_city_id":4,"event_city_name":"Tangerang"},{"event_city_id":5,"event_city_name":"Bekasi"}]
+   * error : false
+   * message : ADA
+   * event_city : [{"event_city_id":5,"event_city_name":"Bekasi"},{"event_city_id":2,"event_city_name":"Bogor"},{"event_city_id":3,"event_city_name":"Depok"},{"event_city_id":1,"event_city_name":"Jakarta"},{"event_city_id":4,"event_city_name":"Tangerang"}]
    */
 
   private boolean error;
@@ -41,34 +42,15 @@ public class PojoCityEvent {
     this.event_city = event_city;
   }
 
-  public static class EventCityBean implements android.os.Parcelable {
+  public static class EventCityBean {
 
-    public static final Creator<EventCityBean> CREATOR = new Creator<EventCityBean>() {
-      @Override
-      public EventCityBean createFromParcel(Parcel source) {
-        return new EventCityBean(source);
-      }
-
-      @Override
-      public EventCityBean[] newArray(int size) {
-        return new EventCityBean[size];
-      }
-    };
     /**
-     * event_city_id : 1
-     * event_city_name : Jakarta
+     * event_city_id : 5
+     * event_city_name : Bekasi
      */
 
     private String event_city_id;
     private String event_city_name;
-
-    public EventCityBean() {
-    }
-
-    protected EventCityBean(Parcel in) {
-      this.event_city_id = in.readString();
-      this.event_city_name = in.readString();
-    }
 
     public String getEvent_city_id() {
       return event_city_id;
@@ -84,17 +66,6 @@ public class PojoCityEvent {
 
     public void setEvent_city_name(String event_city_name) {
       this.event_city_name = event_city_name;
-    }
-
-    @Override
-    public int describeContents() {
-      return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.event_city_id);
-      dest.writeString(this.event_city_name);
     }
   }
 }

@@ -74,15 +74,15 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     setContentView(R.layout.activity_detail_video);
     ButterKnife.bind(this);
     setView();
-    if (savedInstanceState != null) {
-      ArrayList<VideosBean> resultArray = savedInstanceState
-          .getParcelableArrayList(SAVE_DATA_VIDEO_DETAIL);
-      this.resultItem.clear();
-      this.resultItem.addAll(resultArray);
-      detailVideoAdapter.notifyDataSetChanged();
-    } else {
+//    if (savedInstanceState != null) {
+//      ArrayList<VideosBean> resultArray = savedInstanceState
+//          .getParcelableArrayList(SAVE_DATA_VIDEO_DETAIL);
+//      this.resultItem.clear();
+//      this.resultItem.addAll(resultArray);
+//      detailVideoAdapter.notifyDataSetChanged();
+//    } else {
       detailVideoPresenter.getData("4");
-    }
+//    }
   }
 
   private void setView() {
@@ -110,11 +110,11 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     adViewDetailVideo.loadAd(adRequest);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_VIDEO_DETAIL, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//    super.onSaveInstanceState(outState, outPersistentState);
+//    outState.putParcelableArrayList(SAVE_DATA_VIDEO_DETAIL, resultItem);
+//  }
 
   @Override
   public void onInitializationSuccess(Provider provider, YouTubePlayer youTubePlayer, boolean b) {

@@ -55,11 +55,11 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
     return view;
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(SAVE_DATA_CATEGORY_EBOOK, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState) {
+//    super.onSaveInstanceState(outState);
+//    outState.putParcelableArrayList(SAVE_DATA_CATEGORY_EBOOK, resultItem);
+//  }
 
   private void setView() {
     ebookCategoryPresenter = new EbookCategoryPresenter(

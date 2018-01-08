@@ -62,15 +62,15 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     setContentView(R.layout.activity_detail_news);
     ButterKnife.bind(this);
     setView();
-    if (savedInstanceState != null) {
-      ArrayList<NewsBean> resultArray = savedInstanceState
-          .getParcelableArrayList(SAVE_DATA_NEWS_DETAIL);
-      this.resultItem.clear();
-      this.resultItem.addAll(resultArray);
-      detailNewsAdapter.notifyDataSetChanged();
-    } else {
+//    if (savedInstanceState != null) {
+//      ArrayList<NewsBean> resultArray = savedInstanceState
+//          .getParcelableArrayList(SAVE_DATA_NEWS_DETAIL);
+//      this.resultItem.clear();
+//      this.resultItem.addAll(resultArray);
+//      detailNewsAdapter.notifyDataSetChanged();
+//    } else {
       detailNewsPresenter.getData(id_content);
-    }
+//    }
   }
 
   private void setView() {
@@ -97,11 +97,11 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     webViewDescriptionNewsDetail.loadData(desc, "text/html", "uutf/-8");
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_NEWS_DETAIL, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//    super.onSaveInstanceState(outState, outPersistentState);
+//    outState.putParcelableArrayList(SAVE_DATA_NEWS_DETAIL, resultItem);
+//  }
 
   @Override
   public void onBackPressed() {

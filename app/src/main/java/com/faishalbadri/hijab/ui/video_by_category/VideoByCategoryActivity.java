@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.video_by_category;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,15 +44,15 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     setContentView(R.layout.activity_video_by_category);
     ButterKnife.bind(this);
     setView();
-    if (savedInstanceState != null) {
-      ArrayList<VideosBean> resultArray = savedInstanceState
-          .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
-      this.resultItem.clear();
-      this.resultItem.addAll(resultArray);
+//    if (savedInstanceState != null) {
+//      ArrayList<VideosBean> resultArray = savedInstanceState
+//          .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
+//      this.resultItem.clear();
+//      this.resultItem.addAll(resultArray);
       videoByCategoryAdapter.notifyDataSetChanged();
-    } else {
+//    } else {
       videoByCategoryPresenter.getDataVideoByCategory(id);
-    }
+//    }
 
     refreshVideoByCategory.setOnRefreshListener(() -> {
       refreshVideoByCategory.setRefreshing(false);
@@ -79,11 +78,11 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
         android.R.color.holo_red_light);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_VIDEO_PERKAT, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//    super.onSaveInstanceState(outState, outPersistentState);
+//    outState.putParcelableArrayList(SAVE_DATA_VIDEO_PERKAT, resultItem);
+//  }
 
   @Override
   public void onBackPressed() {

@@ -26,7 +26,6 @@ import java.util.List;
 
 public class SearchNewsActivity extends AppCompatActivity implements SearchNewsView {
 
-  private static final String SAVE_DATA_NEWS_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
   String key;
@@ -53,12 +52,6 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
     adapter = new SearchNewsAdapter(this, resultItem);
     recyclerviewActivitySearchEvent.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivitySearchEvent.setAdapter(adapter);
-  }
-
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_NEWS_SEARCH, resultItem);
   }
 
   @Override

@@ -49,15 +49,15 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     v = inflater.inflate(R.layout.fragment_category_video, container, false);
     ButterKnife.bind(this, v);
     setView();
-    if (savedInstanceState != null) {
-      ArrayList<CategoriesBean> resultArray = savedInstanceState
-          .getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
+//    if (savedInstanceState != null) {
+//      ArrayList<CategoriesBean> resultArray = savedInstanceState
+//          .getParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO);
       this.resultItem.clear();
-      this.resultItem.addAll(resultArray);
+//      this.resultItem.addAll(resultArray);
       categoryVideoAdapter.notifyDataSetChanged();
-    } else {
+//    } else {
       categoryVideoPresenter.getDataCategoryVideo();
-    }
+//    }
     return v;
   }
 
@@ -71,11 +71,11 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     recyclerviewFragmentCategoryVideo.setAdapter(categoryVideoAdapter);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState) {
+//    super.onSaveInstanceState(outState);
+//    outState.putParcelableArrayList(SAVE_DATA_CATEGORY_VIDEO, resultItem);
+//  }
 
   @Override
   public void onSuccesCategoryVideo(List<CategoriesBean> category, String msg) {

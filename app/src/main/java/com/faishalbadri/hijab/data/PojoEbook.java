@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.data;
 
-import android.os.Parcel;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class PojoEbook {
   /**
    * error : false
    * message : ADA
-   * ebook : [{"ebook_id":1,"ebook_title":"Bintang","ebook_writer":"Tere Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_release_date":"2017-06-12","ebook_image":"assets/ebook_images/link","ebook_description":"Sample Desc","ebook_link":"https://doc-00-0g-docs.googleusercontent.com/docs/securesc/843v1k32ddp80d7fb3ag1h0fg6u94ff2/fsi2ii57","ebook_category_id":1,"ebook_category_name":"Fantasi"},{"ebook_id":2,"ebook_title":"asd","ebook_writer":"asd","ebook_publisher":"asd","ebook_release_date":"2017-12-11","ebook_image":"assets/ebook_images/","ebook_description":"<p>sdasdas<\/p>\r\n","ebook_link":"PDF_1513618144.pdf","ebook_category_id":1,"ebook_category_name":"Fantasi"}]
+   * ebook : [{"ebook_id":1,"ebook_title":"Bintang","ebook_writer":"Tere Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_release_date":"2017-06-12","ebook_image":"assets/ebook_images/IMG_1513595728.jpg","ebook_description":"Sample Desc","ebook_link":"assets/ebook_files/PDF_1513601688.pdf","ebook_category_id":1,"ebook_category_name":"Fantasi"},{"ebook_id":2,"ebook_title":"asd","ebook_writer":"asd","ebook_publisher":"asd","ebook_release_date":"2017-12-11","ebook_image":"assets/ebook_images/IMG_1513595883.jpg","ebook_description":"<p>sdasdas<\/p>\r\n","ebook_link":"assets/ebook_files/PDF_1513601688.pdf","ebook_category_id":1,"ebook_category_name":"Fantasi"}]
    */
 
   private boolean error;
@@ -43,28 +42,17 @@ public class PojoEbook {
     this.ebook = ebook;
   }
 
-  public static class EbookBean implements android.os.Parcelable {
+  public static class EbookBean {
 
-    public static final Creator<EbookBean> CREATOR = new Creator<EbookBean>() {
-      @Override
-      public EbookBean createFromParcel(Parcel source) {
-        return new EbookBean(source);
-      }
-
-      @Override
-      public EbookBean[] newArray(int size) {
-        return new EbookBean[size];
-      }
-    };
     /**
      * ebook_id : 1
      * ebook_title : Bintang
      * ebook_writer : Tere Liye
      * ebook_publisher : Gramedia Pustaka Utama
      * ebook_release_date : 2017-06-12
-     * ebook_image : assets/ebook_images/link
+     * ebook_image : assets/ebook_images/IMG_1513595728.jpg
      * ebook_description : Sample Desc
-     * ebook_link : https://doc-00-0g-docs.googleusercontent.com/docs/securesc/843v1k32ddp80d7fb3ag1h0fg6u94ff2/fsi2ii57
+     * ebook_link : assets/ebook_files/PDF_1513601688.pdf
      * ebook_category_id : 1
      * ebook_category_name : Fantasi
      */
@@ -79,22 +67,6 @@ public class PojoEbook {
     private String ebook_link;
     private String ebook_category_id;
     private String ebook_category_name;
-
-    public EbookBean() {
-    }
-
-    protected EbookBean(Parcel in) {
-      this.ebook_id = in.readString();
-      this.ebook_title = in.readString();
-      this.ebook_writer = in.readString();
-      this.ebook_publisher = in.readString();
-      this.ebook_release_date = in.readString();
-      this.ebook_image = in.readString();
-      this.ebook_description = in.readString();
-      this.ebook_link = in.readString();
-      this.ebook_category_id = in.readString();
-      this.ebook_category_name = in.readString();
-    }
 
     public String getEbook_id() {
       return ebook_id;
@@ -174,25 +146,6 @@ public class PojoEbook {
 
     public void setEbook_category_name(String ebook_category_name) {
       this.ebook_category_name = ebook_category_name;
-    }
-
-    @Override
-    public int describeContents() {
-      return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.ebook_id);
-      dest.writeString(this.ebook_title);
-      dest.writeString(this.ebook_writer);
-      dest.writeString(this.ebook_publisher);
-      dest.writeString(this.ebook_release_date);
-      dest.writeString(this.ebook_image);
-      dest.writeString(this.ebook_description);
-      dest.writeString(this.ebook_link);
-      dest.writeString(this.ebook_category_id);
-      dest.writeString(this.ebook_category_name);
     }
   }
 }

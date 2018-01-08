@@ -54,15 +54,15 @@ public class NewsCategoryFragment extends Fragment implements
     setView();
     newsCategoryPresenter.onAttachView(this);
 
-    if (savedInstanceState != null) {
-      ArrayList<CategoriesBean> data = savedInstanceState
-          .getParcelableArrayList(save_category);
-      this.list_data.clear();
-      this.list_data.addAll(data);
+//    if (savedInstanceState != null) {
+//      ArrayList<CategoriesBean> data = savedInstanceState
+//          .getParcelableArrayList(save_category);
+//      this.list_data.clear();
+//      this.list_data.addAll(data);
       newsCategoryAdapter.notifyDataSetChanged();
-    } else {
+//    } else {
       newsCategoryPresenter.getDataNewsCategory();
-    }
+//    }
     return v;
   }
 
@@ -77,11 +77,11 @@ public class NewsCategoryFragment extends Fragment implements
     recyclerviewFragmentNewsCategory.setAdapter(newsCategoryAdapter);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_category, list_data);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState) {
+//    super.onSaveInstanceState(outState);
+//    outState.putParcelableArrayList(save_category, list_data);
+//  }
 
   @Override
   public void onSuccesNewsCategory(List<CategoriesBean> data, String msg) {

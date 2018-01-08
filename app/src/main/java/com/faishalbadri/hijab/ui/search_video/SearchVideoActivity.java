@@ -28,9 +28,8 @@ import java.util.List;
 
 public class SearchVideoActivity extends AppCompatActivity implements SearchVideoView {
 
-  private static final String SAVE_DATA_VIDEO_SEARCH = "save";
   SearchVideoPresenter searchVideoPresenter;
-  VideoAdapter adapter;
+  SearchVideoAdapter adapter;
   ArrayList<VideosBean> resultItem;
   @BindView(R.id.recyclerview_activity_search_video)
   RecyclerView recyclerviewActivitySearchVideo;
@@ -52,15 +51,9 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
         SearchVideoRepositoryInject.provideToSearchVideoRepository(this));
     searchVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new VideoAdapter(VideoFragment.instance(),this, resultItem);
+    adapter = new SearchVideoAdapter(this, resultItem);
     recyclerviewActivitySearchVideo.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewActivitySearchVideo.setAdapter(adapter);
-  }
-
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_VIDEO_SEARCH, resultItem);
   }
 
   @Override

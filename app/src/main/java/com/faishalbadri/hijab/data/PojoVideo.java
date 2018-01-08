@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.data;
 
-import android.os.Parcel;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class PojoVideo {
   /**
    * error : false
    * message : ADA
-   * videos : [{"video_id":4,"video_title":"YOUTUBE REWIND GAMING INDONESIA 2017 | REACTION","video_url":"-u9EZ5V-yGE","video_duration":"","video_description":"<p>Afif Yulistian<\/p>\r\n","video_category_id":8,"video_category_title":"LifeStyle"},{"video_id":3,"video_title":"SUCRD - NGOMONGIN INSTAGRAM","video_url":"qonMgEaU0ZQ","video_duration":"","video_description":"<p>Raditya Dika<\/p>\r\n","video_category_id":12,"video_category_title":"Kisahmu"}]
+   * videos : [{"video_id":27,"video_title":"Desainer Of The Week | Harika","video_url":"0e2Cxo-Ntjc","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":1,"video_category_title":"Muslimah Inspiratif"},{"video_id":26,"video_title":"Artis  Of The Week | Livina","video_url":"ySFBL5-gvTo","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":1,"video_category_title":"Muslimah Inspiratif"},{"video_id":25,"video_title":"Desainer Of The Week | Zebu","video_url":"MOFI4sYBrNY","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":1,"video_category_title":"Muslimah Inspiratif"},{"video_id":24,"video_title":"Desainer Of The Week |  Moca Irma Nurul Hakim","video_url":"5mjAVfLxvSI","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":1,"video_category_title":"Muslimah Inspiratif"},{"video_id":23,"video_title":"Desainer Of The Week | Deni Anggraeni","video_url":"9Tyc0C_zNSo","video_duration":"","video_description":"<p>&nbsp;FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":1,"video_category_title":"Muslimah Inspiratif"},{"video_id":22,"video_title":"Lily Pink Lookbook | Pinky Hijab Community","video_url":"GxN_vSQLwTM","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":6,"video_category_title":"Fashion"},{"video_id":21,"video_title":"Beauty Pink Lookbook | Pinky Hijab Community","video_url":"PmbgjrnRmzw","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom<\/p>\r\n","video_category_id":6,"video_category_title":"Fashion"},{"video_id":20,"video_title":"Star Pink Lookbook | Pinky Hijab Community","video_url":"oWMu91V6fU0","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimah<\/p>\r\n","video_category_id":6,"video_category_title":"Fashion"},{"video_id":19,"video_title":"Swallow Pink Lookbook | Pinky Hijab Community","video_url":"atmfetcrzWs","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimah<\/p>\r\n","video_category_id":6,"video_category_title":"Fashion"},{"video_id":18,"video_title":"Snow Pink Lookbook | Pinky Hijab Community","video_url":"cZMdgHSmzCU","video_duration":"","video_description":"<p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimah<\/p>\r\n","video_category_id":6,"video_category_title":"Fashion"}]
    */
 
   private boolean error;
@@ -43,28 +42,17 @@ public class PojoVideo {
     this.videos = videos;
   }
 
-  public static class VideosBean implements android.os.Parcelable {
+  public static class VideosBean {
 
-    public static final Creator<VideosBean> CREATOR = new Creator<VideosBean>() {
-      @Override
-      public VideosBean createFromParcel(Parcel source) {
-        return new VideosBean(source);
-      }
-
-      @Override
-      public VideosBean[] newArray(int size) {
-        return new VideosBean[size];
-      }
-    };
     /**
-     * video_id : 4
-     * video_title : YOUTUBE REWIND GAMING INDONESIA 2017 | REACTION
-     * video_url : -u9EZ5V-yGE
+     * video_id : 27
+     * video_title : Desainer Of The Week | Harika
+     * video_url : 0e2Cxo-Ntjc
      * video_duration :
-     * video_description : <p>Afif Yulistian</p>
+     * video_description : <p>FOLLOW IG @pinkyhijabcommunity @pinkmuslimahcom</p>
 
-     * video_category_id : 8
-     * video_category_title : LifeStyle
+     * video_category_id : 1
+     * video_category_title : Muslimah Inspiratif
      */
 
     private String video_id;
@@ -74,19 +62,6 @@ public class PojoVideo {
     private String video_description;
     private String video_category_id;
     private String video_category_title;
-
-    public VideosBean() {
-    }
-
-    protected VideosBean(Parcel in) {
-      this.video_id = in.readString();
-      this.video_title = in.readString();
-      this.video_url = in.readString();
-      this.video_duration = in.readString();
-      this.video_description = in.readString();
-      this.video_category_id = in.readString();
-      this.video_category_title = in.readString();
-    }
 
     public String getVideo_id() {
       return video_id;
@@ -142,22 +117,6 @@ public class PojoVideo {
 
     public void setVideo_category_title(String video_category_title) {
       this.video_category_title = video_category_title;
-    }
-
-    @Override
-    public int describeContents() {
-      return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.video_id);
-      dest.writeString(this.video_title);
-      dest.writeString(this.video_url);
-      dest.writeString(this.video_duration);
-      dest.writeString(this.video_description);
-      dest.writeString(this.video_category_id);
-      dest.writeString(this.video_category_title);
     }
   }
 }

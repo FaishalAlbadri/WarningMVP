@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.data;
 
-import android.os.Parcel;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class PojoEbookCategory {
   /**
    * error : false
    * message : ADA
-   * ebook_categories : [{"ebook_category_id":1,"ebook_category_name":"Fantasi"}]
+   * ebook_categories : [{"ebook_category_id":1,"ebook_category_name":"Fantasi"},{"ebook_category_id":4,"ebook_category_name":"Horor"},{"ebook_category_id":3,"ebook_category_name":"Komedi"},{"ebook_category_id":2,"ebook_category_name":"Romance"}]
    */
 
   private boolean error;
@@ -43,19 +42,8 @@ public class PojoEbookCategory {
     this.ebook_categories = ebook_categories;
   }
 
-  public static class EbookCategoriesBean implements android.os.Parcelable {
+  public static class EbookCategoriesBean {
 
-    public static final Creator<EbookCategoriesBean> CREATOR = new Creator<EbookCategoriesBean>() {
-      @Override
-      public EbookCategoriesBean createFromParcel(Parcel source) {
-        return new EbookCategoriesBean(source);
-      }
-
-      @Override
-      public EbookCategoriesBean[] newArray(int size) {
-        return new EbookCategoriesBean[size];
-      }
-    };
     /**
      * ebook_category_id : 1
      * ebook_category_name : Fantasi
@@ -63,14 +51,6 @@ public class PojoEbookCategory {
 
     private String ebook_category_id;
     private String ebook_category_name;
-
-    public EbookCategoriesBean() {
-    }
-
-    protected EbookCategoriesBean(Parcel in) {
-      this.ebook_category_id = in.readString();
-      this.ebook_category_name = in.readString();
-    }
 
     public String getEbook_category_id() {
       return ebook_category_id;
@@ -86,17 +66,6 @@ public class PojoEbookCategory {
 
     public void setEbook_category_name(String ebook_category_name) {
       this.ebook_category_name = ebook_category_name;
-    }
-
-    @Override
-    public int describeContents() {
-      return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.ebook_category_id);
-      dest.writeString(this.ebook_category_name);
     }
   }
 }

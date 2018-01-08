@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.data;
 
-import android.os.Parcel;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class PojoEvent {
   /**
    * error : false
    * message : ADA
-   * event : [{"event_id":1,"event_title":"Sample","event_date":"2017-11-10","event_detail":"Sample Detail","event_image":"assets/event_images/IMG_1513584128.jpg","event_address":"Jl. Jalan","event_link":"event_link","event_city_id":1,"event_city_name":"Jakarta"}]
+   * event : [{"event_id":1,"event_title":"Sample","event_date":"2017-11-10","event_detail":"Sample Detail","event_image":"assets/event_images/IMG_1513584128.jpg","event_address":"Jl. Jalan","event_link":"google.com","event_city_id":1,"event_city_name":"Jakarta"}]
    */
 
   private boolean error;
@@ -43,19 +42,8 @@ public class PojoEvent {
     this.event = event;
   }
 
-  public static class EventBean implements android.os.Parcelable {
+  public static class EventBean {
 
-    public static final Creator<EventBean> CREATOR = new Creator<EventBean>() {
-      @Override
-      public EventBean createFromParcel(Parcel source) {
-        return new EventBean(source);
-      }
-
-      @Override
-      public EventBean[] newArray(int size) {
-        return new EventBean[size];
-      }
-    };
     /**
      * event_id : 1
      * event_title : Sample
@@ -63,7 +51,7 @@ public class PojoEvent {
      * event_detail : Sample Detail
      * event_image : assets/event_images/IMG_1513584128.jpg
      * event_address : Jl. Jalan
-     * event_link : event_link
+     * event_link : google.com
      * event_city_id : 1
      * event_city_name : Jakarta
      */
@@ -75,23 +63,8 @@ public class PojoEvent {
     private String event_image;
     private String event_address;
     private String event_link;
-    private int event_city_id;
+    private String event_city_id;
     private String event_city_name;
-
-    public EventBean() {
-    }
-
-    protected EventBean(Parcel in) {
-      this.event_id = in.readString();
-      this.event_title = in.readString();
-      this.event_date = in.readString();
-      this.event_detail = in.readString();
-      this.event_image = in.readString();
-      this.event_address = in.readString();
-      this.event_link = in.readString();
-      this.event_city_id = in.readInt();
-      this.event_city_name = in.readString();
-    }
 
     public String getEvent_id() {
       return event_id;
@@ -149,11 +122,11 @@ public class PojoEvent {
       this.event_link = event_link;
     }
 
-    public int getEvent_city_id() {
+    public String getEvent_city_id() {
       return event_city_id;
     }
 
-    public void setEvent_city_id(int event_city_id) {
+    public void setEvent_city_id(String event_city_id) {
       this.event_city_id = event_city_id;
     }
 
@@ -163,24 +136,6 @@ public class PojoEvent {
 
     public void setEvent_city_name(String event_city_name) {
       this.event_city_name = event_city_name;
-    }
-
-    @Override
-    public int describeContents() {
-      return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-      dest.writeString(this.event_id);
-      dest.writeString(this.event_title);
-      dest.writeString(this.event_date);
-      dest.writeString(this.event_detail);
-      dest.writeString(this.event_image);
-      dest.writeString(this.event_address);
-      dest.writeString(this.event_link);
-      dest.writeInt(this.event_city_id);
-      dest.writeString(this.event_city_name);
     }
   }
 }

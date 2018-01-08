@@ -58,13 +58,13 @@ public class EventFragment extends Fragment implements eventView {
 
     eventPresenter.onAttachView(this);
 
-    if (savedInstanceState != null) {
-      ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
-      this.list_data.addAll(data);
+//    if (savedInstanceState != null) {
+//      ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
+//      this.list_data.addAll(data);
       eventAdapter.notifyDataSetChanged();
-    } else {
+//    } else {
       eventPresenter.getDataEvent(1);
-    }
+//    }
 
     refreshFragmentEvent.setOnRefreshListener(() -> {
       PAGE = 1;
@@ -77,11 +77,11 @@ public class EventFragment extends Fragment implements eventView {
     return v;
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_event, list_data);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState) {
+//    super.onSaveInstanceState(outState);
+//    outState.putParcelableArrayList(save_event, list_data);
+//  }
 
   private void setView() {
     eventPresenter = new EventPresenter(

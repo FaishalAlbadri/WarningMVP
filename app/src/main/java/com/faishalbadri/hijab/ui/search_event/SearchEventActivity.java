@@ -55,11 +55,11 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
     recyclerviewActivitySearchEvent.setAdapter(adapter);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-    super.onSaveInstanceState(outState, outPersistentState);
-    outState.putParcelableArrayList(SAVE_DATA_EVENT_SEARCH, resultItem);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+//    super.onSaveInstanceState(outState, outPersistentState);
+//    outState.putParcelableArrayList(SAVE_DATA_EVENT_SEARCH, resultItem);
+//  }
 
   @Override
   public void onSuccesSearchEvent(List<EventBean> data, String msg) {

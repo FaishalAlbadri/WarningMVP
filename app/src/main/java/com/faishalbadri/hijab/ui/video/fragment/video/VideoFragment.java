@@ -57,14 +57,14 @@ public class VideoFragment extends Fragment implements VideoView {
     ButterKnife.bind(this, v);
     setView();
     PAGE++;
-    if (savedInstanceState != null) {
-      ArrayList<VideosBean> resultArray = savedInstanceState
-          .getParcelableArrayList(SAVE_DATA_VIDEO);
-      this.resultItem.addAll(resultArray);
+//    if (savedInstanceState != null) {
+//      ArrayList<VideosBean> resultArray = savedInstanceState
+//          .getParcelableArrayList(SAVE_DATA_VIDEO);
+//      this.resultItem.addAll(resultArray);
       videoAdapter.notifyDataSetChanged();
-    } else {
+//    } else {
       videoPresenter.getDataVideo(1);
-    }
+//    }
 
     refreshFragmentVideo.setOnRefreshListener(() -> {
       refreshFragmentVideo.setRefreshing(false);
@@ -89,12 +89,6 @@ public class VideoFragment extends Fragment implements VideoView {
         android.R.color.holo_green_light,
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
-  }
-
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(SAVE_DATA_VIDEO, resultItem);
   }
 
   @Override

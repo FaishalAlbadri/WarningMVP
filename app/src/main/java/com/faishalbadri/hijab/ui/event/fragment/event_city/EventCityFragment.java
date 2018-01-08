@@ -52,15 +52,15 @@ public class EventCityFragment extends Fragment implements eventCityView {
 
     eventCityPresenter.onAttachView(this);
 
-    if (savedInstanceState != null) {
-      ArrayList<EventCityBean> data = savedInstanceState
-          .getParcelableArrayList(save_city_event);
-      this.list_data.clear();
-      this.list_data.addAll(data);
-      eventCityAdapter.notifyDataSetChanged();
-    } else {
+//    if (savedInstanceState != null) {
+//      ArrayList<EventCityBean> data = savedInstanceState
+//          .getParcelableArrayList(save_city_event);
+//      this.list_data.clear();
+//      this.list_data.addAll(data);
+//      eventCityAdapter.notifyDataSetChanged();
+//    } else {
       eventCityPresenter.getDataEventCity();
-    }
+//    }
     return v;
   }
 
@@ -75,11 +75,11 @@ public class EventCityFragment extends Fragment implements eventCityView {
     recyclerviewFragmentEventCity.setAdapter(eventCityAdapter);
   }
 
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_city_event, list_data);
-  }
+//  @Override
+//  public void onSaveInstanceState(Bundle outState) {
+//    super.onSaveInstanceState(outState);
+//    outState.putParcelableArrayList(save_city_event, list_data);
+//  }
 
   @Override
   public void onSuccesEventCity(List<EventCityBean> data, String msg) {
