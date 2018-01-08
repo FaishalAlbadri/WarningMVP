@@ -10,17 +10,20 @@ import java.util.List;
 
 public class DetailNewsContract {
 
+
+  public interface DetailNewsPresenter extends BasePresenter<DetailNewsView> {
+
+    void getData(String id_content);
+
+    void getView(String id_news);
+
+  }
+
   public interface DetailNewsView {
 
     void onSuccessDetailNews(List<NewsBean> data, String msg);
 
     void onError(String msg);
-
-  }
-
-  public interface DetailNewsPresenter extends BasePresenter<DetailNewsView> {
-
-    void getData(String id_content);
 
   }
 
