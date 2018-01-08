@@ -56,13 +56,13 @@ public class DetailEbookActivity extends AppCompatActivity {
   }
 
   private void setView() {
-    title = getIntent().getStringExtra("name");
-    image = getIntent().getStringExtra("image");
-    description = getIntent().getStringExtra("description");
-    link = getIntent().getStringExtra("link");
-    publisher = getIntent().getStringExtra("publisher");
-    time = getIntent().getStringExtra("time");
-    writer = getIntent().getStringExtra("writer");
+    title = getIntent().getStringExtra("ebook_name");
+    image = getIntent().getStringExtra("ebook_image");
+    description = getIntent().getStringExtra("ebook_description");
+    link = getIntent().getStringExtra("ebook_url");
+    publisher = getIntent().getStringExtra("ebook_publisher");
+    time = getIntent().getStringExtra("ebook_time");
+    writer = getIntent().getStringExtra("ebook_writer");
     textviewTitleDetalEbook.setText(title);
     textviewPublisherDetailEbook.setText(publisher);
     textviewTimeDetailEbook.setText(time);

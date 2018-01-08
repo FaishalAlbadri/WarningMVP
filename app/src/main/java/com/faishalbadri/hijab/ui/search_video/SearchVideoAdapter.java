@@ -64,10 +64,10 @@ public class SearchVideoAdapter extends Adapter<SearchVideoAdapter.ViewHolder> {
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, DetailVideoActivity.class)
-          .putExtra("title", listitem.getVideo_title())
-          .putExtra("video", listitem.getVideo_url())
-          .putExtra("description", listitem.getVideo_description())
-          .putExtra("duration", listitem.getVideo_duration()));
+          .putExtra("videos_title", listitem.getVideo_title())
+          .putExtra("videos_url", listitem.getVideo_url())
+          .putExtra("videos_description", listitem.getVideo_description())
+          .putExtra("videos_duration", listitem.getVideo_duration()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

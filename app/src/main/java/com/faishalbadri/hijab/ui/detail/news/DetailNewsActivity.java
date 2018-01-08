@@ -28,7 +28,6 @@ import java.util.List;
 
 public class DetailNewsActivity extends AppCompatActivity implements DetailNewsView {
 
-  private static final String SAVE_DATA_NEWS_DETAIL = "save";
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.textview_title_news_detail)
@@ -75,9 +74,9 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     recyclerviewActivityNewsDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
     id_news = getIntent().getStringExtra("news_id");
-    title = getIntent().getStringExtra("title");
-    image = getIntent().getStringExtra("image");
-    desc = getIntent().getStringExtra("desc");
+    title = getIntent().getStringExtra("news_title");
+    image = getIntent().getStringExtra("mews_image");
+    desc = getIntent().getStringExtra("news_description");
     txtTitleNewsDetail.setText(title);
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_news);

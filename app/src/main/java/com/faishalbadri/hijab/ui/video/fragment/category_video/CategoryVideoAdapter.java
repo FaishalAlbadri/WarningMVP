@@ -51,8 +51,8 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setClickable(true);
     holder.cardViewCategoryItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), VideoByCategoryActivity.class);
-      i.putExtra("id", listitem.getCategory_id());
-      i.putExtra("kategori", listitem.getCategory_name());
+      i.putExtra("category_id", listitem.getCategory_id());
+      i.putExtra("category_title", listitem.getCategory_name());
       v.getContext().startActivity(i);
     });
   }

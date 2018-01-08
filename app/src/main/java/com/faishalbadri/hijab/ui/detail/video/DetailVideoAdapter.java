@@ -57,10 +57,10 @@ public class DetailVideoAdapter extends Adapter<ViewHolder> {
     holder.txtTitleDetailVideoGrid.setText(listitem.getVideo_title());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailVideoActivity.class);
-      i.putExtra("title", listitem.getVideo_title());
-      i.putExtra("video", listitem.getVideo_url());
-      i.putExtra("description", listitem.getVideo_description());
-      i.putExtra("duration", listitem.getVideo_duration());
+      i.putExtra("videos_title", listitem.getVideo_title());
+      i.putExtra("videos_url", listitem.getVideo_url());
+      i.putExtra("videos_description", listitem.getVideo_description());
+      i.putExtra("videos_duration", listitem.getVideo_duration());
       v.getContext().startActivity(i);
       ((Activity) context).finish();
     });

@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.search_ebook;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -27,7 +26,6 @@ import java.util.List;
 
 public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
 
-  private static final String SAVE_DATA_EBOOK_SEARCH = "save";
   SearchEbookPresenter searchEbookPresenter;
   EbookAdapter adapter;
   ArrayList<EbookBean> resultItem;

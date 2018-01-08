@@ -28,7 +28,6 @@ import java.util.List;
 public class VideoFragment extends Fragment implements VideoView {
 
 
-  private static final String SAVE_DATA_VIDEO = "save";
   VideoPresenter videoPresenter;
   VideoAdapter videoAdapter;
   ArrayList<VideosBean> resultItem;

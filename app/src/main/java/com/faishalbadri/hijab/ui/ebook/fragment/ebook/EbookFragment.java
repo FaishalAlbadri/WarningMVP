@@ -27,7 +27,6 @@ import java.util.List;
 public class EbookFragment extends Fragment implements EbookView {
 
 
-  private static final String SAVE_DATA_EBOOK = "save";
   View v;
   @BindView(R.id.recyclerview_activity_ebook)
   RecyclerView recyclerviewActivityEbook;
@@ -62,12 +61,6 @@ public class EbookFragment extends Fragment implements EbookView {
     });
     return v;
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState) {
-//    super.onSaveInstanceState(outState);
-//    outState.putParcelableArrayList(SAVE_DATA_EBOOK, resultItem);
-//  }
 
   private void setView() {
     ebookPresenter = new EbookPresenter(

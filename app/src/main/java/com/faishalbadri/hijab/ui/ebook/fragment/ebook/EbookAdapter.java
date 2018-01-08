@@ -61,13 +61,13 @@ public class EbookAdapter extends Adapter<ViewHolder> {
     holder.constraintItemGrid.setBackground(getSelectedItemDrawable());
     holder.constraintItemGrid.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
-          .putExtra("name", listitem.getEbook_title())
-          .putExtra("image", listitem.getEbook_image())
-          .putExtra("description", listitem.getEbook_description())
-          .putExtra("link", listitem.getEbook_link())
-          .putExtra("publisher", listitem.getEbook_publisher())
-          .putExtra("writer", listitem.getEbook_writer())
-          .putExtra("time", listitem.getEbook_release_date()));
+          .putExtra("ebook_name", listitem.getEbook_title())
+          .putExtra("ebook_image", listitem.getEbook_image())
+          .putExtra("ebook_description", listitem.getEbook_description())
+          .putExtra("ebook_url", listitem.getEbook_link())
+          .putExtra("ebook_publisher", listitem.getEbook_publisher())
+          .putExtra("ebook_writer", listitem.getEbook_writer())
+          .putExtra("ebook_time", listitem.getEbook_release_date()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

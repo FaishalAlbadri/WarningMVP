@@ -52,8 +52,8 @@ public class EbookCategoryAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setClickable(true);
     holder.cardViewCategoryItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), EbookByCategoryActivity.class);
-      i.putExtra("id_category_ebook", listitem.getEbook_category_id());
-      i.putExtra("title", listitem.getEbook_category_name());
+      i.putExtra("category_id", listitem.getEbook_category_id());
+      i.putExtra("category_title", listitem.getEbook_category_name());
       v.getContext().startActivity(i);
     });
   }

@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.news_by_category;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,8 +54,8 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   }
 
   private void setView() {
-    id = getIntent().getStringExtra("id_kategori");
-    title = getIntent().getStringExtra("kategori_title");
+    id = getIntent().getStringExtra("category_id");
+    title = getIntent().getStringExtra("category_title");
     textviewGeneralToolbarWithBackButton.setText(title);
     newsByCategoryPresenter = new NewsByCategoryPresenter(
         NewsByCategoryRepositoryInject.provideToNewsByCategoryRepository(this));

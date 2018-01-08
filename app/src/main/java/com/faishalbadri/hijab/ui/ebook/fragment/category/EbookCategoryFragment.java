@@ -26,7 +26,6 @@ import java.util.List;
 public class EbookCategoryFragment extends Fragment implements EbookCategoryView {
 
 
-  private static final String SAVE_DATA_CATEGORY_EBOOK = "save";
   @BindView(R.id.recyclerview_fragment_category_ebook)
   RecyclerView recyclerviewFragmentCategoryEbook;
   View view;

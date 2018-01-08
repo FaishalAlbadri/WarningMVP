@@ -22,7 +22,6 @@ import java.util.List;
 public class VideoByCategoryActivity extends AppCompatActivity implements videoByCategoryView {
 
 
-  private static final String SAVE_DATA_VIDEO_PERKAT = "save";
   VideoByCategoryPresenter videoByCategoryPresenter;
   VideoByCategoryAdapter videoByCategoryAdapter;
   ArrayList<VideosBean> resultItem;
@@ -53,8 +52,8 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   }
 
   private void setView() {
-    id = getIntent().getStringExtra("id");
-    title = getIntent().getStringExtra("kategori");
+    id = getIntent().getStringExtra("category_id");
+    title = getIntent().getStringExtra("category_title");
     textviewGeneralToolbarWithBackButton.setText(title);
     videoByCategoryPresenter = new VideoByCategoryPresenter(
         VideoByCategoryRepositoryInject.provideToVideoByCategoryRepository(this));

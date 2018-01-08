@@ -25,7 +25,6 @@ import java.util.List;
 public class CategoryVideoFragment extends Fragment implements categoryVideoView {
 
 
-  private static final String SAVE_DATA_CATEGORY_VIDEO = "save";
   @BindView(R.id.recyclerview_fragment_category_video)
   RecyclerView recyclerviewFragmentCategoryVideo;
   CategoryVideoPresenter categoryVideoPresenter;

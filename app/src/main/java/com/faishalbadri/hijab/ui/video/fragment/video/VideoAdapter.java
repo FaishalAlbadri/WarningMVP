@@ -39,11 +39,10 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
-  private String error;
-
   Context context;
   List<PojoVideo.VideosBean> list_video;
   VideoFragment videoFragment;
+  private String error;
 
   public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
     this.context = activity;
@@ -96,10 +95,10 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
         viewHolderItem.cardViewVideoItem.setClickable(true);
         viewHolderItem.cardViewVideoItem.setOnClickListener(v -> {
           context.startActivity(new Intent(context, DetailVideoActivity.class)
-              .putExtra("title", listitem.getVideo_title())
-              .putExtra("video", listitem.getVideo_url())
-              .putExtra("description", listitem.getVideo_description())
-              .putExtra("duration", listitem.getVideo_duration()));
+              .putExtra("videos_title", listitem.getVideo_title())
+              .putExtra("videos_url", listitem.getVideo_url())
+              .putExtra("videos_description", listitem.getVideo_description())
+              .putExtra("videos_duration", listitem.getVideo_duration()));
           ((Activity) context)
               .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
         });

@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.ebook_by_category;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -57,8 +56,8 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
 
   private void setView() {
     buttonSearchGeneralToolbarSearch.setVisibility(View.INVISIBLE);
-    id = getIntent().getStringExtra("id_category_ebook");
-    title = getIntent().getStringExtra("title");
+    id = getIntent().getStringExtra("category_id");
+    title = getIntent().getStringExtra("category_title");
     textviewGeneralToolbarSearch.setText(title);
     ebookCategoryPresenter = new EbookByCategoryPresenter(
         EbookByCategoryRepositoryInject.provideToEbookCategoryRepositories(this));

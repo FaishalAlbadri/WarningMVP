@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.ui.detail.video;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -38,7 +37,6 @@ import java.util.List;
 public class DetailVideoActivity extends YouTubeBaseActivity implements
     OnInitializedListener, DetailVideoView {
 
-  private static final String SAVE_DATA_VIDEO_DETAIL = "save";
   private static final int RECOVERY_DIALOG_REQUEST = 1;
   String title, video, duration, description;
   @BindView(R.id.youtube_video_detail)
@@ -86,10 +84,10 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     detailVideoAdapter = new DetailVideoAdapter(this, resultItem);
     recyclerviewActivityVideoDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityVideoDetail.setAdapter(detailVideoAdapter);
-    title = getIntent().getStringExtra("title");
-    video = getIntent().getStringExtra("video");
-    description = getIntent().getStringExtra("description");
-    duration = getIntent().getStringExtra("duration");
+    title = getIntent().getStringExtra("videos_title");
+    video = getIntent().getStringExtra("videos_url");
+    description = getIntent().getStringExtra("videos_description");
+    duration = getIntent().getStringExtra("videos_duration");
     txtTitleVideoDetail.setText(title);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_video);
     webviewDescriptionVideoDetail.loadData(description, "text/html", "uutf/-8");
