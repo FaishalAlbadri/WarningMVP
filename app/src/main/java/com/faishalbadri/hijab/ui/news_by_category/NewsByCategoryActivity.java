@@ -45,15 +45,8 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     setContentView(R.layout.activity_news_by_category);
     ButterKnife.bind(this);
     setView();
-//    if (savedInstanceState != null) {
-//      ArrayList<NewsBean> resultArray = savedInstanceState
-//          .getParcelableArrayList(save_news_category);
-//      this.list_data.clear();
-//      this.list_data.addAll(resultArray);
-//      newsByCategoryAdapter.notifyDataSetChanged();
-//    } else {
-      newsByCategoryPresenter.getDataNewsByCategory(id);
-//    }
+    newsByCategoryAdapter.notifyDataSetChanged();
+    newsByCategoryPresenter.getDataNewsByCategory(id);
 
     refreshNewsByCategory.setOnRefreshListener(() -> {
       refreshNewsByCategory.setRefreshing(false);
@@ -78,12 +71,6 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-//    super.onSaveInstanceState(outState, outPersistentState);
-//    outState.putParcelableArrayList(save_news_category, list_data);
-//  }
 
   @Override
   public void onSuccesNewsByCategory(List<NewsBean> data, String msg) {

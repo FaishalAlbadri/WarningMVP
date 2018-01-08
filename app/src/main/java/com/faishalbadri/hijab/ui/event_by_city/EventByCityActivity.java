@@ -46,15 +46,8 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     ButterKnife.bind(this);
     setView();
     eventByCityPresenter.onAttachView(this);
-
-//    if (savedInstanceState != null) {
-//      ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event_by_city);
-//      this.list_data.clear();
-//      this.list_data.addAll(data);
-//      eventByCityAdapter.notifyDataSetChanged();
-//    } else {
-      eventByCityPresenter.getDataEventByCity(id);
-//    }
+    eventByCityAdapter.notifyDataSetChanged();
+    eventByCityPresenter.getDataEventByCity(id);
 
     refreshFragmentEventByCity.setOnRefreshListener(() -> {
       refreshFragmentEventByCity.setRefreshing(false);
@@ -62,13 +55,6 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     });
 
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState) {
-//    super.onSaveInstanceState(outState);
-//    outState.putParcelableArrayList(save_event_by_city, list_data);
-//  }
-
 
   private void setView() {
     buttonSearchGeneralToolbarSearch.setVisibility(View.INVISIBLE);

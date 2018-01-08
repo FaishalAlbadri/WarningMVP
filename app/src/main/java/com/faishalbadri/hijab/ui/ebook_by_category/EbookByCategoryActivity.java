@@ -55,12 +55,6 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     });
   }
 
-//  @Override
-//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-//    super.onSaveInstanceState(outState, outPersistentState);
-//    outState.putParcelableArrayList(SAVE_DATA_EBOOK, resultItem);
-//  }
-
   private void setView() {
     buttonSearchGeneralToolbarSearch.setVisibility(View.INVISIBLE);
     id = getIntent().getStringExtra("id_category_ebook");

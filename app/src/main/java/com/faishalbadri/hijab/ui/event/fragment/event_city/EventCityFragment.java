@@ -49,18 +49,9 @@ public class EventCityFragment extends Fragment implements eventCityView {
     View v = inflater.inflate(R.layout.fragment_event_city, container, false);
     ButterKnife.bind(this, v);
     setView();
-
     eventCityPresenter.onAttachView(this);
-
-//    if (savedInstanceState != null) {
-//      ArrayList<EventCityBean> data = savedInstanceState
-//          .getParcelableArrayList(save_city_event);
-//      this.list_data.clear();
-//      this.list_data.addAll(data);
-//      eventCityAdapter.notifyDataSetChanged();
-//    } else {
-      eventCityPresenter.getDataEventCity();
-//    }
+    eventCityAdapter.notifyDataSetChanged();
+    eventCityPresenter.getDataEventCity();
     return v;
   }
 

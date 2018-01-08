@@ -68,15 +68,9 @@ public class NewsFragment extends Fragment implements newsView {
     PAGE++;
     setView();
     newsPresenter.onAttachView(this);
-
-//    if (savedInstanceState != null) {
-//      ArrayList<NewsBean> data = savedInstanceState.getParcelableArrayList(save_news);
-//      this.list_data.addAll(data);
-      newsAdapter.notifyDataSetChanged();
-//    } else {
-      newsPresenter.getDataNews(1);
-      newsPresenter.getDataSlider();
-//    }
+    newsAdapter.notifyDataSetChanged();
+    newsPresenter.getDataNews(1);
+    newsPresenter.getDataSlider();
 
     refreshFragmentNews.setOnRefreshListener(() -> {
       refreshFragmentNews.setRefreshing(false);

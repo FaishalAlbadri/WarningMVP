@@ -55,17 +55,9 @@ public class EventFragment extends Fragment implements eventView {
     View v = inflater.inflate(R.layout.fragment_event, container, false);
     ButterKnife.bind(this, v);
     setView();
-
     eventPresenter.onAttachView(this);
-
-//    if (savedInstanceState != null) {
-//      ArrayList<EventBean> data = savedInstanceState.getParcelableArrayList(save_event);
-//      this.list_data.addAll(data);
-      eventAdapter.notifyDataSetChanged();
-//    } else {
-      eventPresenter.getDataEvent(1);
-//    }
-
+    eventAdapter.notifyDataSetChanged();
+    eventPresenter.getDataEvent(1);
     refreshFragmentEvent.setOnRefreshListener(() -> {
       PAGE = 1;
       PAGE++;
@@ -76,12 +68,6 @@ public class EventFragment extends Fragment implements eventView {
 
     return v;
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState) {
-//    super.onSaveInstanceState(outState);
-//    outState.putParcelableArrayList(save_event, list_data);
-//  }
 
   private void setView() {
     eventPresenter = new EventPresenter(

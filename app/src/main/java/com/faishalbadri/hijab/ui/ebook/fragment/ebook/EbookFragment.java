@@ -53,14 +53,8 @@ public class EbookFragment extends Fragment implements EbookView {
     v = inflater.inflate(R.layout.fragment_ebook, container, false);
     ButterKnife.bind(this, v);
     setView();
-//    if (savedInstanceState != null) {
-//      ArrayList<EbookBean> resultArray = savedInstanceState.getParcelableArrayList(SAVE_DATA_EBOOK);
-//      this.resultItem.clear();
-//      this.resultItem.addAll(resultArray);
-//      ebookAdapter.notifyDataSetChanged();
-//    } else {
-      ebookPresenter.getData();
-//    }
+    ebookAdapter.notifyDataSetChanged();
+    ebookPresenter.getData();
 
     refreshFragmentEbook.setOnRefreshListener(() -> {
       refreshFragmentEbook.setRefreshing(false);
