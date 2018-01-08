@@ -53,15 +53,8 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
     ButterKnife.bind(this, v);
     setView();
     newsPopularPresenter.onAttachView(this);
-
-//    if (savedInstanceState != null) {
-//      ArrayList<NewsBean> data = savedInstanceState.getParcelableArrayList(save_news_popular);
-//      this.list_data.clear();
-//      this.list_data.addAll(data);
-      newsPopularAdapter.notifyDataSetChanged();
-//    } else {
-      newsPopularPresenter.getDataNewsPopular();
-//    }
+    newsPopularAdapter.notifyDataSetChanged();
+    newsPopularPresenter.getDataNewsPopular();
 
     refreshFragmentNewsPopular.setOnRefreshListener(() -> {
       refreshFragmentNewsPopular.setRefreshing(false);
@@ -85,12 +78,6 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState) {
-//    super.onSaveInstanceState(outState);
-//    outState.putParcelableArrayList(save_news_popular, list_data);
-//  }
 
   @Override
   public void onSuccesNewsPopular(List<NewsBean> data, String msg) {

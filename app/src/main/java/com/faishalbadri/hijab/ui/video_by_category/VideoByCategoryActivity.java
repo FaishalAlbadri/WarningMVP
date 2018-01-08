@@ -44,16 +44,8 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     setContentView(R.layout.activity_video_by_category);
     ButterKnife.bind(this);
     setView();
-//    if (savedInstanceState != null) {
-//      ArrayList<VideosBean> resultArray = savedInstanceState
-//          .getParcelableArrayList(SAVE_DATA_VIDEO_PERKAT);
-//      this.resultItem.clear();
-//      this.resultItem.addAll(resultArray);
-      videoByCategoryAdapter.notifyDataSetChanged();
-//    } else {
-      videoByCategoryPresenter.getDataVideoByCategory(id);
-//    }
-
+    videoByCategoryAdapter.notifyDataSetChanged();
+    videoByCategoryPresenter.getDataVideoByCategory(id);
     refreshVideoByCategory.setOnRefreshListener(() -> {
       refreshVideoByCategory.setRefreshing(false);
       videoByCategoryPresenter.getDataVideoByCategory(id);
@@ -77,12 +69,6 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-//    super.onSaveInstanceState(outState, outPersistentState);
-//    outState.putParcelableArrayList(SAVE_DATA_VIDEO_PERKAT, resultItem);
-//  }
 
   @Override
   public void onBackPressed() {

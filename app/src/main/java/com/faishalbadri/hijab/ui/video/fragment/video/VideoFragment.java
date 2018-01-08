@@ -57,15 +57,8 @@ public class VideoFragment extends Fragment implements VideoView {
     ButterKnife.bind(this, v);
     setView();
     PAGE++;
-//    if (savedInstanceState != null) {
-//      ArrayList<VideosBean> resultArray = savedInstanceState
-//          .getParcelableArrayList(SAVE_DATA_VIDEO);
-//      this.resultItem.addAll(resultArray);
-      videoAdapter.notifyDataSetChanged();
-//    } else {
-      videoPresenter.getDataVideo(1);
-//    }
-
+    videoAdapter.notifyDataSetChanged();
+    videoPresenter.getDataVideo(1);
     refreshFragmentVideo.setOnRefreshListener(() -> {
       refreshFragmentVideo.setRefreshing(false);
       PAGE = 1;
@@ -81,7 +74,7 @@ public class VideoFragment extends Fragment implements VideoView {
         VideoRepositoryInject.provideToCategoryVideoRepositories(getActivity()));
     videoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    videoAdapter = new VideoAdapter(VideoFragment.this,getActivity(), resultItem);
+    videoAdapter = new VideoAdapter(VideoFragment.this, getActivity(), resultItem);
     recyclerviewFragmentVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
     recyclerviewFragmentVideo.setAdapter(videoAdapter);
     refreshFragmentVideo.setColorSchemeResources(
@@ -93,7 +86,7 @@ public class VideoFragment extends Fragment implements VideoView {
 
   @Override
   public void onSuccesVideo(List<VideosBean> video, String msg) {
-    Log.i("succes","succes");
+    Log.i("succes", "succes");
     resultItem.addAll(video);
     LoadingStatus.getInstance().setStatus(null);
     videoAdapter.notifyDataSetChanged();
