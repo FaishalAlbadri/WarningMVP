@@ -13,7 +13,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/margin_widget"
     android:gravity="center"
-    android:text="Verifikasi Telah Dikirim ke Gmail Anda\n\nSilahkan Masukkan Verifikasi Code"
+    android:text="@string/verify_code_instruction"
     android:textColor="@color/color_white_ff"
     android:textSize="@dimen/toolbar_title_text_size"
     app:layout_constraintBottom_toTopOf="@+id/edittext_verify_code"

@@ -37,11 +37,10 @@ public class NewsAdapter extends Adapter<ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
-  private String error;
-
   Context context;
   List<NewsBean> data;
   NewsFragment newsFragment;
+  private String error;
 
   public NewsAdapter(Context context,
       List<NewsBean> data, NewsFragment newsFragment) {
@@ -95,10 +94,10 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         viewHolderItem.cardviewNewsFragmentNews.setClickable(true);
         viewHolderItem.cardviewNewsFragmentNews.setOnClickListener(v -> {
           v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-              .putExtra("id_isi", datalist.getNews_id())
-              .putExtra("title", datalist.getNews_title())
-              .putExtra("image", datalist.getNews_images())
-              .putExtra("desc", datalist.getNews_description()));
+              .putExtra("news_id", datalist.getNews_id())
+              .putExtra("news_title", datalist.getNews_title())
+              .putExtra("news_image", datalist.getNews_images())
+              .putExtra("news_description", datalist.getNews_description()));
           ((Activity) context)
               .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
         });

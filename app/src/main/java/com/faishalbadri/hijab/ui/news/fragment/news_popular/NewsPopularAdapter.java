@@ -60,10 +60,10 @@ public class NewsPopularAdapter extends Adapter<NewsPopularAdapter.ViewHolder> {
     holder.cardviewNewsFragmentNews.setClickable(true);
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
       v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-          .putExtra("id_isi", listitem.getNews_id())
-          .putExtra("title", listitem.getNews_title())
-          .putExtra("image", listitem.getNews_images())
-          .putExtra("desc", listitem.getNews_description()));
+          .putExtra("news_id", listitem.getNews_id())
+          .putExtra("news_title", listitem.getNews_title())
+          .putExtra("news_image", listitem.getNews_images())
+          .putExtra("news_description", listitem.getNews_description()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

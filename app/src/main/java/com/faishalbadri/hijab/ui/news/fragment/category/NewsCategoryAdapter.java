@@ -49,8 +49,8 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, NewsByCategoryActivity.class)
-          .putExtra("id_kategori", list_item.getCategory_id())
-          .putExtra("kategori_title", list_item.getCategory_name()));
+          .putExtra("category_id", list_item.getCategory_id())
+          .putExtra("category_title", list_item.getCategory_name()));
     });
   }
 

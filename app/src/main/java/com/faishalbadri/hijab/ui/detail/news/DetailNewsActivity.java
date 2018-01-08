@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.detail.news;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -82,7 +81,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     detailNewsAdapter = new DetailNewsAdapter(this, resultItem);
     recyclerviewActivityNewsDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
-    id_news = getIntent().getStringExtra("id_isi");
+    id_news = getIntent().getStringExtra("news_id");
     title = getIntent().getStringExtra("title");
     image = getIntent().getStringExtra("image");
     desc = getIntent().getStringExtra("desc");
