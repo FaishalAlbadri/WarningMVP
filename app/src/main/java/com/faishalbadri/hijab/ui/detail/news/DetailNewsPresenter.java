@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.ui.detail.news;
 
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource.DetailNewsPopularGetCallback;
+import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsDataResource.viewGetCallback;
 import com.faishalbadri.hijab.repository.detail_news_related.DetailNewsRepository;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresenter {
 
-  DetailNewsView detailNewsView;
+  private DetailNewsView detailNewsView;
   private DetailNewsRepository detailNewsRepository;
 
   public DetailNewsPresenter(DetailNewsRepository detailNewsRepository) {
@@ -40,6 +41,17 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
 
       @Override
       public void onErrorDetailNewsPopular(String msg) {
+        detailNewsView.onError(msg);
+      }
+    });
+  }
+
+  @Override
+  public void getView(String id_news) {
+    detailNewsRepository.getViewResult(id_news, new viewGetCallback() {
+
+      @Override
+      public void onError(String msg) {
         detailNewsView.onError(msg);
       }
     });

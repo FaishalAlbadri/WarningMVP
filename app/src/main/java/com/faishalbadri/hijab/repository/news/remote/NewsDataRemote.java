@@ -24,7 +24,7 @@ import java.util.Map;
 public class NewsDataRemote implements NewsDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed?page=";
-  private static final String URL_SLIDER = Server.BASE_URL_REVAMP + "newsfeed/1";
+  private static final String URL_SLIDER = Server.BASE_URL_REVAMP + "newsfeed/popular";
   Context context;
 
 

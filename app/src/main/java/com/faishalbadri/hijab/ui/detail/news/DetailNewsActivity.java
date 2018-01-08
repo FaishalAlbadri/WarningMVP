@@ -54,7 +54,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ScrollView scrollviewDetailNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-  private String title, image, desc, id_content;
+  private String title, image, desc, id_news;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     setContentView(R.layout.activity_detail_news);
     ButterKnife.bind(this);
     setView();
+    detailNewsPresenter.getView(id_news);
     if (savedInstanceState != null) {
       ArrayList<NewsBean> resultArray = savedInstanceState
           .getParcelableArrayList(SAVE_DATA_NEWS_DETAIL);
@@ -69,7 +70,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
       this.resultItem.addAll(resultArray);
       detailNewsAdapter.notifyDataSetChanged();
     } else {
-      detailNewsPresenter.getData(id_content);
+      detailNewsPresenter.getData(id_news);
     }
   }
 
@@ -81,7 +82,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     detailNewsAdapter = new DetailNewsAdapter(this, resultItem);
     recyclerviewActivityNewsDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
-    id_content = getIntent().getStringExtra("id_isi");
+    id_news = getIntent().getStringExtra("id_isi");
     title = getIntent().getStringExtra("title");
     image = getIntent().getStringExtra("image");
     desc = getIntent().getStringExtra("desc");
@@ -145,6 +146,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    detailNewsPresenter.getData(id_content);
+    detailNewsPresenter.getData(id_news);
   }
 }
