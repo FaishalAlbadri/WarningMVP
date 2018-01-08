@@ -75,7 +75,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
     id_news = getIntent().getStringExtra("news_id");
     title = getIntent().getStringExtra("news_title");
-    image = getIntent().getStringExtra("mews_image");
+    image = getIntent().getStringExtra("news_image");
     desc = getIntent().getStringExtra("news_description");
     txtTitleNewsDetail.setText(title);
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);

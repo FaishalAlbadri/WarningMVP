@@ -38,7 +38,6 @@ public class NewsDataRemote implements NewsDataResource {
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
-          Log.i("page", String.valueOf(PAGE));
           Log.i("response", response);
           try {
             if (pojoNews == null) {

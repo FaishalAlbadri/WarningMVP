@@ -48,7 +48,7 @@ public class NewsFragment extends Fragment implements newsView {
   SwipeRefreshLayout refreshFragmentNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-  private int PAGE = 1;
+  private int PAGE = 2;
 
   public NewsFragment() {
     // Required empty public constructor
@@ -69,7 +69,7 @@ public class NewsFragment extends Fragment implements newsView {
     setView();
     newsPresenter.onAttachView(this);
     newsAdapter.notifyDataSetChanged();
-    newsPresenter.getDataNews(1);
+    newsPresenter.getDataNews(2);
     newsPresenter.getDataSlider();
 
     refreshFragmentNews.setOnRefreshListener(() -> {
@@ -77,7 +77,7 @@ public class NewsFragment extends Fragment implements newsView {
       PAGE = 1;
       PAGE++;
       this.list_data.clear();
-      newsPresenter.getDataNews(1);
+      newsPresenter.getDataNews(2);
       newsPresenter.getDataSlider();
     });
     return view;
