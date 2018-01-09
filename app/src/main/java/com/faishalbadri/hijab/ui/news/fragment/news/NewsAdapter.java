@@ -95,7 +95,6 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         viewHolderItem.cardviewNewsFragmentNews.setOnClickListener(v -> {
           v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
               .putExtra("news_id", datalist.getNews_id())
-              .putExtra("news_title", datalist.getNews_title())
               .putExtra("news_image", datalist.getNews_images())
               .putExtra("news_description", datalist.getNews_description()));
           ((Activity) context)

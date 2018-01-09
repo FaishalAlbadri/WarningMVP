@@ -30,8 +30,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
 
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
-  @BindView(R.id.textview_title_news_detail)
-  TextView txtTitleNewsDetail;
   @BindView(R.id.imageview_detail_news)
   ImageView imgDetailNews;
   @BindView(R.id.web_view_description_news_detail)
@@ -52,7 +50,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ScrollView scrollviewDetailNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-  private String title, image, desc, id_news;
+  private String image, desc, id_news;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +72,8 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     recyclerviewActivityNewsDetail.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
     id_news = getIntent().getStringExtra("news_id");
-    title = getIntent().getStringExtra("news_title");
     image = getIntent().getStringExtra("news_image");
     desc = getIntent().getStringExtra("news_description");
-    txtTitleNewsDetail.setText(title);
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_news);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)

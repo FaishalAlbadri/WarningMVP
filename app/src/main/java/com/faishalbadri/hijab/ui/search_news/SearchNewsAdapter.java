@@ -62,7 +62,6 @@ public class SearchNewsAdapter extends Adapter<ViewHolder> {
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
       i.putExtra("news_id", listitem.getNews_id());
-      i.putExtra("news_title", listitem.getNews_title());
       i.putExtra("news_image", listitem.getNews_images());
       i.putExtra("news_description", listitem.getNews_description());
       v.getContext().startActivity(i);

@@ -31,27 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-          android:id="@+id/textview_title_news_detail"
-          android:textStyle="bold"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="@dimen/padding_widget"
-          android:maxLines="3"
-          android:text="@string/hello_blank_fragment"
-          android:textColor="@android:color/black"
-          android:textSize="@dimen/normal_tittle_text_size"
-          app:layout_constraintLeft_toLeftOf="parent"
-          app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toTopOf="parent"/>
-
         <ImageView
           android:id="@+id/imageview_detail_news"
           android:layout_width="@dimen/match_parent_size"
           android:layout_height="@dimen/detail_image_news"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/textview_title_news_detail"/>
+          app:layout_constraintTop_toTopOf="parent"/>
 
         <WebView
           android:id="@+id/web_view_description_news_detail"
