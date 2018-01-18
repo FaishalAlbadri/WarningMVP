@@ -23,15 +23,17 @@ import java.util.Map;
 public class EventDataRemote implements EventDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "event?page=";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
+
 
   public EventDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getEventResult(int PAGE, @NonNull EventGetCallback eventGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoEvent pojoEvent = new Gson()

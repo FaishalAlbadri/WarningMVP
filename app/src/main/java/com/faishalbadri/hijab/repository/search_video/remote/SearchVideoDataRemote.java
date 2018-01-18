@@ -23,16 +23,17 @@ import java.util.Map;
 public class SearchVideoDataRemote implements SearchVideoDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "videos/find";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
   public SearchVideoDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchVideoResult(String key,
       @NonNull SearchVideoGetCallback searchVideoGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
           final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);

@@ -23,16 +23,17 @@ import java.util.Map;
 public class SponsorDataRemote implements SponsorDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "sponsor";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
 
   public SponsorDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSponsorResult(@NonNull SponsorGetCallback sponsorGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
           final PojoSponsor pojoSponsor = new Gson().fromJson(response, PojoSponsor.class);

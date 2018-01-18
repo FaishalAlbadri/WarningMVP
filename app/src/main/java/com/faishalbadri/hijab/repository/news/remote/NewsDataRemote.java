@@ -25,16 +25,17 @@ public class NewsDataRemote implements NewsDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed?page=";
   private static final String URL_SLIDER = Server.BASE_URL_REVAMP + "newsfeed/popular";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
 
   public NewsDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getNewsResult(int PAGE, @NonNull NewsGetCallback newsGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
@@ -62,7 +63,6 @@ public class NewsDataRemote implements NewsDataResource {
 
   @Override
   public void getSliderResult(@NonNull SliderGetCallback sliderGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL_SLIDER),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);

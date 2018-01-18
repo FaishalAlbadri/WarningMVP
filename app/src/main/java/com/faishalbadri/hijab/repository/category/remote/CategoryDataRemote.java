@@ -23,16 +23,17 @@ import java.util.Map;
 public class CategoryDataRemote implements CategoryDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "categories";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
 
   public CategoryDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getCategoryResult(@NonNull CategoryGetCallback categoryGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
           final PojoCategory pojoCategory = new Gson().fromJson(response, PojoCategory.class);

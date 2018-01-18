@@ -25,15 +25,16 @@ public class AccountDataRemote implements AccountDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "loginuser";
   private static final String URL_EDIT_IMAGE = Server.BASE_URL_REVAMP + "user/upload";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
   public AccountDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getAccountResult(@NonNull AccountGetCallback accountGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);

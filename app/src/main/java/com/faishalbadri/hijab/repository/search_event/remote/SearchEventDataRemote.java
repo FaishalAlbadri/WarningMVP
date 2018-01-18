@@ -23,28 +23,29 @@ import java.util.Map;
 public class SearchEventDataRemote implements SearchEventDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "event/find";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
   public SearchEventDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchEventResult(String key,
       @NonNull SearchEventGetCallback searchEventGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
-          final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
-          try {
-            if (pojoEvent == null) {
-              searchEventGetCallback.onWrongSearchEvent("Null");
-            } else {
-              searchEventGetCallback
-                  .onSuccesSearchEvent(pojoEvent.getEvent(), "Ok");
-            }
-          } catch (Exception e) {
+      final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
+      try {
+        if (pojoEvent == null) {
+          searchEventGetCallback.onWrongSearchEvent("Null");
+        } else {
+          searchEventGetCallback
+              .onSuccesSearchEvent(pojoEvent.getEvent(), "Ok");
+        }
+      } catch (Exception e) {
 
-          }
+      }
     }, error -> searchEventGetCallback.onErrorSearchEvent(context.getResources().getString(R
         .string.caption_error_internet_acces))) {
 

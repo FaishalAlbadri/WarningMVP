@@ -21,18 +21,19 @@ import java.util.Map;
 
 public class VotingDialogDataRemote implements VotingDialogDataResource {
 
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
   private String urlRate = Server.BASE_URL_REVAMP + "voting/vote";
   private String urlSession = Server.BASE_URL_REVAMP + "session";
 
   public VotingDialogDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getResulVotingDialogGetSession(String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession),
         response -> {
           votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
@@ -76,7 +77,6 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
   public void getResulVotingDialogVotingRate(String voting_id, String type,
       String voting_session_id,
       @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlRate),
         response -> {
           try {

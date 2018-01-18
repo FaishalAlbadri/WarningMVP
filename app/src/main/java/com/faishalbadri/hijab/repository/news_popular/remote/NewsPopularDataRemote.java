@@ -23,16 +23,17 @@ import java.util.Map;
 public class NewsPopularDataRemote implements NewsPopularDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed/popular";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
 
   public NewsPopularDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getNewsPopularResult(@NonNull NewsPopularGetCallback newsPopularGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);

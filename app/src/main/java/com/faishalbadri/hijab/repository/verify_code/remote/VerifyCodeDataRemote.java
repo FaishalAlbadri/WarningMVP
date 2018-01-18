@@ -20,15 +20,16 @@ import java.util.Map;
 public class VerifyCodeDataRemote implements VerifyCodeDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "verifycode";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
   public VerifyCodeDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getVerifyCodeResult(@NonNull VerifyCodeGetCallback verifyCodeGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
       try {
         verifyCodeGetCallback.onSuccesVerifyCode("succes");

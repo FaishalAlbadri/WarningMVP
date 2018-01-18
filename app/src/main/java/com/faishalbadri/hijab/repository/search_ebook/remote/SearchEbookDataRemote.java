@@ -23,17 +23,18 @@ import java.util.Map;
 public class SearchEbookDataRemote implements SearchEbookDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "ebook/find";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
 
   public SearchEbookDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchEbookResult(String key,
       @NonNull SearchEbookGetCallback searchEbookGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);

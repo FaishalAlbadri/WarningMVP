@@ -24,15 +24,16 @@ public class SearchNewsDataRemote implements SearchNewsDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed/find";
   Context context;
+  private RequestQueue requestQueue;
 
   public SearchNewsDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchNewsResult(String key,
       @NonNull SearchNewsGetCallback searchNewsGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);

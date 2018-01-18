@@ -21,6 +21,7 @@ import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.util.IntentUtil;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.server.Server;
 import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
@@ -45,11 +46,13 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   DetailNewsPresenter detailNewsPresenter;
   DetailNewsAdapter detailNewsAdapter;
   ArrayList<NewsBean> resultItem;
-  String share = "";
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   @BindView(R.id.scrollview_detail_news)
   ScrollView scrollviewDetailNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private String share = "";
   private String image, desc, id_news;
 
   @Override
@@ -103,15 +106,12 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     resultItem.clear();
     resultItem.addAll(data);
     detailNewsAdapter.notifyDataSetChanged();
-    scrollviewDetailNews.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(scrollviewDetailNews, layoutLoading);
   }
 
   @Override
   public void onError(String msg) {
-    scrollviewDetailNews.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
-
+    whenError();
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)
@@ -127,6 +127,15 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    detailNewsPresenter.getData(id_news);
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      detailNewsPresenter.getData(id_news);
+    }
   }
 }

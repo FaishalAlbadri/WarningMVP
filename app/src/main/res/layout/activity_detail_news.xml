@@ -35,6 +35,7 @@
           android:id="@+id/imageview_detail_news"
           android:layout_width="@dimen/match_parent_size"
           android:layout_height="@dimen/detail_image_news"
+          android:layout_marginTop="16dp"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toTopOf="parent"/>
@@ -91,6 +92,21 @@
       <include
         android:id="@+id/no_internet_acces"
         layout="@layout/layout_no_internet_acces"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+      android:id="@+id/layout_loading"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_detail_news">
+
+      <include
+        android:id="@+id/loading"
+        layout="@layout/layout_loading"/>
 
     </RelativeLayout>
 
