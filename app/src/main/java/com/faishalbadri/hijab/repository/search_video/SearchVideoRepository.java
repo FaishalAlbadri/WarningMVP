@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SearchVideoRepository implements SearchVideoDataResource {
 
-  SearchVideoDataResource searchVideoDataResource;
+  private SearchVideoDataResource searchVideoDataResource;
 
   public SearchVideoRepository(
       SearchVideoDataResource searchVideoDataResource) {

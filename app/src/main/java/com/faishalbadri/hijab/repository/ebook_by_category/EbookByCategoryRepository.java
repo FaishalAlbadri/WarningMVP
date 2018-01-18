@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class EbookByCategoryRepository implements EbookByCategoryDataResource {
 
-  EbookByCategoryDataResource ebookByCategoryDataResource;
+  private EbookByCategoryDataResource ebookByCategoryDataResource;
 
   public EbookByCategoryRepository(EbookByCategoryDataResource ebookByCategoryDataResource) {
     this.ebookByCategoryDataResource = ebookByCategoryDataResource;

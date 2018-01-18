@@ -41,7 +41,7 @@ public class DetailEventActivity extends AppCompatActivity {
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.imageview_share_general_toolbar_with_back_button)
   ImageView imageviewShareGeneralToolbarWithBackButton;
-  String share = "";
+  private String share;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +49,10 @@ public class DetailEventActivity extends AppCompatActivity {
     setContentView(R.layout.activity_detail_event);
     ButterKnife.bind(this);
     set();
-
   }
 
   private void set() {
+    share = "";
     title = getIntent().getStringExtra("title");
     time = getIntent().getStringExtra("time");
     place = getIntent().getStringExtra("place");

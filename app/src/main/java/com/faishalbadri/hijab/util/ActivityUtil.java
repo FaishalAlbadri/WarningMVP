@@ -13,7 +13,7 @@ public class ActivityUtil {
 
 
   private static ActivityUtil INSTANCE;
-  Context context;
+  private Context context;
 
 
   public ActivityUtil(Context context) {

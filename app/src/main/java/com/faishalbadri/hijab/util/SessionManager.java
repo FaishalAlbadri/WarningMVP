@@ -36,17 +36,19 @@ public class SessionManager {
   private static final String is_login = "islogin";
   private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
   private static final String pref_intro = "intro-welcome";
-  Context context;
-  SharedPreferences id_userPref, user_namePref, user_emailPref, user_handphone_numberPref,
+  private Context context;
+  private SharedPreferences id_userPref, user_namePref, user_emailPref, user_handphone_numberPref,
       user_imagePref, user_passwordPref, user_verify_codePref, user_verified_codePref,
       user_genderPref, user_apikeyPref, introPref;
-  SharedPreferences.Editor id_userEditor, user_nameEditor, user_emailEditor, user_handphone_numberEditor,
+  private SharedPreferences.Editor id_userEditor, user_nameEditor, user_emailEditor,
+      user_handphone_numberEditor,
       user_imageEditor, user_passwordEditor, user_verify_codeEditor, user_verified_codeEditor,
       user_genderEditor, user_apikeyEditor, introEditor;
-  int mode = 0;
+  private int mode;
 
 
   public SessionManager(Context context) {
+    mode = 0;
     this.context = context;
     introPref = context.getSharedPreferences(pref_intro, mode);
     id_userPref = context.getSharedPreferences(pref_id_user, mode);

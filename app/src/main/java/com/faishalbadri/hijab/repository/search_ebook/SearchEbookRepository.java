@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SearchEbookRepository implements SearchEbookDataResource {
 
-  SearchEbookDataResource searchEbookDataResource;
+  private SearchEbookDataResource searchEbookDataResource;
 
   public SearchEbookRepository(
       SearchEbookDataResource searchEbookDataResource) {

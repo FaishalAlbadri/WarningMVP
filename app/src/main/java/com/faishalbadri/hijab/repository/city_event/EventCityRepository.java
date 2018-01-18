@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class EventCityRepository implements EventCityDataResource {
 
-  EventCityDataResource eventCityDataResource;
+  private EventCityDataResource eventCityDataResource;
 
   public EventCityRepository(
       EventCityDataResource eventCityDataResource) {

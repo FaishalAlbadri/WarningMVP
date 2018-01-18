@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class EventByCityRepository implements EventByCityDataResource {
 
-  EventByCityDataResource eventByCityDataResource;
+  private EventByCityDataResource eventByCityDataResource;
 
   public EventByCityRepository(
       EventByCityDataResource eventByCityDataResource) {

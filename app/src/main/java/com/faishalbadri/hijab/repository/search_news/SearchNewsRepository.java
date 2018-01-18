@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SearchNewsRepository implements SearchNewsDataResource {
 
-  SearchNewsDataResource searchNewsDataResource;
+  private SearchNewsDataResource searchNewsDataResource;
 
   public SearchNewsRepository(
       SearchNewsDataResource searchNewsDataResource) {

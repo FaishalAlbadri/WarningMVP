@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class CategoryRepository implements CategoryDataResource {
 
-  CategoryDataResource categoryDataResource;
+  private CategoryDataResource categoryDataResource;
 
   public CategoryRepository(
       CategoryDataResource categoryDataResource) {

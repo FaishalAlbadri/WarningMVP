@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class NewsRepository implements NewsDataResource {
 
-  NewsDataResource newsDataResource;
+  private NewsDataResource newsDataResource;
 
   public NewsRepository(NewsDataResource newsDataResource) {
     this.newsDataResource = newsDataResource;

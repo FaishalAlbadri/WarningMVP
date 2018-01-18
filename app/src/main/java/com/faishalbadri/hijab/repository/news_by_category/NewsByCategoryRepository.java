@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class NewsByCategoryRepository implements NewsByCategoryDataResource {
 
-  NewsByCategoryDataResource newsByCategoryDataResource;
+  private NewsByCategoryDataResource newsByCategoryDataResource;
 
   public NewsByCategoryRepository(
       NewsByCategoryDataResource newsByCategoryDataResource) {

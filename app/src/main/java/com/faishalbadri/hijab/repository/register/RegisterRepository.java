@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class RegisterRepository implements RegisterDataResource {
 
-  RegisterDataResource registerDataResource;
+  private RegisterDataResource registerDataResource;
 
   public RegisterRepository(
       RegisterDataResource registerDataResource) {

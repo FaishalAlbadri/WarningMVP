@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class DetailNewsAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  ArrayList<NewsBean> list_data;
+  private Context context;
+  private ArrayList<NewsBean> list_data;
 
   public DetailNewsAdapter(DetailNewsActivity detailNewsActivity,
       ArrayList<NewsBean> resultItem) {

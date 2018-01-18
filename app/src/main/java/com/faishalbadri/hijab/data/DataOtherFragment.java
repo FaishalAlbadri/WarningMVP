@@ -6,8 +6,8 @@ package com.faishalbadri.hijab.data;
 
 public class DataOtherFragment {
 
-  String title;
-  int image;
+  private String title;
+  private int image;
 
   public DataOtherFragment(String title, int image) {
     this.title = title;

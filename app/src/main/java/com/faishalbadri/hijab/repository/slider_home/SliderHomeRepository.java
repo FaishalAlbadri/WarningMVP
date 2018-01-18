@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SliderHomeRepository implements SliderHomeDataResource {
 
-  SliderHomeDataResource sliderHomeDataResource;
+  private SliderHomeDataResource sliderHomeDataResource;
 
   public SliderHomeRepository(
       SliderHomeDataResource sliderHomeDataResource) {

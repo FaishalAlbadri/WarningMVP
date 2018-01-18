@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SponsorRepository implements SponsorDataResource {
 
-  SponsorDataResource sponsorDataResource;
+  private SponsorDataResource sponsorDataResource;
 
   public SponsorRepository(
       SponsorDataResource sponsorDataResource) {

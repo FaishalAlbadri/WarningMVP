@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class SearchEventRepository implements SearchEventDataResource {
 
-  SearchEventDataResource searchEventDataResource;
+  private SearchEventDataResource searchEventDataResource;
 
   public SearchEventRepository(
       SearchEventDataResource searchEventDataResource) {

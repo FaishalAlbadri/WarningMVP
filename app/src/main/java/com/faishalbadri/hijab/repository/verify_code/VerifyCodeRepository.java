@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class VerifyCodeRepository implements VerifyCodeDataResource {
 
-  VerifyCodeDataResource verifyCodeDataResource;
+  private VerifyCodeDataResource verifyCodeDataResource;
 
   public VerifyCodeRepository(
       VerifyCodeDataResource verifyCodeDataResource) {

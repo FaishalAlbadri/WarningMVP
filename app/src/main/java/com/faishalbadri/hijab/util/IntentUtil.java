@@ -9,7 +9,7 @@ import android.content.Intent;
 
 public class IntentUtil {
 
-  Context context;
+  private Context context;
 
   public IntentUtil(Context context) {
     this.context = context;

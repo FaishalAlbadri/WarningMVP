@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 public class EventRepository implements EventDataResource {
 
-  EventDataResource eventDataResource;
+  private EventDataResource eventDataResource;
 
   public EventRepository(EventDataResource eventDataResource) {
     this.eventDataResource = eventDataResource;
