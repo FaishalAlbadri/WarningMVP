@@ -25,7 +25,6 @@ import java.util.List;
 public class EventCityFragment extends Fragment implements eventCityView {
 
 
-  private static final String save_city_event = "saveCityEvent";
   @BindView(R.id.recyclerview_fragment_event_city)
   RecyclerView recyclerviewFragmentEventCity;
   EventCityPresenter eventCityPresenter;
@@ -65,12 +64,6 @@ public class EventCityFragment extends Fragment implements eventCityView {
     recyclerviewFragmentEventCity.setLayoutManager(llm);
     recyclerviewFragmentEventCity.setAdapter(eventCityAdapter);
   }
-
-//  @Override
-//  public void onSaveInstanceState(Bundle outState) {
-//    super.onSaveInstanceState(outState);
-//    outState.putParcelableArrayList(save_city_event, list_data);
-//  }
 
   @Override
   public void onSuccesEventCity(List<EventCityBean> data, String msg) {
