@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.util.Singleton;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -30,31 +31,28 @@ public class DataServerProgress {
     return status;
   }
 
-  public int getCount() {
-    return count;
-  }
-
-  public void setCount(int count) {
-    this.count = count;
-  }
-
-  public void onErrorData(RelativeLayout layoutNoInternetAcces, RelativeLayout layoutLoading) {
+  public void onErrorData(RelativeLayout noInternet, RelativeLayout loading) {
     count++;
     if (count < 5) {
       status = "error";
     } else {
       count = 0;
-      layoutLoading.setVisibility(View.GONE);
-      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+      loading.setVisibility(View.GONE);
+      noInternet.setVisibility(View.VISIBLE);
       status = "";
     }
   }
 
-  public void onSuccesData(ScrollView scrollView, RelativeLayout
-      loading) {
+  public void onSuccesData(ScrollView scrollView, RelativeLayout loading) {
     count = 0;
     loading.setVisibility(View.GONE);
     scrollView.setVisibility(View.VISIBLE);
+  }
+
+  public void onSuccesData(RecyclerView recyclerView, RelativeLayout loading) {
+    count = 0;
+    loading.setVisibility(View.GONE);
+    recyclerView.setVisibility(View.VISIBLE);
   }
 
 }

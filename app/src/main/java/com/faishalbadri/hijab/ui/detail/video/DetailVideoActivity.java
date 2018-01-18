@@ -19,6 +19,7 @@ import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.util.IntentUtil;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.server.Server;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
@@ -65,6 +66,8 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   ScrollView scrollviewDetailVideo;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -140,15 +143,12 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     resultItem.clear();
     resultItem.addAll(data);
     detailVideoAdapter.notifyDataSetChanged();
-    layoutNoInternetAcces.setVisibility(View.GONE);
-    scrollviewDetailVideo.setVisibility(View.VISIBLE);
+    DataServerProgress.getInstance().onSuccesData(scrollviewDetailVideo, layoutLoading);
   }
 
   @Override
   public void onError(String msg) {
-    Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show();
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
-    scrollviewDetailVideo.setVisibility(View.GONE);
+    whenError();
   }
 
   private void setSwipeBack() {
@@ -177,6 +177,15 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    detailVideoPresenter.getData("4");
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      detailVideoPresenter.getData("4");
+    }
   }
 }
