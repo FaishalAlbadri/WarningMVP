@@ -26,16 +26,17 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed?limit=4";
   private static final String URL_VIEW = Server.BASE_URL_REVAMP + "newsfeed/add_viewers";
-  Context context;
+  private Context context;
+  private RequestQueue requestQueue;
 
   public DetailNewsDataRemote(Context context) {
     this.context = context;
+    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getDetailNewsPopularResult(String id_isi,
       @NonNull DetailNewsPopularGetCallback detailNewsPopularGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
@@ -63,7 +64,6 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
 
   @Override
   public void getViewResult(String id_news, @NonNull viewGetCallback viewGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(
         Method.POST, String.valueOf(URL_VIEW), response -> {
       try {
