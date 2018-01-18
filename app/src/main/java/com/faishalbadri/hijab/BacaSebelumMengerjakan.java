@@ -13,12 +13,13 @@ public class BacaSebelumMengerjakan {
      Planning :
      1. revamp ui & ux.. if needed
      2. change volley to retrofit (faishal) (Pending.. next time)
-     3. forget password(faishal)
-     4. must using paggination on recyclerview (faishal & fikri) (this week)
+     3. forget password(faishal) **
+     4. must using paggination on recyclerview (faishal & fikri) (this week) **
      5. users can edit data profile(fikri)
-     6. realm implementation
+     6. realm implementation **
      7. new feature "Community"
 
+     ** = selesai sebelum rilis apk v.1.0
 
      Big planning :
      1. migration to reactive-programming using rxjava2 and dagger2 (faishal & fikri,
