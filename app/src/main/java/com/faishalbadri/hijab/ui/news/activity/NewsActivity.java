@@ -19,7 +19,6 @@ import com.faishalbadri.hijab.util.ActivityUtil;
 
 public class NewsActivity extends AppCompatActivity {
 
-  ActivityUtil activityUtil;
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -32,6 +31,7 @@ public class NewsActivity extends AppCompatActivity {
   ImageButton buttonRankActivityNews;
   @BindView(R.id.button_category_activity_news)
   ImageButton buttonCategoryActivityNews;
+  private ActivityUtil activityUtil;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

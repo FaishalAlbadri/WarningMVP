@@ -39,10 +39,10 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
   MaterialEditText materialedittextPasswordFragmentLogin;
   @BindView(R.id.button_login_fragment_login)
   Button buttonLoginFragmentLogin;
-  LoginPresenter loginPresenter;
-  String email, password;
-  SessionManager sessionManagerLogin;
-  ProgressDialog pd;
+  private LoginPresenter loginPresenter;
+  private String email, password;
+  private SessionManager sessionManagerLogin;
+  private ProgressDialog pd;
 
 
   public LoginFragment() {

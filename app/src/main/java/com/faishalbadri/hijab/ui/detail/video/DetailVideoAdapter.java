@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class DetailVideoAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  ArrayList<PojoVideo.VideosBean> list_data;
+  private Context context;
+  private ArrayList<PojoVideo.VideosBean> list_data;
 
   public DetailVideoAdapter(DetailVideoActivity detailVideoActivity,
       ArrayList<PojoVideo.VideosBean> resultItem) {

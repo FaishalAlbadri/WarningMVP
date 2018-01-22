@@ -12,8 +12,8 @@ import java.util.List;
 
 public class HomePresenter implements HomeContract.homePresenter {
 
-  HomeContract.homeView homeView;
-  SliderHomeRepository sliderHomeRepository;
+  private HomeContract.homeView homeView;
+  private SliderHomeRepository sliderHomeRepository;
 
   public HomePresenter(
       SliderHomeRepository sliderHomeRepository) {

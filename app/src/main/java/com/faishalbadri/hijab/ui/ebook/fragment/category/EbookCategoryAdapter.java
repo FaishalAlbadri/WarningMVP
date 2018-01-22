@@ -27,8 +27,8 @@ import java.util.List;
 
 public class EbookCategoryAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<PojoEbookCategory.EbookCategoriesBean> list_data;
+  private Context context;
+  private List<PojoEbookCategory.EbookCategoriesBean> list_data;
 
 
   public EbookCategoryAdapter(FragmentActivity activity,

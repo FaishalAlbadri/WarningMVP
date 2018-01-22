@@ -29,8 +29,8 @@ import java.util.List;
 
 public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<EbookBean> list_data;
+  private Context context;
+  private List<EbookBean> list_data;
 
   public EbookByCategoryAdapter(EbookByCategoryActivity ebookByCategoryActivity,
       ArrayList<EbookBean> resultItem) {

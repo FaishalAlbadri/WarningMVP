@@ -21,7 +21,6 @@ import java.util.List;
 
 public class NewsByCategoryActivity extends AppCompatActivity implements NewsByCategoryView {
 
-  private static final String save_news_category = "save_news_category";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
@@ -44,7 +43,6 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     setContentView(R.layout.activity_news_by_category);
     ButterKnife.bind(this);
     setView();
-    newsByCategoryAdapter.notifyDataSetChanged();
     newsByCategoryPresenter.getDataNewsByCategory(id);
 
     refreshNewsByCategory.setOnRefreshListener(() -> {

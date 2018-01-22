@@ -12,8 +12,8 @@ import java.util.List;
 
 public class SponsorPresenter implements SponsorContract.SponsorPresenter {
 
-  SponsorContract.SponsorView sponsorView;
-  SponsorRepository sponsorRepository;
+  private SponsorContract.SponsorView sponsorView;
+  private SponsorRepository sponsorRepository;
 
   public SponsorPresenter(
       SponsorRepository sponsorRepository) {

@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsPopularRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularContract.newsPopularView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,6 @@ import java.util.List;
 public class NewsPopularFragment extends Fragment implements newsPopularView {
 
 
-  private static final String save_news_popular = "saveNewsPopular";
   @BindView(R.id.recyclerview_fragment_news_popular)
   RecyclerView recyclerviewFragmentNewsPopular;
   NewsPopularPresenter newsPopularPresenter;
@@ -36,6 +36,8 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
   SwipeRefreshLayout refreshFragmentNewsPopular;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   public NewsPopularFragment() {
     // Required empty public constructor
@@ -53,7 +55,6 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
     ButterKnife.bind(this, v);
     setView();
     newsPopularPresenter.onAttachView(this);
-    newsPopularAdapter.notifyDataSetChanged();
     newsPopularPresenter.getDataNewsPopular();
 
     refreshFragmentNewsPopular.setOnRefreshListener(() -> {
@@ -84,18 +85,26 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
     list_data.clear();
     list_data.addAll(data);
     newsPopularAdapter.notifyDataSetChanged();
-    refreshFragmentNewsPopular.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentNewsPopular, layoutLoading);
   }
 
   @Override
   public void onErrorNewsPopular(String msg) {
-    refreshFragmentNewsPopular.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    newsPopularPresenter.getDataNewsPopular();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      newsPopularPresenter.getDataNewsPopular();
+    }
+  }
+
 }

@@ -27,11 +27,11 @@ public class VerifyCodeActivity extends AppCompatActivity implements
   PinEntryEditText edittextVerifyCode;
   @BindView(R.id.button_next_verify_code)
   Button buttonNextVerifyCode;
-  String user_verify_code;
-  String user_verified_code;
-  ProgressDialog pd;
-  VerifyCodePresenter verifyCodePresenter;
-  SessionManager sessionManager;
+  private String user_verify_code;
+  private String user_verified_code;
+  private ProgressDialog pd;
+  private VerifyCodePresenter verifyCodePresenter;
+  private SessionManager sessionManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

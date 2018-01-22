@@ -38,9 +38,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   MaterialEditText materialedittextPasswordFragmentRegister;
   @BindView(R.id.button_register_fragment_register)
   Button buttonRegisterFragmentRegister;
-  RegisterPresenter registerPresenter;
-  String username, email, password, verify_code;
-  ProgressDialog pd;
+  private RegisterPresenter registerPresenter;
+  private String username, email, password, verify_code;
+  private ProgressDialog pd;
 
 
   public RegisterFragment() {

@@ -12,8 +12,8 @@ import java.util.List;
 
 public class SearchNewsPresenter implements SearchNewsContract.SearchNewsPresenter {
 
-  SearchNewsContract.SearchNewsView searchNewsView;
-  SearchNewsRepository searchNewsRepository;
+  private SearchNewsContract.SearchNewsView searchNewsView;
+  private SearchNewsRepository searchNewsRepository;
 
   public SearchNewsPresenter(
       SearchNewsRepository searchNewsRepository) {

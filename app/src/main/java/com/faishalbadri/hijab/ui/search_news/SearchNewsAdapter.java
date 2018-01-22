@@ -31,8 +31,8 @@ import java.util.List;
 
 public class SearchNewsAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<NewsBean> list_data;
+  private Context context;
+  private List<NewsBean> list_data;
 
 
   public SearchNewsAdapter(SearchNewsActivity seaerchNewsActivity, ArrayList<NewsBean> resultItem) {

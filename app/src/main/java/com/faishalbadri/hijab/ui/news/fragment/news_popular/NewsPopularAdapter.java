@@ -30,8 +30,8 @@ import java.util.List;
 
 public class NewsPopularAdapter extends Adapter<NewsPopularAdapter.ViewHolder> {
 
-  Context context;
-  List<NewsBean> data;
+  private Context context;
+  private List<NewsBean> data;
 
   public NewsPopularAdapter(Context context,
       List<NewsBean> data) {

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class VotingPresenter implements VotingContract.votingPresenter {
 
-  VotingContract.votingView votingView;
-  VotingRepository votingRepository;
+  private VotingContract.votingView votingView;
+  private VotingRepository votingRepository;
 
   public VotingPresenter(VotingRepository votingRepository) {
     this.votingRepository = votingRepository;

@@ -33,8 +33,8 @@ import java.util.List;
 
 public class EbookAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<EbookBean> list_ebook;
+  private Context context;
+  private List<EbookBean> list_ebook;
 
   public EbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookBean> resultItem) {
     this.context = ebookActivity;

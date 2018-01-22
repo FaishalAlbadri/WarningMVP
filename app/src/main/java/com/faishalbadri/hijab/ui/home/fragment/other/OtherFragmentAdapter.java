@@ -32,10 +32,10 @@ import java.util.List;
 
 public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<DataOtherFragment> datalist;
-  String kritiksaran, kirimartikel, share, rate, about, sponsor;
-  String shareSubject, shareText;
+  private Context context;
+  private List<DataOtherFragment> datalist;
+  private String kritiksaran, kirimartikel, share, rate, about, sponsor;
+  private String shareSubject, shareText;
 
 
   public OtherFragmentAdapter(Context context,

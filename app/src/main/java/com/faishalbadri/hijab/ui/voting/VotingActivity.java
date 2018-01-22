@@ -24,12 +24,8 @@ import java.util.List;
 
 public class VotingActivity extends AppCompatActivity implements votingView {
 
-  private static final String save_data_voting = "save_data_voting";
   @BindView(R.id.recyclerview_activity_voting)
   RecyclerView recyclerviewActivityVoting;
-  VotingPresenter votingPresenter;
-  ArrayList<VotingBean> list_data;
-  VotingAdapter votingAdapter;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
@@ -38,7 +34,9 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   SwipeRefreshLayout refreshVoting;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-
+  private VotingPresenter votingPresenter;
+  private ArrayList<VotingBean> list_data;
+  private VotingAdapter votingAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +44,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     setContentView(R.layout.activity_voting);
     ButterKnife.bind(this);
     setView();
-    if (savedInstanceState != null) {
-      ArrayList<VotingBean> data = savedInstanceState
-          .getParcelableArrayList(save_data_voting);
-      this.list_data.clear();
-      this.list_data.addAll(data);
-      votingAdapter.notifyDataSetChanged();
-    } else {
-      votingPresenter.getDataVoting();
-    }
-
+    votingPresenter.getDataVoting();
     refreshVoting.setOnRefreshListener(() -> {
       refreshVoting.setRefreshing(false);
       votingPresenter.getDataVoting();
@@ -78,12 +67,6 @@ public class VotingActivity extends AppCompatActivity implements votingView {
         android.R.color.holo_green_light,
         android.R.color.holo_orange_light,
         android.R.color.holo_red_light);
-  }
-
-  @Override
-  protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_data_voting, list_data);
   }
 
   @Override

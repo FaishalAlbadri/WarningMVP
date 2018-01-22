@@ -27,12 +27,12 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
 
   @BindView(R.id.recyclerview_fragment_category_video)
   RecyclerView recyclerviewFragmentCategoryVideo;
-  CategoryVideoPresenter categoryVideoPresenter;
-  CategoryVideoAdapter categoryVideoAdapter;
-  ArrayList<CategoriesBean> resultItem;
-  View v;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private CategoryVideoPresenter categoryVideoPresenter;
+  private CategoryVideoAdapter categoryVideoAdapter;
+  private ArrayList<CategoriesBean> resultItem;
+  private View v;
 
   public CategoryVideoFragment() {
     // Required empty public constructor
@@ -48,7 +48,6 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     v = inflater.inflate(R.layout.fragment_category_video, container, false);
     ButterKnife.bind(this, v);
     setView();
-    categoryVideoAdapter.notifyDataSetChanged();
     categoryVideoPresenter.getDataCategoryVideo();
     return v;
   }

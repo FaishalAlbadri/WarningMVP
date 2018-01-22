@@ -10,8 +10,8 @@ import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.accoutVie
 
 public class AccountPresenter implements AccountContract.accountPresenter {
 
-  AccountContract.accoutView accoutView;
-  AccountRepository accountRepository;
+  private AccountContract.accoutView accoutView;
+  private AccountRepository accountRepository;
 
   public AccountPresenter(AccountRepository accountRepository) {
     this.accountRepository = accountRepository;

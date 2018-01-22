@@ -4,7 +4,6 @@ package com.faishalbadri.hijab.ui.home.fragment.account;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest.permission;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -60,7 +59,6 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   TextView txtUsernameUserAccount;
   @BindView(R.id.txt_email_user_account)
   TextView txtEmailUserAccount;
-  ProgressDialog pd;
   @BindView(R.id.btn_logout_account)
   Button btnLogoutAccount;
   Context context;

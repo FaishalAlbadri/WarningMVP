@@ -24,7 +24,7 @@ public class KritikSaranActivity extends AppCompatActivity {
   ImageView buttonSendGeneralToolbarWithButton;
   @BindView(R.id.edittext_kritik_saran)
   EditText edittextKritikSaran;
-  String edittextValue;
+  private String edittextValue;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

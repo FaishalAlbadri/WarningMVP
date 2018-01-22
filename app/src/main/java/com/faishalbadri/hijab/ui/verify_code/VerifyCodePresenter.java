@@ -10,8 +10,8 @@ import com.faishalbadri.hijab.ui.verify_code.VerifyCodeContract.VerifyCodeView;
 
 public class VerifyCodePresenter implements VerifyCodeContract.VerifyCodePresenter {
 
-  VerifyCodeRepository verifyCodeRepository;
-  VerifyCodeContract.VerifyCodeView verifyCodeView;
+  private VerifyCodeRepository verifyCodeRepository;
+  private VerifyCodeContract.VerifyCodeView verifyCodeView;
 
   public VerifyCodePresenter(
       VerifyCodeRepository verifyCodeRepository) {

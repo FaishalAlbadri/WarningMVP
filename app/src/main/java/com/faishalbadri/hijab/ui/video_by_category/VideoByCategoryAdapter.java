@@ -30,8 +30,8 @@ import java.util.List;
 
 public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<PojoVideo.VideosBean> list;
+  private Context context;
+  private List<PojoVideo.VideosBean> list;
 
   public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity,
       ArrayList<PojoVideo.VideosBean> resultItem) {

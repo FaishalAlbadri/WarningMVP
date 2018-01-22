@@ -13,8 +13,8 @@ import java.util.List;
 
 public class SearchVideoPresenter implements SearchVideoContract.SearchVideoPresenter {
 
-  SearchVideoContract.SearchVideoView searchVideoView;
-  SearchVideoRepository searchVideoRepository;
+  private SearchVideoContract.SearchVideoView searchVideoView;
+  private SearchVideoRepository searchVideoRepository;
 
   public SearchVideoPresenter(
       SearchVideoRepository searchVideoRepository) {

@@ -21,7 +21,6 @@ import java.util.List;
 
 public class EventByCityActivity extends AppCompatActivity implements EventByCityView {
 
-  private static final String save_event_by_city = "saveEventByCity";
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -46,7 +45,6 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     ButterKnife.bind(this);
     setView();
     eventByCityPresenter.onAttachView(this);
-    eventByCityAdapter.notifyDataSetChanged();
     eventByCityPresenter.getDataEventByCity(id);
 
     refreshFragmentEventByCity.setOnRefreshListener(() -> {

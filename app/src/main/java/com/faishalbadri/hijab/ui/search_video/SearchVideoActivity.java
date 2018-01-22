@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.search_video;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,21 +20,19 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
-import com.faishalbadri.hijab.ui.video.fragment.video.VideoAdapter;
-import com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchVideoActivity extends AppCompatActivity implements SearchVideoView {
 
-  SearchVideoPresenter searchVideoPresenter;
-  SearchVideoAdapter adapter;
-  ArrayList<VideosBean> resultItem;
   @BindView(R.id.recyclerview_activity_search_video)
   RecyclerView recyclerviewActivitySearchVideo;
-  String key;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private SearchVideoPresenter searchVideoPresenter;
+  private SearchVideoAdapter adapter;
+  private ArrayList<VideosBean> resultItem;
+  private String key;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

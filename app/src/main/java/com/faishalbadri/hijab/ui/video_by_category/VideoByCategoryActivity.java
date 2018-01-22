@@ -22,10 +22,6 @@ import java.util.List;
 public class VideoByCategoryActivity extends AppCompatActivity implements videoByCategoryView {
 
 
-  VideoByCategoryPresenter videoByCategoryPresenter;
-  VideoByCategoryAdapter videoByCategoryAdapter;
-  ArrayList<VideosBean> resultItem;
-  String id, title;
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
@@ -36,6 +32,10 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   SwipeRefreshLayout refreshVideoByCategory;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private VideoByCategoryPresenter videoByCategoryPresenter;
+  private VideoByCategoryAdapter videoByCategoryAdapter;
+  private ArrayList<VideosBean> resultItem;
+  private String id, title;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     setContentView(R.layout.activity_video_by_category);
     ButterKnife.bind(this);
     setView();
-    videoByCategoryAdapter.notifyDataSetChanged();
     videoByCategoryPresenter.getDataVideoByCategory(id);
     refreshVideoByCategory.setOnRefreshListener(() -> {
       refreshVideoByCategory.setRefreshing(false);

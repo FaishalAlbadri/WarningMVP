@@ -31,8 +31,8 @@ import java.util.List;
 
 public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<NewsBean> data;
+  private Context context;
+  private List<NewsBean> data;
 
 
   public NewsByCategoryAdapter(Context context,

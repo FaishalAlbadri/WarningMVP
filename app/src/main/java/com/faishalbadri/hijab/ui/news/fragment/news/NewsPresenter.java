@@ -12,8 +12,8 @@ import java.util.List;
 
 public class NewsPresenter implements NewsContract.newsPresenter {
 
-  NewsContract.newsView newsView;
-  NewsRepository newsRepository;
+  private NewsContract.newsView newsView;
+  private NewsRepository newsRepository;
 
   public NewsPresenter(NewsRepository newsRepository) {
     this.newsRepository = newsRepository;

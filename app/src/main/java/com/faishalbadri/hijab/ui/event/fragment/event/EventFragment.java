@@ -27,7 +27,6 @@ import java.util.List;
 public class EventFragment extends Fragment implements eventView {
 
 
-  private static final String save_event = "saveEvent";
   @BindView(R.id.recyclerview_fragment_event)
   RecyclerView recyclerviewFragmentEvent;
   EventPresenter eventPresenter;
@@ -56,7 +55,6 @@ public class EventFragment extends Fragment implements eventView {
     ButterKnife.bind(this, v);
     setView();
     eventPresenter.onAttachView(this);
-    eventAdapter.notifyDataSetChanged();
     eventPresenter.getDataEvent(1);
     refreshFragmentEvent.setOnRefreshListener(() -> {
       PAGE = 1;

@@ -9,8 +9,8 @@ import com.faishalbadri.hijab.repository.register.RegisterRepository;
 
 public class RegisterPresenter implements RegisterContract.registerPresenter {
 
-  RegisterContract.registerView registerView;
-  RegisterRepository registerRepository;
+  private RegisterContract.registerView registerView;
+  private RegisterRepository registerRepository;
 
   public RegisterPresenter(
       RegisterRepository registerRepository) {

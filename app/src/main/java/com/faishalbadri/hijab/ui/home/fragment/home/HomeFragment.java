@@ -32,17 +32,17 @@ import java.util.List;
 public class HomeFragment extends Fragment implements homeView {
 
 
-  HomeFragmentAdapter homeFragmentAdapter;
-  List<DataHomeFragment> data_list;
-  String event, ebook, news, voting, video;
-  String eventDetail, ebookDetail, newsDetail, votingDetail, videoDetail, communityDetail;
-  int[] image;
   @BindView(R.id.slider_fragment_home)
   SliderLayout sliderFragmentHome;
-  HomePresenter homePresenter;
-  TextSliderView textSliderView;
   @BindView(R.id.recyclerview_fragment_home)
   RecyclerView recyclerviewFragmentHome;
+  private HomeFragmentAdapter homeFragmentAdapter;
+  private List<DataHomeFragment> data_list;
+  private String event, ebook, news, voting, video;
+  private String eventDetail, ebookDetail, newsDetail, votingDetail, videoDetail, communityDetail;
+  private int[] image;
+  private HomePresenter homePresenter;
+  private TextSliderView textSliderView;
 
 
   public HomeFragment() {

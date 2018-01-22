@@ -35,9 +35,9 @@ import java.util.List;
 
 public class HomeFragmentAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<DataHomeFragment> dataList;
-  String event, ebook, news, voting, video, community;
+  private Context context;
+  private List<DataHomeFragment> dataList;
+  private String event, ebook, news, voting, video, community;
 
 
   public HomeFragmentAdapter(Context context,

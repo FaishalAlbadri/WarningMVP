@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CategoryVideoPresenter implements categoryVideoPresenter {
 
-  CatergoryVideoContract.categoryVideoView categoryVideoView;
+  private CatergoryVideoContract.categoryVideoView categoryVideoView;
   private CategoryRepository categoryRepository;
 
   public CategoryVideoPresenter(

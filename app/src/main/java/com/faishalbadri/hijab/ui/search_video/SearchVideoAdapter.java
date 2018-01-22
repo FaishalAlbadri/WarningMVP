@@ -32,8 +32,8 @@ import java.util.List;
 
 public class SearchVideoAdapter extends Adapter<SearchVideoAdapter.ViewHolder> {
 
-  Context context;
-  List<VideosBean> list_video;
+  private Context context;
+  private List<VideosBean> list_video;
 
   public SearchVideoAdapter(SearchVideoActivity searchVideoActivity,
       ArrayList<VideosBean> resultItem) {

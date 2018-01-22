@@ -39,9 +39,9 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
-  Context context;
-  List<PojoVideo.VideosBean> list_video;
-  VideoFragment videoFragment;
+  private Context context;
+  private List<PojoVideo.VideosBean> list_video;
+  private VideoFragment videoFragment;
   private String error;
 
   public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {

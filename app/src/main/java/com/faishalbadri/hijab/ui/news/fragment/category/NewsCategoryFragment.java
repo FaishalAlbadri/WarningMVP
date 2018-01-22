@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class NewsCategoryFragment extends Fragment implements
     newsCategoryView {
 
 
-  private static final String save_category = "saveCategory";
   @BindView(R.id.recyclerview_fragment_news_category)
   RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
@@ -34,6 +34,8 @@ public class NewsCategoryFragment extends Fragment implements
   NewsCategoryAdapter newsCategoryAdapter;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
 
   public NewsCategoryFragment() {
@@ -53,7 +55,6 @@ public class NewsCategoryFragment extends Fragment implements
     ButterKnife.bind(this, v);
     setView();
     newsCategoryPresenter.onAttachView(this);
-    newsCategoryAdapter.notifyDataSetChanged();
     newsCategoryPresenter.getDataNewsCategory();
     return v;
   }
@@ -74,18 +75,26 @@ public class NewsCategoryFragment extends Fragment implements
     list_data.clear();
     list_data.addAll(data);
     newsCategoryAdapter.notifyDataSetChanged();
-    recyclerviewFragmentNewsCategory.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentNewsCategory, layoutLoading);
   }
 
   @Override
   public void onErrorNewsCategory(String msg) {
-    recyclerviewFragmentNewsCategory.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    newsCategoryPresenter.getDataNewsCategory();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      newsCategoryPresenter.getDataNewsCategory();
+    }
+  }
+
 }

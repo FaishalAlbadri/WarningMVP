@@ -12,8 +12,8 @@ import java.util.List;
 
 public class SearchEventPresenter implements SearchEventContract.SearchEventPresenter {
 
-  SearchEventContract.SearchEventView searchEventView;
-  SearchEventRepository searchEventRepository;
+  private SearchEventContract.SearchEventView searchEventView;
+  private SearchEventRepository searchEventRepository;
 
   public SearchEventPresenter(
       SearchEventRepository searchEventRepository) {

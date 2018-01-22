@@ -11,8 +11,8 @@ import java.util.List;
 
 public class VideoByCategoryPresenter implements VideoByCategoryContract.videoByCategoryPresenter {
 
-  VideoByCategoryContract.videoByCategoryView videoByCategoryView;
-  VideoByCategoryRepository videoByCategoryRepository;
+  private VideoByCategoryContract.videoByCategoryView videoByCategoryView;
+  private VideoByCategoryRepository videoByCategoryRepository;
 
 
   public VideoByCategoryPresenter(

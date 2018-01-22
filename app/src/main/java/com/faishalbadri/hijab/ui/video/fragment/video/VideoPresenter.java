@@ -12,7 +12,7 @@ import java.util.List;
 
 public class VideoPresenter implements VideoContract.VideoPresenter {
 
-  VideoContract.VideoView videoView;
+  private VideoContract.VideoView videoView;
   private VideoRepository videoRepository;
 
   public VideoPresenter(VideoRepository videoRepository) {

@@ -25,8 +25,8 @@ import java.util.List;
 
 public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<PojoCategory.CategoriesBean> data;
+  private Context context;
+  private List<PojoCategory.CategoriesBean> data;
 
 
   public NewsCategoryAdapter(Context context,

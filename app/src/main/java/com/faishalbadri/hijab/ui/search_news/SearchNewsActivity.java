@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.search_news;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,12 +27,12 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
 
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
-  String key;
-  SearchNewsPresenter searchNewsPresenter;
-  SearchNewsAdapter adapter;
-  ArrayList<NewsBean> resultItem;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private String key;
+  private SearchNewsPresenter searchNewsPresenter;
+  private SearchNewsAdapter adapter;
+  private ArrayList<NewsBean> resultItem;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

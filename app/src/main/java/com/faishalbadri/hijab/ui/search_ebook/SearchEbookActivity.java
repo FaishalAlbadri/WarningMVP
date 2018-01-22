@@ -26,14 +26,14 @@ import java.util.List;
 
 public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
 
-  SearchEbookPresenter searchEbookPresenter;
-  EbookAdapter adapter;
   ArrayList<EbookBean> resultItem;
   @BindView(R.id.recyclerview_activity_search_ebook)
   RecyclerView recyclerviewActivitySearchEbook;
-  String key;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private SearchEbookPresenter searchEbookPresenter;
+  private EbookAdapter adapter;
+  private String key;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

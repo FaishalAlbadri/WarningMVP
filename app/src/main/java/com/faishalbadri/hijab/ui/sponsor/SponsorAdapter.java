@@ -29,8 +29,8 @@ import java.util.List;
 
 public class SponsorAdapter extends Adapter<ViewHolder> {
 
-  List<SponsorBean> data;
-  Context context;
+  private List<SponsorBean> data;
+  private Context context;
 
 
   public SponsorAdapter(List<SponsorBean> data, Context context) {

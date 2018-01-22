@@ -23,9 +23,9 @@ public class OtherFragment extends Fragment {
 
   @BindView(R.id.recyclerview_fragment_other)
   RecyclerView recyclerviewFragmentOther;
-  OtherFragmentAdapter otherFragmentAdapter;
-  List<DataOtherFragment> data_list_other;
-  String kritiksaran, kirimartikel, share, rate, about, sponsor;
+  private OtherFragmentAdapter otherFragmentAdapter;
+  private List<DataOtherFragment> data_list_other;
+  private String kritiksaran, kirimartikel, share, rate, about, sponsor;
   private int[] image;
 
   public OtherFragment() {

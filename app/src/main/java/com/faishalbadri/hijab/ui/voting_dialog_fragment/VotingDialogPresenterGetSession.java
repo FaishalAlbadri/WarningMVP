@@ -11,8 +11,8 @@ import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogContract.Vot
 public class VotingDialogPresenterGetSession implements
     VotingDialogContract.VotingDialogPresenterGetSession {
 
-  VotingDialogContract.VotingDialogViewGetSession viewGetSession;
-  VotingDialogRepository votingDialogRepository;
+  private VotingDialogContract.VotingDialogViewGetSession viewGetSession;
+  private VotingDialogRepository votingDialogRepository;
 
   public VotingDialogPresenterGetSession(
       VotingDialogRepository votingDialogRepository) {

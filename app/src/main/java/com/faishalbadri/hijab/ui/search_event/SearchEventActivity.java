@@ -1,7 +1,6 @@
 package com.faishalbadri.hijab.ui.search_event;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,15 +26,14 @@ import java.util.List;
 
 public class SearchEventActivity extends AppCompatActivity implements SearchEventView {
 
-  private static final String SAVE_DATA_EVENT_SEARCH = "save";
   @BindView(R.id.recyclerview_activity_search_event)
   RecyclerView recyclerviewActivitySearchEvent;
-  String key;
-  SearchEventPresenter searchEventPresenter;
-  EventByCityAdapter adapter;
-  ArrayList<EventBean> resultItem;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private String key;
+  private SearchEventPresenter searchEventPresenter;
+  private EventByCityAdapter adapter;
+  private ArrayList<EventBean> resultItem;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

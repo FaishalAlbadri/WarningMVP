@@ -11,8 +11,8 @@ import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogContract.Vot
 public class VotingDialogPresenterVotingRate implements
     VotingDialogContract.VotingDialogPresenterVotingRate {
 
-  VotingDialogContract.VotingDialogViewVotingRate viewVotingRate;
-  VotingDialogRepository votingDialogRepository;
+  private VotingDialogContract.VotingDialogViewVotingRate viewVotingRate;
+  private VotingDialogRepository votingDialogRepository;
 
   public VotingDialogPresenterVotingRate(VotingDialogRepository votingDialogRepository) {
     this.votingDialogRepository = votingDialogRepository;

@@ -22,18 +22,17 @@ import java.util.List;
 
 public class SponsorActivity extends AppCompatActivity implements SponsorView {
 
-  private static final String save_sponsor = "saveSponsor";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBackGeneralToolbarWithBackButton;
   @BindView(R.id.textview_general_toolbar_with_back_button)
   TextView textviewGeneralToolbarWithBackButton;
   @BindView(R.id.recyclerview_activity_sponsor)
   RecyclerView recyclerviewActivitySponsor;
-  SponsorPresenter sponsorPresenter;
-  SponsorAdapter sponsorAdapter;
-  ArrayList<SponsorBean> list_data;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private SponsorPresenter sponsorPresenter;
+  private SponsorAdapter sponsorAdapter;
+  private ArrayList<SponsorBean> list_data;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +40,8 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
     setContentView(R.layout.activity_sponsor);
     ButterKnife.bind(this);
     setView();
-
     sponsorPresenter.onAttachView(this);
-
-    if (savedInstanceState != null) {
-      ArrayList<SponsorBean> data = savedInstanceState
-          .getParcelableArrayList(save_sponsor);
-      this.list_data.clear();
-      this.list_data.addAll(data);
-      sponsorAdapter.notifyDataSetChanged();
-    } else {
-      sponsorPresenter.getDataSponsor();
-    }
-
+    sponsorPresenter.getDataSponsor();
   }
 
   private void setView() {
@@ -64,12 +52,6 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
     sponsorAdapter = new SponsorAdapter(list_data, this);
     recyclerviewActivitySponsor.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivitySponsor.setAdapter(sponsorAdapter);
-  }
-
-  @Override
-  public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    outState.putParcelableArrayList(save_sponsor, list_data);
   }
 
   @Override

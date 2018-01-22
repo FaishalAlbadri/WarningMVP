@@ -30,7 +30,7 @@ public class IntroActivity extends AppCompatActivity {
   Button btnNext;
   @BindView(R.id.btn_skip)
   Button btnSkip;
-  SessionManager sessionManager;
+  private SessionManager sessionManager;
   private MyViewPagerAdapter myViewPagerAdapter;
   private TextView[] dots;
   private int[] layouts;

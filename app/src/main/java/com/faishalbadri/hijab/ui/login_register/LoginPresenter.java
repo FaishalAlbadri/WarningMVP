@@ -9,8 +9,8 @@ import com.faishalbadri.hijab.repository.login.LoginRepository;
 
 public class LoginPresenter implements LoginContract.loginPresenter {
 
-  LoginContract.loginView loginView;
-  LoginRepository loginRepository;
+  private LoginContract.loginView loginView;
+  private LoginRepository loginRepository;
 
   public LoginPresenter(LoginRepository loginRepository) {
     this.loginRepository = loginRepository;

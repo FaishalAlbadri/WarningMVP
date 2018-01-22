@@ -12,8 +12,8 @@ import java.util.List;
 
 public class NewsByCategoryPresenter implements NewsByCategoryContract.NewsByCategoryPresenter {
 
-  NewsByCategoryContract.NewsByCategoryView newsByCategoryView;
-  NewsByCategoryRepository newsByCategoryRepository;
+  private NewsByCategoryContract.NewsByCategoryView newsByCategoryView;
+  private NewsByCategoryRepository newsByCategoryRepository;
 
   public NewsByCategoryPresenter(
       NewsByCategoryRepository newsByCategoryRepository) {

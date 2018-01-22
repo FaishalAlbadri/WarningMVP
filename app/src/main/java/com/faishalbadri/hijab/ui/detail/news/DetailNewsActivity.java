@@ -62,7 +62,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     ButterKnife.bind(this);
     setView();
     detailNewsPresenter.getView(id_news);
-    detailNewsAdapter.notifyDataSetChanged();
     detailNewsPresenter.getData(id_news);
   }
 

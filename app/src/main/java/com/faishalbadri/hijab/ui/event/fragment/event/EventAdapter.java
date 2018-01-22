@@ -37,9 +37,9 @@ public class EventAdapter extends Adapter<ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
-  Context context;
-  List<EventBean> data;
-  EventFragment eventFragment;
+  private Context context;
+  private List<EventBean> data;
+  private EventFragment eventFragment;
   private String error;
 
   public EventAdapter(Context context, List<EventBean> data, EventFragment eventFragment) {

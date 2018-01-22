@@ -22,8 +22,8 @@ import java.util.List;
 
 public class EventCityAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<EventCityBean> data;
+  private Context context;
+  private List<EventCityBean> data;
 
 
   public EventCityAdapter(Context context,

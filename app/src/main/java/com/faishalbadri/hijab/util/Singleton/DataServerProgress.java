@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.util.Singleton;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -53,6 +54,12 @@ public class DataServerProgress {
     count = 0;
     loading.setVisibility(View.GONE);
     recyclerView.setVisibility(View.VISIBLE);
+  }
+
+  public void onSuccesData(SwipeRefreshLayout swipeRefreshLayout, RelativeLayout loading) {
+    count = 0;
+    loading.setVisibility(View.GONE);
+    swipeRefreshLayout.setVisibility(View.VISIBLE);
   }
 
 }

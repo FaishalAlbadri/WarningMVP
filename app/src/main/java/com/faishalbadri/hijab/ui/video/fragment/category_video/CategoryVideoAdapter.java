@@ -27,8 +27,8 @@ import java.util.List;
 
 public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<CategoriesBean> list_category_video;
+  private Context context;
+  private List<CategoriesBean> list_category_video;
 
   public CategoryVideoAdapter(FragmentActivity activity,
       ArrayList<CategoriesBean> resultItem) {

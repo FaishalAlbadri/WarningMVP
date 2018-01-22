@@ -37,9 +37,9 @@ public class NewsAdapter extends Adapter<ViewHolder> {
 
   private static final int ITEM = 0;
   private static final int LOADING = 1;
-  Context context;
-  List<NewsBean> data;
-  NewsFragment newsFragment;
+  private Context context;
+  private List<NewsBean> data;
+  private NewsFragment newsFragment;
   private String error;
 
   public NewsAdapter(Context context,

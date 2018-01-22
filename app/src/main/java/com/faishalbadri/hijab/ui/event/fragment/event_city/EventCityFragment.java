@@ -49,7 +49,6 @@ public class EventCityFragment extends Fragment implements eventCityView {
     ButterKnife.bind(this, v);
     setView();
     eventCityPresenter.onAttachView(this);
-    eventCityAdapter.notifyDataSetChanged();
     eventCityPresenter.getDataEventCity();
     return v;
   }

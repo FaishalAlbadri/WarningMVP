@@ -24,7 +24,7 @@ public class SendArticleActivity extends AppCompatActivity {
   ImageView buttonSendGeneralToolbarWithButton;
   @BindView(R.id.edittext_send_article)
   EditText edittextSendArticle;
-  String edittextValue;
+  private String edittextValue;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

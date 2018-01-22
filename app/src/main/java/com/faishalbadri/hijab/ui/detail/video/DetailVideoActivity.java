@@ -75,7 +75,6 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     setContentView(R.layout.activity_detail_video);
     ButterKnife.bind(this);
     setView();
-    detailVideoAdapter.notifyDataSetChanged();
     detailVideoPresenter.getData("4");
   }
 

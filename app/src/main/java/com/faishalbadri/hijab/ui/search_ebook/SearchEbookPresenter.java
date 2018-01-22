@@ -12,8 +12,8 @@ import java.util.List;
 
 public class SearchEbookPresenter implements SearchEbookContract.SearchEbookPresenter {
 
-  SearchEbookContract.SearchEbookView searchEbookView;
-  SearchEbookRepository searchEbookRepository;
+  private SearchEbookContract.SearchEbookView searchEbookView;
+  private SearchEbookRepository searchEbookRepository;
 
   public SearchEbookPresenter(
       SearchEbookRepository searchEbookRepository) {

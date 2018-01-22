@@ -28,16 +28,16 @@ import java.util.List;
 public class VideoFragment extends Fragment implements VideoView {
 
 
-  VideoPresenter videoPresenter;
-  VideoAdapter videoAdapter;
-  ArrayList<VideosBean> resultItem;
-  View v;
   @BindView(R.id.recyclerview_fragment_video)
   RecyclerView recyclerviewFragmentVideo;
   @BindView(R.id.refresh_fragment_video)
   SwipeRefreshLayout refreshFragmentVideo;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  private VideoPresenter videoPresenter;
+  private VideoAdapter videoAdapter;
+  private ArrayList<VideosBean> resultItem;
+  private View v;
   private int PAGE = 1;
 
   public VideoFragment() {
@@ -56,7 +56,6 @@ public class VideoFragment extends Fragment implements VideoView {
     ButterKnife.bind(this, v);
     setView();
     PAGE++;
-    videoAdapter.notifyDataSetChanged();
     videoPresenter.getDataVideo(1);
     refreshFragmentVideo.setOnRefreshListener(() -> {
       refreshFragmentVideo.setRefreshing(false);

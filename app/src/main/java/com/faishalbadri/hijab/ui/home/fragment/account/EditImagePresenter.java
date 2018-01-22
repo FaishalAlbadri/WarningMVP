@@ -11,8 +11,8 @@ import com.faishalbadri.hijab.util.ActivityUtil;
 public class EditImagePresenter implements AccountContract.editImagePresenter {
 
 
-  AccountRepository accountRepository;
-  AccountContract.editImageView editImageView;
+  private AccountRepository accountRepository;
+  private AccountContract.editImageView editImageView;
 
   public EditImagePresenter(AccountRepository accountRepository) {
     this.accountRepository = accountRepository;

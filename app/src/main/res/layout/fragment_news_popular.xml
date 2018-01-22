@@ -42,6 +42,22 @@
 
   </RelativeLayout>
 
+  <RelativeLayout
+    android:id="@+id/layout_loading"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <include
+      android:id="@+id/loading"
+      layout="@layout/layout_loading"/>
+
+  </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>
 
 

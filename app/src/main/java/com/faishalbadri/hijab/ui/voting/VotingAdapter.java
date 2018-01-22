@@ -23,8 +23,8 @@ import java.util.List;
 
 public class VotingAdapter extends Adapter<ViewHolder> {
 
-  Context context;
-  List<VotingBean> list_voting;
+  private Context context;
+  private List<VotingBean> list_voting;
 
 
   public VotingAdapter(Context context, List<VotingBean> list_voting,
