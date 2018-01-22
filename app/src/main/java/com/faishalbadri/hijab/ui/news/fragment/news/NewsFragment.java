@@ -35,7 +35,6 @@ import java.util.List;
  */
 public class NewsFragment extends Fragment implements newsView {
 
-  private static final String save_news = "saveNews";
   @BindView(R.id.recyclerview_fragment_news)
   RecyclerView recyclerviewFragmentNews;
   NewsPresenter newsPresenter;
@@ -68,7 +67,6 @@ public class NewsFragment extends Fragment implements newsView {
     PAGE++;
     setView();
     newsPresenter.onAttachView(this);
-    newsAdapter.notifyDataSetChanged();
     newsPresenter.getDataNews(2);
     newsPresenter.getDataSlider();
 
