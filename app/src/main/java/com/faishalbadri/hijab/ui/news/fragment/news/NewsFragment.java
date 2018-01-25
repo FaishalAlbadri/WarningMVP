@@ -121,7 +121,7 @@ public class NewsFragment extends Fragment implements newsView {
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.put(dataSlider.get(a).getNews_title(),
-          Server.BASE_API + dataSlider.get(a).getNews_images());
+          Server.BASE_ASSETS + dataSlider.get(a).getNews_images());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());

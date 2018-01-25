@@ -71,7 +71,7 @@ public class DetailEbookActivity extends AppCompatActivity {
     textviewGeneralToolbarWithBackButton.setText("Deskripsi Ebook");
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
     Glide.with(getApplicationContext())
-        .load(Server.BASE_API + image)
+        .load(Server.BASE_ASSETS + image)
         .apply(options)
         .into(imageviewDetailEbook);
     webViewDescriptionEbookDetail.loadData(description, "text/html", "uutf/-8");

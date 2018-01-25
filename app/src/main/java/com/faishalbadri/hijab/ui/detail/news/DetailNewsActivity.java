@@ -81,7 +81,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(500, 500);
     Glide.with(getApplicationContext())
-        .load(Server.BASE_API + image)
+        .load(Server.BASE_ASSETS + image)
         .apply(options)
         .into(imgDetailNews);
     webViewDescriptionNewsDetail.loadData(desc, "text/html", "uutf/-8");

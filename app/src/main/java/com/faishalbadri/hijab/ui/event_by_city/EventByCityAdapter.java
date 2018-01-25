@@ -50,7 +50,7 @@ public class EventByCityAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_API + listitem.getEvent_image())
+        .load(Server.BASE_ASSETS + listitem.getEvent_image())
         .apply(options)
         .into(holder.imageviewEventItemEvent);
     holder.textviewPlaceTimeEventItem

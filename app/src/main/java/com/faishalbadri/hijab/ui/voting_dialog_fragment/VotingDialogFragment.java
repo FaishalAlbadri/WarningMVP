@@ -87,7 +87,7 @@ public class VotingDialogFragment extends DialogFragment implements
     textviewNameDialogFragmentVoting.setText(nama);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
     Glide.with(getActivity())
-        .load(Server.BASE_API + img)
+        .load(Server.BASE_ASSETS + img)
         .apply(options)
         .into(imageFragmentVotingDialog);
     voting =

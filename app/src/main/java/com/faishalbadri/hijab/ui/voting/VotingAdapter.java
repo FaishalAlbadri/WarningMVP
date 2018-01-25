@@ -47,7 +47,7 @@ public class VotingAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_API + listitem.getVoting_img())
+        .load(Server.BASE_ASSETS + listitem.getVoting_img())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {

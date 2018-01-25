@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment implements homeView {
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.put(dataSlider.get(a).getSlider_title(),
-          Server.BASE_API + dataSlider.get(a).getSlider_img());
+          Server.BASE_ASSETS + dataSlider.get(a).getSlider_img());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());

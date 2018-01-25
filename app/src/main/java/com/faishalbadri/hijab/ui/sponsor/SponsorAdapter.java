@@ -51,7 +51,7 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_API + datalist.getSponsor_image())
+        .load(Server.BASE_ASSETS + datalist.getSponsor_image())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {

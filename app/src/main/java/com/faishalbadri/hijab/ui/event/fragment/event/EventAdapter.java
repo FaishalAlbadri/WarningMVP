@@ -85,7 +85,7 @@ public class EventAdapter extends Adapter<ViewHolder> {
             .format(DecodeFormat.PREFER_ARGB_8888)
             .override(200, 200);
         Glide.with(context)
-            .load(Server.BASE_API + datalist.getEvent_image())
+            .load(Server.BASE_ASSETS + datalist.getEvent_image())
             .apply(options)
             .into(viewHolderItem.imageviewEventItemEvent);
         viewHolderItem.textviewPlaceTimeEventItem

@@ -53,7 +53,7 @@ public class SearchNewsAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_API + listitem.getNews_images())
+        .load(Server.BASE_ASSETS + listitem.getNews_images())
         .apply(options)
         .into(holder.imageviewNewsItem);
     holder.textviewTitleNewsItem.setText(listitem.getNews_title());

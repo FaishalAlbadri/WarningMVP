@@ -86,7 +86,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
             .format(DecodeFormat.PREFER_ARGB_8888)
             .override(200, 200);
         Glide.with(context)
-            .load(Server.BASE_API + datalist.getNews_images())
+            .load(Server.BASE_ASSETS + datalist.getNews_images())
             .apply(options)
             .into(viewHolderItem.imageviewNewsItem);
         viewHolderItem.textviewTitleNewsItem.setText(datalist.getNews_title());

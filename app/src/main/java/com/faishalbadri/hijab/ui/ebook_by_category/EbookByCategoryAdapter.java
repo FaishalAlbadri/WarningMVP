@@ -51,7 +51,7 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_API + listitem.getEbook_image())
+        .load(Server.BASE_ASSETS + listitem.getEbook_image())
         .apply(options)
         .into(holder.imageviewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getEbook_title());

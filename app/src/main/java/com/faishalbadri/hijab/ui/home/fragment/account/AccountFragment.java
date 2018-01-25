@@ -119,7 +119,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
         .error(R.drawable.ic_account_circle_primary_color).format(
             DecodeFormat.PREFER_ARGB_8888).override(400, 400);
     Glide.with(getActivity())
-        .load(Server.BASE_API + user_image)
+        .load(Server.BASE_ASSETS + user_image)
         .apply(options)
         .into(imgUserAccount);
   }

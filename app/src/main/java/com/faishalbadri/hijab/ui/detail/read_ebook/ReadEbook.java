@@ -20,7 +20,8 @@ public class ReadEbook extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_read_ebook);
     ButterKnife.bind(this);
-    String ebook = "http://docs.google.com/gview?embedded=true&url=" + Server.BASE_API + getIntent()
+    String ebook =
+        "http://docs.google.com/gview?embedded=true&url=" + Server.BASE_ASSETS + getIntent()
         .getStringExtra("ebook");
     webViewReadEbook.setWebViewClient(new WebViewClient());
     webViewReadEbook.getSettings().setJavaScriptEnabled(true);
