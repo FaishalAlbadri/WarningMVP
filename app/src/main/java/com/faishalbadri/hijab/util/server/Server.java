@@ -8,7 +8,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class Server {
 
-  public final static String BASE_URL_REVAMP = "http://pinkfame.com/api/v1/index.php/";
+  public final static String BASE_URL_REVAMP = "http://pinkfame.com/api/v1/";
   public final static String BASE_ASSETS = "http://pinkfame.com/api/";
   public static final String EMAIL = "instagramofficialcourse@gmail.com";
   public static final String PASSWORD = "instaindo";
