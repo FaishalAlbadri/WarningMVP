@@ -1,6 +1,6 @@
 <resources>
   <string name="email_developer">pinkyhijabdeveloper@gmail.com</string>
-  <string name="app_name">Pink Muslimah</string>
+  <string name="app_name">PinkFame</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="text_email">Gmail</string>
   <string name="text_email_register">Gmail (You just can use Gmail)</string>
@@ -66,6 +66,8 @@
   <string name="no_internet_acces">Sorry… You dont have internet connection \nPlease check your
     internet connection \n Tap your screen to refresh this app</string>
   <string name="verify_code_instruction">Verifikasi Telah Dikirim ke Gmail Anda  Silahkan Masukkan Verifikasi Code</string>
+  <string name="caption_log_out">Log Out</string>
+  <string name="caption_change_password">Change Password</string>
 
 </resources>
 

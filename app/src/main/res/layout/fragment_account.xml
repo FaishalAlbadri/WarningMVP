@@ -3,18 +3,21 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@color/color_white_ff"
   tools:context="com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment">
 
   <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/img_user_account"
     android:layout_width="@dimen/image_size"
     android:layout_height="@dimen/image_size"
+    android:layout_marginTop="36dp"
     android:layout_marginBottom="@dimen/margin_widget"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    app:layout_constraintBottom_toTopOf="@+id/cvUser"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"/>
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:src="@drawable/raffey"/>
 
   <ImageView
     android:id="@+id/img_edit_photo_account"
@@ -26,106 +29,174 @@
     app:layout_constraintBottom_toBottomOf="@+id/img_user_account"
     app:layout_constraintRight_toRightOf="@+id/img_user_account"/>
 
-  <android.support.v7.widget.CardView
-    android:id="@+id/cvUser"
+
+  <TextView
+    android:id="@+id/txt_username_user_account"
+    android:textStyle="bold"
     android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/card_account"
-    android:layout_margin="@dimen/margin_widget"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="@dimen/padding_widget"
+    android:layout_marginRight="@dimen/padding_widget"
+    android:gravity="center"
+    android:maxLines="1"
+    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+    android:textColor="@color/colorPrimary"
+    android:textSize="24sp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toBottomOf="@+id/img_user_account"
+    tools:text="Raffey Cassidy"/>
 
-    <android.support.constraint.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_margin="@dimen/margin_widget">
-
-      <TextView
-        android:id="@+id/usernamedummy"
-        android:layout_width="@dimen/match_parent_size"
-        android:layout_height="wrap_content"
-        android:text="@string/text_name_with_dot"
-        android:textSize="@dimen/normal_tittle_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-      <TextView
-        android:id="@+id/txt_username_user_account"
-        android:layout_width="@dimen/match_parent_size"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padding_widget"
-        android:layout_marginRight="@dimen/padding_widget"
-        android:maxLines="1"
-        android:textSize="@dimen/normal_tittle_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/usernamedummy"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-  </android.support.v7.widget.CardView>
-
-  <android.support.v7.widget.CardView
-    android:id="@+id/carddummy"
+  <TextView
+    android:id="@+id/txt_email_user_account"
     android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/card_account"
-    android:layout_margin="@dimen/margin_widget"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginLeft="@dimen/padding_widget"
+    android:layout_marginRight="@dimen/padding_widget"
+    android:gravity="center"
+    android:maxLines="1"
+    android:textColor="@color/colorAccent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/cvUser">
+    app:layout_constraintTop_toBottomOf="@+id/txt_username_user_account"
+    tools:text="raffeycassidy@gmail.com"/>
 
-    <android.support.constraint.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_margin="@dimen/margin_widget">
 
-      <TextView
-        android:id="@+id/emaildummy"
-        android:layout_width="@dimen/match_parent_size"
-        android:layout_height="wrap_content"
-        android:text="@string/text_email_with_dot"
-        android:textSize="@dimen/normal_tittle_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-      <TextView
-        android:id="@+id/txt_email_user_account"
-        android:layout_width="@dimen/match_parent_size"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padding_widget"
-        android:layout_marginRight="@dimen/padding_widget"
-        android:maxLines="1"
-        android:textSize="@dimen/normal_tittle_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/emaildummy"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-  </android.support.v7.widget.CardView>
-
-  <android.support.v7.widget.CardView
-    android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/card_account"
-    android:layout_marginTop="@dimen/margin_widget"
-    app:cardElevation="@dimen/match_parent_size"
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="36dp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/carddummy">
+    app:layout_constraintTop_toBottomOf="@+id/txt_email_user_account">
 
-    <Button
-      android:id="@+id/btn_logout_account"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+    <android.support.v7.widget.CardView
+      android:id="@+id/cardview_change_password"
+      android:layout_width="0dp"
+      android:layout_height="55dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
       android:background="?attr/selectableItemBackground"
-      android:text="@string/text_logout"
-      android:textColor="@color/colorPrimary"/>
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?attr/selectableItemBackground"
+      app:cardElevation="1dp"
+      app:cardUseCompatPadding="true"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
 
-  </android.support.v7.widget.CardView>
+      <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+          android:id="@+id/img_change_password"
+          android:layout_width="@dimen/normal_button_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:layout_marginLeft="@dimen/padding_widget"
+          android:padding="13dp"
+          android:src="@drawable/ic_password"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:id="@+id/textview_change_password"
+          android:textStyle="bold"
+          android:layout_width="@dimen/match_parent_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:padding="@dimen/ten_dp"
+          android:gravity="center_vertical"
+          android:text="@string/caption_change_password"
+          android:textColor="@color/colorPrimary"
+          android:textSize="16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toRightOf="@+id/img_change_password"
+          app:layout_constraintRight_toLeftOf="@+id/img_next_change_password"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+          android:id="@+id/img_next_change_password"
+          android:layout_width="@dimen/normal_button_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:padding="@dimen/ten_dp"
+          android:src="@drawable/ic_next_primary_color"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+      android:id="@+id/cardview_log_out"
+      android:layout_width="0dp"
+      android:layout_height="55dp"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:background="?attr/selectableItemBackground"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?attr/selectableItemBackground"
+      app:cardElevation="1dp"
+      app:cardUseCompatPadding="true"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardview_change_password"
+      >
+
+      <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+          android:id="@+id/img_log_out"
+          android:layout_width="@dimen/normal_button_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:layout_marginLeft="@dimen/padding_widget"
+          android:padding="13dp"
+          android:src="@drawable/ic_logout"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:id="@+id/textview_log_out"
+          android:textStyle="bold"
+          android:layout_width="@dimen/match_parent_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:padding="10dp"
+          android:gravity="center_vertical"
+          android:text="@string/caption_log_out"
+          android:textColor="@color/colorPrimary"
+          android:textSize="16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toRightOf="@+id/img_log_out"
+          app:layout_constraintRight_toLeftOf="@+id/img_next_log_out"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+          android:id="@+id/img_next_log_out"
+          android:layout_width="@dimen/normal_button_size"
+          android:layout_height="@dimen/match_parent_size"
+          android:padding="@dimen/ten_dp"
+          android:src="@drawable/ic_next_primary_color"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+  </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

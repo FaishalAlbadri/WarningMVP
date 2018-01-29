@@ -7,23 +7,19 @@ import android.Manifest.permission;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,13 +55,15 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   TextView txtUsernameUserAccount;
   @BindView(R.id.txt_email_user_account)
   TextView txtEmailUserAccount;
-  @BindView(R.id.btn_logout_account)
-  Button btnLogoutAccount;
   Context context;
   ActivityUtil activityUtil;
   AccountPresenter accountPresenter;
   EditImagePresenter editImagePresenter;
   SessionManager sessionManager;
+  @BindView(R.id.cardview_change_password)
+  CardView cardviewChangePassword;
+  @BindView(R.id.cardview_log_out)
+  CardView cardviewLogOut;
   private int PICK_IMAGE_REQUEST = 1;
   private String id_user, user_name, user_email, user_handphone_number, user_image, user_password, user_verify_code, user_verified_code, user_gender, user_apikey;
   private Uri filePathAccount;
@@ -156,9 +154,6 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     txtEmailUserAccount.setText(user_email);
     txtUsernameUserAccount.setText(user_name);
 
-    if (VERSION.SDK_INT >= VERSION_CODES.M) {
-      btnLogoutAccount.setForeground(getSelectedItemDrawable());
-    }
     accountPresenter = new AccountPresenter(
         AccountRepositoryInject.provideToLoginRepository(getActivity()));
     accountPresenter.onAttachView(this);
@@ -241,7 +236,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     }
   }
 
-  @OnClick({R.id.img_edit_photo_account, R.id.btn_logout_account, R.id.img_user_account})
+  @OnClick({R.id.img_edit_photo_account, R.id.cardview_log_out, R.id.img_user_account})
   public void onViewClicked(View view) {
     switch (view.getId()) {
       case R.id.img_edit_photo_account:
@@ -252,18 +247,9 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
         editPhoto();
         imgUserAccount.setEnabled(true);
         break;
-      case R.id.btn_logout_account:
+      case R.id.cardview_log_out:
         logout();
         break;
     }
   }
-
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = (getActivity()).obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
-  }
-
 }
