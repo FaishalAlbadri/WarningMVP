@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/background_image_login_register_activity_dummy"
+  android:background="@color/colorPrimary"
   tools:context="com.faishalbadri.hijab.ui.login_register.LoginRegisterActivity">
 
   <FrameLayout
