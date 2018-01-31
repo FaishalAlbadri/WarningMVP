@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_send_article"
-    layout="@layout/general_toolbar_with_button"/>
+    layout="@layout/general_toolbar_with_send_button"/>
 
   <EditText
     android:id="@+id/edittext_send_article"

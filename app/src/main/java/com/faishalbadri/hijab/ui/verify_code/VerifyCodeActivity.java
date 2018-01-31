@@ -16,17 +16,20 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.VerifyCodeRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.ui.verify_code.VerifyCodeContract.VerifyCodeView;
 import com.faishalbadri.hijab.util.SessionManager;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.widget.PinEntryEditText;
 
 public class VerifyCodeActivity extends AppCompatActivity implements
-    VerifyCodeContract.VerifyCodeView {
+    VerifyCodeView {
 
   @BindView(R.id.edittext_verify_code)
   PinEntryEditText edittextVerifyCode;
   @BindView(R.id.button_next_verify_code)
   Button buttonNextVerifyCode;
+  @BindView(R.id.button_cancel_verify_code)
+  Button buttonCancelVerifyCode;
   private String user_verify_code;
   private String user_verified_code;
   private ProgressDialog pd;
@@ -62,17 +65,6 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     verifyCodePresenter.onAttachView(this);
   }
 
-  @OnClick(R.id.button_next_verify_code)
-  public void onViewClicked() {
-    pd.show();
-    if (edittextVerifyCode.getText().toString().equals(user_verify_code)) {
-      verifyCodePresenter.getDataVerifyCode();
-    } else {
-      Toast.makeText(VerifyCodeActivity.this, "Code salah", Toast.LENGTH_SHORT).show();
-      pd.dismiss();
-    }
-  }
-
   @Override
   public void onSuccesVerifyCode(String msg) {
     sessionManager.editVerifiedCode(user_verify_code);
@@ -91,5 +83,27 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
+  }
+
+  private void logout() {
+    sessionManager.logout();
+    finish();
+  }
+
+  @OnClick(R.id.button_next_verify_code)
+  public void onButtonNextVerifyCodeClicked() {
+    pd.show();
+    if (edittextVerifyCode.getText().toString().equals(user_verify_code)) {
+      verifyCodePresenter.getDataVerifyCode();
+    } else {
+      Toast.makeText(VerifyCodeActivity.this, "Code salah", Toast.LENGTH_SHORT).show();
+      pd.dismiss();
+    }
+  }
+
+
+  @OnClick(R.id.button_cancel_verify_code)
+  public void onButtonCancelVerifyCodeClicked() {
+    logout();
   }
 }

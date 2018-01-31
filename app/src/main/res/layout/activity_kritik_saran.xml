@@ -8,7 +8,7 @@
 
   <include
     android:id="@+id/toolbar_activity_kritik_saran"
-    layout="@layout/general_toolbar_with_button"/>
+    layout="@layout/general_toolbar_with_send_button"/>
 
 
   <EditText
