@@ -2,13 +2,14 @@ package com.faishalbadri.hijab.repository.ebook.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.repository.ebook.EbookDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;
@@ -36,13 +37,15 @@ public class EbookDataRemote implements EbookDataResource {
   public void getEbookList(@NonNull EbookGetCallBack ebookGetCallBack) {
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
         response -> {
-          final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
+          Log.i("responseebook", response);
+          final PojoEbookWithCategory pojoEbookWithCategory = new Gson()
+              .fromJson(response, PojoEbookWithCategory.class);
           try {
-            if (pojoEbook == null) {
+            if (pojoEbookWithCategory == null) {
               ebookGetCallBack.onNullEbook("Error");
             } else {
               ebookGetCallBack
-                  .onSuccessEbook(pojoEbook.getEbook(), "Ok");
+                  .onSuccessEbook(pojoEbookWithCategory.getData(), "Ok");
             }
           } catch (Exception e) {
 

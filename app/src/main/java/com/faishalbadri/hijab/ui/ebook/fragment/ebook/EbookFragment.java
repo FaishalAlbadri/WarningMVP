@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class EbookFragment extends Fragment implements EbookView {
   RecyclerView recyclerviewActivityEbook;
   EbookPresenter ebookPresenter;
   EbookAdapter ebookAdapter;
-  ArrayList<EbookBean> resultItem;
+  ArrayList<PojoEbookWithCategory.DataBean> resultItem;
   @BindView(R.id.refresh_fragment_ebook)
   SwipeRefreshLayout refreshFragmentEbook;
   @BindView(R.id.layout_no_internet_acces)
@@ -77,12 +77,12 @@ public class EbookFragment extends Fragment implements EbookView {
   }
 
   @Override
-  public void onSuccessEbook(List<EbookBean> ebook, String msg) {
-    resultItem.clear();
-    resultItem.addAll(ebook);
-    ebookAdapter.notifyDataSetChanged();
-    refreshFragmentEbook.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+  public void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg) {
+//    resultItem.clear();
+//    resultItem.addAll(ebook);
+//    ebookAdapter.notifyDataSetChanged();
+//    refreshFragmentEbook.setVisibility(View.VISIBLE);
+//    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override

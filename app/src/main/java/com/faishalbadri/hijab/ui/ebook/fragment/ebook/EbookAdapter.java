@@ -1,8 +1,6 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
@@ -16,14 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter.ViewHolder;
-import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +27,10 @@ import java.util.List;
 public class EbookAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<EbookBean> list_ebook;
+  private List<PojoEbookWithCategory.DataBean> list_ebook;
 
-  public EbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookBean> resultItem) {
+  public EbookAdapter(FragmentActivity ebookActivity,
+      ArrayList<PojoEbookWithCategory.DataBean> resultItem) {
     this.context = ebookActivity;
     this.list_ebook = resultItem;
   }
@@ -50,27 +44,27 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EbookBean listitem = list_ebook.get(position);
-    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-        .override(200, 200);
-    Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getEbook_image())
-        .apply(options)
-        .into(holder.imageViewEbookGrid);
-    holder.txtEbookGrid.setText(listitem.getEbook_title());
-    holder.constraintItemGrid.setBackground(getSelectedItemDrawable());
-    holder.constraintItemGrid.setOnClickListener(view -> {
-      view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
-          .putExtra("ebook_name", listitem.getEbook_title())
-          .putExtra("ebook_image", listitem.getEbook_image())
-          .putExtra("ebook_description", listitem.getEbook_description())
-          .putExtra("ebook_url", listitem.getEbook_link())
-          .putExtra("ebook_publisher", listitem.getEbook_publisher())
-          .putExtra("ebook_writer", listitem.getEbook_writer())
-          .putExtra("ebook_time", listitem.getEbook_release_date()));
-      ((Activity) context)
-          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
-    });
+//    final PojoEbookWithCategory.DataBean listitem = list_ebook.get(position);
+//    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
+//        .override(200, 200);
+//    Glide.with(context)
+//        .load(Server.BASE_ASSETS + listitem.getEbook_image())
+//        .apply(options)
+//        .into(holder.imageViewEbookGrid);
+//    holder.txtEbookGrid.setText(listitem.getEbook_title());
+//    holder.constraintItemGrid.setBackground(getSelectedItemDrawable());
+//    holder.constraintItemGrid.setOnClickListener(view -> {
+//      view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
+//          .putExtra("ebook_name", listitem.getEbook_title())
+//          .putExtra("ebook_image", listitem.getEbook_image())
+//          .putExtra("ebook_description", listitem.getEbook_description())
+//          .putExtra("ebook_url", listitem.getEbook_link())
+//          .putExtra("ebook_publisher", listitem.getEbook_publisher())
+//          .putExtra("ebook_writer", listitem.getEbook_writer())
+//          .putExtra("ebook_time", listitem.getEbook_release_date()));
+//      ((Activity) context)
+//          .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
+//    });
   }
 
   @Override
