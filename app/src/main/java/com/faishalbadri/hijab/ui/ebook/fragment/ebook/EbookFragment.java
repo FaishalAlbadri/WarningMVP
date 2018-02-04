@@ -83,6 +83,7 @@ public class EbookFragment extends Fragment implements EbookView {
     ebookAdapter.notifyDataSetChanged();
     refreshFragmentEbook.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @Override
@@ -94,6 +95,7 @@ public class EbookFragment extends Fragment implements EbookView {
   public void onErrorEbook(String msg) {
     refreshFragmentEbook.setVisibility(View.GONE);
     layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @OnClick(R.id.layout_no_internet_acces)

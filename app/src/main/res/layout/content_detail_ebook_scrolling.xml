@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:id="@+id/scrollview_detail_ebook_content"
+  android:background="@color/color_white_ff"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior"
+  tools:context="com.faishalbadri.hijab.ui.detail.ebook.DetailEbookScrollingActivity"
+  tools:showIn="@layout/activity_detail_ebook_scrolling">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+      android:id="@+id/textview_title_content_detail_ebook"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:textColor="@color/colorAccent"
+      android:textSize="18sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Cinta Rangga"/>
+
+    <ImageView
+      android:id="@+id/imageview_creator_content_detail_ebook"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginLeft="130dp"
+      android:src="@drawable/raffey"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/textview_creator_content_detail_ebook"
+      app:layout_constraintTop_toBottomOf="@+id/textview_title_content_detail_ebook"
+      />
+
+    <TextView
+      android:id="@+id/textview_creator_content_detail_ebook"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="130dp"
+      android:text="@string/app_name"
+      android:textColor="@color/colorAccent"
+      app:layout_constraintLeft_toRightOf="@+id/imageview_creator_content_detail_ebook"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textview_title_content_detail_ebook"/>
+
+    <TextView
+      android:id="@+id/textview_publisher_detail_ebook_scrolling"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="30dp"
+      android:drawableLeft="@drawable/ic_book_pink"
+      android:text="Gramedia Pustaka Utama"
+      android:textColor="@color/colorAccent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/textview_release_date_detail_ebook_scrolling"
+      app:layout_constraintTop_toBottomOf="@+id/imageview_creator_content_detail_ebook"/>
+
+    <TextView
+      android:id="@+id/textview_release_date_detail_ebook_scrolling"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginRight="30dp"
+      android:drawableLeft="@drawable/ic_calendar_pink"
+      android:text="01/01/00"
+      android:textColor="@color/colorAccent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageview_creator_content_detail_ebook"/>
+
+    <Button
+      android:id="@+id/button_read_ebook_detail_ebook"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/background_custom_border_layout_full_accent_color"
+      android:text="Read"
+      android:textAllCaps="false"
+      android:textColor="@color/color_white_ff"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textview_release_date_detail_ebook_scrolling"/>
+
+    <TextView
+      android:id="@+id/textview_desc_detail_ebook"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginRight="30dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/button_read_ebook_detail_ebook"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
