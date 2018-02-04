@@ -3,7 +3,6 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/background_main_transparant"
   tools:context="com.faishalbadri.hijab.ui.login_register.LoginFragment">
 
   <TextView
@@ -66,11 +65,12 @@
 
   <Button
     android:id="@+id/button_login_fragment_login"
+    style="?attr/borderlessButtonStyle"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
-    android:background="@drawable/background_custom_border_layout_white"
+    android:background="@drawable/button_ripple_white_color"
     android:text="@string/text_login"
     android:textColor="@color/color_white_ff"
     app:layout_constraintLeft_toLeftOf="parent"

@@ -5,74 +5,180 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
+  android:background="@drawable/background_main_transparent"
   tools:context="com.faishalbadri.hijab.ui.verify_code.VerifyCodeActivity">
 
-  <android.support.constraint.ConstraintLayout
+  <View
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@drawable/background_main_transparant"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toTopOf="@+id/guideline_center_horizontal_verify_code"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+
+  <TextView
+    android:id="@+id/textview_toolbar_verification_code"
+    android:textStyle="bold"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:gravity="center"
+    android:text="@string/caption_verification_code"
+    android:textColor="@color/color_white_ff"
+    android:textSize="22sp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline_center_horizontal_verify_code"
+    android:layout_width="wrap_content"
+    android:layout_height="1dp"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.5"/>
+
+  <ImageView
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:padding="24dp"
+    android:src="@drawable/ic_message"
+    app:layout_constraintBottom_toTopOf="@+id/cardview_verification_code"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textview_toolbar_verification_code"/>
+
+  <android.support.v7.widget.CardView
+    android:id="@+id/cardview_verification_code"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:padding="@dimen/margin_widget"
-      android:gravity="center"
-      android:text="@string/verify_code_instruction"
-      android:textColor="@color/color_white_ff"
-      android:textSize="@dimen/toolbar_title_text_size"
-      app:layout_constraintBottom_toTopOf="@+id/edittext_verify_code"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.9"/>
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/textview_instruction_verify_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_widget"
+        android:gravity="center"
+        android:text="@string/verify_code_instruction"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_verify_code"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"/>
+
+      <View
+        android:layout_width="0dp"
+        android:layout_height="0.1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_verify_code"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
 
-    <com.faishalbadri.hijab.util.widget.PinEntryEditText
-      android:id="@+id/edittext_verify_code"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/margin_widget"
-      android:cursorVisible="false"
-      android:digits="1234567890"
-      android:inputType="number"
-      android:maxLength="6"
-      android:textColor="@color/color_white_ff"
-      android:textColorHint="@color/color_white_ff"
-      android:textIsSelectable="false"
-      android:textSize="@dimen/normal_tittle_text_size"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:pinAnimationType="popIn"
-      app:pinLineColors="@color/color_white_ff"
-      app:pinLineStroke="@dimen/view_size"
-      app:pinLineStrokeSelected="2dp"
-      app:pinRepeatedHint="0"/>
+      <com.faishalbadri.hijab.util.widget.PinEntryEditText
+        android:id="@+id/edittext_verify_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_widget"
+        android:cursorVisible="false"
+        android:digits="1234567890"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/normal_tittle_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:pinAnimationType="popIn"
+        app:pinLineColors="@color/colorPrimary"
+        app:pinLineStroke="@dimen/view_size"
+        app:pinLineStrokeSelected="2dp"
+        app:pinRepeatedHint="0"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/guideline_center_horizontal_verify_code">
 
     <Button
       android:id="@+id/button_next_verify_code"
+      style="?android:attr/borderlessButtonStyle"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/margin_widget"
+      android:layout_marginBottom="5dp"
       android:layout_marginLeft="@dimen/margin_widget"
       android:layout_marginRight="@dimen/margin_widget"
       android:padding="5dp"
-      android:background="@drawable/background_custom_border_layout_white"
+      android:background="@drawable/button_ripple_full_primary_color"
       android:clickable="true"
-      android:text="@string/text_next"
+      android:focusable="true"
+      android:foreground="?attr/selectableItemBackground"
+      android:text="@string/text_send_verification_code"
+      android:textAllCaps="false"
       android:textColor="@color/color_white_ff"
+      android:textSize="@dimen/normal_tittle_text_size_detail"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_center_horizontal_verify_code_button"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <android.support.constraint.Guideline
+      android:id="@+id/guideline_center_horizontal_verify_code_button"
+      android:layout_width="wrap_content"
+      android:layout_height="1dp"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.6"/>
+
+    <Button
+      android:id="@+id/button_cancel_verify_code"
+      style="?android:attr/borderlessButtonStyle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:layout_marginLeft="@dimen/margin_widget"
+      android:layout_marginRight="@dimen/margin_widget"
+      android:padding="5dp"
+      android:background="@drawable/button_ripple_primary_color"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?attr/selectableItemBackground"
+      android:text="@string/caption_back_to_login"
+      android:textAllCaps="false"
+      android:textColor="@color/colorPrimary"
       android:textSize="@dimen/normal_tittle_text_size_detail"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/edittext_verify_code"/>
+      app:layout_constraintTop_toBottomOf="@+id/guideline_center_horizontal_verify_code_button"/>
+
 
   </android.support.constraint.ConstraintLayout>
-
-
 </android.support.constraint.ConstraintLayout>
