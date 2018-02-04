@@ -17,6 +17,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.util.IntentUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 import com.gw.swipeback.SwipeBackLayout;
 
@@ -48,6 +49,7 @@ public class DetailEventActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_detail_event);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     set();
   }
 

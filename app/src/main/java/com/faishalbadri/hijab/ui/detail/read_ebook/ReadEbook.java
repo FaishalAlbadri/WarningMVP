@@ -8,6 +8,7 @@ import android.webkit.WebViewClient;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 
 public class ReadEbook extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class ReadEbook extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_read_ebook);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     String ebook =
         "http://docs.google.com/gview?embedded=true&url=" + Server.BASE_ASSETS + getIntent()
         .getStringExtra("ebook");

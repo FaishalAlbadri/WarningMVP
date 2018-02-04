@@ -20,6 +20,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_ebook);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
 

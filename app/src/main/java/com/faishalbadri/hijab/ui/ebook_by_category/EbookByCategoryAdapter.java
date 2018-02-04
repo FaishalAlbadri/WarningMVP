@@ -17,7 +17,6 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
-import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
 import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookScrollingActivity;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -57,7 +56,8 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
         .into(holder.imageviewEbookGrid);
     holder.txtEbookGrid.setText(listitem.getEbook_title());
     holder.imageviewEbookGrid.setOnClickListener(view -> {
-      view.getContext().startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
+      view.getContext()
+          .startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
           .putExtra("ebook_name", listitem.getEbook_title())
           .putExtra("ebook_image", listitem.getEbook_image())
           .putExtra("ebook_description", listitem.getEbook_description())

@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -83,19 +82,16 @@ public class EbookFragment extends Fragment implements EbookView {
     ebookAdapter.notifyDataSetChanged();
     refreshFragmentEbook.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
-    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @Override
   public void onNullEbook(String msg) {
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @Override
   public void onErrorEbook(String msg) {
     refreshFragmentEbook.setVisibility(View.GONE);
     layoutNoInternetAcces.setVisibility(View.VISIBLE);
-    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @OnClick(R.id.layout_no_internet_acces)

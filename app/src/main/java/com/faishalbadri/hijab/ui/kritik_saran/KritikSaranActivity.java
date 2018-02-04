@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class KritikSaranActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class KritikSaranActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_kritik_saran);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     textviewGeneralToolbarWithButton.setText(R.string.text_other_kritik_saran);
   }
 

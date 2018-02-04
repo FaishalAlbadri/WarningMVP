@@ -11,6 +11,7 @@ import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     setFragment();
   }

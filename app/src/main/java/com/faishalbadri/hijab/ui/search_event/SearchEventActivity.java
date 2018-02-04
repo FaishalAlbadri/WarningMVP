@@ -21,6 +21,7 @@ import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityAdapter;
 import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_event);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
 

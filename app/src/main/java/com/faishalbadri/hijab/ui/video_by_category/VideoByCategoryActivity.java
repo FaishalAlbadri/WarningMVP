@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_video_by_category);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     videoByCategoryPresenter.getDataVideoByCategory(id);
     refreshVideoByCategory.setOnRefreshListener(() -> {

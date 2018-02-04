@@ -22,6 +22,7 @@ import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 import com.gw.swipeback.SwipeBackLayout;
 import java.util.ArrayList;
@@ -60,6 +61,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_detail_news);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     detailNewsPresenter.getView(id_news);
     detailNewsPresenter.getData(id_news);

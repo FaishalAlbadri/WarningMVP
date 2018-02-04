@@ -19,6 +19,7 @@ import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.verify_code.VerifyCodeContract.VerifyCodeView;
 import com.faishalbadri.hijab.util.SessionManager;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.widget.PinEntryEditText;
 
 public class VerifyCodeActivity extends AppCompatActivity implements
@@ -41,6 +42,7 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_verify_code);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     user_verify_code = DataUser.getInstance().getUserVerifyCode();
     user_verified_code = DataUser.getInstance().getUserVerifiedCode();
     if (user_verified_code != null) {

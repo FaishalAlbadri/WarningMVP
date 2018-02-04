@@ -19,7 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean.EbookBean;
-import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookActivity;
+import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookScrollingActivity;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapterItem.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
@@ -62,14 +62,16 @@ public class EbookAdapterItem extends Adapter<ViewHolder> {
         .apply(options)
         .into(holder.imageviewEbookRecyclerItem);
     holder.layoutItemEbookRecyclerItem.setOnClickListener(view -> {
-      view.getContext().startActivity(new Intent(view.getContext(), DetailEbookActivity.class)
-          .putExtra("ebook_name", list_data.get(position).getEbook_title())
-          .putExtra("ebook_image", list_data.get(position).getEbook_image())
-          .putExtra("ebook_description", list_data.get(position).getEbook_description())
-          .putExtra("ebook_url", list_data.get(position).getEbook_link())
-          .putExtra("ebook_publisher", list_data.get(position).getEbook_publisher())
-          .putExtra("ebook_writer", list_data.get(position).getEbook_writer())
-          .putExtra("ebook_time", list_data.get(position).getEbook_released()));
+      view.getContext()
+          .startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
+              .putExtra("ebook_name", list_data.get(position).getEbook_title())
+              .putExtra("ebook_image", "assets/ebook_images/" + list_data.get(position)
+                  .getEbook_image())
+              .putExtra("ebook_description", list_data.get(position).getEbook_description())
+              .putExtra("ebook_url", list_data.get(position).getEbook_link())
+              .putExtra("ebook_publisher", list_data.get(position).getEbook_publisher())
+              .putExtra("ebook_writer", list_data.get(position).getEbook_writer())
+              .putExtra("ebook_time", list_data.get(position).getEbook_released()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
