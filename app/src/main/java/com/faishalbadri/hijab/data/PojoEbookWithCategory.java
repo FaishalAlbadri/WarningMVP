@@ -8,23 +8,6 @@ import java.util.List;
 
 public class PojoEbookWithCategory {
 
-  /**
-   * error : false message : ADA data : [{"ebook_category_id":1,"ebook_category_name":"Fantasi","ebook":[{"id_ebook":1,"id_ebook_category":1,"ebook_title":"Bintang","ebook_writer":"Tere
-   * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-   * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Fantasi"},{"id_ebook":5,"id_ebook_category":1,"ebook_title":"Bintang","ebook_writer":"Tere
-   * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-   * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Fantasi"}]},{"ebook_category_id":4,"ebook_category_name":"Horor","ebook":[{"id_ebook":4,"id_ebook_category":4,"ebook_title":"asd","ebook_writer":"asd","ebook_publisher":"asd","ebook_released":"2017-12-11","ebook_image":"IMG_1513595883.jpg","ebook_description":"
-   * <p>sdasdas<\/p>\r\n","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Horor"},{"id_ebook":8,"id_ebook_category":4,"ebook_title":"Bintang","ebook_writer":"Tere
-   * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-   * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Horor"}]},{"ebook_category_id":3,"ebook_category_name":"Komedi","ebook":[{"id_ebook":3,"id_ebook_category":3,"ebook_title":"asd","ebook_writer":"asd","ebook_publisher":"asd","ebook_released":"2017-12-11","ebook_image":"IMG_1513595883.jpg","ebook_description":"
-   *     <p>sdasdas<\/p>\r\n","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Komedi"},{"id_ebook":7,"id_ebook_category":3,"ebook_title":"Bintang","ebook_writer":"Tere
-   * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-   * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Komedi"}]},{"ebook_category_id":2,"ebook_category_name":"Romance","ebook":[{"id_ebook":2,"id_ebook_category":2,"ebook_title":"asd","ebook_writer":"asd","ebook_publisher":"asd","ebook_released":"2017-12-11","ebook_image":"IMG_1513595883.jpg","ebook_description":"
-   *         <p>sdasdas<\/p>\r\n","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Romance"},{"id_ebook":6,"id_ebook_category":2,"ebook_title":"Bintang","ebook_writer":"Tere
-   * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-   * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Romance"}]}]
-   */
-
   private boolean error;
   private String message;
   private List<DataBean> data;
@@ -55,14 +38,6 @@ public class PojoEbookWithCategory {
 
   public static class DataBean {
 
-    /**
-     * ebook_category_id : 1 ebook_category_name : Fantasi ebook : [{"id_ebook":1,"id_ebook_category":1,"ebook_title":"Bintang","ebook_writer":"Tere
-     * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-     * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Fantasi"},{"id_ebook":5,"id_ebook_category":1,"ebook_title":"Bintang","ebook_writer":"Tere
-     * Liye","ebook_publisher":"Gramedia Pustaka Utama","ebook_released":"2017-06-12","ebook_image":"IMG_1513595728.jpg","ebook_description":"Sample
-     * Desc","ebook_link":"PDF_1513601688.pdf","ebook_category_title":"Fantasi"}]
-     */
-
     private String ebook_category_id;
     private String ebook_category_name;
     private List<EbookBean> ebook;
@@ -92,19 +67,6 @@ public class PojoEbookWithCategory {
     }
 
     public static class EbookBean {
-
-      /**
-       * id_ebook : 1
-       * id_ebook_category : 1
-       * ebook_title : Bintang
-       * ebook_writer : Tere Liye
-       * ebook_publisher : Gramedia Pustaka Utama
-       * ebook_released : 2017-06-12
-       * ebook_image : IMG_1513595728.jpg
-       * ebook_description : Sample Desc
-       * ebook_link : PDF_1513601688.pdf
-       * ebook_category_title : Fantasi
-       */
 
       private String id_ebook;
       private String id_ebook_category;

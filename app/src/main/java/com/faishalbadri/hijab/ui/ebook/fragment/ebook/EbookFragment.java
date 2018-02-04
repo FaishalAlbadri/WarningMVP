@@ -4,7 +4,7 @@ package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +67,7 @@ public class EbookFragment extends Fragment implements EbookView {
     ebookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     ebookAdapter = new EbookAdapter(getActivity(), resultItem);
-    recyclerviewActivityEbook.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+    recyclerviewActivityEbook.setLayoutManager(new LinearLayoutManager(getActivity()));
     recyclerviewActivityEbook.setAdapter(ebookAdapter);
     refreshFragmentEbook.setColorSchemeResources(
         android.R.color.holo_blue_bright,
@@ -78,11 +78,11 @@ public class EbookFragment extends Fragment implements EbookView {
 
   @Override
   public void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg) {
-//    resultItem.clear();
-//    resultItem.addAll(ebook);
-//    ebookAdapter.notifyDataSetChanged();
-//    refreshFragmentEbook.setVisibility(View.VISIBLE);
-//    layoutNoInternetAcces.setVisibility(View.GONE);
+    resultItem.clear();
+    resultItem.addAll(ebook);
+    ebookAdapter.notifyDataSetChanged();
+    refreshFragmentEbook.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
   }
 
   @Override
