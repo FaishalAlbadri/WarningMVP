@@ -41,8 +41,7 @@ public class EbookDataRemote implements EbookDataResource {
             if (pojoEbook == null) {
               ebookGetCallBack.onNullEbook("Error");
             } else {
-              ebookGetCallBack
-                  .onSuccessEbook(pojoEbook.getEbook(), "Ok");
+              ebookGetCallBack.onSuccessEbook(pojoEbook.getEbook(), "Ok");
             }
           } catch (Exception e) {
 
