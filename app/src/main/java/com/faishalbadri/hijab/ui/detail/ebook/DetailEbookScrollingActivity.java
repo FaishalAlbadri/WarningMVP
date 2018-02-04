@@ -1,13 +1,12 @@
 package com.faishalbadri.hijab.ui.detail.ebook;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.View.OnScrollChangeListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,6 +44,11 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   @BindView(R.id.textview_desc_detail_ebook)
   TextView textviewDescDetailEbook;
   String title, image, description, link, publisher, time, writer;
+  @BindView(R.id.scrollview_detail_ebook_content)
+  NestedScrollView scrollviewDetailEbookContent;
+  @BindView(R.id.app_bar)
+  AppBarLayout appBar;
+  boolean expanded = true;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     setView();
   }
 
-  @TargetApi(VERSION_CODES.M)
   private void setView() {
     title = getIntent().getStringExtra("ebook_name");
     image = getIntent().getStringExtra("ebook_image");
@@ -81,16 +84,16 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         .load(Server.BASE_ASSETS + image)
         .apply(optionBackground)
         .into(imageviewBackgroundDetailEbookScrolling);
-//    if (toolbarLayout.isScrollContainer()) {
-//      toolbar.setVisibility(View.VISIBLE);
-//      toolbar.setTitle(title);
-//    } else {
-//      toolbar.setVisibility(View.GONE);
-//    }
-    toolbarLayout.setOnScrollChangeListener(new OnScrollChangeListener() {
-      @Override
-      public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
+    appBar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+      if (verticalOffset == 0) {
+        //fully expanded
+        imageviewDetailEbookScrolling.setVisibility(View.VISIBLE);
+        toolbar.setTitle("");
+      } else {
+        //not fully expanded
+        imageviewDetailEbookScrolling.setVisibility(View.GONE);
+        toolbar.setTitle(title);
+        toolbar.setTitleTextColor(this.getColor(R.color.color_white_ff));
       }
     });
   }
