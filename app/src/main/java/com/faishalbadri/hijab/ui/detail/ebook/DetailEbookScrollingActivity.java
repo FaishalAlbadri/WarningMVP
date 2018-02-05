@@ -71,7 +71,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     writer = getIntent().getStringExtra("ebook_writer");
     textviewTitleContentDetailEbook.setText(title);
     textviewDescDetailEbook.setText(description);
-//    textviewDescDetailEbook.setText(getApplicationContext().getString(R.string.large_text));
     textviewPublisherDetailEbookScrolling.setText(publisher);
     textviewReleaseDateDetailEbookScrolling.setText(time);
     textviewCreatorContentDetailEbook.setText(writer);
