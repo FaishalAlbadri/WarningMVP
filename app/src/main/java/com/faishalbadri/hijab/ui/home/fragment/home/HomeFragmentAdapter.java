@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -67,13 +66,9 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
       @Override
       public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-        holder.constraintItemHome.setBackground(resource);
+        holder.imageViewNewsFragmentHome.setImageDrawable(resource);
       }
     });
-    holder.textviewTitleFragmentHomeAdapter.setText(dataHomeFragment.getJudul());
-    holder.textviewTitleFragmentHomeAdapter.setVisibility(View.GONE);
-    holder.textviewTitleDetailFragmentHomeAdapter.setVisibility(View.GONE);
-    holder.imageviewFragmentHomeAdapter.setVisibility(View.GONE);
     holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentHome.setClickable(true);
     holder.cardviewNewsFragmentHome.setOnClickListener(v -> {
@@ -114,16 +109,12 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
 
   public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.imageview_fragment_home_adapter)
-    ImageView imageviewFragmentHomeAdapter;
-    @BindView(R.id.textview_title_fragment_home_adapter)
-    TextView textviewTitleFragmentHomeAdapter;
-    @BindView(R.id.textview_title_detail_fragment_home_adapter)
-    TextView textviewTitleDetailFragmentHomeAdapter;
     @BindView(R.id.cardview_news_fragment_home)
     CardView cardviewNewsFragmentHome;
     @BindView(R.id.constraint_item_home)
     ConstraintLayout constraintItemHome;
+    @BindView(R.id.image_view_news_fragment_home)
+    ImageView imageViewNewsFragmentHome;
 
     public ViewHolder(View itemView) {
       super(itemView);

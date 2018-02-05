@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.detail.ebook;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -49,7 +49,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   NestedScrollView scrollviewDetailEbookContent;
   @BindView(R.id.app_bar)
   AppBarLayout appBar;
-  boolean expanded = true;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +93,7 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         //not fully expanded
         imageviewDetailEbookScrolling.setVisibility(View.GONE);
         toolbar.setTitle(title);
-        toolbar.setTitleTextColor(this.getColor(R.color.color_white_ff));
+        toolbar.setTitleTextColor(Color.WHITE);
       }
     });
   }
