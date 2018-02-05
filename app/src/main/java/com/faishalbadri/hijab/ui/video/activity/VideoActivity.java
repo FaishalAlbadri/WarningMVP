@@ -15,6 +15,7 @@ import com.faishalbadri.hijab.ui.search_video.SearchVideoActivity;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoFragment;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class VideoActivity extends AppCompatActivity {
 
@@ -36,6 +37,7 @@ public class VideoActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_video);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_video);
     videoFragment();

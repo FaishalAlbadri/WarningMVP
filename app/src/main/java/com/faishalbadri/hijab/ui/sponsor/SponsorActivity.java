@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
 import com.faishalbadri.hijab.di.SponsorRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.sponsor.SponsorContract.SponsorView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sponsor);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     sponsorPresenter.onAttachView(this);
     sponsorPresenter.getDataSponsor();

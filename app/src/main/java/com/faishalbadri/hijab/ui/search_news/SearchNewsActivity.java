@@ -20,6 +20,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.SearchNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_news);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
 

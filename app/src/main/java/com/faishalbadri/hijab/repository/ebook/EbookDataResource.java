@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.ebook;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface EbookDataResource {
 
   interface EbookGetCallBack {
 
-    void onSuccessEbook(List<EbookBean> data, String msg);
+    void onSuccessEbook(List<PojoEbookWithCategory.DataBean> data, String msg);
 
     void onNullEbook(String msg);
 

@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.repository.ebook.EbookDataResource.EbookGetCallBack;
 import com.faishalbadri.hijab.repository.ebook.EbookRepository;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
@@ -32,7 +32,7 @@ public class EbookPresenter implements EbookContract.EbookPresenter {
   public void getData() {
     ebookRepository.getEbookList(new EbookGetCallBack() {
       @Override
-      public void onSuccessEbook(List<EbookBean> ebook, String msg) {
+      public void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg) {
         ebookView.onSuccessEbook(ebook, msg);
       }
 

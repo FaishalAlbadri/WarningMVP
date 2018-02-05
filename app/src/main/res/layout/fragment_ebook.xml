@@ -19,7 +19,13 @@
     <android.support.v7.widget.RecyclerView
       android:id="@+id/recyclerview_activity_ebook"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_height="match_parent"
+      android:paddingTop="4dp"
+      android:paddingBottom="4dp"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      android:paddingLeft="8dp"
+      android:paddingRight="8dp"/>
 
   </android.support.v4.widget.SwipeRefreshLayout>
 

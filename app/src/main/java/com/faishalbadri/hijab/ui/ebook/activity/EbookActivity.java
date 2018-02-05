@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class EbookActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class EbookActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_ebook);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_ebook);
     ebookFragment();

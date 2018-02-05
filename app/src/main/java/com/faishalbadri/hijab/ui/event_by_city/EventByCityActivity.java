@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityContract.EventByCityView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_event_by_city);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     eventByCityPresenter.onAttachView(this);
     eventByCityPresenter.getDataEventByCity(id);

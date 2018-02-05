@@ -10,13 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 
 public class DetailEbookScrollingActivity extends AppCompatActivity {
@@ -56,6 +56,7 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     setContentView(R.layout.activity_detail_ebook_scrolling);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
 

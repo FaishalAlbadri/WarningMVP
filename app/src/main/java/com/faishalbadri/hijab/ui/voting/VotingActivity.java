@@ -19,6 +19,7 @@ import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.di.VotingRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_voting);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     votingPresenter.getDataVoting();
     refreshVoting.setOnRefreshListener(() -> {

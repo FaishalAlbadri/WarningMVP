@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.ui.news.fragment.news.NewsFragment;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularFragment;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class NewsActivity extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class NewsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_news);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     newsFragment();
   }

@@ -15,6 +15,7 @@ import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityFragment;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.search_event.SearchEventActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -36,6 +37,7 @@ public class EventActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_event);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_event);
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     homeFragment();

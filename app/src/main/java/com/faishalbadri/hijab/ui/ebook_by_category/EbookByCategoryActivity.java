@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryContract.ebookByCategoryView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_ebook_by_category);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     ebookCategoryPresenter.getDataEbookByCategory(id);
 

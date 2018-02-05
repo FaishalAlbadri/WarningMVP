@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_news_by_category);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
     newsByCategoryPresenter.getDataNewsByCategory(id);
 

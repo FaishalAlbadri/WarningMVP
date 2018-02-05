@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.util.UserUtil;
 
 public class SendArticleActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class SendArticleActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_send_article);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     textviewGeneralToolbarWithButton.setText(R.string.text_send_article);
   }
 

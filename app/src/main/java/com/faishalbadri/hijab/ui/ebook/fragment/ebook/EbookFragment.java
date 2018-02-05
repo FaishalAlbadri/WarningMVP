@@ -4,18 +4,17 @@ package com.faishalbadri.hijab.ui.ebook.fragment.ebook;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class EbookFragment extends Fragment implements EbookView {
   RecyclerView recyclerviewActivityEbook;
   EbookPresenter ebookPresenter;
   EbookAdapter ebookAdapter;
-  ArrayList<EbookBean> resultItem;
+  ArrayList<PojoEbookWithCategory.DataBean> resultItem;
   @BindView(R.id.refresh_fragment_ebook)
   SwipeRefreshLayout refreshFragmentEbook;
   @BindView(R.id.layout_no_internet_acces)
@@ -67,7 +66,7 @@ public class EbookFragment extends Fragment implements EbookView {
     ebookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     ebookAdapter = new EbookAdapter(getActivity(), resultItem);
-    recyclerviewActivityEbook.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+    recyclerviewActivityEbook.setLayoutManager(new LinearLayoutManager(getActivity()));
     recyclerviewActivityEbook.setAdapter(ebookAdapter);
     refreshFragmentEbook.setColorSchemeResources(
         android.R.color.holo_blue_bright,
@@ -77,25 +76,22 @@ public class EbookFragment extends Fragment implements EbookView {
   }
 
   @Override
-  public void onSuccessEbook(List<EbookBean> ebook, String msg) {
+  public void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg) {
     resultItem.clear();
     resultItem.addAll(ebook);
     ebookAdapter.notifyDataSetChanged();
     refreshFragmentEbook.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
-    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @Override
   public void onNullEbook(String msg) {
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @Override
   public void onErrorEbook(String msg) {
     refreshFragmentEbook.setVisibility(View.GONE);
     layoutNoInternetAcces.setVisibility(View.VISIBLE);
-    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
   }
 
   @OnClick(R.id.layout_no_internet_acces)

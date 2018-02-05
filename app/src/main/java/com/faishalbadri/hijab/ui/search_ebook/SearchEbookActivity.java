@@ -19,8 +19,8 @@ import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
-import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
+import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
   private SearchEbookPresenter searchEbookPresenter;
-  private EbookAdapter adapter;
+  private SearchEbookAdapter adapter;
   private String key;
 
   @Override
@@ -40,6 +40,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_ebook);
     ButterKnife.bind(this);
+    UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
 
@@ -48,7 +49,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
         SearchEbookRepositoryInject.provideToSearchEbookRepository(this));
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
-    adapter = new EbookAdapter(this, resultItem);
+    adapter = new SearchEbookAdapter(this, resultItem);
     recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this, 3));
     recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
