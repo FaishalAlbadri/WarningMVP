@@ -23,6 +23,8 @@ public class DetailNewsContract {
 
     void onSuccessDetailNews(List<NewsBean> data, String msg);
 
+    void onSuccesView(List<NewsBean> data, String msg);
+
     void onError(String msg);
 
   }

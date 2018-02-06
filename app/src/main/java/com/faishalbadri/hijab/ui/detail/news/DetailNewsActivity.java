@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -77,16 +78,16 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
     id_news = getIntent().getStringExtra("news_id");
     image = getIntent().getStringExtra("news_image");
-    desc = getIntent().getStringExtra("news_description");
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_news);
+    webViewDescriptionNewsDetail
+        .setOnTouchListener((v, event) -> (event.getAction() == MotionEvent.ACTION_MOVE));
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(500, 500);
     Glide.with(getApplicationContext())
         .load(Server.BASE_ASSETS + image)
         .apply(options)
         .into(imgDetailNews);
-    webViewDescriptionNewsDetail.loadData(desc, "text/html", "uutf/-8");
   }
 
   @Override
@@ -107,6 +108,15 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     resultItem.clear();
     resultItem.addAll(data);
     detailNewsAdapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onSuccesView(List<NewsBean> data, String msg) {
+    for (int a = 0; a < data.size(); a++) {
+      desc = data.get(a).getNews_description();
+    }
+    webViewDescriptionNewsDetail.loadDataWithBaseURL(null, "<style>img{display: inline;height: "
+        + "auto;max-width: 100%;" + "}</style>" + desc, "text/html", "UTF-8", null);
     DataServerProgress.getInstance().onSuccesData(scrollviewDetailNews, layoutLoading);
   }
 

@@ -15,8 +15,6 @@ import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by fikriimaduddin on 11/8/17.
@@ -25,7 +23,7 @@ import org.json.JSONObject;
 public class DetailNewsDataRemote implements DetailNewsDataResource {
 
   private static final String URL = Server.BASE_URL_REVAMP + "newsfeed?limit=4";
-  private static final String URL_VIEW = Server.BASE_URL_REVAMP + "newsfeed/add_viewers";
+  private static final String URL_VIEW = Server.BASE_URL_REVAMP + "newsfeed/detail/";
   private Context context;
   private RequestQueue requestQueue;
 
@@ -64,32 +62,25 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
 
   @Override
   public void getViewResult(String id_news, @NonNull viewGetCallback viewGetCallback) {
-    StringRequest stringRequest = new StringRequest(
-        Method.POST, String.valueOf(URL_VIEW), response -> {
-      try {
-        if (String.valueOf(new JSONObject(response).getString("message"))
-            .equals("You're successfully updated your viewers")) {
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL_VIEW + id_news),
+        response -> {
+          final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           try {
-
+            if (pojoNews.getNews() == null) {
+              viewGetCallback.onError("Data Null");
+            } else {
+              viewGetCallback.onSuccesView(pojoNews.getNews(), "Succes");
+            }
           } catch (Exception e) {
-            e.printStackTrace();
+
           }
-        } else {
-          viewGetCallback.onError(context.getString(R.string.text_error));
-        }
-      } catch (JSONException e) {
-
-      } catch (Exception e) {
-
-      }
-
-    }, error -> {
-      viewGetCallback.onError(String.valueOf(error));
-    }) {
+        }, error -> viewGetCallback
+        .onError(
+            context.getResources().getString(R.string.caption_error_internet_acces))) {
       @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
+      public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("news_id", id_news);
+        params.put("Authorization", DataUser.getInstance().getUserApiKey());
         return params;
       }
     };

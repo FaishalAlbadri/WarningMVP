@@ -24,6 +24,8 @@ public interface DetailNewsDataResource {
 
   interface viewGetCallback {
 
+    void onSuccesView(List<NewsBean> data, String msg);
+
     void onError(String msg);
   }
 

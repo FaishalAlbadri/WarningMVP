@@ -51,6 +51,11 @@ public class DetailNewsPresenter implements DetailNewsContract.DetailNewsPresent
     detailNewsRepository.getViewResult(id_news, new viewGetCallback() {
 
       @Override
+      public void onSuccesView(List<NewsBean> data, String msg) {
+        detailNewsView.onSuccesView(data, msg);
+      }
+
+      @Override
       public void onError(String msg) {
         detailNewsView.onError(msg);
       }
