@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
@@ -49,6 +51,8 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   NestedScrollView scrollviewDetailEbookContent;
   @BindView(R.id.app_bar)
   AppBarLayout appBar;
+  @BindView(R.id.imageview_share_detail_ebook)
+  ImageView imageviewShareDetailEbook;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,9 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     setContentView(R.layout.activity_detail_ebook_scrolling);
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    toolbar.setNavigationIcon(R.drawable.ic_back_white);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
   }
@@ -96,5 +103,16 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
       }
     });
+  }
+
+  @Override
+  public boolean onSupportNavigateUp() {
+    onBackPressed();
+    return true;
+  }
+
+  @OnClick(R.id.imageview_share_detail_ebook)
+  public void onViewClicked() {
+    Toast.makeText(this, "action share", Toast.LENGTH_SHORT).show();
   }
 }
