@@ -1,12 +1,17 @@
 package com.faishalbadri.hijab.ui.home.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.ui.change.password.ChangePasswordFragment;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragment;
@@ -23,6 +28,10 @@ public class HomeActivity extends AppCompatActivity {
   Button buttonAccountActivityHome;
   ActivityUtil activityUtil;
   String sessionHome;
+  @BindView(R.id.linear_layout_tab_activity_home)
+  LinearLayout linearLayoutTabActivityHome;
+  @BindView(R.id.framelayout_for_fragment_activity_home)
+  FrameLayout framelayoutForFragmentActivityHome;
 
 
   @Override
@@ -53,7 +62,16 @@ public class HomeActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-
+    if (linearLayoutTabActivityHome.getVisibility() == View.GONE) {
+      linearLayoutTabActivityHome.setVisibility(View.VISIBLE);
+    }
+    if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+      getFragmentManager().popBackStack();
+      super.onBackPressed();
+    } else {
+      startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+          .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
   }
 
   @OnClick(R.id.button_home_activity_home)
@@ -70,6 +88,13 @@ public class HomeActivity extends AppCompatActivity {
   @OnClick(R.id.button_account_activity_home)
   public void onButtonAccountActivityHomeClicked() {
     accountFragment();
+  }
+
+  public void changePasswordFragment() {
+    activityUtil
+        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_home,
+            ChangePasswordFragment.instance());
+    linearLayoutTabActivityHome.setVisibility(View.GONE);
   }
 
   private void accountFragment() {

@@ -75,14 +75,14 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_widget"
         android:gravity="center"
-        android:text="@string/verify_code_instruction"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/edittext_verify_code"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"/>
+        app:layout_constraintVertical_bias="0.9"
+        tools:text="@string/verify_code_instruction"/>
 
       <View
         android:layout_width="0dp"
@@ -167,7 +167,7 @@
       android:layout_marginLeft="@dimen/margin_widget"
       android:layout_marginRight="@dimen/margin_widget"
       android:padding="5dp"
-      android:background="@drawable/button_ripple_primary_color"
+      android:background="@drawable/button_ripple_white_color_with_primary_color"
       android:clickable="true"
       android:focusable="true"
       android:foreground="?attr/selectableItemBackground"

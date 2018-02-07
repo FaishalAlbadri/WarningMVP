@@ -125,6 +125,13 @@ public class SessionManager {
     ((Activity) context).finish();
   }
 
+  public void editPassword(String user_password) {
+    user_passwordEditor.clear();
+    user_passwordEditor.putString(key_user_password, user_password);
+    user_passwordEditor.commit();
+    DataUser.getInstance().setUserPassword(user_password);
+  }
+
   public HashMap<String, String> getUser() {
     HashMap<String, String> user = new HashMap<>();
     user.put(key_id_user, id_userPref.getString(key_id_user, null));

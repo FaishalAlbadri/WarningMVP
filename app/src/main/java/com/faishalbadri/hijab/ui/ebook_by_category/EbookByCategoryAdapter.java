@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.ebook_by_category;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -40,7 +41,8 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_grid_ebook, parent, false);
+    View view = LayoutInflater.from(context)
+        .inflate(R.layout.item_ebook_with_cardview, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
@@ -53,9 +55,9 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
     Glide.with(context)
         .load(Server.BASE_ASSETS + listitem.getEbook_image())
         .apply(options)
-        .into(holder.imageviewEbookGrid);
-    holder.txtEbookGrid.setText(listitem.getEbook_title());
-    holder.imageviewEbookGrid.setOnClickListener(view -> {
+        .into(holder.imageviewEbookItem);
+    holder.textviewEbookItem.setText(listitem.getEbook_title());
+    holder.cardviewItemEbook.setOnClickListener(view -> {
       view.getContext()
           .startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
           .putExtra("ebook_name", listitem.getEbook_title())
@@ -77,10 +79,12 @@ public class EbookByCategoryAdapter extends Adapter<ViewHolder> {
 
   public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.imageview_ebook_grid)
-    ImageView imageviewEbookGrid;
-    @BindView(R.id.txt_ebook_grid)
-    TextView txtEbookGrid;
+    @BindView(R.id.imageview_ebook_item)
+    ImageView imageviewEbookItem;
+    @BindView(R.id.textview_ebook_item)
+    TextView textviewEbookItem;
+    @BindView(R.id.cardview_item_ebook)
+    CardView cardviewItemEbook;
 
     public ViewHolder(View itemView) {
       super(itemView);

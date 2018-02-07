@@ -138,7 +138,7 @@ public class HomeFragment extends Fragment implements homeView {
       sliderFragmentHome.setPresetTransformer(Transformer.Default);
       sliderFragmentHome.setPresetIndicator(PresetIndicators.Center_Bottom);
       sliderFragmentHome.setCustomAnimation(new ChildAnimationExample());
-      sliderFragmentHome.setDuration(2000);
+      sliderFragmentHome.setDuration(5000);
       sliderFragmentHome.addOnPageChangeListener(getActivity());
     }
   }

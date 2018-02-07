@@ -12,7 +12,7 @@ import java.util.List;
 
 public class EbookCategoryPresenter implements EbookCategoryContract.EbookCategoryPresenter {
 
-  EbookCategoryView ebookCategoryView;
+  private EbookCategoryView ebookCategoryView;
   private EbookCategoryRepository ebookCategoryRepository;
 
   public EbookCategoryPresenter(EbookCategoryRepository ebookCategoryRepository) {

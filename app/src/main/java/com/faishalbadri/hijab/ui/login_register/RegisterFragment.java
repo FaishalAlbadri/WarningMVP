@@ -136,7 +136,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   }
 
   private void sendMail() {
-    String subject = "Your Verification Account Key From Pink Muslimah";
+    String subject = "Your Verification Account Key From Pink Fame";
     String message = "Your verification code : " + verify_code;
     SendMail sm = new SendMail(getActivity(), email, subject, message);
     sm.execute();

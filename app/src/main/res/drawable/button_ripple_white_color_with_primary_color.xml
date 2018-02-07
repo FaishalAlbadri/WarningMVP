@@ -5,5 +5,5 @@
   tools:targetApi="lollipop">
   <item
     android:id="@android:id/background"
-    android:drawable="@drawable/background_custom_border_white_with_primary_color"/>
+    android:drawable="@drawable/background_custom_border_white_color_with_primary_color"/>
 </ripple>

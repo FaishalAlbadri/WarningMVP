@@ -31,6 +31,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.AccountRepositoryInject;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.accoutView;
 import com.faishalbadri.hijab.ui.home.fragment.account.AccountContract.editImageView;
 import com.faishalbadri.hijab.util.ActivityUtil;
@@ -124,7 +125,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
   @Override
   public void onErrorAccount(String msg) {
-    Toast.makeText(getActivity(), "Internal Server Error", Toast.LENGTH_SHORT).show();
+
   }
 
   @Override
@@ -236,20 +237,25 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     }
   }
 
-  @OnClick({R.id.img_edit_photo_account, R.id.cardview_log_out, R.id.img_user_account})
-  public void onViewClicked(View view) {
-    switch (view.getId()) {
-      case R.id.img_edit_photo_account:
-        editPhoto();
-        imgEditPhotoAccount.setEnabled(true);
-        break;
-      case R.id.img_user_account:
-        editPhoto();
-        imgUserAccount.setEnabled(true);
-        break;
-      case R.id.cardview_log_out:
-        logout();
-        break;
-    }
+  @OnClick(R.id.img_user_account)
+  public void onImgUserAccountClicked() {
+    editPhoto();
+    imgUserAccount.setEnabled(true);
+  }
+
+  @OnClick(R.id.img_edit_photo_account)
+  public void onImgEditPhotoAccountClicked() {
+    editPhoto();
+    imgEditPhotoAccount.setEnabled(true);
+  }
+
+  @OnClick(R.id.cardview_change_password)
+  public void onCardviewChangePasswordClicked() {
+    ((HomeActivity) getActivity()).changePasswordFragment();
+  }
+
+  @OnClick(R.id.cardview_log_out)
+  public void onCardviewLogOutClicked() {
+    logout();
   }
 }

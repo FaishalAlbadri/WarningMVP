@@ -9,6 +9,7 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +32,8 @@ public class VerifyCodeActivity extends AppCompatActivity implements
   Button buttonNextVerifyCode;
   @BindView(R.id.button_cancel_verify_code)
   Button buttonCancelVerifyCode;
+  @BindView(R.id.textview_instruction_verify_code)
+  TextView textviewInstructionVerifyCode;
   private String user_verify_code;
   private String user_verified_code;
   private ProgressDialog pd;
@@ -45,6 +48,8 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     user_verify_code = DataUser.getInstance().getUserVerifyCode();
     user_verified_code = DataUser.getInstance().getUserVerifiedCode();
+    textviewInstructionVerifyCode.setText(getResources().getString(R.string
+        .verify_code_instruction, DataUser.getInstance().getUserEmail()));
     if (user_verified_code != null) {
       startActivity(new Intent(getApplicationContext(), HomeActivity.class));
       finish();
