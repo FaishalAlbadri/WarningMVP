@@ -31,22 +31,27 @@
   <string name="text_sponsor">Sponsored By</string>
 
   <string name="text_pinky_hijab_news">Pink Muslimah News</string>
-  <string name="text_pinky_hijab_news_detail">Get the last update news for women in this app</string>
+  <string name="text_pinky_hijab_news_detail">The news portal contains information and
+    inspiration for Muslimah.</string>
 
   <string name="text_pinky_hijab_voting">Pink Muslimah Vote</string>
-  <string name="text_pinky_hijab_voting_detail">Dont forget to support and like</string>
+  <string name="text_pinky_hijab_voting_detail">Vote and share event selection of
+    participans pinky hijab ambassador</string>
 
   <string name="text_pinky_hijab_community">Pink Muslimah Community</string>
   <string name="text_pinky_hijab_community_detail">History of Pinky Hijab Community from beginning</string>
 
   <string name="text_pinky_hijab_video">Pink Muslimah TV</string>
-  <string name="text_pinky_hijab_video_detail">Get the last update video for women in this app</string>
+  <string name="text_pinky_hijab_video_detail">Find tutorial videos, tausiyah, fashion,
+    lifestyle, traveling, and more.</string>
 
   <string name="text_pinky_hijab_ebook">Pink Muslimah E-book</string>
-  <string name="text_pinky_hijab_ebook_detail">Get the last update E-book for women in this app</string>
+  <string name="text_pinky_hijab_ebook_detail">Get free e-books about fashion, novel,
+    biography, fiction, and non-fiction.</string>
 
   <string name="text_pinky_hijab_event">Pink Muslimah Event</string>
-  <string name="text_pinky_hijab_event_detail">Get the last update event for women in this app</string>
+  <string name="text_pinky_hijab_event_detail">Find interesting event information that you
+    can follow to increase knowledge, inspiration, and motivation.</string>
 
   <string name="text_other_kritik_saran">Feedback</string>
   <string name="text_other_kirim_artikel">Send Your Article</string>

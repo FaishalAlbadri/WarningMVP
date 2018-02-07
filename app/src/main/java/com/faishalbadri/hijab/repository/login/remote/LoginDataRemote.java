@@ -33,10 +33,9 @@ public class LoginDataRemote implements LoginDataResource {
     RequestQueue requestQueue = Volley.newRequestQueue(context);
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
         response -> {
-          loginGetCallback.onWrongLogin("Data Ada");
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
           try {
-            if (pojoUser == null) {
+            if (pojoUser.getMessage().equals("Invalid username or password")) {
               loginGetCallback.onWrongLogin("Email atau Password salah");
             } else {
               for (int a = 0; a < pojoUser.getUser().size(); a++) {

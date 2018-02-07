@@ -88,7 +88,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_widget"
     android:padding="@dimen/padding_widget"
-    android:background="@drawable/background_custom_border_layout_white"
+    android:background="@drawable/button_ripple_primary_color_with_white_color"
     android:clickable="true"
     android:text="@string/text_register"
     android:textColor="@color/color_white_ff"

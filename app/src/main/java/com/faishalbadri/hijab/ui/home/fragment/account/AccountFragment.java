@@ -125,7 +125,11 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
   @Override
   public void onErrorAccount(String msg) {
-
+    if (msg.equals("Email atau Password salah")) {
+      Toast.makeText(context, "Someone has change your password\nPlease login again",
+          Toast.LENGTH_LONG).show();
+      logout();
+    }
   }
 
   @Override

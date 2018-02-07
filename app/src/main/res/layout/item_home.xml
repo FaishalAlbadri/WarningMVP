@@ -13,16 +13,51 @@
     android:layout_height="wrap_content">
 
     <ImageView
+      android:id="@+id/image_view_title_fragment_home"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:padding="5dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_home_center_horizontal"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/guideline_home_center_vertical"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+      android:id="@+id/textview_title_fragment_home"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:padding="5dp"
+      android:textSize="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/guideline_home_center_vertical"
+      app:layout_constraintTop_toBottomOf="@+id/guideline_home_center_horizontal"
+      />
+
+    <android.support.constraint.Guideline
+      android:id="@+id/guideline_home_center_vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.55"/>
+
+    <android.support.constraint.Guideline
+      android:id="@+id/guideline_home_center_horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.5"/>
+
+    <ImageView
       android:id="@+id/image_view_news_fragment_home"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:scaleType="fitXY"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintDimensionRatio="3:1"
-      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintDimensionRatio="7:5"
+      app:layout_constraintLeft_toRightOf="@+id/guideline_home_center_vertical"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      />
+      app:layout_constraintTop_toTopOf="parent"/>
 
   </android.support.constraint.ConstraintLayout>
 

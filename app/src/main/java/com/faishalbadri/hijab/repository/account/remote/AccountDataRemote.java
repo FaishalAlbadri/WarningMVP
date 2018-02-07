@@ -39,7 +39,7 @@ public class AccountDataRemote implements AccountDataResource {
         response -> {
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
           try {
-            if (pojoUser == null) {
+            if (pojoUser.getMessage().equals("Invalid username or password")) {
               accountGetCallback.onError("Email atau Password salah");
             } else {
               for (int a = 0; a < pojoUser.getUser().size(); a++) {
