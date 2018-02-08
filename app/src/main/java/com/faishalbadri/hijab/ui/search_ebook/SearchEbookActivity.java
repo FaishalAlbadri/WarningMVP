@@ -50,7 +50,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
     searchEbookPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     adapter = new SearchEbookAdapter(this, resultItem);
-    recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this, 3));
+    recyclerviewActivitySearchEbook.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivitySearchEbook.setAdapter(adapter);
   }
 

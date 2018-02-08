@@ -10,6 +10,7 @@
     android:id="@+id/recyclerview_activity_search_ebook"
     android:layout_width="@dimen/match_parent_size"
     android:layout_height="@dimen/match_parent_size"
+    android:padding="4dp"
     android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"

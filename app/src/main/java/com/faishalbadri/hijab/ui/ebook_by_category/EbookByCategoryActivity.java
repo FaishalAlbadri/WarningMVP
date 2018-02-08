@@ -66,7 +66,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     ebookCategoryPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     adapter = new EbookByCategoryAdapter(this, resultItem);
-    recyclerviewActivityEbookByCategory.setLayoutManager(new GridLayoutManager(this, 3));
+    recyclerviewActivityEbookByCategory.setLayoutManager(new GridLayoutManager(this, 2));
     recyclerviewActivityEbookByCategory.setAdapter(adapter);
     refreshEbookByCategory.setColorSchemeResources(
         android.R.color.holo_blue_bright,

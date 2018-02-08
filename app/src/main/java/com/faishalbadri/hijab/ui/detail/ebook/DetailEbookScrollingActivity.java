@@ -8,6 +8,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.util.UserUtil;
@@ -44,8 +46,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   TextView textviewReleaseDateDetailEbookScrolling;
   @BindView(R.id.button_read_ebook_detail_ebook)
   Button buttonReadEbookDetailEbook;
-  @BindView(R.id.textview_desc_detail_ebook)
-  TextView textviewDescDetailEbook;
   String title, image, description, link, publisher, time, writer;
   @BindView(R.id.scrollview_detail_ebook_content)
   NestedScrollView scrollviewDetailEbookContent;
@@ -53,6 +53,10 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   AppBarLayout appBar;
   @BindView(R.id.imageview_share_detail_ebook)
   ImageView imageviewShareDetailEbook;
+  @BindView(R.id.imageview_detail_ebook_scrolling_top)
+  ImageView imageviewDetailEbookScrollingTop;
+  @BindView(R.id.webview_desc_detail_ebook)
+  WebView webviewDescDetailEbook;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -76,13 +80,22 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     time = getIntent().getStringExtra("ebook_time");
     writer = getIntent().getStringExtra("ebook_writer");
     textviewTitleContentDetailEbook.setText(title);
-    textviewDescDetailEbook.setText(description);
     textviewPublisherDetailEbookScrolling.setText(publisher);
     textviewReleaseDateDetailEbookScrolling.setText(time);
     textviewCreatorContentDetailEbook.setText(writer);
-    RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888);
-    RequestOptions optionBackground = new RequestOptions().fitCenter()
-        .format(DecodeFormat.PREFER_ARGB_8888).override(100, 100);
+    webviewDescDetailEbook.loadDataWithBaseURL(null, "<style>img{display: inline;height: "
+        + "auto;max-width: 100%;" + "}</style>" + description, "text/html", "UTF-8", null);
+    RequestOptions options = new RequestOptions()
+        .transform(new RoundedCorners(10))
+        .format(DecodeFormat.PREFER_ARGB_8888);
+    RequestOptions optionBackground = new RequestOptions()
+        .fitCenter()
+        .format(DecodeFormat.PREFER_ARGB_8888)
+        .override(100, 100);
+    Glide.with(getApplicationContext())
+        .load(Server.BASE_ASSETS + image)
+        .apply(options)
+        .into(imageviewDetailEbookScrollingTop);
     Glide.with(getApplicationContext())
         .load(Server.BASE_ASSETS + image)
         .apply(options)
@@ -92,14 +105,14 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         .apply(optionBackground)
         .into(imageviewBackgroundDetailEbookScrolling);
     appBar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
-      if (verticalOffset == 0) {
-        //fully expanded
-        imageviewDetailEbookScrolling.setVisibility(View.VISIBLE);
+      if (verticalOffset >= -270) {
+        //fully expandxed
+        imageviewDetailEbookScrollingTop.setVisibility(View.VISIBLE);
         toolbar.setTitle("");
       } else {
         //not fully expanded
-        imageviewDetailEbookScrolling.setVisibility(View.GONE);
-        toolbar.setTitle(title);
+        imageviewDetailEbookScrollingTop.setVisibility(View.GONE);
+        toolbar.setTitle(getString(R.string.text_pinky_hijab_ebook));
         toolbar.setTitleTextColor(Color.WHITE);
       }
     });
