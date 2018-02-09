@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -164,6 +165,11 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @Override
   public void onSuccesVotingDialogViewVotingRate(String msg) {
+    if (msg.equals("You've already voting")) {
+      Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+      buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
+      buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
+    }
     votingDialogPresenterGetSession.getDataVotingDialogGetSession(id_voting);
   }
 

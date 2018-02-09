@@ -55,8 +55,8 @@ public class OtherFragment extends Fragment {
     data_list_other.add(new DataOtherFragment(share, image[2]));
     data_list_other.add(new DataOtherFragment(rate, image[3]));
     data_list_other.add(new DataOtherFragment(sponsor, image[4]));
-    data_list_other.add(new DataOtherFragment(about, image[5]));
     data_list_other.add(new DataOtherFragment(contactUs, image[6]));
+    data_list_other.add(new DataOtherFragment(about, image[5]));
     otherFragmentAdapter.notifyDataSetChanged();
   }
 

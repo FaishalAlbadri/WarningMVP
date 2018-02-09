@@ -38,6 +38,7 @@ public class EbookAdapterItem extends Adapter<ViewHolder> {
 
   public void setData(Context context, List<EbookBean> list_data) {
     this.context = context;
+    this.list_data = null;
     this.list_data = list_data;
   }
 
@@ -79,7 +80,11 @@ public class EbookAdapterItem extends Adapter<ViewHolder> {
 
   @Override
   public int getItemCount() {
-    return list_data.size();
+    if (list_data == null) {
+      return 0;
+    } else {
+      return list_data.size();
+    }
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder {

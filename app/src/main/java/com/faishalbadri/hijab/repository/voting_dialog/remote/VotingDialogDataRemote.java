@@ -14,6 +14,7 @@ import com.faishalbadri.hijab.util.server.Server;
 import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONObject;
 
 /**
  * Created by faishal on 11/2/17.
@@ -80,7 +81,13 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlRate),
         response -> {
           try {
-            votingDialogVotingRateGetCallback.onSuccesVotingDialogVotingRate("Ok");
+            if (String.valueOf(new JSONObject(response).getString("message"))
+                .equals("You've already voting")) {
+              votingDialogVotingRateGetCallback
+                  .onSuccesVotingDialogVotingRate("You've already voting");
+            } else {
+              votingDialogVotingRateGetCallback.onSuccesVotingDialogVotingRate("ok");
+            }
           } catch (Exception e) {
 
           }

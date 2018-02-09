@@ -47,6 +47,7 @@ public class EbookAdapter extends Adapter<ViewHolder> {
   public void onBindViewHolder(ViewHolder holder, int position) {
     holder.textviewTitleEbook.setText(list_ebook.get(position).getEbook_category_name());
     holder.ebookAdapterItem.setData(context, list_ebook.get(position).getEbook());
+    holder.ebookAdapterItem.notifyDataSetChanged();
     holder.constraintTitle.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), EbookByCategoryActivity.class);
       i.putExtra("category_id", list_ebook.get(position).getEbook_category_id());
