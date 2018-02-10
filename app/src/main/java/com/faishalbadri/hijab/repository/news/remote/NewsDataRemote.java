@@ -41,7 +41,7 @@ public class NewsDataRemote implements NewsDataResource {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           Log.i("response", response);
           try {
-            if (pojoNews == null) {
+            if (pojoNews.getNews().toString().equals("[]")) {
               newsGetCallback.onErrorNews("Data Null");
             } else {
               newsGetCallback.onSuccesNews(pojoNews.getNews(), "Succes");

@@ -172,6 +172,8 @@
   <string name="caption_new_password">New Password</string>
   <string name="caption_confirm_password">Confirm Password</string>
   <string name="caption_read">Read</string>
+  <string name="caption_unvote">Unvote</string>
+  <string name="caption_share">Share</string>
 
 </resources>
 

@@ -16,14 +16,146 @@
     android:layout_height="0dp"
     android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_voting">
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_voting"
+    app:layout_constraintVertical_bias="1.0">
 
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/recyclerview_activity_voting"
+    <android.support.constraint.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_height="match_parent">
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_voting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_voting"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+          android:id="@+id/imageview_voting"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:padding="5dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintDimensionRatio="1:1"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:id="@+id/textview_title_voting"
+          android:textStyle="bold"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:padding="8dp"
+          android:lines="2"
+          android:maxLines="2"
+          android:minLines="2"
+          android:textColor="@color/colorPrimary"
+          android:textSize="17sp"
+          app:layout_constraintLeft_toRightOf="@+id/imageview_voting"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          />
+
+        <Button
+          android:id="@+id/button_voting_unvote"
+          android:layout_width="0dp"
+          android:layout_height="35dp"
+          android:layout_marginStart="20dp"
+          android:layout_marginEnd="20dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:background="@drawable/button_ripple_white_color_with_primary_color"
+          android:text="@string/caption_unvote"
+          android:textAllCaps="false"
+          android:textColor="@color/colorPrimary"
+          android:textSize="17sp"
+          app:layout_constraintBottom_toTopOf="@+id/button_voting_share"
+          app:layout_constraintLeft_toRightOf="@+id/imageview_voting"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/textview_title_voting"/>
+
+        <Button
+          android:id="@+id/button_voting_share"
+          android:layout_width="0dp"
+          android:layout_height="35dp"
+          android:layout_marginStart="20dp"
+          android:layout_marginEnd="20dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:background="@drawable/button_ripple_primary_color_with_white_color"
+          android:text="@string/caption_share"
+          android:textAllCaps="false"
+          android:textColor="@color/color_white_ff"
+          android:textSize="17sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toRightOf="@+id/imageview_voting"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/button_voting_unvote"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_not_voting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_voting"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+          android:id="@+id/imageview_warning_voting"
+          android:layout_width="0dp"
+          android:layout_height="100dp"
+          android:layout_marginBottom="40dp"
+          android:src="@drawable/ic_warning_primary_color"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:padding="10dp"
+          android:gravity="center"
+          android:text="You're never vote Pinky Hijab Ambassador 2018\n Please vote Pinky Hijab Ambassador"
+          android:textColor="@color/colorPrimary"
+          android:textSize="16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/imageview_warning_voting"/>
+
+      </android.support.constraint.ConstraintLayout>
+
+      <android.support.constraint.Guideline
+        android:id="@+id/guideline_voting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
+
+      <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_activity_voting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+      <!--app:layout_constraintTop_toTopOf="@+id/guideline_voting"/>-->
+
+    </android.support.constraint.ConstraintLayout>
 
   </android.support.v4.widget.SwipeRefreshLayout>
 
