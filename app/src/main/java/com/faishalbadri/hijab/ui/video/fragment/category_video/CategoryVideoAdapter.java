@@ -45,9 +45,9 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final CategoriesBean listitem = list_category_video.get(position);
-    setImage(holder.imageviewItem,
-        "categories_" + listitem.getCategory_name().toLowerCase().replace(" ",
-            "_"));
+//    setImage(holder.imageviewItem,
+//        "categories_" + listitem.getCategory_name().toLowerCase().replace(" ",
+//            "_"));
     holder.textviewItem.setText(listitem.getCategory_name());
     holder.constrainItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), VideoByCategoryActivity.class);
@@ -55,15 +55,6 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
       i.putExtra("category_title", listitem.getCategory_name());
       v.getContext().startActivity(i);
     });
-  }
-
-  private void setImage(ImageView imageView, String image) {
-    int id = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
-    try {
-      imageView.setImageResource(id);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   @Override
