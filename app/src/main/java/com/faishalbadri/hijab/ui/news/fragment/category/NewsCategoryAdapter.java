@@ -2,19 +2,18 @@ package com.faishalbadri.hijab.ui.news.fragment.category;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.CardView;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory;
+import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryActivity;
 import java.util.List;
@@ -26,28 +25,27 @@ import java.util.List;
 public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<PojoCategory.CategoriesBean> data;
+  private List<CategoriesBean> data;
 
 
   public NewsCategoryAdapter(Context context,
-      List<PojoCategory.CategoriesBean> data) {
+      List<CategoriesBean> data) {
     this.context = context;
     this.data = data;
   }
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_category_grid, parent, false);
     final ViewHolder viewHolder = new ViewHolder(view);
     return viewHolder;
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final PojoCategory.CategoriesBean list_item = data.get(position);
-    holder.textviewTitleCategoryItem.setText(list_item.getCategory_name());
-    holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
-    holder.cardViewCategoryItem.setOnClickListener(v -> {
+    final CategoriesBean list_item = data.get(position);
+    holder.textviewItem.setText(list_item.getCategory_name());
+    holder.constrainItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, NewsByCategoryActivity.class)
           .putExtra("category_id", list_item.getCategory_id())
           .putExtra("category_title", list_item.getCategory_name()));
@@ -59,20 +57,14 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
     return data.size();
   }
 
-  public Drawable getSelectedItemDrawable() {
-    int[] attrs = new int[]{R.attr.selectableItemBackground};
-    TypedArray ta = context.obtainStyledAttributes(attrs);
-    Drawable selectedItemDrawable = ta.getDrawable(0);
-    ta.recycle();
-    return selectedItemDrawable;
-  }
-
   public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.textview_title_category_item)
-    TextView textviewTitleCategoryItem;
-    @BindView(R.id.card_view_category_item)
-    CardView cardViewCategoryItem;
+    @BindView(R.id.imageview_item)
+    ImageView imageviewItem;
+    @BindView(R.id.textview_item)
+    TextView textviewItem;
+    @BindView(R.id.constrain_item)
+    ConstraintLayout constrainItem;
 
     public ViewHolder(View itemView) {
       super(itemView);

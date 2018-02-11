@@ -111,6 +111,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         } else {
           viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
           viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+          viewHolderLoading.textviewThanksItemLoading.setVisibility(View.GONE);
         }
         viewHolderLoading.buttonLoadData.setOnClickListener(v -> {
           viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
