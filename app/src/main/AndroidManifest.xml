@@ -119,8 +119,14 @@
     <activity
       android:label=""
       android:name=".ui.detail.ebook.DetailEbookScrollingActivity"
-      android:theme="@style/AppTheme.NoActionBar">
-    </activity>
+      android:theme="@style/AppTheme.NoActionBar"/>
+    <activity
+      android:name=".ui.about.AboutScrollingActivity"
+      android:parentActivityName=".ui.home.activity.HomeActivity"
+      android:theme="@style/AppTheme.NoActionBar"/>
+    <activity
+      android:name=".ui.contact_us.ContactUsActivity"
+      android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 
 </manifest>

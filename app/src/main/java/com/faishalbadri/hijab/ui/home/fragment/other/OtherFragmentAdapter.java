@@ -20,6 +20,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataOtherFragment;
+import com.faishalbadri.hijab.ui.about.AboutScrollingActivity;
+import com.faishalbadri.hijab.ui.contact_us.ContactUsActivity;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragmentAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.kritik_saran.KritikSaranActivity;
 import com.faishalbadri.hijab.ui.send_article.SendArticleActivity;
@@ -34,7 +36,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
 
   private Context context;
   private List<DataOtherFragment> datalist;
-  private String kritiksaran, kirimartikel, share, rate, about, sponsor;
+  private String kritiksaran, kirimartikel, share, rate, about, sponsor, contactUs;
   private String shareSubject, shareText;
 
 
@@ -62,6 +64,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     about = context.getResources().getString(R.string.text_other_about);
     rate = context.getResources().getString(R.string.text_rate);
     sponsor = context.getResources().getString(R.string.text_sponsor);
+    contactUs = context.getResources().getString(R.string.text_other_contact_us);
     shareSubject = context.getResources().getString(R.string.text_share_app_subject);
     shareText = context.getResources().getString(R.string.text_share_app_text);
 
@@ -89,7 +92,10 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
         context.startActivity(new Intent(context, SponsorActivity.class));
         ((Activity) context).finish();
       } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
-
+        context.startActivity(new Intent(context, AboutScrollingActivity.class));
+//        ((Activity) context).finish();
+      } else if (dataOtherFragment.getTitle().equalsIgnoreCase(contactUs)) {
+        context.startActivity(new Intent(context, ContactUsActivity.class));
       }
     });
 

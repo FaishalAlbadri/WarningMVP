@@ -172,6 +172,19 @@
   <string name="caption_new_password">New Password</string>
   <string name="caption_confirm_password">Confirm Password</string>
   <string name="caption_read">Read</string>
+  <string name="caption_about_ebook">PINK FAME bekerjasama dengan berbagai penerbit buku, menyediakan buku dan  majalah digital, E book yang tersedia di Pink Fame dapat di download dan dibaca dengan gratis. \n Ayo wujudkan impian kamu menjadi penulis buku dan jangan lupa kirim tulisan kamu ke redaksi PINK FAME, jangan hanya disimpan di laptop saja</string>
+  <string name="caption_about_event">Menampilkan informasi dari berbagai acara- acara menarik berdasarkan minat, waktu luang yang kamu miliki, lokasi kamu berada saat ini. \n Informasikan acara kamu di PINK FAME ya...</string>
+  <string name="caption_about_vote">Sarana voting untuk berbagai pemilihan,\n Informasikan kepada redaksi PINK FAME jika kamu mengadakan Pemilihan...</string>
+  <string name="caption_about_tv">Temukan video video menarik dan inspiratif seputar fashion, beauty, lifestyle,review produk, travelling, dan profil wanita inspiratif. \n Jangan lupa kirim juga video menarik yang kamu punya \n dan infokan ke redaksi PINK FAME jika ingin diliput...</string>
+  <string name="caption_about_news">Kamu dapat menemukan berbagai informasi terbaru mengenai berita seputar kecantikan, fashion, lifestyle, review produk, travelling, dan kisah kisah inspirasi para wanita dengan berbagai prestasi, dan info menarik lainnya. \n Kamu juga dapat mengirimkan tulisan kamu ke redaksi PINK FAME \n dan dapatkan hadiah menarik jika tulisan kamu dimuat.</string>
+  <string name="caption_about_pink_fame">Pink Fame mobile App adalah aplikasi untuk kamu para wanita yang membutuhkan wadah silaturrahmi, mencari informasi baik berupa video dan berita. Kamu bisa download dan baca E - Book gratis, informasi event update yang sedang berlangsung, bantu vote untuk pemilihan yang sedang dilaksanakan, \n So kamu bisa ngapain aja nih di PINK FAME APP</string>
+  <string name="title_activity_about_scrolling">AboutScrollingActivity</string>
+  <string name="caption_pinkfame_contact_us">Terimakasih sudah mendownload PINK FAME App, mari kolaborasi bersama....</string>
+  <string name="caption_one_contact_us">PINK FAME menerima sample produk, undangan media partner dan undangan event dengan senang hati kita akan berkolaborasi bersama.</string>
+  <string name="caption_two_contact_us">PINK FAME menerima kiriman artikel, video, e-book, informasi event yang kamu selenggarakan, dan membuka kerjasama jika kamu mengadakan pemilihan dan ingin dibantu vote di PINK FAME.</string>
+  <string name="caption_three_contact_us">PINK FAME ingin mendengarkan kisah - kisah inspiratif kamu, jangan sungkan hubungi redaksi PINK FAME juka ingin diliput berbagu kisah menarik kamu.</string>
+  <string name="caption_four_contact_us">PINK FAME akan membantu mempromosikan produk atau jasa yang ingin diiklankan baik berupa review berita maupun vided</string>
+  <string name="caption_five_contact_us">PINK FAME membuka kesempatan berkerjasama dalam hal apapun yang membawa kebaikan dan bermanfaat. Dengan senang hati PINK FAME membuka silaturrahmi, hubungi kami di: </string>
 
 </resources>
 

@@ -17,6 +17,7 @@
   <color name="color_grey_opacity_61">#616161</color>
   <color name="color_background_duration">#a0333333</color>
   <color name="color_white_ff">#ffffff</color>
+  <color name="color_black">#000000</color>
 
   <!-- dots inactive colors -->
   <color name="dot_dark_screen1">#FF80AB</color>
