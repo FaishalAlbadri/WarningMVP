@@ -52,7 +52,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
         SponsorRepositoryInject.provideToSponsorRepository(this));
     list_data = new ArrayList<>();
     sponsorAdapter = new SponsorAdapter(list_data, this);
-    recyclerviewActivitySponsor.setLayoutManager(new GridLayoutManager(this, 2));
+    recyclerviewActivitySponsor.setLayoutManager(new GridLayoutManager(this, 3));
     recyclerviewActivitySponsor.setAdapter(sponsorAdapter);
   }
 

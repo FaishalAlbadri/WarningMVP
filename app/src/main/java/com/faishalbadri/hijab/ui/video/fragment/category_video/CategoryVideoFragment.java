@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.widget.GridItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   RecyclerView recyclerviewFragmentCategoryVideo;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private CategoryVideoPresenter categoryVideoPresenter;
   private CategoryVideoAdapter categoryVideoAdapter;
   private ArrayList<CategoriesBean> resultItem;
@@ -69,18 +72,25 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     resultItem.clear();
     resultItem.addAll(category);
     categoryVideoAdapter.notifyDataSetChanged();
-    recyclerviewFragmentCategoryVideo.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentCategoryVideo, layoutLoading);
   }
 
   @Override
   public void onErrorCategoryVideo(String msg) {
-    recyclerviewFragmentCategoryVideo.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    categoryVideoPresenter.getDataCategoryVideo();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      categoryVideoPresenter.getDataCategoryVideo();
+    }
   }
 }

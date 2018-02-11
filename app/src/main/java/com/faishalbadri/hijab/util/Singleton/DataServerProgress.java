@@ -34,7 +34,7 @@ public class DataServerProgress {
 
   public void onErrorData(RelativeLayout noInternet, RelativeLayout loading) {
     count++;
-    if (count < 5) {
+    if (count < 2) {
       status = "error";
     } else {
       count = 0;

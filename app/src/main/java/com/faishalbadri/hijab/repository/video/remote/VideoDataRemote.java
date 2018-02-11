@@ -40,7 +40,7 @@ public class VideoDataRemote implements VideoDataResource {
           Log.i("pagevideo", String.valueOf(PAGE));
           Log.i("response video", response);
           try {
-            if (pojoVideo.getVideos() == null) {
+            if (pojoVideo.getVideos().toString().equals("[]")) {
               videoGetCallBack.onErrorVideo("Data Null");
             } else {
               videoGetCallBack.onSuccessVideo(pojoVideo.getVideos(), "Ok");

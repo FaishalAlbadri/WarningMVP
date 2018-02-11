@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,8 @@ public class VideoFragment extends Fragment implements VideoView {
   SwipeRefreshLayout refreshFragmentVideo;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private VideoPresenter videoPresenter;
   private VideoAdapter videoAdapter;
   private ArrayList<VideosBean> resultItem;
@@ -84,32 +86,37 @@ public class VideoFragment extends Fragment implements VideoView {
 
   @Override
   public void onSuccesVideo(List<VideosBean> video, String msg) {
-    Log.i("succes", "succes");
     resultItem.addAll(video);
     LoadingStatus.getInstance().setStatus(null);
     videoAdapter.notifyDataSetChanged();
-    refreshFragmentVideo.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentVideo, layoutLoading);
   }
 
   @Override
   public void onErrorVideo(String msg) {
-    Log.i("msg", msg);
     if (msg.equals("Data Null")) {
       LoadingStatus.getInstance().setStatus("error");
       videoAdapter.notifyDataSetChanged();
     } else {
-      refreshFragmentVideo.setVisibility(View.GONE);
-      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+      whenError();
     }
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    videoPresenter.getDataVideo(PAGE);
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
 
   public void getDataVideo() {
     videoPresenter.getDataVideo(PAGE++);
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      videoPresenter.getDataVideo(PAGE);
+    }
   }
 }

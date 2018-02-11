@@ -113,6 +113,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
         } else {
           viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
           viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+          viewHolderLoading.textviewThanksItemLoading.setVisibility(View.GONE);
         }
         viewHolderLoading.buttonLoadData.setOnClickListener(v -> {
           viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
