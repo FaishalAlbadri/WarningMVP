@@ -11,7 +11,6 @@ public class BacaSebelumMengerjakan {
       ke branch develop.
 
      Planning :
-     1. revamp ui & ux.. if needed
      2. change volley to retrofit (faishal) (Pending.. next time)
      3. forget password(faishal) **
      4. must using paggination on recyclerview (faishal & fikri) (this week) **
