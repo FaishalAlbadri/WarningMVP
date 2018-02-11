@@ -3,7 +3,7 @@ package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
+import com.faishalbadri.hijab.util.widget.GridItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,8 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
     categoryVideoPresenter.onAttachView(this);
     resultItem = new ArrayList<>();
     categoryVideoAdapter = new CategoryVideoAdapter(getActivity(), resultItem);
-    recyclerviewFragmentCategoryVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
+    recyclerviewFragmentCategoryVideo.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+    recyclerviewFragmentCategoryVideo.addItemDecoration(new GridItemDecoration(4, 4, true));
     recyclerviewFragmentCategoryVideo.setAdapter(categoryVideoAdapter);
   }
 

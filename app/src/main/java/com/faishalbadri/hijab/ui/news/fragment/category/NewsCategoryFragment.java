@@ -3,7 +3,7 @@ package com.faishalbadri.hijab.ui.news.fragment.category;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
+import com.faishalbadri.hijab.util.widget.GridItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +65,8 @@ public class NewsCategoryFragment extends Fragment implements
         CategoryRepositoryInject.provideToCategoryInject(getActivity()));
     list_data = new ArrayList<>();
     newsCategoryAdapter = new NewsCategoryAdapter(getActivity(), list_data);
-    LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-    llm.setOrientation(LinearLayoutManager.VERTICAL);
-    recyclerviewFragmentNewsCategory.setLayoutManager(llm);
+    recyclerviewFragmentNewsCategory.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+    recyclerviewFragmentNewsCategory.addItemDecoration(new GridItemDecoration(4, 4, true));
     recyclerviewFragmentNewsCategory.setAdapter(newsCategoryAdapter);
   }
 

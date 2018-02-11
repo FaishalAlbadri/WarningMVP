@@ -47,7 +47,7 @@ public class NewsFragment extends Fragment implements newsView {
   SwipeRefreshLayout refreshFragmentNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
-  private int PAGE = 2;
+  private int PAGE = 1;
 
   public NewsFragment() {
     // Required empty public constructor
@@ -67,7 +67,7 @@ public class NewsFragment extends Fragment implements newsView {
     PAGE++;
     setView();
     newsPresenter.onAttachView(this);
-    newsPresenter.getDataNews(2);
+    newsPresenter.getDataNews(1);
     newsPresenter.getDataSlider();
 
     refreshFragmentNews.setOnRefreshListener(() -> {
@@ -75,8 +75,7 @@ public class NewsFragment extends Fragment implements newsView {
       PAGE = 1;
       PAGE++;
       this.list_data.clear();
-      newsPresenter.getDataNews(2);
-      newsPresenter.getDataSlider();
+      newsPresenter.getDataNews(1);
     });
     return view;
   }
@@ -145,7 +144,7 @@ public class NewsFragment extends Fragment implements newsView {
       sliderFragmentNews.setPresetTransformer(Transformer.Default);
       sliderFragmentNews.setPresetIndicator(PresetIndicators.Center_Bottom);
       sliderFragmentNews.setCustomAnimation(new ChildAnimationExample());
-      sliderFragmentNews.setDuration(2000);
+      sliderFragmentNews.setDuration(5000);
       sliderFragmentNews.addOnPageChangeListener(getActivity());
     }
     refreshFragmentNews.setVisibility(View.VISIBLE);
