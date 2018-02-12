@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventContract.eventView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,8 @@ public class EventFragment extends Fragment implements eventView {
   SwipeRefreshLayout refreshFragmentEvent;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private int PAGE = 1;
 
   public EventFragment() {
@@ -90,6 +93,7 @@ public class EventFragment extends Fragment implements eventView {
     eventAdapter.notifyDataSetChanged();
     refreshFragmentEvent.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentEvent, layoutLoading);
   }
 
   @Override

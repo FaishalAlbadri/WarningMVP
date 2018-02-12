@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,8 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   SwipeRefreshLayout refreshNewsByCategory;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
 
   @Override
@@ -78,6 +81,7 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
     newsByCategoryAdapter.notifyDataSetChanged();
     refreshNewsByCategory.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityNewsByCategory, layoutLoading);
   }
 
   @Override

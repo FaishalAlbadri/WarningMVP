@@ -19,6 +19,7 @@ import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
 import com.faishalbadri.hijab.di.VotingRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,8 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   SwipeRefreshLayout refreshVoting;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private VotingPresenter votingPresenter;
   private ArrayList<VotingBean> list_data;
   private VotingAdapter votingAdapter;
@@ -78,6 +81,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     votingAdapter.notifyDataSetChanged();
     refreshVoting.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityVoting, layoutLoading);
   }
 
   @Override

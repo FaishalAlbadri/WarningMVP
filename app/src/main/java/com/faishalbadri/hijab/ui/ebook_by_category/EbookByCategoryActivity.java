@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
 import com.faishalbadri.hijab.di.EbookByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryContract.ebookByCategoryView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,8 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   SwipeRefreshLayout refreshEbookByCategory;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     adapter.notifyDataSetChanged();
     layoutNoInternetAcces.setVisibility(View.GONE);
     refreshEbookByCategory.setVisibility(View.VISIBLE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityEbookByCategory, layoutLoading);
   }
 
   @Override
