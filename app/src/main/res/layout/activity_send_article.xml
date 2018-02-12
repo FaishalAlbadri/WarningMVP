@@ -4,23 +4,100 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/background_main_transparent"
   tools:context="com.faishalbadri.hijab.ui.send_article.SendArticleActivity">
 
   <include
     android:id="@+id/toolbar_activity_send_article"
-    layout="@layout/general_toolbar_with_send_button"/>
+    layout="@layout/general_toolbar_with_back_button"/>
 
-  <EditText
-    android:id="@+id/edittext_send_article"
-    android:layout_width="@dimen/match_parent_size"
-    android:layout_height="@dimen/match_parent_size"
-    android:layout_margin="@dimen/margin_widget"
-    android:background="@android:color/transparent"
-    android:gravity="top"
-    android:hint="@string/text_instruction_type"
-    app:layout_constraintBottom_toBottomOf="parent"
+  <ImageView
+    android:id="@+id/imageview_send_article"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_story"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_send_article"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_send_article"/>
+
+  <TextView
+    android:id="@+id/textview_send_article"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:text="@string/caption_send_article"
+    android:textColor="@color/colorPrimary"
+    android:textSize="20sp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageview_send_article"
     />
+
+  <android.support.v7.widget.CardView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="64dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp"
+    android:background="@color/color_white_ff"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textview_send_article">
+
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <TextView
+        android:id="@+id/textview_file_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+      <Button
+        android:id="@+id/button_choose_send_article"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/background_custom_border_white_with_primarycolor_bold"
+        android:text="@string/caption_choose_file"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_file_name"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.CardView>
+
+  <Button
+    android:id="@+id/button_send_article"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/fab_margin"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/background_custom_border_layout_full_primary_color"
+    android:text="@string/text_send"
+    android:textAllCaps="false"
+    android:textColor="@color/color_white_ff"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"/>
+
+
 </android.support.constraint.ConstraintLayout>

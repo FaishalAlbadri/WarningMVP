@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,12 +20,14 @@ public class KritikSaranActivity extends AppCompatActivity {
 
   private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
   private static final String SUBJECT_EMAIL = "Saran";
-  @BindView(R.id.textview_general_toolbar_with_button)
-  TextView textviewGeneralToolbarWithButton;
-  @BindView(R.id.button_send_general_toolbar_with_button)
-  ImageView buttonSendGeneralToolbarWithButton;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBack;
+  @BindView(R.id.textview_general_toolbar_with_back_button)
+  TextView titleText;
   @BindView(R.id.edittext_kritik_saran)
   EditText edittextKritikSaran;
+  @BindView(R.id.button_send_feedback)
+  Button buttonSendFeedback;
   private String edittextValue;
 
   @Override
@@ -33,11 +36,23 @@ public class KritikSaranActivity extends AppCompatActivity {
     setContentView(R.layout.activity_kritik_saran);
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
-    textviewGeneralToolbarWithButton.setText(R.string.text_other_kritik_saran);
+    titleText.setText(R.string.text_other_kritik_saran);
   }
 
-  @OnClick(R.id.button_send_general_toolbar_with_button)
-  public void onButtonSendGeneralToolbarWithButtonClicked() {
+  @Override
+  public void onBackPressed() {
+    startActivity(
+        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
+    finish();
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_with_back_button)
+  public void onButtonBackClicked() {
+    onBackPressed();
+  }
+
+  @OnClick(R.id.button_send_feedback)
+  public void onButtonSendFeedbackClicked() {
     if (edittextKritikSaran.getText().toString().equals("")) {
       Toast.makeText(this, "Please input data", Toast.LENGTH_SHORT).show();
     } else {
@@ -50,12 +65,5 @@ public class KritikSaranActivity extends AppCompatActivity {
       send.setData(uri);
       startActivity(Intent.createChooser(send, "Send Email..."));
     }
-  }
-
-  @Override
-  public void onBackPressed() {
-    startActivity(
-        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
-    finish();
   }
 }
