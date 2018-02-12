@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class EventFragment extends Fragment implements eventView {
     // Inflate the layout for this fragment
     View v = inflater.inflate(R.layout.fragment_event, container, false);
     ButterKnife.bind(this, v);
+    PAGE++;
     setView();
     eventPresenter.onAttachView(this);
     eventPresenter.getDataEvent(1);
@@ -106,6 +108,7 @@ public class EventFragment extends Fragment implements eventView {
 
   public void getData() {
     eventPresenter.getDataEvent(PAGE++);
+    Log.i("page", String.valueOf(PAGE));
   }
 
   @OnClick(R.id.layout_no_internet_acces)
