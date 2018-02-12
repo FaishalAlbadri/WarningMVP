@@ -54,6 +54,7 @@ dependencies {
     implementation files('lib/activation.jar')
     implementation files('lib/additionnal.jar')
     implementation files('lib/mail.jar')
-    implementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+    implementation files('lib/androidsvg-1.2.2-beta-1.jar')
 }
 apply plugin: 'com.google.gms.google-services'

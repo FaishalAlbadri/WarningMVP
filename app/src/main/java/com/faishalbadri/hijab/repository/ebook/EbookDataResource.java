@@ -16,8 +16,6 @@ public interface EbookDataResource {
 
     void onSuccessEbook(List<PojoEbookWithCategory.DataBean> data, String msg);
 
-    void onNullEbook(String msg);
-
     void onErrorEbook(String msg);
 
   }

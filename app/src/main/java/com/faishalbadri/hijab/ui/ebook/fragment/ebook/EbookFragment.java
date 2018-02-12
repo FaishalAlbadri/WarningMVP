@@ -14,9 +14,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory;
+import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,13 @@ public class EbookFragment extends Fragment implements EbookView {
   RecyclerView recyclerviewActivityEbook;
   EbookPresenter ebookPresenter;
   EbookAdapter ebookAdapter;
-  ArrayList<PojoEbookWithCategory.DataBean> resultItem;
+  ArrayList<DataBean> resultItem;
   @BindView(R.id.refresh_fragment_ebook)
   SwipeRefreshLayout refreshFragmentEbook;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   public EbookFragment() {
     // Required empty public constructor
@@ -76,26 +79,30 @@ public class EbookFragment extends Fragment implements EbookView {
   }
 
   @Override
-  public void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg) {
+  public void onSuccessEbook(List<DataBean> ebook, String msg) {
     resultItem.clear();
     resultItem.addAll(ebook);
     ebookAdapter.notifyDataSetChanged();
-    refreshFragmentEbook.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
-  }
-
-  @Override
-  public void onNullEbook(String msg) {
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentEbook, layoutLoading);
   }
 
   @Override
   public void onErrorEbook(String msg) {
-    refreshFragmentEbook.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    ebookPresenter.getData();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      ebookPresenter.getData();
+    }
+  }
+
 }

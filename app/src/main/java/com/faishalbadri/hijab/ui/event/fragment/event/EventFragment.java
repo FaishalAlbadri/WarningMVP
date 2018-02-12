@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventContract.eventView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,8 @@ public class EventFragment extends Fragment implements eventView {
   SwipeRefreshLayout refreshFragmentEvent;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private int PAGE = 1;
 
   public EventFragment() {
@@ -88,8 +91,7 @@ public class EventFragment extends Fragment implements eventView {
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
     eventAdapter.notifyDataSetChanged();
-    refreshFragmentEvent.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentEvent, layoutLoading);
   }
 
   @Override
@@ -98,8 +100,7 @@ public class EventFragment extends Fragment implements eventView {
       LoadingStatus.getInstance().setStatus("error");
       eventAdapter.notifyDataSetChanged();
     } else {
-      refreshFragmentEvent.setVisibility(View.GONE);
-      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+      whenError();
     }
   }
 
@@ -109,6 +110,16 @@ public class EventFragment extends Fragment implements eventView {
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    eventPresenter.getDataEvent(PAGE);
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      eventPresenter.getDataEvent(PAGE);
+    }
+  }
+
 }

@@ -93,7 +93,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
         ((Activity) context).finish();
       } else if (dataOtherFragment.getTitle().equalsIgnoreCase(about)) {
         context.startActivity(new Intent(context, AboutScrollingActivity.class));
-//        ((Activity) context).finish();
+        ((Activity) context).finish();
       } else if (dataOtherFragment.getTitle().equalsIgnoreCase(contactUs)) {
         context.startActivity(new Intent(context, ContactUsActivity.class));
       }
