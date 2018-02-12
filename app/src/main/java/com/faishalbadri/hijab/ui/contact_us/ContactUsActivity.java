@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.contact_us;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
@@ -26,7 +27,9 @@ public class ContactUsActivity extends AppCompatActivity {
   List<ContactUsData> contactUsData;
   ContactUsAdapter aboutAdapter;
   private int image[];
+  private int imageBottom[];
   private String caption[];
+  private String captionBottom[];
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,13 @@ public class ContactUsActivity extends AppCompatActivity {
   private void setString() {
     image = new int[]{
         R.drawable.text_pink_fame_white, R.drawable.ic_collaborate, R.drawable.ic_donations,
-        R.drawable.ic_story, R.drawable.ic_promotion
+        R.drawable.ic_story, R.drawable.ic_promotion,
     };
 
     caption = new String[]{
         getString(R.string.caption_pinkfame_contact_us), getString(R.string.caption_one_contact_us),
         getString(R.string.caption_two_contact_us), getString(R.string.caption_three_contact_us),
-        getString(R.string.caption_four_contact_us), getString(R.string.caption_five_contact_us)
+        getString(R.string.caption_four_contact_us), getString(R.string.caption_five_contact_us),
     };
     contactUsData.add(new ContactUsData(caption[0], image[0]));
     contactUsData.add(new ContactUsData(caption[1], image[1]));
@@ -62,6 +65,7 @@ public class ContactUsActivity extends AppCompatActivity {
     aboutAdapter = new ContactUsAdapter(this, contactUsData);
     recyclerviewContanctUs.setLayoutManager(new LinearLayoutManager(this));
     recyclerviewContanctUs.setAdapter(aboutAdapter);
+    recyclerviewContanctUs.setNestedScrollingEnabled(false);
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)

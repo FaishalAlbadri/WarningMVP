@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
@@ -8,53 +8,115 @@
   android:background="@color/colorPrimary"
   tools:context="com.faishalbadri.hijab.ui.contact_us.ContactUsActivity">
 
-  <include
-    android:id="@+id/toolbar_contact_activity"
-    layout="@layout/general_toolbar_with_back_button"/>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-  <!--<ImageView-->
-    <!--android:id="@+id/imageview_contact_us"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="120dp"-->
-    <!--android:layout_marginTop="@dimen/fab_margin"-->
-    <!--android:layout_marginLeft="@dimen/fab_margin"-->
-    <!--android:src="@drawable/text_pink_fame_white"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="@+id/guideline_center_vertical_contact_us"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/toolbar_contact_activity"-->
-    <!--/>-->
+    <include
+      android:id="@+id/toolbar_contact_activity"
+      layout="@layout/general_toolbar_with_back_button"/>
 
-  <!--<android.support.constraint.Guideline-->
-    <!--android:id="@+id/guideline_center_vertical_contact_us"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintGuide_percent="0.5"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--/>-->
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/recyclerview_contanct_us"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/fab_margin"
+      android:layout_marginRight="@dimen/fab_margin"
+      app:layout_constraintBottom_toTopOf="@+id/linearlayout_contact_us"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/toolbar_contact_activity"
+      />
 
-  <!--<TextView-->
-    <!--android:id="@+id/textview_contact_us"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="@dimen/fab_margin"-->
-    <!--android:text="@string/caption_pinkfame_contact_us"-->
-    <!--android:textColor="@color/color_white_ff"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/imageview_contact_us"/>-->
+    <LinearLayout
+      android:id="@+id/linearlayout_contact_us"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="25dp"
+      android:layout_marginLeft="@dimen/fab_margin"
+      android:layout_marginRight="@dimen/fab_margin"
+      android:orientation="horizontal"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/recyclerview_contanct_us">
 
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_contanct_us"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginLeft="@dimen/fab_margin"
-    android:layout_marginRight="@dimen/fab_margin"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_contact_activity"
-    />
+      <LinearLayout
+        android:id="@+id/linear_below1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/fab_margin"
+        android:background="@color/color_white_ff"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_web"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="@string/caption_web_contact_us"
+          android:textAlignment="center"
+          android:textSize="10sp"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/linear_below2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="8dp"
+        android:padding="@dimen/fab_margin"
+        android:background="@color/color_white_ff"
+        android:orientation="vertical">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_mail"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="@string/caption_mail_contact_us"
+          android:textAlignment="center"
+          android:textSize="10sp"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/linear_below3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="8dp"
+        android:padding="@dimen/fab_margin"
+        android:background="@color/color_white_ff"
+        android:orientation="vertical">
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_wa"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="@string/caption_wa_contact_us"
+          android:textAlignment="center"
+          android:textSize="10sp"/>
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
