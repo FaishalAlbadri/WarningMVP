@@ -14,8 +14,6 @@ public class VotingContract {
 
     void onSuccesVoting(List<VotingBean> list, String msg);
 
-    void onDataVotingNull(String msg);
-
     void onErrorVoting(String msg);
   }
 

@@ -38,7 +38,7 @@ public class CategoryDataRemote implements CategoryDataResource {
         response -> {
           final PojoCategory pojoCategory = new Gson().fromJson(response, PojoCategory.class);
           try {
-            if (pojoCategory == null) {
+            if (pojoCategory.getCategories().toString().equals("[]")) {
               categoryGetCallback.onErrorCategory("Error");
             } else {
               categoryGetCallback.onSuccesCategory(pojoCategory.getCategories(), "Ok");

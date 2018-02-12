@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.contact_us;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.ui.about.AboutAdapter;
+import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class ContactUsActivity extends AppCompatActivity {
   TextView textviewTitle;
   @BindView(R.id.recyclerview_contanct_us)
   RecyclerView recyclerviewContanctUs;
-  private int image[];
-  private String caption[];
   List<ContactUsData> contactUsData;
   ContactUsAdapter aboutAdapter;
+  private int image[];
+  private String caption[];
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,8 @@ public class ContactUsActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    super.onBackPressed();
+    startActivity(
+        new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
   }
 }

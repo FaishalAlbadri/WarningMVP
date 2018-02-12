@@ -14,8 +14,6 @@ public class EbookContract {
 
     void onSuccessEbook(List<PojoEbookWithCategory.DataBean> ebook, String msg);
 
-    void onNullEbook(String msg);
-
     void onErrorEbook(String msg);
 
   }

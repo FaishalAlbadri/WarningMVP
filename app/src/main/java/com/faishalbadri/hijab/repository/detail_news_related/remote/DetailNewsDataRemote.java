@@ -39,7 +39,7 @@ public class DetailNewsDataRemote implements DetailNewsDataResource {
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           try {
-            if (pojoNews == null) {
+            if (pojoNews.getNews().toString().equals("[]")) {
               detailNewsPopularGetCallback.onErrorDetailNewsPopular("Data Null");
             } else {
               detailNewsPopularGetCallback.onSuccesDetailNewsPopular(pojoNews.getNews(), "Succes");

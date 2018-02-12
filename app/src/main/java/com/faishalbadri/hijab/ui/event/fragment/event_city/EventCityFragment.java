@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
 import com.faishalbadri.hijab.di.CityEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityContract.eventCityView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class EventCityFragment extends Fragment implements eventCityView {
   EventCityAdapter eventCityAdapter;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   public EventCityFragment() {
     // Required empty public constructor
@@ -69,18 +72,26 @@ public class EventCityFragment extends Fragment implements eventCityView {
     list_data.clear();
     list_data.addAll(data);
     eventCityAdapter.notifyDataSetChanged();
-    recyclerviewFragmentEventCity.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentEventCity, layoutLoading);
   }
 
   @Override
   public void onErrorEventCity(String msg) {
-    recyclerviewFragmentEventCity.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    eventCityPresenter.getDataEventCity();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      eventCityPresenter.getDataEventCity();
+    }
+  }
+
 }

@@ -51,6 +51,8 @@ public class NewsFragment extends Fragment implements newsView {
   @BindView(R.id.layout_loading)
   RelativeLayout layoutLoading;
   private int PAGE = 1;
+  private int countSlider = 0;
+
 
   public NewsFragment() {
     // Required empty public constructor
@@ -103,9 +105,7 @@ public class NewsFragment extends Fragment implements newsView {
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
     newsAdapter.notifyDataSetChanged();
-    refreshFragmentNews.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentNews, layoutLoading);
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentNews, layoutLoading);
   }
 
   @Override
@@ -114,13 +114,13 @@ public class NewsFragment extends Fragment implements newsView {
       LoadingStatus.getInstance().setStatus("error");
       newsAdapter.notifyDataSetChanged();
     } else {
-      refreshFragmentNews.setVisibility(View.GONE);
-      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+      whenError();
     }
   }
 
   @Override
   public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
+    countSlider = 0;
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.put(dataSlider.get(a).getNews_title(),
@@ -157,18 +157,30 @@ public class NewsFragment extends Fragment implements newsView {
 
   @Override
   public void onErrorSlider(String msg) {
-    refreshFragmentNews.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    countSlider++;
+    if (countSlider < 2) {
+      newsPresenter.getDataSlider();
+    } else {
+      countSlider = 0;
+    }
   }
 
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    newsPresenter.getDataNews(PAGE);
-    newsPresenter.getDataSlider();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
 
   public void getData() {
     newsPresenter.getDataNews(PAGE++);
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      newsPresenter.getDataNews(PAGE);
+    }
   }
 }

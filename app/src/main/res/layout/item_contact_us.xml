@@ -33,6 +33,7 @@
     android:id="@+id/imageview_list_contact_us"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
+    android:padding="10dp"
     android:src="@drawable/ic_donations"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"

@@ -39,7 +39,7 @@ public class EventDataRemote implements EventDataResource {
           final PojoEvent pojoEvent = new Gson()
               .fromJson(response, PojoEvent.class);
           try {
-            if (pojoEvent == null) {
+            if (pojoEvent.getEvent().toString().equals("[]")) {
               eventGetCallback.onErrorEvent("Data Null");
             } else {
               eventGetCallback

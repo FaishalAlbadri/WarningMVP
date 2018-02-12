@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build.VERSION_CODES;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -52,7 +53,8 @@ public class ContactUsAdapter extends Adapter<ViewHolder> {
       holder.textviewSmallListContactUs.setVisibility(View.VISIBLE);
       holder.textviewListContactUs.setVisibility(View.GONE);
       holder.imageviewListContactUs.setVisibility(View.GONE);
-      holder.constraintItemContactUs.setBackgroundColor(context.getColor(R.color.colorPrimary));
+      holder.constraintItemContactUs.setBackgroundColor(ResourcesCompat.getColor(context
+          .getResources(), R.color.colorPrimary, null));
     } else if (datalist.getCaption().equalsIgnoreCase(end)) {
       holder.imageviewListContactUs.setVisibility(View.GONE);
       holder.textviewListContactUs.setText(datalist.getCaption());

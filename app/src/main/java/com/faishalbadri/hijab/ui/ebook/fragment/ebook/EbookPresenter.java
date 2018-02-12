@@ -37,11 +37,6 @@ public class EbookPresenter implements EbookContract.EbookPresenter {
       }
 
       @Override
-      public void onNullEbook(String msg) {
-        ebookView.onNullEbook(msg);
-      }
-
-      @Override
       public void onErrorEbook(String msg) {
         ebookView.onErrorEbook(msg);
       }

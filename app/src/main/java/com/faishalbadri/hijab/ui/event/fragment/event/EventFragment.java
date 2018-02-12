@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class EventFragment extends Fragment implements eventView {
     // Inflate the layout for this fragment
     View v = inflater.inflate(R.layout.fragment_event, container, false);
     ButterKnife.bind(this, v);
+    PAGE++;
     setView();
     eventPresenter.onAttachView(this);
     eventPresenter.getDataEvent(1);
@@ -91,9 +93,7 @@ public class EventFragment extends Fragment implements eventView {
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
     eventAdapter.notifyDataSetChanged();
-    refreshFragmentEvent.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentEvent, layoutLoading);
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentEvent, layoutLoading);
   }
 
   @Override
@@ -102,17 +102,27 @@ public class EventFragment extends Fragment implements eventView {
       LoadingStatus.getInstance().setStatus("error");
       eventAdapter.notifyDataSetChanged();
     } else {
-      refreshFragmentEvent.setVisibility(View.GONE);
-      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+      whenError();
     }
   }
 
   public void getData() {
     eventPresenter.getDataEvent(PAGE++);
+    Log.i("page", String.valueOf(PAGE));
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    eventPresenter.getDataEvent(PAGE);
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      eventPresenter.getDataEvent(PAGE);
+    }
+  }
+
 }

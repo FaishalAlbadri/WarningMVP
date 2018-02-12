@@ -14,7 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory;
 import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
@@ -84,23 +83,26 @@ public class EbookFragment extends Fragment implements EbookView {
     resultItem.clear();
     resultItem.addAll(ebook);
     ebookAdapter.notifyDataSetChanged();
-    refreshFragmentEbook.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityEbook, layoutLoading);
-  }
-
-  @Override
-  public void onNullEbook(String msg) {
+    DataServerProgress.getInstance().onSuccesData(refreshFragmentEbook, layoutLoading);
   }
 
   @Override
   public void onErrorEbook(String msg) {
-    refreshFragmentEbook.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onViewClicked() {
-    ebookPresenter.getData();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
   }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      ebookPresenter.getData();
+    }
+  }
+
 }
