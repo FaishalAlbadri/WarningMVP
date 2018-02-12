@@ -91,6 +91,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   public void onErrorEventByCity(String msg) {
     layoutNoInternetAcces.setVisibility(View.VISIBLE);
     refreshFragmentEventByCity.setVisibility(View.GONE);
+    layoutLoading.setVisibility(View.GONE);
   }
 
   @Override
