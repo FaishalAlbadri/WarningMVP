@@ -38,7 +38,7 @@ public class DetailVideoDataRemote implements DetailVideoDataResource {
         response -> {
           final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
           try {
-            if (pojoVideo == null) {
+            if (pojoVideo.getVideos().toString().equals("[]")) {
               detailVideoGetDataCallBack.onError("Error");
             } else {
               detailVideoGetDataCallBack.onSuccessDetailVideo(pojoVideo.getVideos(), "Ok");
