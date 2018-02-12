@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   SwipeRefreshLayout refreshVideoByCategory;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private VideoByCategoryPresenter videoByCategoryPresenter;
   private VideoByCategoryAdapter videoByCategoryAdapter;
   private ArrayList<VideosBean> resultItem;
@@ -83,6 +86,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
     videoByCategoryAdapter.notifyDataSetChanged();
     refreshVideoByCategory.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityVideoByCategory, layoutLoading);
   }
 
   @Override

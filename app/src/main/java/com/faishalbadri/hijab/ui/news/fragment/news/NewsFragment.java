@@ -20,6 +20,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import com.faishalbadri.hijab.util.widget.slider.ChildAnimationExample;
@@ -47,6 +48,8 @@ public class NewsFragment extends Fragment implements newsView {
   SwipeRefreshLayout refreshFragmentNews;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
   private int PAGE = 1;
 
   public NewsFragment() {
@@ -102,6 +105,7 @@ public class NewsFragment extends Fragment implements newsView {
     newsAdapter.notifyDataSetChanged();
     refreshFragmentNews.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentNews, layoutLoading);
   }
 
   @Override

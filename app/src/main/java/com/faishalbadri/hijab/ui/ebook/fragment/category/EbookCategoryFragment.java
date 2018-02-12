@@ -17,6 +17,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEbookCategory.EbookCategoriesBean;
 import com.faishalbadri.hijab.di.EbookCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.category.EbookCategoryContract.EbookCategoryView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
   ArrayList<EbookCategoriesBean> resultItem;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   public EbookCategoryFragment() {
     // Required empty public constructor
@@ -72,6 +75,7 @@ public class EbookCategoryFragment extends Fragment implements EbookCategoryView
     adapter.notifyDataSetChanged();
     recyclerviewFragmentCategoryEbook.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewFragmentCategoryEbook, layoutLoading);
   }
 
   @Override

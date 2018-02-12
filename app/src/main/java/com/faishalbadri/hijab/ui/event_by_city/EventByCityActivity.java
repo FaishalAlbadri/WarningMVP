@@ -16,6 +16,7 @@ import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoEvent.EventBean;
 import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityContract.EventByCityView;
+import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,8 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   SwipeRefreshLayout refreshFragmentEventByCity;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
+  @BindView(R.id.layout_loading)
+  RelativeLayout layoutLoading;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
     eventByCityAdapter.notifyDataSetChanged();
     layoutNoInternetAcces.setVisibility(View.GONE);
     refreshFragmentEventByCity.setVisibility(View.VISIBLE);
+    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityEventByCity, layoutLoading);
   }
 
   @Override
