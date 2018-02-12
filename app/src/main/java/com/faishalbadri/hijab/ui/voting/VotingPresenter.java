@@ -37,11 +37,6 @@ public class VotingPresenter implements VotingContract.votingPresenter {
       }
 
       @Override
-      public void onDataVotingNull(String msg) {
-        votingView.onDataVotingNull(msg);
-      }
-
-      @Override
       public void onErrorVoting(String msg) {
         votingView.onErrorVoting(msg);
       }

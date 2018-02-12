@@ -39,7 +39,7 @@ public class VotingDataRemote implements VotingDataResource {
           final PojoVoting pojoVoting = new Gson().fromJson(response, PojoVoting.class);
           try {
             if (pojoVoting == null) {
-              votingGetCallback.onDataVotingNull("Data Voting Null");
+              votingGetCallback.onErrorVoting("Data Voting Null");
             } else {
               votingGetCallback.onSuccesVoting(pojoVoting.getVoting(), "Succes");
             }

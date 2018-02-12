@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -79,20 +78,12 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     list_data.clear();
     list_data.addAll(list);
     votingAdapter.notifyDataSetChanged();
-    refreshVoting.setVisibility(View.VISIBLE);
-    layoutNoInternetAcces.setVisibility(View.GONE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityVoting, layoutLoading);
-  }
-
-  @Override
-  public void onDataVotingNull(String msg) {
-    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    DataServerProgress.getInstance().onSuccesData(refreshVoting, layoutLoading);
   }
 
   @Override
   public void onErrorVoting(String msg) {
-    refreshVoting.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    whenError();
   }
 
   @Override
@@ -108,6 +99,15 @@ public class VotingActivity extends AppCompatActivity implements votingView {
 
   @OnClick(R.id.layout_no_internet_acces)
   public void onLayoutNoInternetAccesClicked() {
-    votingPresenter.getDataVoting();
+    layoutLoading.setVisibility(View.VISIBLE);
+    layoutNoInternetAcces.setVisibility(View.GONE);
+    whenError();
+  }
+
+  private void whenError() {
+    DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    if (DataServerProgress.getInstance().getStatus().equals("error")) {
+      votingPresenter.getDataVoting();
+    }
   }
 }
