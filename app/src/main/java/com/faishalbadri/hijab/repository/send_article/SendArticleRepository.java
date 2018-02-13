@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by fikriimaduddin on 12/02/18.
  */
 
-public class SendArticleRepository implements SendArticleDataResource {
+public class SendArticleRepository implements SendArticleDataResource{
 
   private SendArticleDataResource sendArticleDataResource;
 
