@@ -44,12 +44,23 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     final CategoriesBean list_item = data.get(position);
+    setImage(holder.imageviewItem,
+        "categories_" + list_item.getCategory_name().toLowerCase().replace(" ", ""));
     holder.textviewItem.setText(list_item.getCategory_name());
     holder.constrainItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, NewsByCategoryActivity.class)
           .putExtra("category_id", list_item.getCategory_id())
           .putExtra("category_title", list_item.getCategory_name()));
     });
+  }
+
+  private void setImage(ImageView imageView, String image) {
+    int id = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
+    try {
+      imageView.setImageResource(id);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

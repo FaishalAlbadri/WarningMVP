@@ -13,7 +13,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,6 +22,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.ui.detail.read_ebook.ReadEbook;
+import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 
@@ -48,7 +48,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   TextView textviewReleaseDateDetailEbookScrolling;
   @BindView(R.id.button_read_ebook_detail_ebook)
   Button buttonReadEbookDetailEbook;
-  String title, image, description, link, publisher, time, writer;
   @BindView(R.id.scrollview_detail_ebook_content)
   NestedScrollView scrollviewDetailEbookContent;
   @BindView(R.id.app_bar)
@@ -59,6 +58,7 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   ImageView imageviewDetailEbookScrollingTop;
   @BindView(R.id.webview_desc_detail_ebook)
   WebView webviewDescDetailEbook;
+  private String title, image, description, link, publisher, time, writer, share = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     toolbar.setNavigationIcon(R.drawable.ic_back_white);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
-    buttonReadEbookDetailEbook.setOnClickListener(v -> actionClickButton());
   }
 
   private void setView() {
@@ -121,10 +120,6 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     });
   }
 
-  private void actionClickButton() {
-    startActivity(new Intent(getApplicationContext(), ReadEbook.class).putExtra("ebook", link));
-  }
-
   @Override
   public boolean onSupportNavigateUp() {
     onBackPressed();
@@ -132,7 +127,13 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
   }
 
   @OnClick(R.id.imageview_share_detail_ebook)
-  public void onViewClicked() {
-    Toast.makeText(this, "action share", Toast.LENGTH_SHORT).show();
+  public void onImageviewShareDetailEbookClicked() {
+    IntentUtil intentUtil = new IntentUtil(this);
+    intentUtil.IntentShare("", share);
+  }
+
+  @OnClick(R.id.button_read_ebook_detail_ebook)
+  public void onButtonReadEbookDetailEbookClicked() {
+    startActivity(new Intent(getApplicationContext(), ReadEbook.class).putExtra("ebook", link));
   }
 }

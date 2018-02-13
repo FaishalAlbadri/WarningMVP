@@ -43,9 +43,10 @@
 
       <LinearLayout
         android:id="@+id/linear_below1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"
         android:background="@color/color_white_ff"
         android:orientation="vertical">
@@ -56,7 +57,7 @@
           android:src="@drawable/ic_web"/>
 
         <TextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="8dp"
           android:text="@string/caption_web_contact_us"
@@ -67,10 +68,10 @@
 
       <LinearLayout
         android:id="@+id/linear_below2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="8dp"
+        android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"
         android:background="@color/color_white_ff"
         android:orientation="vertical">
@@ -81,7 +82,7 @@
           android:src="@drawable/ic_mail"/>
 
         <TextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="8dp"
           android:text="@string/caption_mail_contact_us"
@@ -92,10 +93,10 @@
 
       <LinearLayout
         android:id="@+id/linear_below3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="8dp"
+        android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"
         android:background="@color/color_white_ff"
         android:orientation="vertical">
@@ -106,7 +107,7 @@
           android:src="@drawable/ic_wa"/>
 
         <TextView
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="8dp"
           android:text="@string/caption_wa_contact_us"
