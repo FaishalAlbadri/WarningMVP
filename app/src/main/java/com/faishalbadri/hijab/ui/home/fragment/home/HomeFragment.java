@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment implements homeView {
         textSliderView
             .description(name)
             .image(image)
-            .setScaleType(ScaleType.CenterCrop)
+            .setScaleType(ScaleType.Fit)
             .setOnSliderClickListener(slider -> {
               Toast
                   .makeText(getActivity(), slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT)
