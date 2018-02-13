@@ -1,5 +1,6 @@
 package com.faishalbadri.hijab.ui.detail.ebook;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -21,6 +22,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.ui.detail.read_ebook.ReadEbook;
 import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 
@@ -69,6 +71,7 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
     toolbar.setNavigationIcon(R.drawable.ic_back_white);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
+    buttonReadEbookDetailEbook.setOnClickListener(v -> actionClickButton());
   }
 
   private void setView() {
@@ -116,6 +119,10 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
       }
     });
+  }
+
+  private void actionClickButton() {
+    startActivity(new Intent(getApplicationContext(), ReadEbook.class).putExtra("ebook", link));
   }
 
   @Override
