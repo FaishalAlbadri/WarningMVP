@@ -1,6 +1,5 @@
 package com.faishalbadri.hijab.util.helper;
 
-import android.support.test.espresso.core.deps.guava.base.Strings;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -281,11 +280,7 @@ public class StringHelper {
   public static boolean emptyValidation(final String message) {
     boolean isNotEmpty;
 
-    if (message.isEmpty()) {
-      isNotEmpty = false;
-    } else {
-      isNotEmpty = true;
-    }
+    isNotEmpty = !message.isEmpty();
 
     return isNotEmpty;
   }
@@ -311,42 +306,42 @@ public class StringHelper {
    * @param email the email string
    * @return the string masking
    */
-  public static String maskingEmailString(String email) {
-    String emailAccountChange;
-    String emailFullChange;
-
-    if (!email.equals("") && email != null) {
-      // split the email
-      String[] emailSpiting = email.split("@");
-
-      // initiate string buffer for manipulate string
-      StringBuilder emailAccount = new StringBuilder(emailSpiting[0]);
-
-      // email server ex:(gmail.com / yahoo.com)
-      String emailServer = emailSpiting[1];
-
-      int start = (int) Math.floor(emailAccount.length() / 2);
-      int end = emailAccount.length();
-
-      if (emailAccount.length() <= 1) {
-        emailAccountChange = emailAccount.replace(0, end, "*").toString();
-      } else if (emailAccount.length() > 10) {
-        // if length > 10 change from index 3
-        emailAccountChange = emailAccount.replace(3, end, Strings.repeat("*", (end - 3)))
-            .toString();
-      } else {
-        // if length > 0 change from middle to end
-        emailAccountChange = emailAccount.replace(start, end, Strings.repeat("*", start))
-            .toString();
-      }
-
-      emailFullChange = emailAccountChange + "@" + emailServer;
-    } else {
-      emailFullChange = "";
-    }
-
-    return emailFullChange;
-  }
+//  public static String maskingEmailString(String email) {
+//    String emailAccountChange;
+//    String emailFullChange;
+//
+//    if (!email.equals("") && email != null) {
+//      // split the email
+//      String[] emailSpiting = email.split("@");
+//
+//      // initiate string buffer for manipulate string
+//      StringBuilder emailAccount = new StringBuilder(emailSpiting[0]);
+//
+//      // email server ex:(gmail.com / yahoo.com)
+//      String emailServer = emailSpiting[1];
+//
+//      int start = (int) Math.floor(emailAccount.length() / 2);
+//      int end = emailAccount.length();
+//
+//      if (emailAccount.length() <= 1) {
+//        emailAccountChange = emailAccount.replace(0, end, "*").toString();
+//      } else if (emailAccount.length() > 10) {
+//        // if length > 10 change from index 3
+//        emailAccountChange = emailAccount.replace(3, end, Strings.repeat("*", (end - 3)))
+//            .toString();
+//      } else {
+//        // if length > 0 change from middle to end
+//        emailAccountChange = emailAccount.replace(start, end, Strings.repeat("*", start))
+//            .toString();
+//      }
+//
+//      emailFullChange = emailAccountChange + "@" + emailServer;
+//    } else {
+//      emailFullChange = "";
+//    }
+//
+//    return emailFullChange;
+//  }
 
   /**
    * Is not empty boolean.

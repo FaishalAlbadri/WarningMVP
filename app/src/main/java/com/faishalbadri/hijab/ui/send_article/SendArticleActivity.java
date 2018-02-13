@@ -17,7 +17,6 @@ import com.faishalbadri.hijab.di.SendArticleRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.util.ActivityUtil;
 import com.faishalbadri.hijab.util.UserUtil;
-import com.faishalbadri.hijab.util.helper.FilePath;
 
 public class SendArticleActivity extends AppCompatActivity implements
     SendArticleContract.uploadFileView {
@@ -86,7 +85,7 @@ public class SendArticleActivity extends AppCompatActivity implements
           && data.getData() != null) {
         filePathSendArticle = data.getData();
       }
-      textviewFileName.setText(FilePath.getPath(this, filePathSendArticle));
+//      textviewFileName.setText(FilePath.getPath(this, filePathSendArticle));
       textviewFileName.setVisibility(View.VISIBLE);
     } catch (Exception e) {
 
@@ -95,7 +94,7 @@ public class SendArticleActivity extends AppCompatActivity implements
 
   @Override
   public void onSuccessUploadFile(ActivityUtil activityUtil) {
-    sendArticlePresenter.getUploadFile(FilePath.getPath(this, filePathSendArticle));
+//    sendArticlePresenter.getUploadFile(FilePath.getPath(this, filePathSendArticle));
   }
 
   @Override

@@ -69,7 +69,8 @@ public class EbookAdapterItem extends Adapter<ViewHolder> {
               .putExtra("ebook_image", "assets/ebook_images/" + list_data.get(position)
                   .getEbook_image())
               .putExtra("ebook_description", list_data.get(position).getEbook_description())
-              .putExtra("ebook_url", list_data.get(position).getEbook_link())
+              .putExtra("ebook_url", "assets/ebook_files/" + list_data.get(position)
+                  .getEbook_link())
               .putExtra("ebook_publisher", list_data.get(position).getEbook_publisher())
               .putExtra("ebook_writer", list_data.get(position).getEbook_writer())
               .putExtra("ebook_time", list_data.get(position).getEbook_released()));
