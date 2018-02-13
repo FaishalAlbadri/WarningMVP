@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,20 +13,30 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.di.SendArticleRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
+import com.faishalbadri.hijab.util.ActivityUtil;
 import com.faishalbadri.hijab.util.UserUtil;
+import com.faishalbadri.hijab.util.helper.FilePath;
 
-public class SendArticleActivity extends AppCompatActivity {
+public class SendArticleActivity extends AppCompatActivity implements
+    SendArticleContract.uploadFileView {
 
-  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
-  private static final String SUBJECT_EMAIL = "This is my article";
-  @BindView(R.id.textview_general_toolbar_with_button)
-  TextView textviewGeneralToolbarWithButton;
-  @BindView(R.id.button_send_general_toolbar_with_button)
-  ImageView buttonSendGeneralToolbarWithButton;
-  @BindView(R.id.edittext_send_article)
-  EditText edittextSendArticle;
-  private String edittextValue;
+  @BindView(R.id.button_back_general_toolbar_with_back_button)
+  ImageView buttonBack;
+  @BindView(R.id.textview_general_toolbar_with_back_button)
+  TextView textTitle;
+  @BindView(R.id.textview_file_name)
+  TextView textviewFileName;
+  @BindView(R.id.button_choose_send_article)
+  Button buttonChooseSendArticle;
+  @BindView(R.id.button_send_article)
+  Button buttonSendArticle;
+  SendArticlePresenter sendArticlePresenter;
+  //  private Bitmap bitmapAccount;
+  ActivityUtil activityUtil;
+  private int PICK_IMAGE_REQUEST = 1;
+  private Uri filePathSendArticle;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +44,16 @@ public class SendArticleActivity extends AppCompatActivity {
     setContentView(R.layout.activity_send_article);
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
-    textviewGeneralToolbarWithButton.setText(R.string.text_send_article);
+    setView();
   }
 
-  @OnClick(R.id.button_send_general_toolbar_with_button)
-  public void onViewClicked() {
-    if (edittextSendArticle.getText().toString().equals("")) {
-      Toast.makeText(this, "Please input data", Toast.LENGTH_SHORT).show();
-    } else {
-      edittextValue = edittextSendArticle.getText().toString();
-      Intent send = new Intent(Intent.ACTION_SENDTO);
-      String uriText = "mailto:" + Uri.encode(EMAIL_DEVELOPER) +
-          "?subject=" + Uri.encode(SUBJECT_EMAIL) +
-          "&body=" + Uri.encode(edittextValue);
-      Uri uri = Uri.parse(uriText);
-      send.setData(uri);
-      startActivity(Intent.createChooser(send, "Send Email..."));
-    }
+  private void setView() {
+    sendArticlePresenter = new SendArticlePresenter(
+        SendArticleRepositoryInject.provideToSendArticleRepository(this));
+    sendArticlePresenter.onAttachView(this);
+    textTitle.setText(R.string.text_send_article);
+    buttonBack.setOnClickListener(v -> onBackPressed());
+    activityUtil = ActivityUtil.getInstance(this);
   }
 
   @Override
@@ -57,5 +61,45 @@ public class SendArticleActivity extends AppCompatActivity {
     startActivity(
         new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
+  }
+
+  @OnClick(R.id.button_choose_send_article)
+  public void onButtonChooseSendArticleClicked() {
+    Intent intent = new Intent();
+    intent.setType("application/pdf");
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+  }
+
+  @OnClick(R.id.button_send_article)
+  public void onButtonSendArticleClicked() {
+    onSuccessUploadFile(activityUtil);
+    Toast.makeText(this, "Your article has been submitted", Toast.LENGTH_SHORT).show();
+    onBackPressed();
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    try {
+      if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null
+          && data.getData() != null) {
+        filePathSendArticle = data.getData();
+      }
+      textviewFileName.setText(FilePath.getPath(this, filePathSendArticle));
+      textviewFileName.setVisibility(View.VISIBLE);
+    } catch (Exception e) {
+
+    }
+  }
+
+  @Override
+  public void onSuccessUploadFile(ActivityUtil activityUtil) {
+    sendArticlePresenter.getUploadFile(FilePath.getPath(this, filePathSendArticle));
+  }
+
+  @Override
+  public void onErrorUploadFile(String msg) {
+
   }
 }

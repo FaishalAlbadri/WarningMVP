@@ -59,6 +59,7 @@
   <string name="text_other_about">About</string>
   <string name="text_other_contact_us">Contact Us</string>
   <string name="text_instruction_type">Type in here</string>
+  <string name="text_instruction_type_feedback">Your feedback here...</string>
   <string name="text_next">Next</string>
   <string name="text_send_verification_code">Send Verification Code</string>
   <string name="text_skip">Skip</string>
@@ -187,8 +188,14 @@
   <string name="caption_three_contact_us">PINK FAME ingin mendengarkan kisah - kisah inspiratif kamu, jangan sungkan hubungi redaksi PINK FAME juka ingin diliput berbagu kisah menarik kamu.</string>
   <string name="caption_four_contact_us">PINK FAME akan membantu mempromosikan produk atau jasa yang ingin diiklankan baik berupa review berita maupun vided</string>
   <string name="caption_five_contact_us">PINK FAME membuka kesempatan berkerjasama dalam hal apapun yang membawa kebaikan dan bermanfaat. Dengan senang hati PINK FAME membuka silaturrahmi, hubungi kami di: </string>
+  <string name="caption_web_contact_us">www.pinkfame.com</string>
+  <string name="caption_mail_contact_us">pinkfame@gmail.com</string>
+  <string name="caption_wa_contact_us">+6281218053852</string>
   <string name="caption_unvote">Unvote</string>
   <string name="caption_share">Share</string>
+  <string name="caption_send_article">Send your Article, be famous.</string>
+  <string name="caption_choose_file">Choose File</string>
+  <string name="caption_text_kritik_sara">Help us improove with feedback</string>
 
 </resources>
 
