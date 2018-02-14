@@ -16,7 +16,7 @@ public class VotingRepository implements VotingDataResource {
   }
 
   @Override
-  public void getVotingResult(@NonNull VotingGetCallback votingGetCallback) {
-    votingDataResource.getVotingResult(votingGetCallback);
+  public void getVotingResult(int PAGE, @NonNull VotingGetCallback votingGetCallback) {
+    votingDataResource.getVotingResult(PAGE, votingGetCallback);
   }
 }

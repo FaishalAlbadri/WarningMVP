@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class VotingDataRemote implements VotingDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "voting";
+  private static final String URL = Server.BASE_URL_REVAMP + "voting?page=";
   private Context context;
   private RequestQueue requestQueue;
 
@@ -33,8 +33,8 @@ public class VotingDataRemote implements VotingDataResource {
   }
 
   @Override
-  public void getVotingResult(@NonNull VotingGetCallback votingGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
+  public void getVotingResult(int PAGE, @NonNull VotingGetCallback votingGetCallback) {
+    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoVoting pojoVoting = new Gson().fromJson(response, PojoVoting.class);
           try {

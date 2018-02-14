@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface VotingDataResource {
 
-  void getVotingResult(@NonNull VotingDataResource.VotingGetCallback votingGetCallback);
+  void getVotingResult(int PAGE, @NonNull VotingDataResource.VotingGetCallback votingGetCallback);
 
   interface VotingGetCallback {
 

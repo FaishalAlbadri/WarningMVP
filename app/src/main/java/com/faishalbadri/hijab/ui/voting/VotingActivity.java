@@ -48,10 +48,10 @@ public class VotingActivity extends AppCompatActivity implements votingView {
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
-    votingPresenter.getDataVoting();
+    votingPresenter.getDataVoting(1);
     refreshVoting.setOnRefreshListener(() -> {
       refreshVoting.setRefreshing(false);
-      votingPresenter.getDataVoting();
+      votingPresenter.getDataVoting(1);
     });
   }
 
@@ -107,7 +107,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   private void whenError() {
     DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
     if (DataServerProgress.getInstance().getStatus().equals("error")) {
-      votingPresenter.getDataVoting();
+      votingPresenter.getDataVoting(1);
     }
   }
 }

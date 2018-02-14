@@ -19,7 +19,7 @@ public class VotingContract {
 
   public interface votingPresenter extends BasePresenter<votingView> {
 
-    void getDataVoting();
+    void getDataVoting(int PAGE);
   }
 
 }

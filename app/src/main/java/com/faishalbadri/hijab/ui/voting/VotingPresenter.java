@@ -29,8 +29,8 @@ public class VotingPresenter implements VotingContract.votingPresenter {
   }
 
   @Override
-  public void getDataVoting() {
-    votingRepository.getVotingResult(new VotingGetCallback() {
+  public void getDataVoting(int PAGE) {
+    votingRepository.getVotingResult(PAGE, new VotingGetCallback() {
       @Override
       public void onSuccesVoting(List<VotingBean> list, String msg) {
         votingView.onSuccesVoting(list, msg);
