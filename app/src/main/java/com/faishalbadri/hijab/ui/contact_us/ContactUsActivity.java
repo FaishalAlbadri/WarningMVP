@@ -1,13 +1,15 @@
 package com.faishalbadri.hijab.ui.contact_us;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,10 +28,14 @@ public class ContactUsActivity extends AppCompatActivity {
   RecyclerView recyclerviewContanctUs;
   List<ContactUsData> contactUsData;
   ContactUsAdapter aboutAdapter;
+  @BindView(R.id.layout_web)
+  LinearLayout layoutWeb;
+  @BindView(R.id.layout_email)
+  LinearLayout layoutEmail;
+  @BindView(R.id.layout_whatsapp)
+  LinearLayout layoutWhatsapp;
   private int image[];
-  private int imageBottom[];
   private String caption[];
-  private String captionBottom[];
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +84,35 @@ public class ContactUsActivity extends AppCompatActivity {
     startActivity(
         new Intent(getApplicationContext(), HomeActivity.class).putExtra("session_home", "1"));
     finish();
+  }
+
+  @OnClick(R.id.layout_web)
+  public void onLayoutWebClicked() {
+    setClipboard("http://www.pinkfame.com");
+  }
+
+  @OnClick(R.id.layout_email)
+  public void onLayoutEmailClicked() {
+    setClipboard("pinkfame@gmail.com");
+  }
+
+  @OnClick(R.id.layout_whatsapp)
+  public void onLayoutWhatsappClicked() {
+    setClipboard("+6281218053852");
+  }
+
+  private void setClipboard(String text) {
+    Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+    if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+      android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(
+          Context.CLIPBOARD_SERVICE);
+      clipboard.setText(text);
+    } else {
+      android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(
+          Context.CLIPBOARD_SERVICE);
+      android.content.ClipData clip = android.content.ClipData
+          .newPlainText("Text copied to clipboard", text);
+      clipboard.setPrimaryClip(clip);
+    }
   }
 }

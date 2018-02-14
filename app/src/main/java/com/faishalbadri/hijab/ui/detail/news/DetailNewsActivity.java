@@ -78,7 +78,6 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
     recyclerviewActivityNewsDetail.setAdapter(detailNewsAdapter);
     id_news = getIntent().getStringExtra("news_id");
     image = getIntent().getStringExtra("news_image");
-    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
     textviewGeneralToolbarWithBackButton.setText(R.string.text_pinky_hijab_news);
     webViewDescriptionNewsDetail
         .setOnTouchListener((v, event) -> (event.getAction() == MotionEvent.ACTION_MOVE));

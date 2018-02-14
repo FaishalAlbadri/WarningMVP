@@ -32,7 +32,7 @@
     <LinearLayout
       android:id="@+id/linearlayout_contact_us"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="150dp"
       android:layout_marginBottom="25dp"
       android:layout_marginLeft="@dimen/fab_margin"
       android:layout_marginRight="@dimen/fab_margin"
@@ -42,9 +42,9 @@
       app:layout_constraintTop_toBottomOf="@+id/recyclerview_contanct_us">
 
       <LinearLayout
-        android:id="@+id/linear_below1"
+        android:id="@+id/layout_web"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"
@@ -67,9 +67,9 @@
       </LinearLayout>
 
       <LinearLayout
-        android:id="@+id/linear_below2"
+        android:id="@+id/layout_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"
@@ -92,9 +92,9 @@
       </LinearLayout>
 
       <LinearLayout
-        android:id="@+id/linear_below3"
+        android:id="@+id/layout_whatsapp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:padding="@dimen/fab_margin"

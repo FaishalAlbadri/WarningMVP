@@ -85,7 +85,6 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     ButterKnife.bind(this, v);
     getSession();
     setView();
-    requestStoragePermission();
     accountPresenter.getDataAccount();
 
     return v;
@@ -243,12 +242,14 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
   @OnClick(R.id.img_user_account)
   public void onImgUserAccountClicked() {
+    requestStoragePermission();
     editPhoto();
     imgUserAccount.setEnabled(true);
   }
 
   @OnClick(R.id.img_edit_photo_account)
   public void onImgEditPhotoAccountClicked() {
+    requestStoragePermission();
     editPhoto();
     imgEditPhotoAccount.setEnabled(true);
   }
