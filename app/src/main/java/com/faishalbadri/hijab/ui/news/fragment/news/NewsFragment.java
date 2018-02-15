@@ -179,6 +179,7 @@ public class NewsFragment extends Fragment implements newsView {
 
   private void whenError() {
     DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
+    refreshFragmentNews.setVisibility(View.GONE);
     if (DataServerProgress.getInstance().getStatus().equals("error")) {
       newsPresenter.getDataNews(PAGE);
     }
