@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -43,6 +44,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
   private List<PojoVideo.VideosBean> list_video;
   private VideoFragment videoFragment;
   private String error;
+  private VideoAdapter.ViewHolderLoading viewHolderLoading;
 
   public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
     this.context = activity;
@@ -104,7 +106,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
         });
         break;
       case LOADING:
-        VideoAdapter.ViewHolderLoading viewHolderLoading = (VideoAdapter.ViewHolderLoading) holder;
+        viewHolderLoading = (VideoAdapter.ViewHolderLoading) holder;
         error = LoadingStatus.getInstance().getStatus();
         if (error != null) {
           viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
@@ -122,6 +124,12 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
         });
         break;
     }
+  }
+
+  public void onErrorPagination() {
+    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+    viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
   }
 
   @Override

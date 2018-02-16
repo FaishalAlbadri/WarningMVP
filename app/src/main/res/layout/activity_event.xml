@@ -20,23 +20,30 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_event">
 
-    <ImageButton
+    <Button
       android:id="@+id/button_home_activity_event"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
+      android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:src="@drawable/ic_event_white"
+      android:drawableTop="@drawable/ic_event_white"
+      android:text="@string/caption_event"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
       />
 
-    <ImageButton
+    <Button
       android:id="@+id/button_city_activity_event"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:src="@drawable/ic_city_white"
+      android:drawableTop="@drawable/ic_city_white"
+      android:text="@string/caption_city"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
       />
 
 

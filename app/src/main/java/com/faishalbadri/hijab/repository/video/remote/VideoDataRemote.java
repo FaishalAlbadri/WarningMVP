@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.video.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -33,12 +32,10 @@ public class VideoDataRemote implements VideoDataResource {
   }
 
   @Override
-  public void getVideoList(int PAGE,@NonNull VideoGetCallBack videoGetCallBack) {
+  public void getVideoList(int PAGE, @NonNull VideoGetCallBack videoGetCallBack) {
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
-          Log.i("pagevideo", String.valueOf(PAGE));
-          Log.i("response video", response);
           try {
             if (pojoVideo.getVideos().toString().equals("[]")) {
               videoGetCallBack.onErrorVideo("Data Null");
@@ -48,8 +45,14 @@ public class VideoDataRemote implements VideoDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> videoGetCallBack.onErrorVideo(context.getResources().getString(R
-        .string.caption_error_internet_acces))) {
+        }, error -> {
+      if (PAGE == 1) {
+        videoGetCallBack
+            .onErrorVideo(context.getResources().getString(R.string.caption_error_internet_acces));
+      } else if (PAGE > 1) {
+        videoGetCallBack.onErrorVideo("Data Pagination Error");
+      }
+    }) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

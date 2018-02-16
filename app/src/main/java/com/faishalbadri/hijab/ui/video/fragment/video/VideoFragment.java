@@ -57,12 +57,10 @@ public class VideoFragment extends Fragment implements VideoView {
     v = inflater.inflate(R.layout.fragment_video, container, false);
     ButterKnife.bind(this, v);
     setView();
-    PAGE++;
     videoPresenter.getDataVideo(1);
     refreshFragmentVideo.setOnRefreshListener(() -> {
       refreshFragmentVideo.setRefreshing(false);
       PAGE = 1;
-      PAGE++;
       this.resultItem.clear();
       videoPresenter.getDataVideo(1);
     });
@@ -86,6 +84,7 @@ public class VideoFragment extends Fragment implements VideoView {
 
   @Override
   public void onSuccesVideo(List<VideosBean> video, String msg) {
+    PAGE++;
     resultItem.addAll(video);
     LoadingStatus.getInstance().setStatus(null);
     videoAdapter.notifyDataSetChanged();
@@ -97,6 +96,8 @@ public class VideoFragment extends Fragment implements VideoView {
     if (msg.equals("Data Null")) {
       LoadingStatus.getInstance().setStatus("error");
       videoAdapter.notifyDataSetChanged();
+    } else if (msg.equals("Data Pagination Error")) {
+      videoAdapter.onErrorPagination();
     } else {
       whenError();
     }
@@ -110,7 +111,7 @@ public class VideoFragment extends Fragment implements VideoView {
   }
 
   public void getDataVideo() {
-    videoPresenter.getDataVideo(PAGE++);
+    videoPresenter.getDataVideo(PAGE);
   }
 
   private void whenError() {

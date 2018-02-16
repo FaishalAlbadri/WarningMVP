@@ -3,7 +3,7 @@ package com.faishalbadri.hijab.ui.news.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -27,11 +27,11 @@ public class NewsActivity extends AppCompatActivity {
   @BindView(R.id.button_search_general_toolbar_search)
   ImageView buttonSearchGeneralToolbarSearch;
   @BindView(R.id.button_news_activity_news)
-  ImageButton buttonNewsActivityNews;
+  Button buttonNewsActivityNews;
   @BindView(R.id.button_rank_activity_news)
-  ImageButton buttonRankActivityNews;
+  Button buttonRankActivityNews;
   @BindView(R.id.button_category_activity_news)
-  ImageButton buttonCategoryActivityNews;
+  Button buttonCategoryActivityNews;
   private ActivityUtil activityUtil;
 
   @Override
@@ -44,10 +44,20 @@ public class NewsActivity extends AppCompatActivity {
     newsFragment();
   }
 
-
   private void setView() {
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     textviewGeneralToolbarSearch.setText(R.string.text_pinky_hijab_news);
+  }
+
+  @OnClick(R.id.button_back_general_toolbar_search)
+  public void onButtonBackGeneralToolbarSearchClicked() {
+    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+    finish();
+  }
+
+  @OnClick(R.id.button_search_general_toolbar_search)
+  public void onButtonSearchGeneralToolbarSearchClicked() {
+    startActivity(new Intent(getApplicationContext(), SearchNewsActivity.class));
   }
 
   @OnClick(R.id.button_news_activity_news)
@@ -55,15 +65,26 @@ public class NewsActivity extends AppCompatActivity {
     newsFragment();
   }
 
-  private void newsFragment() {
-    activityUtil
-        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_news,
-            NewsFragment.instance());
+  @OnClick(R.id.button_rank_activity_news)
+  public void onButtonRankActivityNewsClicked() {
+    newsPopular();
   }
 
   @OnClick(R.id.button_category_activity_news)
   public void onButtonCategoryActivityNewsClicked() {
     categoryNews();
+  }
+
+  private void newsPopular() {
+    activityUtil
+        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_news,
+            NewsPopularFragment.instance());
+  }
+
+  private void newsFragment() {
+    activityUtil
+        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_news,
+            NewsFragment.instance());
   }
 
   private void categoryNews() {
@@ -78,25 +99,4 @@ public class NewsActivity extends AppCompatActivity {
     finish();
   }
 
-  @OnClick(R.id.button_back_general_toolbar_search)
-  public void onButtonBackGeneralToolbarSearchClicked() {
-    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-    finish();
-  }
-
-  @OnClick(R.id.button_search_general_toolbar_search)
-  public void onButtonSearchGeneralToolbarSearchClicked() {
-    startActivity(new Intent(getApplicationContext(), SearchNewsActivity.class));
-  }
-
-  @OnClick(R.id.button_rank_activity_news)
-  public void onViewClicked() {
-    newsPopular();
-  }
-
-  private void newsPopular() {
-    activityUtil
-        .addFragment(getSupportFragmentManager(), R.id.framelayout_for_fragment_activity_news,
-            NewsPopularFragment.instance());
-  }
 }

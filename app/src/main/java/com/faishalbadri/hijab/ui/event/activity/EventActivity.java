@@ -3,7 +3,6 @@ package com.faishalbadri.hijab.ui.event.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -25,10 +24,6 @@ public class EventActivity extends AppCompatActivity {
   TextView textviewGeneralToolbarSearch;
   @BindView(R.id.button_search_general_toolbar_search)
   ImageView buttonSearchGeneralToolbarSearch;
-  @BindView(R.id.button_home_activity_event)
-  ImageButton buttonHomeActivityEvent;
-  @BindView(R.id.button_city_activity_event)
-  ImageButton buttonCityActivityEvent;
   ActivityUtil activityUtil;
   String sessionEvent;
 
