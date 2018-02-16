@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,13 +56,11 @@ public class EventFragment extends Fragment implements eventView {
     // Inflate the layout for this fragment
     View v = inflater.inflate(R.layout.fragment_event, container, false);
     ButterKnife.bind(this, v);
-    PAGE++;
     setView();
     eventPresenter.onAttachView(this);
     eventPresenter.getDataEvent(1);
     refreshFragmentEvent.setOnRefreshListener(() -> {
       PAGE = 1;
-      PAGE++;
       this.list_data.clear();
       refreshFragmentEvent.setRefreshing(false);
       eventPresenter.getDataEvent(1);
@@ -90,6 +87,7 @@ public class EventFragment extends Fragment implements eventView {
 
   @Override
   public void onSuccesEvent(List<EventBean> data, String msg) {
+    PAGE++;
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
     eventAdapter.notifyDataSetChanged();
@@ -101,14 +99,15 @@ public class EventFragment extends Fragment implements eventView {
     if (msg.equals("Data Null")) {
       LoadingStatus.getInstance().setStatus("error");
       eventAdapter.notifyDataSetChanged();
+    } else if (msg.equals("Data Pagination Error")) {
+      eventAdapter.onErrorPagination();
     } else {
       whenError();
     }
   }
 
   public void getData() {
-    eventPresenter.getDataEvent(PAGE++);
-    Log.i("page", String.valueOf(PAGE));
+    eventPresenter.getDataEvent(PAGE);
   }
 
   @OnClick(R.id.layout_no_internet_acces)

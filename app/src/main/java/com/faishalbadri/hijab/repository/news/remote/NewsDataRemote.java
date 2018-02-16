@@ -49,8 +49,14 @@ public class NewsDataRemote implements NewsDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> newsGetCallback.onErrorNews(context.getResources().getString(R
-        .string.caption_error_internet_acces))) {
+        }, error -> {
+      if (PAGE == 1) {
+        newsGetCallback.onErrorNews(context.getResources().getString(R
+            .string.caption_error_internet_acces));
+      } else if (PAGE > 1) {
+        newsGetCallback.onErrorNews("Data Pagination Error");
+      }
+    }) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

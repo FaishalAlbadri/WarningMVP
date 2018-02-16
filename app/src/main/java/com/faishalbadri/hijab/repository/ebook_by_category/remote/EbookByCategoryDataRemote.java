@@ -39,7 +39,7 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
         response -> {
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
           try {
-            if (pojoEbook == null) {
+            if (pojoEbook.getEbook() == null) {
               newsByCategoryGetDataCallBack.onErrorEbookByCategory("Error");
             } else {
               newsByCategoryGetDataCallBack
