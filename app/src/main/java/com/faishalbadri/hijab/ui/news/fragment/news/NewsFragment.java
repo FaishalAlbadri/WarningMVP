@@ -123,6 +123,7 @@ public class NewsFragment extends Fragment implements newsView {
   @Override
   public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
     countSlider = 0;
+    sliderFragmentNews.removeAllSliders();
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.clear();
@@ -145,7 +146,6 @@ public class NewsFragment extends Fragment implements newsView {
 
         textSliderView.bundle(new Bundle());
         textSliderView.getBundle().putString("extra", name);
-
         sliderFragmentNews.addSlider(textSliderView);
       }
       sliderFragmentNews.setPresetTransformer(Transformer.Default);
