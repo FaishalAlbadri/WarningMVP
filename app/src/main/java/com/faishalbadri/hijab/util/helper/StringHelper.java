@@ -471,4 +471,10 @@ public class StringHelper {
      */
     void onError(String errorMessage);
   }
+
+  public static String youtubeLink(String code) {
+    String link = "https://www.youtube.com/watch?v=";
+    link = link + code;
+    return link;
+  }
 }
