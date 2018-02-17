@@ -37,6 +37,10 @@ public class SendArticleActivity extends AppCompatActivity implements
   private Uri filePathSendArticle;
   //  private Bitmap bitmapAccount;
   ActivityUtil activityUtil;
+  String mimetypes[] = {
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +70,19 @@ public class SendArticleActivity extends AppCompatActivity implements
   @OnClick(R.id.button_choose_send_article)
   public void onButtonChooseSendArticleClicked() {
     Intent intent = new Intent();
-    intent.setType("application/pdf");
     intent.setAction(Intent.ACTION_GET_CONTENT);
-    startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_IMAGE_REQUEST);
+    intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+//    intent.setType("application/pdf");
+    startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_IMAGE_REQUEST);
   }
 
   @OnClick(R.id.button_send_article)
   public void onButtonSendArticleClicked() {
-    onSuccessUploadFile(activityUtil);
-    Toast.makeText(this, "Your article has been submitted", Toast.LENGTH_SHORT).show();
-    onBackPressed();
+    try {
+      sendArticlePresenter.getUploadFile(FilePath.getPath(this, filePathSendArticle));
+    } catch (Exception e) {
+
+    }
   }
 
   @Override
@@ -88,14 +95,14 @@ public class SendArticleActivity extends AppCompatActivity implements
       }
       textviewFileName.setText(FilePath.getPath(this, filePathSendArticle));
       textviewFileName.setVisibility(View.VISIBLE);
-    } catch (Exception e){
+    } catch (Exception e) {
 
     }
   }
 
   @Override
   public void onSuccessUploadFile(ActivityUtil activityUtil) {
-    sendArticlePresenter.getUploadFile(FilePath.getPath(this, filePathSendArticle));
+
   }
 
   @Override

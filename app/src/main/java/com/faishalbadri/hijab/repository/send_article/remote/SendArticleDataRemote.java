@@ -37,6 +37,7 @@ public class SendArticleDataRemote implements SendArticleDataResource {
           .setNotificationConfig(new UploadNotificationConfig())
           .setMaxRetries(2)
           .startUpload();
+      Toast.makeText(context, path, Toast.LENGTH_SHORT).show();
     } catch (Exception ignored) {
       Toast.makeText(context, ignored.getMessage(), Toast.LENGTH_SHORT).show();
     }
