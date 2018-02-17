@@ -76,6 +76,7 @@ public class DetailEventActivity extends AppCompatActivity {
         .apply(options)
         .into(imageviewDetailEvent);
     webViewDescriptionEventDetail.loadData(desc, "text/html", "uutf/-8");
+    imageviewShareGeneralToolbarWithBackButton.setVisibility(View.GONE);
   }
 
 

@@ -118,6 +118,7 @@ public class DetailEbookScrollingActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
       }
     });
+    imageviewShareDetailEbook.setVisibility(View.GONE);
   }
 
   @Override

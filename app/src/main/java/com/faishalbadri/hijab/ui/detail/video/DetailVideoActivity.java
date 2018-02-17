@@ -21,6 +21,7 @@ import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoVie
 import com.faishalbadri.hijab.util.IntentUtil;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
 import com.faishalbadri.hijab.util.UserUtil;
+import com.faishalbadri.hijab.util.helper.StringHelper;
 import com.faishalbadri.hijab.util.server.Server;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
@@ -90,6 +91,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     recyclerviewActivityVideoDetail.setAdapter(detailVideoAdapter);
     title = getIntent().getStringExtra("videos_title");
     video = getIntent().getStringExtra("videos_url");
+    share = getIntent().getStringExtra("videos_url");
     description = getIntent().getStringExtra("videos_description");
     duration = getIntent().getStringExtra("videos_duration");
     txtTitleVideoDetail.setText(title);
@@ -173,7 +175,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @OnClick(R.id.imageview_share_general_toolbar_with_back_button)
   public void onImageviewShareGeneralToolbarWithBackButtonClicked() {
     IntentUtil intentUtil = new IntentUtil(this);
-    intentUtil.IntentShare("", share);
+    intentUtil.IntentShare("", StringHelper.youtubeLink(share));
   }
 
   @OnClick(R.id.layout_no_internet_acces)
