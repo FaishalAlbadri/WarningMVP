@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import net.gotev.uploadservice.MultipartUploadRequest;
+import net.gotev.uploadservice.UploadNotificationConfig;
 
 /**
  * Created by fikriimaduddin on 10/30/17.
@@ -84,6 +85,7 @@ public class AccountDataRemote implements AccountDataResource {
       new MultipartUploadRequest(context, uploadId, URL_EDIT_IMAGE)
           .addFileToUpload(path, "user_image")
           .addParameter("user_id", DataUser.getInstance().getUserId())
+          .setNotificationConfig(new UploadNotificationConfig())
           .setMaxRetries(2)
           .startUpload();
     } catch (Exception ignored) {

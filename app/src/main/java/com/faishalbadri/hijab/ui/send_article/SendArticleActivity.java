@@ -68,7 +68,7 @@ public class SendArticleActivity extends AppCompatActivity implements
     Intent intent = new Intent();
     intent.setType("application/pdf");
     intent.setAction(Intent.ACTION_GET_CONTENT);
-    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_IMAGE_REQUEST);
   }
 
   @OnClick(R.id.button_send_article)
