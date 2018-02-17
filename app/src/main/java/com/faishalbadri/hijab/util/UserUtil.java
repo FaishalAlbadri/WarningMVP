@@ -44,4 +44,19 @@ public class UserUtil {
       DataUser.getInstance().setUserApiKey(hashMap.get(SessionManager.key_user_apikey));
     }
   }
+
+  public void setDataUserLogin() {
+    DataUser.getInstance().setUserId(hashMap.get(SessionManager.key_id_user));
+    DataUser.getInstance().setUserName(hashMap.get(SessionManager.key_user_name));
+    DataUser.getInstance().setUserEmail(hashMap.get(SessionManager.key_user_email));
+    DataUser.getInstance().setUserPassword(hashMap.get(SessionManager.key_user_password));
+    DataUser.getInstance()
+        .setUserHandphoneNumber(hashMap.get(SessionManager.key_user_handphone_number));
+    DataUser.getInstance().setUserImage(hashMap.get(SessionManager.key_user_image));
+    DataUser.getInstance().setUserVerifyCode(hashMap.get(SessionManager.key_user_verify_code));
+    DataUser.getInstance()
+        .setUserVerifiedCode(hashMap.get(SessionManager.key_user_verified_code));
+    DataUser.getInstance().setUserGender(hashMap.get(SessionManager.key_user_gender));
+    DataUser.getInstance().setUserApiKey(hashMap.get(SessionManager.key_user_apikey));
+  }
 }
