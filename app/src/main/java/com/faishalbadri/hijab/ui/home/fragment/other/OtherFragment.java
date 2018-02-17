@@ -51,7 +51,7 @@ public class OtherFragment extends Fragment {
 
   private void dataOtherFragment() {
     data_list_other.add(new DataOtherFragment(kritiksaran, image[0]));
-    data_list_other.add(new DataOtherFragment(kirimartikel, image[1]));
+//    data_list_other.add(new DataOtherFragment(kirimartikel, image[1]));
     data_list_other.add(new DataOtherFragment(share, image[2]));
     data_list_other.add(new DataOtherFragment(rate, image[3]));
     data_list_other.add(new DataOtherFragment(sponsor, image[4]));

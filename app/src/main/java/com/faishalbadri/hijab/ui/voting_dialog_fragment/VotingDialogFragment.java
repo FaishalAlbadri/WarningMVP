@@ -92,8 +92,10 @@ public class VotingDialogFragment extends DialogFragment implements
         .apply(options)
         .into(imageFragmentVotingDialog);
     voting =
-        "Dapatkan aplikasi ini di Google Playstore. \"LINK\" \n Dan jangan lupa untuk mensupport "
-            + nama + " sebagai pemenang \"NAMA AWARDING\" di tahun 2017";
+        "Dapatkan aplikasi ini di Google Playstore. \nDan jangan lupa untuk mensupport "
+            + nama
+            + " sebagai pemenang Pinky Hijab Ambassadors di tahun 2018"
+            + "\nhttp://play.google.com/store/apps/details?id=" + getActivity().getPackageName();
   }
 
   private void setPresenter() {

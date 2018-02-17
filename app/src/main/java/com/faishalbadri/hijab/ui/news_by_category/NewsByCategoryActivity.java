@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -86,8 +87,15 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
 
   @Override
   public void onErrorNewsByCategory(String msg) {
-    refreshNewsByCategory.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    if (msg.equals("Data Null")) {
+      layoutLoading.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.GONE);
+      Toast.makeText(this, "Maaf Data Masih Kosong", Toast.LENGTH_SHORT).show();
+    } else {
+      layoutLoading.setVisibility(View.GONE);
+      refreshNewsByCategory.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
   }
 
 

@@ -18,7 +18,7 @@ import com.faishalbadri.hijab.util.UserUtil;
 
 public class KritikSaranActivity extends AppCompatActivity {
 
-  private static final String EMAIL_DEVELOPER = "pinkyhijabdeveloper@gmail.com";
+  private static final String EMAIL_DEVELOPER = "pinkfameapp@gmail.com";
   private static final String SUBJECT_EMAIL = "Saran";
   @BindView(R.id.button_back_general_toolbar_with_back_button)
   ImageView buttonBack;

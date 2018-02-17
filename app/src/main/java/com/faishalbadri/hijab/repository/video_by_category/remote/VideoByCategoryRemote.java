@@ -38,8 +38,8 @@ public class VideoByCategoryRemote implements VideoByCategoryDataResource {
         response -> {
           final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
           try {
-            if (pojoVideo == null) {
-              videoByCategoryGetDataCallBack.onErrorVideoByCategory("Error");
+            if (pojoVideo.getVideos() == null) {
+              videoByCategoryGetDataCallBack.onErrorVideoByCategory("Data Null");
             } else {
               videoByCategoryGetDataCallBack.onSuccessVideoByCategory(pojoVideo.getVideos(), "Ok");
             }
