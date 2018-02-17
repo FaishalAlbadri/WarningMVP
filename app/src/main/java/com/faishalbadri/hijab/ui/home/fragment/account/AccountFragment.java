@@ -4,6 +4,7 @@ package com.faishalbadri.hijab.ui.home.fragment.account;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest.permission;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -69,6 +70,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   private String id_user, user_name, user_email, user_handphone_number, user_image, user_password, user_verify_code, user_verified_code, user_gender, user_apikey;
   private Uri filePathAccount;
   private Bitmap bitmapAccount;
+  private ProgressDialog progressDialog;
 
   public AccountFragment() {
     // Required empty public constructor
@@ -139,7 +141,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
   @Override
   public void onErrorEditImage(String msg) {
-
+    Toast.makeText(context, "Gagal Meng-upload Foto", Toast.LENGTH_SHORT).show();
   }
 
   private void logout() {
@@ -165,6 +167,10 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
         AccountRepositoryInject.provideToLoginRepository(getActivity()));
     editImagePresenter.onAttachView(this);
     activityUtil = ActivityUtil.getInstance(context);
+    progressDialog = new ProgressDialog(getActivity());
+    progressDialog.setMessage("Loading");
+    progressDialog.setCancelable(false);
+    progressDialog.setCanceledOnTouchOutside(false);
   }
 
   private void requestStoragePermission() {

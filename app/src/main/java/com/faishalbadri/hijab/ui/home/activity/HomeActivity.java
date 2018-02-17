@@ -28,13 +28,13 @@ public class HomeActivity extends AppCompatActivity {
   Button buttonOtherActivityHome;
   @BindView(R.id.button_account_activity_home)
   Button buttonAccountActivityHome;
-  ActivityUtil activityUtil;
-  String sessionHome;
   @BindView(R.id.linear_layout_tab_activity_home)
   LinearLayout linearLayoutTabActivityHome;
   @BindView(R.id.framelayout_for_fragment_activity_home)
   FrameLayout framelayoutForFragmentActivityHome;
-  DataUser dataUser;
+  private ActivityUtil activityUtil;
+  private String sessionHome;
+  private DataUser dataUser;
 
 
   @Override
