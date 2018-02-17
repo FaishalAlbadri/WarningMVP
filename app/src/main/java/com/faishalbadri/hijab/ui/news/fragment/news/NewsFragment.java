@@ -69,7 +69,6 @@ public class NewsFragment extends Fragment implements newsView {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_news, container, false);
     ButterKnife.bind(this, view);
-    PAGE++;
     setView();
     newsPresenter.onAttachView(this);
     newsPresenter.getDataNews(1);
@@ -78,9 +77,9 @@ public class NewsFragment extends Fragment implements newsView {
     refreshFragmentNews.setOnRefreshListener(() -> {
       refreshFragmentNews.setRefreshing(false);
       PAGE = 1;
-      PAGE++;
       this.list_data.clear();
       newsPresenter.getDataNews(1);
+      newsPresenter.getDataSlider();
     });
     return view;
   }
@@ -102,6 +101,7 @@ public class NewsFragment extends Fragment implements newsView {
 
   @Override
   public void onSuccesNews(List<NewsBean> data, String msg) {
+    PAGE++;
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
     newsAdapter.notifyDataSetChanged();
@@ -113,6 +113,8 @@ public class NewsFragment extends Fragment implements newsView {
     if (msg.equals("Data Null")) {
       LoadingStatus.getInstance().setStatus("error");
       newsAdapter.notifyDataSetChanged();
+    } else if (msg.equals("Data Pagination Error")) {
+      newsAdapter.onErrorPagination();
     } else {
       whenError();
     }
@@ -121,8 +123,10 @@ public class NewsFragment extends Fragment implements newsView {
   @Override
   public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
     countSlider = 0;
+    sliderFragmentNews.removeAllSliders();
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
+      file_maps.clear();
       file_maps.put(dataSlider.get(a).getNews_title(),
           Server.BASE_ASSETS + dataSlider.get(a).getNews_images());
 
@@ -142,7 +146,6 @@ public class NewsFragment extends Fragment implements newsView {
 
         textSliderView.bundle(new Bundle());
         textSliderView.getBundle().putString("extra", name);
-
         sliderFragmentNews.addSlider(textSliderView);
       }
       sliderFragmentNews.setPresetTransformer(Transformer.Default);
@@ -174,7 +177,7 @@ public class NewsFragment extends Fragment implements newsView {
   }
 
   public void getData() {
-    newsPresenter.getDataNews(PAGE++);
+    newsPresenter.getDataNews(PAGE);
   }
 
   private void whenError() {

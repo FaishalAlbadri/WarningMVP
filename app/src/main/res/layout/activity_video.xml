@@ -21,24 +21,31 @@
     app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_video"
     >
 
-    <ImageButton
+    <Button
       android:id="@+id/button_video_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:src="@drawable/ic_video_white"
+      android:drawableTop="@drawable/ic_video_white"
+      android:text="@string/caption_videos"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
       />
 
-    <ImageButton
+    <Button
       android:id="@+id/button_category_activity_video"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_weight="1"
       android:padding="@dimen/padding_widget"
       android:background="?attr/selectableItemBackground"
-      android:src="@drawable/ic_category_white"/>
+      android:drawableTop="@drawable/ic_category_white"
+      android:text="@string/caption_category"
+      android:textAllCaps="false"
+      android:textColor="@android:color/white"
+      />
 
   </LinearLayout>
 

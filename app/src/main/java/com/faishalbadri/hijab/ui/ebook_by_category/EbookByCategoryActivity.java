@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -90,8 +91,13 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
 
   @Override
   public void onErrorEbookByCategory(String msg) {
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    layoutLoading.setVisibility(View.GONE);
     refreshEbookByCategory.setVisibility(View.GONE);
+    if (msg.equals("Error")) {
+      Toast.makeText(this, "Data Server is null", Toast.LENGTH_SHORT).show();
+    } else {
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
   }
 
   @OnClick(R.id.button_back_general_toolbar_search)

@@ -196,6 +196,12 @@
   <string name="caption_send_article">Send your Article, be famous.</string>
   <string name="caption_choose_file">Choose File</string>
   <string name="caption_text_kritik_sara">Help us improove with feedback</string>
+  <string name="caption_news">News</string>
+  <string name="caption_popular">Popular</string>
+  <string name="caption_category">Category</string>
+  <string name="caption_videos">Videos</string>
+  <string name="caption_city">City</string>
+  <string name="caption_event">Event</string>
 
 </resources>
 

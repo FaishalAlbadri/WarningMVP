@@ -48,8 +48,14 @@ public class EventDataRemote implements EventDataResource {
           } catch (Exception e) {
 
           }
-        }, error -> eventGetCallback
-        .onErrorEvent(context.getResources().getString(R.string.caption_error_internet_acces))) {
+        }, error -> {
+      if (PAGE == 1) {
+        eventGetCallback
+            .onErrorEvent(context.getResources().getString(R.string.caption_error_internet_acces));
+      } else if (PAGE > 1) {
+        eventGetCallback.onErrorEvent("Data Pagination Error");
+      }
+    }) {
       @Override
       public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();

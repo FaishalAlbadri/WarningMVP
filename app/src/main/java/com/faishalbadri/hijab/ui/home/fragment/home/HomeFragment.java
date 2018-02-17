@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment implements homeView {
     homeFragmentAdapter = new HomeFragmentAdapter(getActivity(), data_list);
     LinearLayoutManager llmHomeFragment = new LinearLayoutManager(getActivity());
     llmHomeFragment.setOrientation(LinearLayoutManager.VERTICAL);
+    recyclerviewFragmentHome.setFocusable(false);
     recyclerviewFragmentHome.setLayoutManager(llmHomeFragment);
     recyclerviewFragmentHome.setAdapter(homeFragmentAdapter);
   }

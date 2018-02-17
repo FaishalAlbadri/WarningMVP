@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
@@ -41,6 +42,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
   private List<NewsBean> data;
   private NewsFragment newsFragment;
   private String error;
+  private ViewHolderLoading viewHolderLoading;
 
   public NewsAdapter(Context context,
       List<NewsBean> data, NewsFragment newsFragment) {
@@ -102,7 +104,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
         });
         break;
       case LOADING:
-        ViewHolderLoading viewHolderLoading = (ViewHolderLoading) holder;
+        viewHolderLoading = (ViewHolderLoading) holder;
         error = LoadingStatus.getInstance().getStatus();
         if (error != null) {
           viewHolderLoading.buttonLoadData.setVisibility(View.GONE);
@@ -122,6 +124,11 @@ public class NewsAdapter extends Adapter<ViewHolder> {
     }
   }
 
+  public void onErrorPagination() {
+    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    viewHolderLoading.progressLoadData.setVisibility(View.GONE);
+    viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
+  }
 
   @Override
   public int getItemViewType(int position) {
