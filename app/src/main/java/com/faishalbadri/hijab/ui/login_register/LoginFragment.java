@@ -21,6 +21,7 @@ import com.faishalbadri.hijab.di.LoginRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.verify_code.VerifyCodeActivity;
 import com.faishalbadri.hijab.util.SessionManager;
+import com.faishalbadri.hijab.util.UserUtil;
 import com.faishalbadri.hijab.util.server.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import java.math.BigInteger;
@@ -125,6 +126,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     pd.dismiss();
     sessionManagerLogin.createSession(id_user, user_name, user_email, user_handphone_number,
         user_image, user_password, user_verify_code, user_verified_code, user_gender, user_apikey);
+    UserUtil.getInstance(getActivity()).setDataUserLogin();
     if (user_verified_code == null) {
       startActivity(new Intent(getActivity(), VerifyCodeActivity.class));
       getActivity().finish();
