@@ -434,12 +434,6 @@ public class StringHelper {
     return link;
   }
 
-  public static String youtubeLink(String code) {
-    String link = "https://www.youtube.com/watch?v=";
-    link = link + code;
-    return link;
-  }
-
   /**
    * The interface Email interface validation 2.
    */
