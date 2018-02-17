@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.home.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -16,6 +17,7 @@ import com.faishalbadri.hijab.ui.home.fragment.account.AccountFragment;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeFragment;
 import com.faishalbadri.hijab.ui.home.fragment.other.OtherFragment;
 import com.faishalbadri.hijab.util.ActivityUtil;
+import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.UserUtil;
 
 public class HomeActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
   LinearLayout linearLayoutTabActivityHome;
   @BindView(R.id.framelayout_for_fragment_activity_home)
   FrameLayout framelayoutForFragmentActivityHome;
+  DataUser dataUser;
 
 
   @Override
@@ -42,6 +45,9 @@ public class HomeActivity extends AppCompatActivity {
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     activityUtil = ActivityUtil.getInstance(getApplicationContext());
     setFragment();
+    dataUser = DataUser.getInstance();
+    Log.i("Response",
+        "id_user = " + dataUser.getUserId() + "\nusername = " + dataUser.getUserName());
   }
 
 
