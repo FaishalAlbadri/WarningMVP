@@ -43,7 +43,7 @@ public class IntroActivity extends AppCompatActivity {
       // changing the next button text 'NEXT' / 'GOT IT'
       if (position == layouts.length - 1) {
         // last page. make button text to GOT IT
-        btnNext.setText(getString(R.string.text_register));
+        btnNext.setText(getString(R.string.text_login));
         btnSkip.setVisibility(View.GONE);
       } else {
         // still pages are left
