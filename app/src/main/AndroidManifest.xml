@@ -84,7 +84,7 @@
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.detail.event.DetailEventActivity"
-      android:screenOrientation="portrait"
+      android:screenOrientation="unspecified"
       android:theme="@style/AppTheme.NoActionBar.swipe"/>
     <activity
       android:name=".ui.event_by_city.EventByCityActivity"
@@ -112,20 +112,25 @@
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.detail.read_ebook.ReadEbook"
+      android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.verify_code.VerifyCodeActivity"
+      android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:label=""
       android:name=".ui.detail.ebook.DetailEbookScrollingActivity"
+      android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.about.AboutScrollingActivity"
       android:parentActivityName=".ui.home.activity.HomeActivity"
+      android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:name=".ui.contact_us.ContactUsActivity"
+      android:screenOrientation="portrait"
       android:theme="@style/AppTheme.NoActionBar"/>
   </application>
 

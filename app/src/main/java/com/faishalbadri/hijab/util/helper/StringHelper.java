@@ -187,6 +187,7 @@ public class StringHelper {
 //
 //    return subStringSummary;
 //  }
+
   /**
    * Gets error stringfrom list.
    *
@@ -208,6 +209,7 @@ public class StringHelper {
 
     return errorCaption;
   }
+
   /**
    * convert currency text to int
    *
@@ -462,5 +464,11 @@ public class StringHelper {
      * @param errorMessage the error message
      */
     void onError(String errorMessage);
+  }
+
+  public static String youtubeLink(String code) {
+    String link = "https://www.youtube.com/watch?v=";
+    link = link + code;
+    return link;
   }
 }
