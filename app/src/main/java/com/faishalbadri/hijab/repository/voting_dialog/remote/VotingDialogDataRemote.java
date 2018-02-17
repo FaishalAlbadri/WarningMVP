@@ -59,7 +59,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", DataUser.getInstance().getUserApiKey());
+        params.put("user_id", DataUser.getInstance().getUserId());
         params.put("voting_id", id_voting);
         return params;
       }
@@ -97,7 +97,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", DataUser.getInstance().getUserApiKey());
+        params.put("user_id", DataUser.getInstance().getUserId());
         params.put("voting_id", voting_id);
         params.put("type", type);
         params.put("voting_session_id", voting_session_id);
