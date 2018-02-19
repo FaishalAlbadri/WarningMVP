@@ -27,6 +27,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity;
+import com.faishalbadri.hijab.util.ImageLoader;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
@@ -45,11 +46,13 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
   private VideoFragment videoFragment;
   private String error;
   private VideoAdapter.ViewHolderLoading viewHolderLoading;
+  ImageLoader imageLoader;
 
   public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
     this.context = activity;
     this.list_video = resultItem;
     this.videoFragment = videoFragment;
+    this.imageLoader = new ImageLoader(context);
   }
 
   @Override
@@ -84,12 +87,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
     switch (getItemViewType(position)) {
       case ITEM:
         ViewHolder viewHolderItem = (ViewHolder) holder;
-        RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
-            .override(200, 200);
-        Glide.with(context)
-            .load(Server.BASE_IMG_YT + listitem.getVideo_url() + Server.IMG_YT_FORMAT)
-            .apply(options)
-            .into(viewHolderItem.imgListVideo);
+        imageLoader.displayImageFromYoutube(listitem.getVideo_url(), ((ViewHolder) holder).imgListVideo);
         viewHolderItem.txtJudulListVideo.setText(listitem.getVideo_title());
         viewHolderItem.txtJudulListVideo.setMaxLines(3);
         viewHolderItem.cardViewVideoItem.setForeground(getSelectedItemDrawable());

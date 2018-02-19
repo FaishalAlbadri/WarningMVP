@@ -150,9 +150,9 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   }
 
   private void editPhoto() {
-    Intent intent = new Intent();
+    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
     intent.setType("image/*");
-    intent.setAction(Intent.ACTION_GET_CONTENT);
+//    intent.setAction(Intent.ACTION_GET_CONTENT);
     startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
   }
 
