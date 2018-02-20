@@ -15,13 +15,8 @@ import android.provider.MediaStore;
 
 public class FilePath {
 
-  /**
-   * Method for return file path of Gallery image
-   *
-   * @return path of the selected image file from gallery
-   */
-
-  public static String getPath(final Context context, final Uri uri) {
+  public static String getPath(final Context context, final Uri uri)
+  {
     //check here to KITKAT or new version
     final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
@@ -65,7 +60,7 @@ public class FilePath {
         }
 
         final String selection = "_id=?";
-        final String[] selectionArgs = new String[]{
+        final String[] selectionArgs = new String[] {
             split[1]
         };
 
@@ -76,9 +71,8 @@ public class FilePath {
     else if ("content".equalsIgnoreCase(uri.getScheme())) {
 
       // Return the remote address
-      if (isGooglePhotosUri(uri)) {
+      if (isGooglePhotosUri(uri))
         return uri.getLastPathSegment();
-      }
 
       return getDataColumn(context, uri, null, null);
     }
@@ -117,9 +111,8 @@ public class FilePath {
         return cursor.getString(index);
       }
     } finally {
-      if (cursor != null) {
+      if (cursor != null)
         cursor.close();
-      }
     }
     return null;
   }

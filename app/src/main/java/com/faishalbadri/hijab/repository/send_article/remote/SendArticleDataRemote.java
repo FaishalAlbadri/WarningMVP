@@ -20,11 +20,9 @@ public class SendArticleDataRemote implements SendArticleDataResource {
 
   private static final String URL_UPLOAD_FILE = Server.BASE_URL_REVAMP + "add_article";
   private Context context;
-  private RequestQueue requestQueue;
 
   public SendArticleDataRemote(Context context) {
     this.context = context;
-    this.requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
@@ -33,11 +31,11 @@ public class SendArticleDataRemote implements SendArticleDataResource {
       String uploadId = UUID.randomUUID().toString();
       new MultipartUploadRequest(context, uploadId, URL_UPLOAD_FILE)
           .addFileToUpload(path, "user_article")
-          .addParameter("user_id", DataUser.getInstance().getUserId())
+          .addParameter("user_id", "10")
           .setNotificationConfig(new UploadNotificationConfig())
           .setMaxRetries(2)
           .startUpload();
-      Toast.makeText(context, path, Toast.LENGTH_SHORT).show();
+      Toast.makeText(context, uploadId, Toast.LENGTH_SHORT).show();
     } catch (Exception ignored) {
       Toast.makeText(context, ignored.getMessage(), Toast.LENGTH_SHORT).show();
     }

@@ -33,8 +33,8 @@ public class SendArticlePresenter implements SendArticleContract.uploadFilePrese
   public void getUploadFile(String path) {
     sendArticleRepository.getEditImageResult(path, new uploadFile() {
       @Override
-      public void onSuccess(ActivityUtil activityUtil) {
-        uploadFileView.onSuccessUploadFile(activityUtil);
+      public void onSuccess() {
+        uploadFileView.onSuccessUploadFile();
       }
 
       @Override

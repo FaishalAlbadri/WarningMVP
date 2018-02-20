@@ -11,7 +11,7 @@ public class SendArticleContract {
 
   public interface uploadFileView {
 
-    void onSuccessUploadFile(ActivityUtil activityUtil);
+    void onSuccessUploadFile();
 
     void onErrorUploadFile(String msg);
   }

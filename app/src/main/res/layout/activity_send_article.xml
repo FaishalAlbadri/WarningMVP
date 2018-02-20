@@ -50,6 +50,13 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
+      <ImageView
+        android:id="@+id/imageview_send_article_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
       <TextView
         android:id="@+id/textview_file_name"
         android:layout_width="0dp"

@@ -14,7 +14,7 @@ public interface SendArticleDataResource {
 
   interface uploadFile {
 
-    void onSuccess(ActivityUtil activityUtil);
+    void onSuccess();
 
     void onError(String msg);
 
