@@ -428,6 +428,12 @@ public class StringHelper {
     return initialText;
   }
 
+  public static String youtubeLink(String code) {
+    String link = "https://www.youtube.com/watch?v=";
+    link = link + code;
+    return link;
+  }
+
   /**
    * The interface Email interface validation 2.
    */
@@ -464,11 +470,5 @@ public class StringHelper {
      * @param errorMessage the error message
      */
     void onError(String errorMessage);
-  }
-
-  public static String youtubeLink(String code) {
-    String link = "https://www.youtube.com/watch?v=";
-    link = link + code;
-    return link;
   }
 }

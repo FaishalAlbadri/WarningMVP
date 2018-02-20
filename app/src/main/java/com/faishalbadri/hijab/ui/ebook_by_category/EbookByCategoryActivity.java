@@ -94,7 +94,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
     layoutLoading.setVisibility(View.GONE);
     refreshEbookByCategory.setVisibility(View.GONE);
     if (msg.equals("Error")) {
-      Toast.makeText(this, "Data Server is null", Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, "Data Masih Kosong", Toast.LENGTH_SHORT).show();
     } else {
       layoutNoInternetAcces.setVisibility(View.VISIBLE);
     }

@@ -39,7 +39,7 @@ public class NewsByCategoryDataRemote implements NewsByCategoryDataResource {
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           try {
-            if (pojoNews == null) {
+            if (pojoNews.getNews() == null) {
               newsByCategoryGetDataCallBack.onErrorNewsByCategory("Data Null");
             } else {
               newsByCategoryGetDataCallBack.onSuccessNewsByCategory(pojoNews.getNews(), "Succes");

@@ -39,8 +39,8 @@ public class EventByCityDataRemote implements EventByCityDataResource {
         response -> {
           final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
           try {
-            if (pojoEvent == null) {
-              eventByCityGetCallback.onErrorEventByCity("Error");
+            if (pojoEvent.getEvent() == null) {
+              eventByCityGetCallback.onErrorEventByCity("Data Null");
             } else {
               eventByCityGetCallback.onSuccesEventByCity(pojoEvent.getEvent(), "Ok");
             }

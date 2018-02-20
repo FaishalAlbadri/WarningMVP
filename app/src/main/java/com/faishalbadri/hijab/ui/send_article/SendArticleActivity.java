@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,14 +32,14 @@ public class SendArticleActivity extends AppCompatActivity implements
   @BindView(R.id.button_send_article)
   Button buttonSendArticle;
   SendArticlePresenter sendArticlePresenter;
-  private int PICK_IMAGE_REQUEST = 1;
-  private Uri filePathSendArticle;
   //  private Bitmap bitmapAccount;
   ActivityUtil activityUtil;
   String mimetypes[] = {
       "application/msword",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
   };
+  private int PICK_IMAGE_REQUEST = 1;
+  private Uri filePathSendArticle;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +70,8 @@ public class SendArticleActivity extends AppCompatActivity implements
   public void onButtonChooseSendArticleClicked() {
     Intent intent = new Intent();
     intent.setAction(Intent.ACTION_GET_CONTENT);
-    intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-//    intent.setType("application/pdf");
+//    intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    intent.setType("application/pdf");
     startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_IMAGE_REQUEST);
   }
 

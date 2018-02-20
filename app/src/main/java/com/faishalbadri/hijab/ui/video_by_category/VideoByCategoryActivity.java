@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -91,8 +92,15 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
 
   @Override
   public void onErrorVideoByCategory(String msg) {
-    refreshVideoByCategory.setVisibility(View.GONE);
-    layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    if (msg.equals("Data Null")) {
+      layoutLoading.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.GONE);
+      Toast.makeText(this, "Maaf Data Masih Kosong", Toast.LENGTH_SHORT).show();
+    } else {
+      layoutLoading.setVisibility(View.GONE);
+      refreshVideoByCategory.setVisibility(View.GONE);
+      layoutNoInternetAcces.setVisibility(View.VISIBLE);
+    }
   }
 
   @OnClick(R.id.button_back_general_toolbar_with_back_button)

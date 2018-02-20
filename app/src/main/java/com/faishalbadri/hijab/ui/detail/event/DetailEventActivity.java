@@ -66,7 +66,7 @@ public class DetailEventActivity extends AppCompatActivity {
     } else {
       link = "http://" + link;
     }
-    textviewGeneralToolbarWithBackButton.setText("Deskripsi Event");
+    textviewGeneralToolbarWithBackButton.setText("Pink Event");
     textviewTitleDetailEvent.setText(title);
     textviewPlaceTimeEventDetail.setText(place + ", " + time);
     imageviewShareGeneralToolbarWithBackButton.setVisibility(View.VISIBLE);
