@@ -39,7 +39,7 @@ public class SearchEbookDataRemote implements SearchEbookDataResource {
         response -> {
           final PojoEbook pojoEbook = new Gson().fromJson(response, PojoEbook.class);
           try {
-            if (pojoEbook == null) {
+            if (pojoEbook.getEbook() == null) {
               searchEbookGetCallback.onWrongSearchEbook("Null");
             } else {
               searchEbookGetCallback

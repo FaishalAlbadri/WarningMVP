@@ -78,7 +78,7 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     ButterKnife.bind(this, view);
     sessionManagerLogin = new SessionManager(getActivity());
     pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
+    pd.setMessage("Sedang mengirim data");
     pd.setCancelable(false);
     pd.setCanceledOnTouchOutside(false);
     loginPresenter = new LoginPresenter(
@@ -101,14 +101,14 @@ public class LoginFragment extends Fragment implements LoginContract.loginView {
     if (Server.isEmpty(materialedittextEmailFragmentLogin) && Server
         .isEmpty(materialedittextPasswordFragmentLogin)) {
       materialedittextEmailFragmentLogin.setError("Email tidak boleh kosong");
-      materialedittextPasswordFragmentLogin.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentLogin.setError("Kata sandi tidak boleh kosong");
       materialedittextEmailFragmentLogin.requestFocus();
       materialedittextPasswordFragmentLogin.requestFocus();
     } else if (Server.isEmpty(materialedittextEmailFragmentLogin)) {
       materialedittextEmailFragmentLogin.setError("Email tidak boleh kosong");
       materialedittextEmailFragmentLogin.requestFocus();
     } else if (Server.isEmpty(materialedittextPasswordFragmentLogin)) {
-      materialedittextPasswordFragmentLogin.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentLogin.setError("Kata sandi tidak boleh kosong");
       materialedittextPasswordFragmentLogin.requestFocus();
     } else {
       pd.show();

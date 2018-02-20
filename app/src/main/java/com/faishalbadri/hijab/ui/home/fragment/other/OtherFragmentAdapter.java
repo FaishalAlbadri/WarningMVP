@@ -85,7 +85,7 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
         sharing.setType("text/plain");
         sharing.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
         sharing.putExtra(Intent.EXTRA_TEXT, shareText);
-        context.startActivity(Intent.createChooser(sharing, "Share Via"));
+        context.startActivity(Intent.createChooser(sharing, "Bagikan Lewat"));
       } else if (dataOtherFragment.getTitle().equalsIgnoreCase(rate)) {
         rateApp();
       } else if (dataOtherFragment.getTitle().equalsIgnoreCase(sponsor)) {

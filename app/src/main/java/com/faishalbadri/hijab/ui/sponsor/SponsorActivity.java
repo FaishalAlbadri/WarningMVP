@@ -47,7 +47,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
   }
 
   private void setView() {
-    textviewGeneralToolbarWithBackButton.setText("Sponsored By");
+    textviewGeneralToolbarWithBackButton.setText("Disponsori oleh");
     sponsorPresenter = new SponsorPresenter(
         SponsorRepositoryInject.provideToSponsorRepository(this));
     list_data = new ArrayList<>();

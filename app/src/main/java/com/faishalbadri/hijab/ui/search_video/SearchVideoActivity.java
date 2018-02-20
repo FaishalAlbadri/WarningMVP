@@ -66,7 +66,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
 
   @Override
   public void onWrongSearchVideo(String msg) {
-    Toast.makeText(this, "wrong key", Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, "Data tidak ada", Toast.LENGTH_SHORT).show();
   }
 
   @Override

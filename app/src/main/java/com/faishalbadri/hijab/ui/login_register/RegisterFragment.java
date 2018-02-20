@@ -58,7 +58,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     View view = inflater.inflate(R.layout.fragment_register, container, false);
     ButterKnife.bind(this, view);
     pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
+    pd.setMessage("Sedang mengirim data");
     pd.setCanceledOnTouchOutside(false);
     pd.setCancelable(false);
     registerPresenter = new RegisterPresenter(
@@ -84,7 +84,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
         .isEmpty(materialedittextPasswordFragmentRegister)) {
       materialedittextUsernameFragmentRegister.setError("Username tidak boleh kosong");
       materialedittextEmailFragmentRegister.setError("Email tidak boleh kosong");
-      materialedittextPasswordFragmentRegister.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentRegister.setError("Kata sandi tidak boleh kosong");
       materialedittextUsernameFragmentRegister.requestFocus();
       materialedittextEmailFragmentRegister.requestFocus();
       materialedittextPasswordFragmentRegister.requestFocus();
@@ -95,7 +95,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
       materialedittextEmailFragmentRegister.setError("Email tidak boleh kosong");
       materialedittextEmailFragmentRegister.requestFocus();
     } else if (Server.isEmpty(materialedittextPasswordFragmentRegister)) {
-      materialedittextPasswordFragmentRegister.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentRegister.setError("Kata sandi tidak boleh kosong");
       materialedittextPasswordFragmentRegister.requestFocus();
     } else {
       pd.show();
@@ -124,7 +124,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   @Override
   public void onErrorRegister(String msg) {
     pd.dismiss();
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    Toast.makeText(getActivity(), "Cek koneksi internet anda", Toast.LENGTH_SHORT).show();
   }
 
   public Drawable getSelectedItemDrawable() {

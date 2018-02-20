@@ -39,9 +39,7 @@ public class HomeFragment extends Fragment implements homeView {
   private HomeFragmentAdapter homeFragmentAdapter;
   private List<DataHomeFragment> data_list;
   private String event, ebook, news, voting, video;
-  private String eventDetail, ebookDetail, newsDetail, votingDetail, videoDetail, communityDetail;
   private int[] image;
-  private int[] titleImage;
   private HomePresenter homePresenter;
   private TextSliderView textSliderView;
 
@@ -71,31 +69,19 @@ public class HomeFragment extends Fragment implements homeView {
 
   private void setString() {
     image = new int[]{
-        R.drawable.banner_img_news,
-        R.drawable.banner_img_tv,
-        R.drawable.banner_img_vote,
-        R.drawable.banner_img_event,
-        R.drawable.banner_img_ebook
+        R.drawable.banner_news,
+        R.drawable.banner_tv,
+        R.drawable.banner_vote,
+        R.drawable.banner_event,
+        R.drawable.banner_ebook
     };
 
-    titleImage = new int[]{
-        R.drawable.text_pink_news,
-        R.drawable.text_pink_tv,
-        R.drawable.text_pink_vote,
-        R.drawable.text_pink_event,
-        R.drawable.text_pink_ebook
-    };
     event = getActivity().getResources().getString(R.string.text_pinky_hijab_event);
     ebook = getActivity().getResources().getString(R.string.text_pinky_hijab_ebook);
     news = getActivity().getResources().getString(R.string.text_pinky_hijab_news);
     voting = getActivity().getResources().getString(R.string.text_pinky_hijab_voting);
     video = getActivity().getResources().getString(R.string.text_pinky_hijab_video);
 
-    eventDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_event_detail);
-    ebookDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_ebook_detail);
-    newsDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_news_detail);
-    votingDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_voting_detail);
-    videoDetail = getActivity().getResources().getString(R.string.text_pinky_hijab_video_detail);
   }
 
 
@@ -112,11 +98,11 @@ public class HomeFragment extends Fragment implements homeView {
   }
 
   private void dataHomeFragment() {
-    data_list.add(new DataHomeFragment(news, newsDetail, image[0], titleImage[0]));
-    data_list.add(new DataHomeFragment(video, videoDetail, image[1], titleImage[1]));
-    data_list.add(new DataHomeFragment(voting, votingDetail, image[2], titleImage[2]));
-    data_list.add(new DataHomeFragment(event, eventDetail, image[3], titleImage[3]));
-    data_list.add(new DataHomeFragment(ebook, ebookDetail, image[4], titleImage[4]));
+    data_list.add(new DataHomeFragment(news, image[0]));
+    data_list.add(new DataHomeFragment(video, image[1]));
+    data_list.add(new DataHomeFragment(voting, image[2]));
+    data_list.add(new DataHomeFragment(event, image[3]));
+    data_list.add(new DataHomeFragment(ebook, image[4]));
     homeFragmentAdapter.notifyDataSetChanged();
   }
 

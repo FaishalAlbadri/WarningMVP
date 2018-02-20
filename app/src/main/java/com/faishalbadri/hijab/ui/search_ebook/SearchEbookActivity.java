@@ -65,7 +65,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
 
   @Override
   public void onWrongSearchEbook(String msg) {
-    Toast.makeText(this, "wrong key", Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, "Data tidak ada", Toast.LENGTH_SHORT).show();
   }
 
   @Override

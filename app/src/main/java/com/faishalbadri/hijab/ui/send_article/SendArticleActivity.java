@@ -72,7 +72,7 @@ public class SendArticleActivity extends AppCompatActivity implements
     intent.setAction(Intent.ACTION_GET_CONTENT);
 //    intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     intent.setType("application/pdf");
-    startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_IMAGE_REQUEST);
+    startActivityForResult(Intent.createChooser(intent, "Pilih Berkas"), PICK_IMAGE_REQUEST);
   }
 
   @OnClick(R.id.button_send_article)

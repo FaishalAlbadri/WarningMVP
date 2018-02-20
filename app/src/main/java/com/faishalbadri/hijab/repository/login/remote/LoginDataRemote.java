@@ -36,7 +36,7 @@ public class LoginDataRemote implements LoginDataResource {
           final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
           try {
             if (pojoUser.getMessage().equals("Invalid username or password")) {
-              loginGetCallback.onWrongLogin("Email atau Password salah");
+              loginGetCallback.onWrongLogin("Email atau Kata sandi salah");
             } else {
               for (int a = 0; a < pojoUser.getUser().size(); a++) {
                 String id_user = pojoUser.getUser().get(a).getUser_id();
@@ -55,7 +55,7 @@ public class LoginDataRemote implements LoginDataResource {
               }
             }
           } catch (Exception e) {
-            loginGetCallback.onWrongLogin("Email Atau Password Salah");
+            loginGetCallback.onWrongLogin("Email Atau Kata sandi Salah");
           }
         }, error -> loginGetCallback.onErrorLogin(String.valueOf(error))) {
 

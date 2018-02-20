@@ -38,7 +38,7 @@ public class SearchNewsDataRemote implements SearchNewsDataResource {
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
           try {
-            if (pojoNews == null) {
+            if (pojoNews.getNews() == null) {
               searchNewsGetCallback.onWrongSearchNews("Null");
             } else {
               searchNewsGetCallback

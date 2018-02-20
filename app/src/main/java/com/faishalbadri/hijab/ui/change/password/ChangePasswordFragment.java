@@ -26,9 +26,9 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 public class ChangePasswordFragment extends Fragment implements PasswordView {
 
 
-  private static final String errorCurrentPassword = "Current password is empty";
-  private static final String errorNewPassword = "New password is empty";
-  private static final String errorConfirmPassword = "Confirm password is empty";
+  private static final String errorCurrentPassword = "Kata sandi saat ini kosong";
+  private static final String errorNewPassword = "Kata sandi baru kosong";
+  private static final String errorConfirmPassword = "Konfirmasi kata sandi kosong";
   @BindView(R.id.materialedittext_current_password)
   MaterialEditText materialedittextCurrentPassword;
   @BindView(R.id.materialedittext_new_password)
@@ -65,7 +65,7 @@ public class ChangePasswordFragment extends Fragment implements PasswordView {
         ChangePasswordRepositoryInject.provideToRepositoryInject(getActivity()));
     passwordPresenter.onAttachView(this);
     pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
+    pd.setMessage("Sedang mengirim data");
     pd.setCancelable(false);
     pd.setCanceledOnTouchOutside(false);
     sessionManager = new SessionManager(getActivity());
@@ -77,9 +77,9 @@ public class ChangePasswordFragment extends Fragment implements PasswordView {
     if (msg.equals("succes")) {
       sessionManager.editPassword(newPassword);
       getActivity().onBackPressed();
-      Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
+      Toast.makeText(getActivity(), "Kata sandi berhasil dirubah", Toast.LENGTH_SHORT).show();
     } else {
-      Toast.makeText(getActivity(), "Request failed\nCheck your internet connection",
+      Toast.makeText(getActivity(), "Gagal mengirim data\nPeriksa kembali internet anda",
           Toast.LENGTH_SHORT).show();
     }
 
@@ -138,19 +138,19 @@ public class ChangePasswordFragment extends Fragment implements PasswordView {
     if (!currentPassword.equals(DataUser.getInstance().getUserPassword()) && !newPassword
         .equals(confirmPassword)) {
       pd.dismiss();
-      materialedittextCurrentPassword.setError("Password Salah");
-      materialedittextConfirmPassword.setError("Password Tidak Cocok");
+      materialedittextCurrentPassword.setError("Kata Sandi Salah");
+      materialedittextConfirmPassword.setError("Kata Sandi Tidak Cocok");
       materialedittextCurrentPassword.requestFocus();
       materialedittextConfirmPassword.requestFocus();
     } else if (currentPassword.equals(DataUser.getInstance().getUserPassword()) && !newPassword
         .equals(confirmPassword)) {
       pd.dismiss();
-      materialedittextConfirmPassword.setError("Password Tidak Cocok");
+      materialedittextConfirmPassword.setError("Kata Sandi Tidak Cocok");
       materialedittextConfirmPassword.requestFocus();
     } else if (!currentPassword.equals(DataUser.getInstance().getUserPassword()) && newPassword
         .equals(confirmPassword)) {
       pd.dismiss();
-      materialedittextCurrentPassword.setError("Password Salah");
+      materialedittextCurrentPassword.setError("Kata Sandi Salah");
       materialedittextCurrentPassword.requestFocus();
     } else {
       newPassword = Server.convertPassMd5(newPassword);

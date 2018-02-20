@@ -37,7 +37,7 @@ public class SearchEventDataRemote implements SearchEventDataResource {
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
       final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
       try {
-        if (pojoEvent == null) {
+        if (pojoEvent.getEvent() == null) {
           searchEventGetCallback.onWrongSearchEvent("Null");
         } else {
           searchEventGetCallback

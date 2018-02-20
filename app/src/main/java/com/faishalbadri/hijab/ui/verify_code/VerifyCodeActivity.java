@@ -64,7 +64,7 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     }
     sessionManager = new SessionManager(VerifyCodeActivity.this);
     pd = new ProgressDialog(this);
-    pd.setMessage("Loading");
+    pd.setMessage("Sedang Mengirim Data");
     pd.setCancelable(false);
     pd.setCanceledOnTouchOutside(false);
     verifyCodePresenter = new VerifyCodePresenter(
@@ -103,7 +103,7 @@ public class VerifyCodeActivity extends AppCompatActivity implements
     if (edittextVerifyCode.getText().toString().equals(user_verify_code)) {
       verifyCodePresenter.getDataVerifyCode();
     } else {
-      Toast.makeText(VerifyCodeActivity.this, "Code salah", Toast.LENGTH_SHORT).show();
+      Toast.makeText(VerifyCodeActivity.this, "Kode salah", Toast.LENGTH_SHORT).show();
       pd.dismiss();
     }
   }

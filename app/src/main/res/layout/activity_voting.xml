@@ -127,7 +127,7 @@
           android:layout_height="0dp"
           android:padding="10dp"
           android:gravity="center"
-          android:text="You're never vote Pinky Hijab Ambassador 2018\n Please vote Pinky Hijab Ambassador"
+          android:text="Kamu belum pernah memilih Pinky Hijab Ambassador 2018\n Silakan pilih Pinky Hijab Ambassador"
           android:textColor="@color/colorPrimary"
           android:textSize="16sp"
           app:layout_constraintBottom_toBottomOf="parent"

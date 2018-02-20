@@ -66,7 +66,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
 
   @Override
   public void onWrongSearchEvent(String msg) {
-    Toast.makeText(this, "wrong key", Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, "Data tidak ada", Toast.LENGTH_SHORT).show();
   }
 
   @Override

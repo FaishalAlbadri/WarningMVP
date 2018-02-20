@@ -38,7 +38,7 @@ public class SearchVideoDataRemote implements SearchVideoDataResource {
         response -> {
           final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
           try {
-            if (pojoVideo == null) {
+            if (pojoVideo.getVideos() == null) {
               searchVideoGetCallback.onWrongSearchVideo("Null");
             } else {
               searchVideoGetCallback.onSuccesSearchVideo(pojoVideo.getVideos(), "Ok");

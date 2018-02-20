@@ -125,7 +125,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
   }
 
   public void onErrorPagination() {
-    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    Toast.makeText(context, "Koneksi internet anda lambat", Toast.LENGTH_SHORT).show();
     viewHolderLoading.progressLoadData.setVisibility(View.GONE);
     viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
   }
