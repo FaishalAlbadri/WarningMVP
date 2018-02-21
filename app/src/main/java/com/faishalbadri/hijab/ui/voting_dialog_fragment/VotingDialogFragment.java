@@ -167,8 +167,8 @@ public class VotingDialogFragment extends DialogFragment implements
 
   @Override
   public void onSuccesVotingDialogViewVotingRate(String msg) {
-    if (msg.equals("Kamu telah memilih seseorang")) {
-      Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    if (msg.equals("You've already voting")) {
+      Toast.makeText(getActivity(), "Kamu telah memilih seseorang", Toast.LENGTH_SHORT).show();
       buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
       buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
     }

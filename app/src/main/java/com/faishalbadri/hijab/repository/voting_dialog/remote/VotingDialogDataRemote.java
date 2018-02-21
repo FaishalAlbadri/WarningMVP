@@ -2,6 +2,7 @@ package com.faishalbadri.hijab.repository.voting_dialog.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -80,6 +81,7 @@ public class VotingDialogDataRemote implements VotingDialogDataResource {
       @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback) {
     StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlRate),
         response -> {
+          Log.i("response", response);
           try {
             if (String.valueOf(new JSONObject(response).getString("message"))
                 .equals("You've already voting")) {
