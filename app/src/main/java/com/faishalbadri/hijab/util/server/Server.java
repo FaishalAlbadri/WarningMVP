@@ -13,8 +13,6 @@ public class Server {
 
   public final static String BASE_URL_REVAMP = "http://pinkfame.com/api/v1/";
   public final static String BASE_ASSETS = "http://pinkfame.com/api/";
-  public static final String EMAIL = "pinkfameapp@gmail.com";
-  public static final String PASSWORD = "admin24682018";
   public static String BASE_IMG_YT = "https://i.ytimg.com/vi/";
   public static String IMG_YT_FORMAT = "/mqdefault.jpg";
   public static String YT_CODE = "AIzaSyAZtqvIpixBElGAIewxDbfOABF0V35TWTY";

@@ -17,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.RegisterRepositoryInject;
-import com.faishalbadri.hijab.util.SendMail;
 import com.faishalbadri.hijab.util.server.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import java.text.DateFormat;
@@ -110,10 +109,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
 
   @Override
   public void onSuccesRegister(String msg) {
-    sendMail();
     pd.dismiss();
-    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
-        .show();
   }
 
   @Override
@@ -133,13 +129,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
-  }
-
-  private void sendMail() {
-    String subject = "Your Verification Account Key From Pink Fame";
-    String message = "Your verification code : " + verify_code;
-    SendMail sm = new SendMail(getActivity(), email, subject, message);
-    sm.execute();
   }
 
 }

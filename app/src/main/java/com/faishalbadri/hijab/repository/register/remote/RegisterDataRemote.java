@@ -3,18 +3,14 @@ package com.faishalbadri.hijab.repository.register.remote;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.ResponseRegister;
 import com.faishalbadri.hijab.repository.register.RegisterDataResource;
-import com.faishalbadri.hijab.util.server.Server;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 10/30/17.
@@ -22,7 +18,6 @@ import org.json.JSONObject;
 
 public class RegisterDataRemote implements RegisterDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "user/new";
   Context context;
 
   public RegisterDataRemote(Context context) {
@@ -30,43 +25,38 @@ public class RegisterDataRemote implements RegisterDataResource {
   }
 
   @Override
-  public void getRegisterResult(final String username, final String email, final String password,
-      final String verify_code, @NonNull final RegisterGetCallback registerGetCallback) {
-    RequestQueue requestQueue = Volley.newRequestQueue(context);
-    StringRequest stringRequest = new StringRequest(
-        Method.POST, String.valueOf(URL), response -> {
-      try {
-        if (String.valueOf(new JSONObject(response).getString("message"))
-            .equals("You're successfully registered")) {
-          try {
-            registerGetCallback.onSuccesRegister(context.getString(R.string.text_succes));
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-        } else {
-          Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai",
-              Toast.LENGTH_SHORT).show();
-          registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
-        }
-      } catch (JSONException e) {
-
-      } catch (Exception e) {
-
-      }
-
-    }, error -> {
-      registerGetCallback.onErrorRegister(String.valueOf(error));
-    }) {
+  public void getRegisterResult(String username, String email, String password, String verify_code,
+      @NonNull RegisterGetCallback registerGetCallback) {
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<ResponseRegister> responseRegisterCall = apiInterface
+        .getRegister(username, email, password, verify_code);
+    responseRegisterCall.enqueue(new Callback<ResponseRegister>() {
       @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("username", username);
-        params.put("email", email);
-        params.put("password", password);
-        params.put("verify_code", verify_code);
-        return params;
+      public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+        try {
+          if (response.body().getMessage().equals("You're successfully registered")) {
+            Toast.makeText(context, "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
+                .show();
+            registerGetCallback.onSuccesRegister(context.getString(R.string.text_succes));
+          } else if (response.body().getMessage().equals("Sorry.. Account already exist")) {
+            Toast.makeText(context, "Masukkan data yang valid\nNama atau Email Sudah Terpakai",
+                Toast.LENGTH_SHORT).show();
+            registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
+          } else {
+            Toast.makeText(context, "Terjadi kesalahan ketika mendaftar\nSilahkan daftar ulang",
+                Toast.LENGTH_SHORT).show();
+            registerGetCallback.onWrongRegister(context.getString(R.string.text_error));
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    };
-    requestQueue.add(stringRequest);
+
+      @Override
+      public void onFailure(Call<ResponseRegister> call, Throwable t) {
+        registerGetCallback.onErrorRegister("error");
+      }
+    });
+
   }
 }

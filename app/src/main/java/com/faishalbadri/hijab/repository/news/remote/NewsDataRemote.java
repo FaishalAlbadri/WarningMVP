@@ -2,7 +2,6 @@ package com.faishalbadri.hijab.repository.news.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -39,7 +38,6 @@ public class NewsDataRemote implements NewsDataResource {
     StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + PAGE),
         response -> {
           final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
-          Log.i("response", response);
           try {
             if (pojoNews.getNews().toString().equals("[]")) {
               newsGetCallback.onErrorNews("Data Null");
