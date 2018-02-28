@@ -30,7 +30,7 @@ public class VotingDataRemote implements VotingDataResource {
   public void getVotingResult(int PAGE, @NonNull VotingGetCallback votingGetCallback) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
     final Call<VotingResponse> votingResponseCall = apiInterface
-        .getVoting(DataUser.getInstance().getUserApiKey());
+        .getVoting("voting?page=" + PAGE, DataUser.getInstance().getUserApiKey());
     votingResponseCall.enqueue(new Callback<VotingResponse>() {
       @Override
       public void onResponse(Call<VotingResponse> call, Response<VotingResponse> response) {

@@ -94,6 +94,16 @@ public interface APIInterface {
       @Field("voting_id") String voting_id,
       @Header("Authorization") String apikey);
 
+  /**
+   * Gets voting vote.
+   *
+   * @param user_id the user id
+   * @param voting_id the voting id
+   * @param type the type
+   * @param voting_session_id the voting session id
+   * @param apikey the apikey
+   * @return the voting vote
+   */
   @FormUrlEncoded
   @POST("voting/vote")
   Call<GlobalResponse> getVotingVote(
@@ -208,10 +218,11 @@ public interface APIInterface {
   /**
    * Gets voting.
    *
+   * @param url the url
    * @param apikey the apikey
    * @return the voting
    */
-  @GET("voting")
-  Call<VotingResponse> getVoting(@Header("Authorization") String apikey);
+  @GET
+  Call<VotingResponse> getVoting(@Url String url, @Header("Authorization") String apikey);
 
 }

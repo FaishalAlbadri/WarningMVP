@@ -1,44 +1,52 @@
 package com.faishalbadri.hijab.data.voting;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
+import javax.annotation.Generated;
 
+@Generated("com.robohorse.robopojogenerator")
 public class VotingResponse {
 
-  private List<VotingItem> voting;
-  private boolean error;
-  private String message;
+	@SerializedName("voting")
+	private List<VotingItem> voting;
 
-  public List<VotingItem> getVoting() {
-    return voting;
-  }
+	@SerializedName("error")
+	private boolean error;
 
-  public void setVoting(List<VotingItem> voting) {
-    this.voting = voting;
-  }
+	@SerializedName("message")
+	private String message;
 
-  public boolean isError() {
-    return error;
-  }
+	public List<VotingItem> getVoting() {
+		return voting;
+	}
 
-  public void setError(boolean error) {
-    this.error = error;
-  }
+	public void setVoting(List<VotingItem> voting) {
+		this.voting = voting;
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public boolean isError() {
+		return error;
+	}
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+	public void setError(boolean error) {
+		this.error = error;
+	}
 
-  @Override
-  public String toString() {
-    return
-        "VotingResponse{" +
-            "voting = '" + voting + '\'' +
-            ",error = '" + error + '\'' +
-            ",message = '" + message + '\'' +
-            "}";
-  }
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	@Override
+	public String toString() {
+		return
+				"VotingResponse{" +
+						"voting = '" + voting + '\'' +
+						",error = '" + error + '\'' +
+						",message = '" + message + '\'' +
+						"}";
+	}
 }

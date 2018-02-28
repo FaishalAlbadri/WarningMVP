@@ -48,7 +48,7 @@ public class VotingDialogFragment extends DialogFragment implements
   RelativeLayout invisibleRelativeDialogFragmentVoting;
   @BindView(R.id.progress)
   ProgressBar progress;
-  private String nama, img, id_user, id_voting, id_session, status_session, voting;
+  private String nama, img, id_voting, id_session, status_session, voting;
   private VotingDialogPresenterGetSession votingDialogPresenterGetSession;
   private VotingDialogPresenterVotingRate votingDialogPresenterVotingRate;
 
