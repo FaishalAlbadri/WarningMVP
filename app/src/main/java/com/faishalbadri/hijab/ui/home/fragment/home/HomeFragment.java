@@ -14,7 +14,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
-import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
+import com.faishalbadri.hijab.data.slider.SliderItem;
 import com.faishalbadri.hijab.di.SliderHomeRepositoryInject;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeContract.homeView;
 import com.faishalbadri.hijab.util.server.Server;
@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment implements homeView {
 
 
   private void setView() {
+    recyclerviewFragmentHome.setNestedScrollingEnabled(false);
     data_list = new ArrayList<>();
     homePresenter = new HomePresenter(
         SliderHomeRepositoryInject.provideToSliderHomeRepository(getActivity()));
@@ -107,11 +108,11 @@ public class HomeFragment extends Fragment implements homeView {
   }
 
   @Override
-  public void onSuccesSlider(List<SliderBean> dataSlider, String msg) {
+  public void onSuccesSlider(List<SliderItem> dataSlider, String msg) {
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
-      file_maps.put(dataSlider.get(a).getSlider_title(),
-          Server.BASE_ASSETS + dataSlider.get(a).getSlider_img());
+      file_maps.put(dataSlider.get(a).getSliderTitle(),
+          Server.BASE_ASSETS + dataSlider.get(a).getSliderImg());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());

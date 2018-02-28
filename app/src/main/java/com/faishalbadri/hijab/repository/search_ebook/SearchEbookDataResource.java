@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.search_ebook;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SearchEbookDataResource {
 
   interface SearchEbookGetCallback {
 
-    void onSuccesSearchEbook(List<EbookBean> data, String msg);
+    void onSuccesSearchEbook(List<EbookItem> data, String msg);
 
     void onWrongSearchEbook(String msg);
 

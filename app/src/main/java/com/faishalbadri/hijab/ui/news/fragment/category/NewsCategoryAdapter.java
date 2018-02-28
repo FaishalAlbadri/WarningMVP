@@ -13,7 +13,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryActivity;
 import java.util.List;
@@ -25,11 +25,11 @@ import java.util.List;
 public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<CategoriesBean> data;
+  private List<CategoriesItem> data;
 
 
   public NewsCategoryAdapter(Context context,
-      List<CategoriesBean> data) {
+      List<CategoriesItem> data) {
     this.context = context;
     this.data = data;
   }
@@ -43,14 +43,14 @@ public class NewsCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final CategoriesBean list_item = data.get(position);
+    final CategoriesItem list_item = data.get(position);
     setImage(holder.imageviewItem,
-        "categories_" + list_item.getCategory_name().toLowerCase().replace(" ", ""));
-    holder.textviewItem.setText(list_item.getCategory_name());
+        "categories_" + list_item.getCategoryName().toLowerCase().replace(" ", ""));
+    holder.textviewItem.setText(list_item.getCategoryName());
     holder.constrainItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, NewsByCategoryActivity.class)
-          .putExtra("category_id", list_item.getCategory_id())
-          .putExtra("category_title", list_item.getCategory_name()));
+          .putExtra("category_id", list_item.getCategoryId())
+          .putExtra("category_title", list_item.getCategoryName()));
     });
   }
 

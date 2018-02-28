@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.sponsor;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoSponsor;
+import com.faishalbadri.hijab.data.sponsor.SponsorItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SponsorDataResource {
 
   interface SponsorGetCallback {
 
-    void onSuccesSponsor(List<PojoSponsor.SponsorBean> data, String msg);
+    void onSuccesSponsor(List<SponsorItem> data, String msg);
 
     void onErrorSponsor(String msg);
   }

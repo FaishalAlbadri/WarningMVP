@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.event.fragment.event;
 
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.repository.event.EventDataResource.EventGetCallback;
 import com.faishalbadri.hijab.repository.event.EventRepository;
 import java.util.List;
@@ -32,7 +32,7 @@ public class EventPresenter implements EventContract.eventPresenter {
   public void getDataEvent(int PAGE) {
     eventRepository.getEventResult(PAGE, new EventGetCallback() {
       @Override
-      public void onSuccesEvent(List<EventBean> data, String msg) {
+      public void onSuccesEvent(List<EventItem> data, String msg) {
         eventView.onSuccesEvent(data, msg);
       }
 

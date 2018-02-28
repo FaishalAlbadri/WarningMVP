@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.category;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface CategoryDataResource {
 
   interface CategoryGetCallback {
 
-    void onSuccesCategory(List<CategoriesBean> data, String msg);
+    void onSuccesCategory(List<CategoriesItem> data, String msg);
 
     void onErrorCategory(String msg);
   }

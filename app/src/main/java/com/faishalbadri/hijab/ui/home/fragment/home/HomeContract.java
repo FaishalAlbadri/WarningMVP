@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.home.fragment.home;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoSlider;
+import com.faishalbadri.hijab.data.slider.SliderItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class HomeContract {
 
   public interface homeView {
 
-    void onSuccesSlider(List<PojoSlider.SliderBean> dataSlider, String msg);
+    void onSuccesSlider(List<SliderItem> dataSlider, String msg);
 
     void onErrorSlider(String msg);
 

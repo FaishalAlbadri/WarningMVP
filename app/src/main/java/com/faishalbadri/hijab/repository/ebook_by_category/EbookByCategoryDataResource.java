@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.ebook_by_category;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ public interface EbookByCategoryDataResource {
 
   interface EbookByCategoryDataCallBack {
 
-    void onSuccessEbookByCategory(List<EbookBean> video, String msg);
+    void onSuccessEbookByCategory(List<EbookItem> video, String msg);
 
     void onErrorEbookByCategory(String msg);
 

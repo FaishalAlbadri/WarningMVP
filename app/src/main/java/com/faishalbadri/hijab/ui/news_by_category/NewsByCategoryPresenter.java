@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news_by_category;
 
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.news_by_category.NewsByCategoryDataResource.NewsByCategoryGetDataCallBack;
-import com.faishalbadri.hijab.repository.news_by_category.NewsByCategoryRepository;
+import com.faishalbadri.hijab.repository.news_by_category_.NewsByCategoryDataResource.NewsByCategoryGetDataCallBack;
+import com.faishalbadri.hijab.repository.news_by_category_.NewsByCategoryRepository;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
 import java.util.List;
 

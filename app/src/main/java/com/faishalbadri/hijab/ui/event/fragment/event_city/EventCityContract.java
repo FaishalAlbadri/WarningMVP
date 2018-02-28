@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.event.fragment.event_city;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
+import com.faishalbadri.hijab.data.city.CityItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class EventCityContract {
 
   public interface eventCityView {
 
-    void onSuccesEventCity(List<EventCityBean> data, String msg);
+    void onSuccesEventCity(List<CityItem> data, String msg);
 
     void onErrorEventCity(String msg);
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
+import com.faishalbadri.hijab.data.city.CityItem;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityActivity;
 import java.util.List;
@@ -23,11 +23,11 @@ import java.util.List;
 public class EventCityAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<EventCityBean> data;
+  private List<CityItem> data;
 
 
   public EventCityAdapter(Context context,
-      List<EventCityBean> data) {
+      List<CityItem> data) {
     this.context = context;
     this.data = data;
   }
@@ -41,14 +41,14 @@ public class EventCityAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EventCityBean listitem = data.get(position);
-    holder.textviewTitleCategoryItem.setText(listitem.getEvent_city_name());
+    final CityItem listitem = data.get(position);
+    holder.textviewTitleCategoryItem.setText(listitem.getEventCityName());
     holder.cardViewCategoryItem.setForeground(getSelectedItemDrawable());
     holder.cardViewCategoryItem.setClickable(true);
     holder.cardViewCategoryItem.setOnClickListener(v -> {
       context.startActivity(new Intent(context, EventByCityActivity.class)
-          .putExtra("id", listitem.getEvent_city_id())
-          .putExtra("city", listitem.getEvent_city_name()));
+          .putExtra("id", listitem.getEventCityId())
+          .putExtra("city", listitem.getEventCityName()));
     });
   }
 

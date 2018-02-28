@@ -2,19 +2,16 @@ package com.faishalbadri.hijab.repository.category.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
+import com.faishalbadri.hijab.data.categories.CategoriesResponse;
 import com.faishalbadri.hijab.repository.category.CategoryDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 11/4/17.
@@ -22,39 +19,38 @@ import java.util.Map;
 
 public class CategoryDataRemote implements CategoryDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "categories";
   private Context context;
-  private RequestQueue requestQueue;
 
 
   public CategoryDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getCategoryResult(@NonNull CategoryGetCallback categoryGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
-        response -> {
-          final PojoCategory pojoCategory = new Gson().fromJson(response, PojoCategory.class);
-          try {
-            if (pojoCategory.getCategories().toString().equals("[]")) {
-              categoryGetCallback.onErrorCategory("Error");
-            } else {
-              categoryGetCallback.onSuccesCategory(pojoCategory.getCategories(), "Ok");
-            }
-          } catch (Exception e) {
-
-          }
-        }, error -> categoryGetCallback
-        .onErrorCategory(context.getResources().getString(R.string.caption_error_internet_acces))) {
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<CategoriesResponse> categoriesResponseCall = apiInterface
+        .getCategories(DataUser.getInstance().getUserApiKey());
+    categoriesResponseCall.enqueue(new Callback<CategoriesResponse>() {
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
+        try {
+          if (response.body().getCategories().toString().equals("[]")) {
+            categoryGetCallback.onErrorCategory("Error");
+          } else {
+            CategoriesResponse categoriesResponse = response.body();
+            List<CategoriesItem> items = categoriesResponse.getCategories();
+            categoryGetCallback.onSuccesCategory(items, "Ok");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    };
-    requestQueue.add(stringRequest);
+
+      @Override
+      public void onFailure(Call<CategoriesResponse> call, Throwable t) {
+        categoryGetCallback.onErrorCategory("Tidak ada koneksi internet");
+      }
+    });
   }
 }

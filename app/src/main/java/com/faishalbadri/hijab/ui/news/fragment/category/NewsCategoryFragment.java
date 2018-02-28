@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.category.NewsCategoryContract.newsCategoryView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -31,7 +31,7 @@ public class NewsCategoryFragment extends Fragment implements
   @BindView(R.id.recyclerview_fragment_news_category)
   RecyclerView recyclerviewFragmentNewsCategory;
   NewsCategoryPresenter newsCategoryPresenter;
-  ArrayList<CategoriesBean> list_data;
+  ArrayList<CategoriesItem> list_data;
   NewsCategoryAdapter newsCategoryAdapter;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
@@ -71,7 +71,7 @@ public class NewsCategoryFragment extends Fragment implements
   }
 
   @Override
-  public void onSuccesNewsCategory(List<CategoriesBean> data, String msg) {
+  public void onSuccesNewsCategory(List<CategoriesItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     newsCategoryAdapter.notifyDataSetChanged();

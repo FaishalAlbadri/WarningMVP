@@ -1,9 +1,9 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.news.NewsDataResource.NewsGetCallback;
-import com.faishalbadri.hijab.repository.news.NewsDataResource.SliderGetCallback;
-import com.faishalbadri.hijab.repository.news.NewsRepository;
+import com.faishalbadri.hijab.repository.news_.NewsDataResource.NewsGetCallback;
+import com.faishalbadri.hijab.repository.news_.NewsDataResource.SliderGetCallback;
+import com.faishalbadri.hijab.repository.news_.NewsRepository;
 import java.util.List;
 
 /**

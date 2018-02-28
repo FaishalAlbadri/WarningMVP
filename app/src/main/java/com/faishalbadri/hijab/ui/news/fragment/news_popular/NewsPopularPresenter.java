@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.news_popular;
 
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.news_popular.NewsPopularDataResource.NewsPopularGetCallback;
-import com.faishalbadri.hijab.repository.news_popular.NewsPopularRepository;
+import com.faishalbadri.hijab.repository.news_popular_.NewsPopularDataResource.NewsPopularGetCallback;
+import com.faishalbadri.hijab.repository.news_popular_.NewsPopularRepository;
 import java.util.List;
 
 /**

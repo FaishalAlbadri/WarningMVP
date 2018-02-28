@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.video.fragment.video;
 
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
-import com.faishalbadri.hijab.repository.video.VideoDataResource.VideoGetCallBack;
-import com.faishalbadri.hijab.repository.video.VideoRepository;
+import com.faishalbadri.hijab.repository.video_.VideoDataResource.VideoGetCallBack;
+import com.faishalbadri.hijab.repository.video_.VideoRepository;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
 import java.util.List;
 

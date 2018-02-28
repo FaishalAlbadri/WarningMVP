@@ -2,8 +2,8 @@ package com.faishalbadri.hijab.ui.search_video;
 
 
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
-import com.faishalbadri.hijab.repository.search_video.SearchVideoDataResource.SearchVideoGetCallback;
-import com.faishalbadri.hijab.repository.search_video.SearchVideoRepository;
+import com.faishalbadri.hijab.repository.search_video_.SearchVideoDataResource.SearchVideoGetCallback;
+import com.faishalbadri.hijab.repository.search_video_.SearchVideoRepository;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
 import java.util.List;
 

@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import com.faishalbadri.hijab.di.SearchEbookRepositoryInject;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
 import com.faishalbadri.hijab.util.UserUtil;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class SearchEbookActivity extends AppCompatActivity implements SearchEbookView {
 
-  ArrayList<EbookBean> resultItem;
+  ArrayList<EbookItem> resultItem;
   @BindView(R.id.recyclerview_activity_search_ebook)
   RecyclerView recyclerviewActivitySearchEbook;
   @BindView(R.id.layout_no_internet_acces)
@@ -55,7 +55,7 @@ public class SearchEbookActivity extends AppCompatActivity implements SearchEboo
   }
 
   @Override
-  public void onSuccesSearchEbook(List<EbookBean> data, String msg) {
+  public void onSuccesSearchEbook(List<EbookItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();

@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookScrollingActivity;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -34,9 +34,9 @@ import java.util.List;
 public class SearchEbookAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<EbookBean> list_ebook;
+  private List<EbookItem> list_ebook;
 
-  public SearchEbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookBean> resultItem) {
+  public SearchEbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookItem> resultItem) {
     this.context = ebookActivity;
     this.list_ebook = resultItem;
   }
@@ -51,25 +51,25 @@ public class SearchEbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EbookBean listitem = list_ebook.get(position);
+    final EbookItem listitem = list_ebook.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getEbook_image())
+        .load(Server.BASE_ASSETS + listitem.getEbookImage())
         .apply(options)
         .into(holder.imageviewEbookItem);
-    holder.textviewEbookItem.setText(listitem.getEbook_title());
+    holder.textviewEbookItem.setText(listitem.getEbookTitle());
     holder.cardviewItemEbook.setForeground(getSelectedItemDrawable());
     holder.cardviewItemEbook.setOnClickListener(view -> {
       view.getContext()
           .startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
-              .putExtra("ebook_name", listitem.getEbook_title())
-              .putExtra("ebook_image", listitem.getEbook_image())
-              .putExtra("ebook_description", listitem.getEbook_description())
-              .putExtra("ebook_url", listitem.getEbook_link())
-              .putExtra("ebook_publisher", listitem.getEbook_publisher())
-              .putExtra("ebook_writer", listitem.getEbook_writer())
-              .putExtra("ebook_time", listitem.getEbook_release_date()));
+              .putExtra("ebook_name", listitem.getEbookTitle())
+              .putExtra("ebook_image", listitem.getEbookImage())
+              .putExtra("ebook_description", listitem.getEbookDescription())
+              .putExtra("ebook_url", listitem.getEbookLink())
+              .putExtra("ebook_publisher", listitem.getEbookPublisher())
+              .putExtra("ebook_writer", listitem.getEbookWriter())
+              .putExtra("ebook_time", listitem.getEbookReleaseDate()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

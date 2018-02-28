@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.di.EventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event.EventContract.eventView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -31,7 +31,7 @@ public class EventFragment extends Fragment implements eventView {
   @BindView(R.id.recyclerview_fragment_event)
   RecyclerView recyclerviewFragmentEvent;
   EventPresenter eventPresenter;
-  ArrayList<EventBean> list_data;
+  ArrayList<EventItem> list_data;
   EventAdapter eventAdapter;
   @BindView(R.id.refresh_fragment_event)
   SwipeRefreshLayout refreshFragmentEvent;
@@ -86,7 +86,7 @@ public class EventFragment extends Fragment implements eventView {
   }
 
   @Override
-  public void onSuccesEvent(List<EventBean> data, String msg) {
+  public void onSuccesEvent(List<EventItem> data, String msg) {
     PAGE++;
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);

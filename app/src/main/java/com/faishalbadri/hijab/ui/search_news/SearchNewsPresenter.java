@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.search_news;
 
 import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.search_news.SearchNewsDataResource.SearchNewsGetCallback;
-import com.faishalbadri.hijab.repository.search_news.SearchNewsRepository;
+import com.faishalbadri.hijab.repository.search_news_.SearchNewsDataResource.SearchNewsGetCallback;
+import com.faishalbadri.hijab.repository.search_news_.SearchNewsRepository;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import java.util.List;
 

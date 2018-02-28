@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.home.fragment.home;
 
-import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
+import com.faishalbadri.hijab.data.slider.SliderItem;
 import com.faishalbadri.hijab.repository.slider_home.SliderHomeDataResource.SliderHomeGetCallback;
 import com.faishalbadri.hijab.repository.slider_home.SliderHomeRepository;
 import com.faishalbadri.hijab.ui.home.fragment.home.HomeContract.homeView;
@@ -34,7 +34,7 @@ public class HomePresenter implements HomeContract.homePresenter {
   public void getDataSlider() {
     sliderHomeRepository.getSliderHomeResult(new SliderHomeGetCallback() {
       @Override
-      public void onSuccesSliderHome(List<SliderBean> data, String msg) {
+      public void onSuccesSliderHome(List<SliderItem> data, String msg) {
         homeView.onSuccesSlider(data, msg);
       }
 

@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.di.SearchEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityAdapter;
 import com.faishalbadri.hijab.ui.search_event.SearchEventContract.SearchEventView;
@@ -34,7 +34,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   private String key;
   private SearchEventPresenter searchEventPresenter;
   private EventByCityAdapter adapter;
-  private ArrayList<EventBean> resultItem;
+  private ArrayList<EventItem> resultItem;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class SearchEventActivity extends AppCompatActivity implements SearchEven
   }
 
   @Override
-  public void onSuccesSearchEvent(List<EventBean> data, String msg) {
+  public void onSuccesSearchEvent(List<EventItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();

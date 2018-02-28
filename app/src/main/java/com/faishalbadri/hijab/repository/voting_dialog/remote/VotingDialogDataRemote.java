@@ -2,19 +2,17 @@ package com.faishalbadri.hijab.repository.voting_dialog.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.faishalbadri.hijab.data.PojoSession;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.response.GlobalResponse;
+import com.faishalbadri.hijab.data.session.SessionItem;
+import com.faishalbadri.hijab.data.session.SessionResponse;
 import com.faishalbadri.hijab.repository.voting_dialog.VotingDialogDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 11/2/17.
@@ -23,95 +21,76 @@ import org.json.JSONObject;
 public class VotingDialogDataRemote implements VotingDialogDataResource {
 
   private Context context;
-  private RequestQueue requestQueue;
-  private String urlRate = Server.BASE_URL_REVAMP + "voting/vote";
-  private String urlSession = Server.BASE_URL_REVAMP + "session";
 
   public VotingDialogDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getResulVotingDialogGetSession(String id_voting,
       @NonNull VotingDialogGetSessionGetCallback votingDialogGetSessionGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlSession),
-        response -> {
-          votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
-          final PojoSession pojoSession = new Gson().fromJson(response, PojoSession.class);
-          try {
-            if (pojoSession == null) {
-              votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
-            } else {
-              for (int a = 0; a < pojoSession.getSession().size(); a++) {
-                String id_session = pojoSession.getSession().get(a).getSession_id();
-                String status_session = pojoSession.getSession().get(a).getSession_status();
-                votingDialogGetSessionGetCallback
-                    .onSuccesVotingDialogGetSession("Succes", id_session, status_session);
-              }
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<SessionResponse> sessionResponseCall = apiInterface
+        .getSession(DataUser.getInstance().getUserId(), id_voting,
+            DataUser.getInstance().getUserApiKey());
+    sessionResponseCall.enqueue(new Callback<SessionResponse>() {
+      @Override
+      public void onResponse(Call<SessionResponse> call, Response<SessionResponse> response) {
+        votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
+        try {
+          if (response.body().getSession() == null) {
+            votingDialogGetSessionGetCallback.onSuccesVotingDialogGetSessionNull("Null");
+          } else {
+            SessionResponse sessionResponse = response.body();
+            List<SessionItem> items = sessionResponse.getSession();
+            for (int a = 0; a < items.size(); a++) {
+              String id_session = items.get(a).getSessionId();
+              String status_session = items.get(a).getSessionStatus();
+              votingDialogGetSessionGetCallback
+                  .onSuccesVotingDialogGetSession("Succes", id_session, status_session);
             }
-          } catch (Exception e) {
-
           }
-        }, error -> votingDialogGetSessionGetCallback
-        .onErrorVotingDialogGetSession(String.valueOf(error))) {
-
-      @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", DataUser.getInstance().getUserId());
-        params.put("voting_id", id_voting);
-        return params;
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
 
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onFailure(Call<SessionResponse> call, Throwable t) {
+        votingDialogGetSessionGetCallback
+            .onErrorVotingDialogGetSession("Tidak Ada Koneksi Internet");
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
 
   @Override
   public void getResulVotingDialogVotingRate(String voting_id, String type,
       String voting_session_id,
       @NonNull VotingDialogVotingRateGetCallback votingDialogVotingRateGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(urlRate),
-        response -> {
-          try {
-            if (String.valueOf(new JSONObject(response).getString("message"))
-                .equals("You've already voting")) {
-              votingDialogVotingRateGetCallback
-                  .onSuccesVotingDialogVotingRate("You've already voting");
-            } else {
-              votingDialogVotingRateGetCallback.onSuccesVotingDialogVotingRate("ok");
-            }
-          } catch (Exception e) {
-
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<GlobalResponse> responseVotingVoteCall = apiInterface.getVotingVote(DataUser
+            .getInstance().getUserId(), voting_id, type, voting_session_id,
+        DataUser.getInstance().getUserApiKey());
+    responseVotingVoteCall.enqueue(new Callback<GlobalResponse>() {
+      @Override
+      public void onResponse(Call<GlobalResponse> call, Response<GlobalResponse> response) {
+        try {
+          if (response.body().getMessage().equals("You've already voting")) {
+            votingDialogVotingRateGetCallback
+                .onSuccesVotingDialogVotingRate("You've already voting");
+          } else {
+            votingDialogVotingRateGetCallback.onSuccesVotingDialogVotingRate("ok");
           }
-        }, error -> votingDialogVotingRateGetCallback
-        .onErrorVotingDialogVotingRate(String.valueOf(error))) {
-
-      @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", DataUser.getInstance().getUserId());
-        params.put("voting_id", voting_id);
-        params.put("type", type);
-        params.put("voting_session_id", voting_session_id);
-        return params;
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
 
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onFailure(Call<GlobalResponse> call, Throwable t) {
+        votingDialogVotingRateGetCallback
+            .onErrorVotingDialogVotingRate("Tidak ada koneksi internet");
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
-
 }

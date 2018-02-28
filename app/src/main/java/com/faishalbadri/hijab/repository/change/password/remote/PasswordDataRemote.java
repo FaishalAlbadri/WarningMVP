@@ -2,16 +2,14 @@ package com.faishalbadri.hijab.repository.change.password.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.response.GlobalResponse;
 import com.faishalbadri.hijab.repository.change.password.PasswordDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import java.util.HashMap;
-import java.util.Map;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 06/02/18.
@@ -19,33 +17,35 @@ import java.util.Map;
 
 public class PasswordDataRemote implements PasswordDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "user/change/password";
   private Context context;
-  private RequestQueue requestQueue;
 
   public PasswordDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getPasswordResult(String password, @NonNull PasswordGetCallback passwordGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
-      try {
-        passwordGetCallback.onResponse("succes");
-      } catch (Exception e) {
-
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<GlobalResponse> responsechangePasswordCall = apiInterface
+        .changePasswordUser(DataUser.getInstance().getUserId(), password);
+    responsechangePasswordCall.enqueue(new Callback<GlobalResponse>() {
+      @Override
+      public void onResponse(Call<GlobalResponse> call, Response<GlobalResponse> response) {
+        try {
+          if (response.body().getMessage().equals("You're successfully update your password")) {
+            passwordGetCallback.onResponse("succes");
+          } else {
+            passwordGetCallback.onResponse("Error");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    }, error -> passwordGetCallback.onResponse(String.valueOf(error))) {
 
       @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("user_id", DataUser.getInstance().getUserId());
-        params.put("password", password);
-        return params;
+      public void onFailure(Call<GlobalResponse> call, Throwable t) {
+        passwordGetCallback.onResponse("Tidak ada koneksi internet");
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
 }

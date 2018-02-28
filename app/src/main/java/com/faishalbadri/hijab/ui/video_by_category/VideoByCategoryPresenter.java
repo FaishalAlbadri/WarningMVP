@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.video_by_category;
 
 import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
-import com.faishalbadri.hijab.repository.video_by_category.VideoByCategoryDataResource.VideoByCategoryGetDataCallBack;
-import com.faishalbadri.hijab.repository.video_by_category.VideoByCategoryRepository;
+import com.faishalbadri.hijab.repository.video_by_category_.VideoByCategoryDataResource.VideoByCategoryGetDataCallBack;
+import com.faishalbadri.hijab.repository.video_by_category_.VideoByCategoryRepository;
 import java.util.List;
 
 /**

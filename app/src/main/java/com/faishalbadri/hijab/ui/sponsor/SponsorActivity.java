@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.data.sponsor.SponsorItem;
 import com.faishalbadri.hijab.di.SponsorRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.sponsor.SponsorContract.SponsorView;
@@ -33,7 +33,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
   RelativeLayout layoutNoInternetAcces;
   private SponsorPresenter sponsorPresenter;
   private SponsorAdapter sponsorAdapter;
-  private ArrayList<SponsorBean> list_data;
+  private ArrayList<SponsorItem> list_data;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class SponsorActivity extends AppCompatActivity implements SponsorView {
   }
 
   @Override
-  public void onSuccesSponsor(List<SponsorBean> data, String msg) {
+  public void onSuccesSponsor(List<SponsorItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     sponsorAdapter.notifyDataSetChanged();

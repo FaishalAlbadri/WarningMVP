@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.news.NewsRepository;
-import com.faishalbadri.hijab.repository.news.remote.NewsDataRemote;
+import com.faishalbadri.hijab.repository.news_.NewsRepository;
+import com.faishalbadri.hijab.repository.news_.remote.NewsDataRemote;
 
 /**
  * Created by faishal on 11/4/17.

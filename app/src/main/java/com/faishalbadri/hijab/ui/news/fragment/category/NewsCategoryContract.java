@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class NewsCategoryContract {
 
   public interface newsCategoryView {
 
-    void onSuccesNewsCategory(List<CategoriesBean> data, String msg);
+    void onSuccesNewsCategory(List<CategoriesItem> data, String msg);
 
     void onErrorNewsCategory(String msg);
 

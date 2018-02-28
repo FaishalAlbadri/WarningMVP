@@ -78,6 +78,8 @@ public class ChangePasswordFragment extends Fragment implements PasswordView {
       sessionManager.editPassword(newPassword);
       getActivity().onBackPressed();
       Toast.makeText(getActivity(), "Kata sandi berhasil dirubah", Toast.LENGTH_SHORT).show();
+    } else if (msg.equals("Error")) {
+      Toast.makeText(getActivity(), "Masukkan data yang valid", Toast.LENGTH_SHORT).show();
     } else {
       Toast.makeText(getActivity(), "Gagal mengirim data\nPeriksa kembali internet anda",
           Toast.LENGTH_SHORT).show();

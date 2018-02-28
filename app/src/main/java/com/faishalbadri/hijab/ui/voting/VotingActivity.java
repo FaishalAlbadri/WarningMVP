@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.data.voting.VotingItem;
 import com.faishalbadri.hijab.di.VotingRepositoryInject;
 import com.faishalbadri.hijab.ui.home.activity.HomeActivity;
 import com.faishalbadri.hijab.ui.voting.VotingContract.votingView;
@@ -38,7 +38,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   @BindView(R.id.layout_loading)
   RelativeLayout layoutLoading;
   private VotingPresenter votingPresenter;
-  private ArrayList<VotingBean> list_data;
+  private ArrayList<VotingItem> list_data;
   private VotingAdapter votingAdapter;
 
   @Override
@@ -74,7 +74,7 @@ public class VotingActivity extends AppCompatActivity implements votingView {
   }
 
   @Override
-  public void onSuccesVoting(List<VotingBean> list, String msg) {
+  public void onSuccesVoting(List<VotingItem> list, String msg) {
     list_data.clear();
     list_data.addAll(list);
     votingAdapter.notifyDataSetChanged();

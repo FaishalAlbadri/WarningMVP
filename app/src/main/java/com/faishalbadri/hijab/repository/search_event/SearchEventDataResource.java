@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.search_event;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SearchEventDataResource {
 
   interface SearchEventGetCallback {
 
-    void onSuccesSearchEvent(List<EventBean> data, String msg);
+    void onSuccesSearchEvent(List<EventItem> data, String msg);
 
     void onWrongSearchEvent(String msg);
 

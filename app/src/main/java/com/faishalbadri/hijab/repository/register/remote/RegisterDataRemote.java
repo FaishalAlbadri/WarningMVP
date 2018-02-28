@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.api.APIClient;
 import com.faishalbadri.hijab.api.APIInterface;
-import com.faishalbadri.hijab.data.ResponseRegister;
+import com.faishalbadri.hijab.data.response.GlobalResponse;
 import com.faishalbadri.hijab.repository.register.RegisterDataResource;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,11 +28,11 @@ public class RegisterDataRemote implements RegisterDataResource {
   public void getRegisterResult(String username, String email, String password, String verify_code,
       @NonNull RegisterGetCallback registerGetCallback) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
-    final Call<ResponseRegister> responseRegisterCall = apiInterface
+    final Call<GlobalResponse> responseRegisterCall = apiInterface
         .getRegister(username, email, password, verify_code);
-    responseRegisterCall.enqueue(new Callback<ResponseRegister>() {
+    responseRegisterCall.enqueue(new Callback<GlobalResponse>() {
       @Override
-      public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+      public void onResponse(Call<GlobalResponse> call, Response<GlobalResponse> response) {
         try {
           if (response.body().getMessage().equals("You're successfully registered")) {
             Toast.makeText(context, "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
@@ -53,10 +53,9 @@ public class RegisterDataRemote implements RegisterDataResource {
       }
 
       @Override
-      public void onFailure(Call<ResponseRegister> call, Throwable t) {
-        registerGetCallback.onErrorRegister("error");
+      public void onFailure(Call<GlobalResponse> call, Throwable t) {
+        registerGetCallback.onErrorRegister("Tidak ada koneksi internet");
       }
     });
-
   }
 }

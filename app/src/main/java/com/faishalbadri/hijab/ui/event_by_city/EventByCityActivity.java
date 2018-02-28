@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.di.EventByCityRepositoryInject;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityContract.EventByCityView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -32,7 +32,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   ImageView buttonSearchGeneralToolbarSearch;
   @BindView(R.id.recyclerview_activity_event_by_city)
   RecyclerView recyclerviewActivityEventByCity;
-  ArrayList<EventBean> list_data;
+  ArrayList<EventItem> list_data;
   EventByCityPresenter eventByCityPresenter;
   EventByCityAdapter eventByCityAdapter;
   String id, city;
@@ -79,7 +79,7 @@ public class EventByCityActivity extends AppCompatActivity implements EventByCit
   }
 
   @Override
-  public void onSuccesEventByCity(List<EventBean> data, String msg) {
+  public void onSuccesEventByCity(List<EventItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     eventByCityAdapter.notifyDataSetChanged();
