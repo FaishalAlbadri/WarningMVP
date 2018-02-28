@@ -15,9 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
@@ -63,13 +60,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     event = context.getResources().getString(R.string.text_pinky_hijab_event);
     ebook = context.getResources().getString(R.string.text_pinky_hijab_ebook);
 
-    Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
-      @Override
-      public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-        holder.imageViewNewsFragmentHome.setImageDrawable(resource);
-      }
-    });
-
+    holder.imageViewNewsFragmentHome.setImageResource(dataHomeFragment.getGambar());
     holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentHome.setClickable(true);
     holder.cardviewNewsFragmentHome.setOnClickListener(v -> {

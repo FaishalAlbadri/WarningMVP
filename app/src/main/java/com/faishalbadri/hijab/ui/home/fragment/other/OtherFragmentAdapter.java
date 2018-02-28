@@ -66,7 +66,8 @@ public class OtherFragmentAdapter extends Adapter<ViewHolder> {
     sponsor = context.getResources().getString(R.string.text_sponsor);
     contactUs = context.getResources().getString(R.string.text_other_contact_us);
     shareSubject = context.getResources().getString(R.string.text_share_app_subject);
-    shareText = context.getResources().getString(R.string.text_share_app_text);
+    shareText = context.getResources().getString(R.string.text_share_app_text)
+        + "\nhttp://play.google.com/store/apps/details?id=" + context.getPackageName();
 
     holder.textviewTitleOtherItem.setText(dataOtherFragment.getTitle());
     holder.imgTitleOtherItem.setImageResource(dataOtherFragment.getImage());
