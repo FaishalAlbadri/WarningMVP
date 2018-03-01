@@ -1,6 +1,7 @@
 package com.faishalbadri.hijab.repository.detail_video_related_;
 
 import android.support.annotation.NonNull;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public interface DetailVideoDataResource {
 
   interface DetailVideoGetDataCallBack {
 
-    void onSuccessDetailVideo(List<PojoVideo.VideosBean> data, String msg);
+    void onSuccessDetailVideo(List<VideosItem> data, String msg);
 
     void onError(String msg);
 

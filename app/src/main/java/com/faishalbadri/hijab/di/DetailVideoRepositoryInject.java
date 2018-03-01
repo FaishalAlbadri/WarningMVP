@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.detail_video_related_.DetailVideoDataRepository;
+import com.faishalbadri.hijab.repository.detail_video_related_.DetailVideoRepository;
 import com.faishalbadri.hijab.repository.detail_video_related_.remote.DetailVideoDataRemote;
 
 /**
@@ -10,8 +10,8 @@ import com.faishalbadri.hijab.repository.detail_video_related_.remote.DetailVide
 
 public class DetailVideoRepositoryInject {
 
-  public static DetailVideoDataRepository provideToDetailVideoInject(Context context) {
-    return new DetailVideoDataRepository(new DetailVideoDataRemote(context));
+  public static DetailVideoRepository provideToDetailVideoInject(Context context) {
+    return new DetailVideoRepository(new DetailVideoDataRemote(context));
   }
 
 }

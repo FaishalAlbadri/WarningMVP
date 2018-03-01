@@ -2,58 +2,53 @@ package com.faishalbadri.hijab.repository.detail_video_related_.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.videos.VideosItem;
+import com.faishalbadri.hijab.data.videos.VideosResponse;
 import com.faishalbadri.hijab.repository.detail_video_related_.DetailVideoDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by fikriimaduddin on 11/6/17.
- */
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailVideoDataRemote implements DetailVideoDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "videos?limit=";
   private Context context;
-  private RequestQueue requestQueue;
 
   public DetailVideoDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getDetailVideo(String limit, @NonNull DetailVideoGetDataCallBack
       detailVideoGetDataCallBack) {
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL + limit),
-        response -> {
-          final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
-          try {
-            if (pojoVideo.getVideos().toString().equals("[]")) {
-              detailVideoGetDataCallBack.onError("Error");
-            } else {
-              detailVideoGetDataCallBack.onSuccessDetailVideo(pojoVideo.getVideos(), "Ok");
-            }
-          } catch (Exception e) {
-
-          }
-        }, error -> detailVideoGetDataCallBack
-        .onError(context.getResources().getString(R.string.caption_error_internet_acces))) {
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<VideosResponse> videosResponseCall = apiInterface
+        .getVideos("videos?limit=" + limit, DataUser.getInstance().getUserApiKey());
+    videosResponseCall.enqueue(new Callback<VideosResponse>() {
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onResponse(Call<VideosResponse> call, Response<VideosResponse> response) {
+        try {
+          if (response.body().getVideos().toString().equals("[]")) {
+            detailVideoGetDataCallBack.onError("Error");
+          } else {
+            VideosResponse videosResponse = response.body();
+            List<VideosItem> items = videosResponse.getVideos();
+            detailVideoGetDataCallBack.onSuccessDetailVideo(items, "Ok");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    };
-    requestQueue.add(stringRequest);
+
+      @Override
+      public void onFailure(Call<VideosResponse> call, Throwable t) {
+        detailVideoGetDataCallBack
+            .onError(context.getResources().getString(R.string.caption_error_internet_acces));
+      }
+    });
   }
 }
