@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.news.fragment.news_popular;
 
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.news_popular_.NewsPopularDataResource.NewsPopularGetCallback;
-import com.faishalbadri.hijab.repository.news_popular_.NewsPopularRepository;
+import com.faishalbadri.hijab.data.news.NewsItem;
+import com.faishalbadri.hijab.repository.news_popular.NewsPopularDataResource.NewsPopularGetCallback;
+import com.faishalbadri.hijab.repository.news_popular.NewsPopularRepository;
 import java.util.List;
 
 /**
@@ -32,7 +32,7 @@ public class NewsPopularPresenter implements NewsPopularContract.newsPopularPres
   public void getDataNewsPopular() {
     newsPopularRepository.getNewsPopularResult(new NewsPopularGetCallback() {
       @Override
-      public void onSuccesNewsPopular(List<NewsBean> data, String msg) {
+      public void onSuccesNewsPopular(List<NewsItem> data, String msg) {
         newsPopularView.onSuccesNewsPopular(data, msg);
       }
 

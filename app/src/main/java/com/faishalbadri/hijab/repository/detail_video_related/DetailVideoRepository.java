@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.detail_video_related_;
+package com.faishalbadri.hijab.repository.detail_video_related;
 
 import android.support.annotation.NonNull;
 
@@ -15,8 +15,8 @@ public class DetailVideoRepository implements DetailVideoDataResource {
   }
 
   @Override
-  public void getDetailVideo(String limit,@NonNull DetailVideoGetDataCallBack
+  public void getDetailVideo(@NonNull DetailVideoGetDataCallBack
       detailVideoGetDataCallBack) {
-    detailVideoDataResource.getDetailVideo(limit,detailVideoGetDataCallBack);
+    detailVideoDataResource.getDetailVideo(detailVideoGetDataCallBack);
   }
 }

@@ -20,7 +20,7 @@ public class DetailVideoContract {
 
   public interface DetailVideoPresenter extends BasePresenter<DetailVideoView> {
 
-    void getData(String limit);
+    void getData();
 
   }
 

@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.repository.news_popular_;
+package com.faishalbadri.hijab.repository.news_popular;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface NewsPopularDataResource {
 
   interface NewsPopularGetCallback {
 
-    void onSuccesNewsPopular(List<NewsBean> data, String msg);
+    void onSuccesNewsPopular(List<NewsItem> data, String msg);
 
     void onErrorNewsPopular(String msg);
   }

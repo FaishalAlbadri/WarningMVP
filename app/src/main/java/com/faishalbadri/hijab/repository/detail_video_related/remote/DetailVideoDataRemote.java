@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.detail_video_related_.remote;
+package com.faishalbadri.hijab.repository.detail_video_related.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,7 +7,7 @@ import com.faishalbadri.hijab.api.APIClient;
 import com.faishalbadri.hijab.api.APIInterface;
 import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.data.videos.VideosResponse;
-import com.faishalbadri.hijab.repository.detail_video_related_.DetailVideoDataResource;
+import com.faishalbadri.hijab.repository.detail_video_related.DetailVideoDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
 import java.util.List;
 import retrofit2.Call;
@@ -23,11 +23,11 @@ public class DetailVideoDataRemote implements DetailVideoDataResource {
   }
 
   @Override
-  public void getDetailVideo(String limit, @NonNull DetailVideoGetDataCallBack
+  public void getDetailVideo(@NonNull DetailVideoGetDataCallBack
       detailVideoGetDataCallBack) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
     final Call<VideosResponse> videosResponseCall = apiInterface
-        .getVideos("videos?limit=" + limit, DataUser.getInstance().getUserApiKey());
+        .getVideos("videos?limit=4", DataUser.getInstance().getUserApiKey());
     videosResponseCall.enqueue(new Callback<VideosResponse>() {
       @Override
       public void onResponse(Call<VideosResponse> call, Response<VideosResponse> response) {

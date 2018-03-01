@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.detail_video_related_;
+package com.faishalbadri.hijab.repository.detail_video_related;
 
 import android.support.annotation.NonNull;
 import com.faishalbadri.hijab.data.videos.VideosItem;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface DetailVideoDataResource {
 
-  void getDetailVideo(String limit,@NonNull DetailVideoGetDataCallBack detailVideoGetDataCallBack);
+  void getDetailVideo(@NonNull DetailVideoGetDataCallBack detailVideoGetDataCallBack);
 
   interface DetailVideoGetDataCallBack {
 

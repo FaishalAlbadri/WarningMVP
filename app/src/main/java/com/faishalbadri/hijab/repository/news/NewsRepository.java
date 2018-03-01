@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.news_;
+package com.faishalbadri.hijab.repository.news;
 
 import android.support.annotation.NonNull;
 

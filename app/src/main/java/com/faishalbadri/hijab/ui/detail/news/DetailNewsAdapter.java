@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ import java.util.ArrayList;
 public class DetailNewsAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private ArrayList<NewsBean> list_data;
+  private ArrayList<NewsItem> list_data;
 
   public DetailNewsAdapter(DetailNewsActivity detailNewsActivity,
-      ArrayList<NewsBean> resultItem) {
+      ArrayList<NewsItem> resultItem) {
     context = detailNewsActivity;
     list_data = resultItem;
   }
@@ -47,20 +47,18 @@ public class DetailNewsAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final NewsBean listitem = list_data.get(position);
+    final NewsItem listitem = list_data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getNews_images())
+        .load(Server.BASE_ASSETS + listitem.getNewsImages())
         .apply(options)
         .into(holder.imageviewDetailVideoGrid);
-    holder.txtTitleDetailVideoGrid.setText(listitem.getNews_title());
+    holder.txtTitleDetailVideoGrid.setText(listitem.getNewsTitle());
     holder.imageviewDetailVideoGrid.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
-      i.putExtra("news_id", listitem.getNews_id());
-      i.putExtra("news_title", listitem.getNews_title());
-      i.putExtra("news_image", listitem.getNews_images());
-      i.putExtra("news_description", listitem.getNews_description());
+      i.putExtra("news_id", listitem.getNewsId());
+      i.putExtra("news_image", listitem.getNewsImages());
       v.getContext().startActivity(i);
       ((Activity) context).finish();
     });

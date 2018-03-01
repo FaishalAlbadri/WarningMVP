@@ -1,9 +1,9 @@
 package com.faishalbadri.hijab.ui.news.fragment.news;
 
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.news_.NewsDataResource.NewsGetCallback;
-import com.faishalbadri.hijab.repository.news_.NewsDataResource.SliderGetCallback;
-import com.faishalbadri.hijab.repository.news_.NewsRepository;
+import com.faishalbadri.hijab.data.news.NewsItem;
+import com.faishalbadri.hijab.repository.news.NewsDataResource.NewsGetCallback;
+import com.faishalbadri.hijab.repository.news.NewsDataResource.SliderGetCallback;
+import com.faishalbadri.hijab.repository.news.NewsRepository;
 import java.util.List;
 
 /**
@@ -33,7 +33,7 @@ public class NewsPresenter implements NewsContract.newsPresenter {
   public void getDataNews(int PAGE) {
     newsRepository.getNewsResult(PAGE, new NewsGetCallback() {
       @Override
-      public void onSuccesNews(List<NewsBean> data, String msg) {
+      public void onSuccesNews(List<NewsItem> data, String msg) {
         newsView.onSuccesNews(data, msg);
       }
 
@@ -49,7 +49,7 @@ public class NewsPresenter implements NewsContract.newsPresenter {
   public void getDataSlider() {
     newsRepository.getSliderResult(new SliderGetCallback() {
       @Override
-      public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
+      public void onSuccesSlider(List<NewsItem> dataSlider, String msg) {
         newsView.onSuccesSlider(dataSlider, msg);
       }
 

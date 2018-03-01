@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.search_news;
 
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
-import com.faishalbadri.hijab.repository.search_news_.SearchNewsDataResource.SearchNewsGetCallback;
-import com.faishalbadri.hijab.repository.search_news_.SearchNewsRepository;
+import com.faishalbadri.hijab.data.news.NewsItem;
+import com.faishalbadri.hijab.repository.search_news.SearchNewsDataResource.SearchNewsGetCallback;
+import com.faishalbadri.hijab.repository.search_news.SearchNewsRepository;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class SearchNewsPresenter implements SearchNewsContract.SearchNewsPresent
   public void getDataSearchNews(String key) {
     searchNewsRepository.getSearchNewsResult(key, new SearchNewsGetCallback() {
       @Override
-      public void onSuccesSearchNews(List<NewsBean> data, String msg) {
+      public void onSuccesSearchNews(List<NewsItem> data, String msg) {
         searchNewsView.onSuccesSearchNews(data, msg);
       }
 

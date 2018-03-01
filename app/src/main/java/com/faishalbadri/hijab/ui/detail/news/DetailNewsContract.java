@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.detail.news;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -21,9 +21,9 @@ public class DetailNewsContract {
 
   public interface DetailNewsView {
 
-    void onSuccessDetailNews(List<NewsBean> data, String msg);
+    void onSuccessDetailNews(List<NewsItem> data, String msg);
 
-    void onSuccesView(List<NewsBean> data, String msg);
+    void onSuccesView(List<NewsItem> data, String msg);
 
     void onError(String msg);
 

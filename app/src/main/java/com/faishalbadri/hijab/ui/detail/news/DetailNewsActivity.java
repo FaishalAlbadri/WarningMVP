@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.di.DetailNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsContract.DetailNewsView;
 import com.faishalbadri.hijab.util.IntentUtil;
@@ -47,7 +47,7 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   ImageView imageviewShareGeneralToolbarWithBackButton;
   DetailNewsPresenter detailNewsPresenter;
   DetailNewsAdapter detailNewsAdapter;
-  ArrayList<NewsBean> resultItem;
+  ArrayList<NewsItem> resultItem;
   @BindView(R.id.layout_loading)
   RelativeLayout layoutLoading;
   @BindView(R.id.scrollview_detail_news)
@@ -103,16 +103,16 @@ public class DetailNewsActivity extends AppCompatActivity implements DetailNewsV
   }
 
   @Override
-  public void onSuccessDetailNews(List<NewsBean> data, String msg) {
+  public void onSuccessDetailNews(List<NewsItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     detailNewsAdapter.notifyDataSetChanged();
   }
 
   @Override
-  public void onSuccesView(List<NewsBean> data, String msg) {
+  public void onSuccesView(List<NewsItem> data, String msg) {
     for (int a = 0; a < data.size(); a++) {
-      desc = data.get(a).getNews_description();
+      desc = data.get(a).getNewsDescription();
     }
     webViewDescriptionNewsDetail.loadDataWithBaseURL(null, "<style>img{display: inline;height: "
         + "auto;max-width: 100%;" + "}</style>" + desc, "text/html", "UTF-8", null);

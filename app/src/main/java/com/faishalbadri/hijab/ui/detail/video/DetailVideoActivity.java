@@ -78,7 +78,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
-    detailVideoPresenter.getData("4");
+    detailVideoPresenter.getData();
   }
 
   private void setView() {
@@ -188,7 +188,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   private void whenError() {
     DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
     if (DataServerProgress.getInstance().getStatus().equals("error")) {
-      detailVideoPresenter.getData("4");
+      detailVideoPresenter.getData();
     }
   }
 }

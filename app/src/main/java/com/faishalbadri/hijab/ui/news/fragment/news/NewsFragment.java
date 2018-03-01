@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView.ScaleType;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.di.NewsRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news.NewsContract.newsView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -39,7 +39,7 @@ public class NewsFragment extends Fragment implements newsView {
   @BindView(R.id.recyclerview_fragment_news)
   RecyclerView recyclerviewFragmentNews;
   NewsPresenter newsPresenter;
-  ArrayList<NewsBean> list_data;
+  ArrayList<NewsItem> list_data;
   NewsAdapter newsAdapter;
   @BindView(R.id.slider_fragment_news)
   SliderLayout sliderFragmentNews;
@@ -100,7 +100,7 @@ public class NewsFragment extends Fragment implements newsView {
   }
 
   @Override
-  public void onSuccesNews(List<NewsBean> data, String msg) {
+  public void onSuccesNews(List<NewsItem> data, String msg) {
     PAGE++;
     list_data.addAll(data);
     LoadingStatus.getInstance().setStatus(null);
@@ -121,14 +121,14 @@ public class NewsFragment extends Fragment implements newsView {
   }
 
   @Override
-  public void onSuccesSlider(List<NewsBean> dataSlider, String msg) {
+  public void onSuccesSlider(List<NewsItem> dataSlider, String msg) {
     countSlider = 0;
     sliderFragmentNews.removeAllSliders();
     for (int a = 0; a < dataSlider.size(); a++) {
       HashMap<String, String> file_maps = new HashMap<String, String>();
       file_maps.clear();
-      file_maps.put(dataSlider.get(a).getNews_title(),
-          Server.BASE_ASSETS + dataSlider.get(a).getNews_images());
+      file_maps.put(dataSlider.get(a).getNewsTitle(),
+          Server.BASE_ASSETS + dataSlider.get(a).getNewsImages());
 
       for (final String name : file_maps.keySet()) {
         textSliderView = new TextSliderView(getActivity());
