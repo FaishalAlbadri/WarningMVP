@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.ebook_;
+package com.faishalbadri.hijab.repository.ebook;
 
 import android.support.annotation.NonNull;
 

@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.api;
 import com.faishalbadri.hijab.data.categories.CategoriesResponse;
 import com.faishalbadri.hijab.data.city.CityResponse;
 import com.faishalbadri.hijab.data.ebook.EbookResponse;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookByCategoryResponse;
 import com.faishalbadri.hijab.data.event.EventResponse;
 import com.faishalbadri.hijab.data.news.NewsResponse;
 import com.faishalbadri.hijab.data.response.GlobalResponse;
@@ -224,6 +225,9 @@ public interface APIInterface {
    */
   @GET
   Call<EbookResponse> getEbook(@Url String url, @Header("Authorization") String apikey);
+
+  @GET("ebook")
+  Call<EbookByCategoryResponse> getEbook(@Header("Authorization") String apikey);
 
 
   /**

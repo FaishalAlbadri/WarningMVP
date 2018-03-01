@@ -30,7 +30,7 @@ public class NewsDataRemote implements NewsDataResource {
   public void getNewsResult(int PAGE, @NonNull NewsGetCallback newsGetCallback) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
     final Call<NewsResponse> newsResponseCall = apiInterface
-        .getNews("newsfeed?page=", DataUser.getInstance().getUserApiKey());
+        .getNews("newsfeed?page=" + PAGE, DataUser.getInstance().getUserApiKey());
     newsResponseCall.enqueue(new Callback<NewsResponse>() {
       @Override
       public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {

@@ -18,7 +18,7 @@ import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean.EbookBean;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookByCategoryItem;
 import com.faishalbadri.hijab.ui.detail.ebook.DetailEbookScrollingActivity;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapterItem.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -31,12 +31,12 @@ import java.util.List;
 public class EbookAdapterItem extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<EbookBean> list_data;
+  private List<EbookByCategoryItem> list_data;
 
   public EbookAdapterItem() {
   }
 
-  public void setData(Context context, List<EbookBean> list_data) {
+  public void setData(Context context, List<EbookByCategoryItem> list_data) {
     this.context = context;
     this.list_data = null;
     this.list_data = list_data;
@@ -52,28 +52,28 @@ public class EbookAdapterItem extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.textviewEbookRecyclerItem.setText(list_data.get(position).getEbook_title());
+    holder.textviewEbookRecyclerItem.setText(list_data.get(position).getEbookTitle());
     RequestOptions options = new RequestOptions()
         .transform(new RoundedCorners(10))
         .format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
         .load(Server.BASE_ASSETS + "assets/ebook_images/" + list_data.get(position)
-            .getEbook_image())
+            .getEbookImage())
         .apply(options)
         .into(holder.imageviewEbookRecyclerItem);
     holder.layoutItemEbookRecyclerItem.setOnClickListener(view -> {
       view.getContext()
           .startActivity(new Intent(view.getContext(), DetailEbookScrollingActivity.class)
-              .putExtra("ebook_name", list_data.get(position).getEbook_title())
+              .putExtra("ebook_name", list_data.get(position).getEbookTitle())
               .putExtra("ebook_image", "assets/ebook_images/" + list_data.get(position)
-                  .getEbook_image())
-              .putExtra("ebook_description", list_data.get(position).getEbook_description())
+                  .getEbookImage())
+              .putExtra("ebook_description", list_data.get(position).getEbookDescription())
               .putExtra("ebook_url", "assets/ebook_files/" + list_data.get(position)
-                  .getEbook_link())
-              .putExtra("ebook_publisher", list_data.get(position).getEbook_publisher())
-              .putExtra("ebook_writer", list_data.get(position).getEbook_writer())
-              .putExtra("ebook_time", list_data.get(position).getEbook_released()));
+                  .getEbookLink())
+              .putExtra("ebook_publisher", list_data.get(position).getEbookPublisher())
+              .putExtra("ebook_writer", list_data.get(position).getEbookWriter())
+              .putExtra("ebook_time", list_data.get(position).getEbookReleased()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });
