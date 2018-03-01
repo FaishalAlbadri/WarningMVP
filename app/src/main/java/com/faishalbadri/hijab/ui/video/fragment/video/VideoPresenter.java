@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.ui.video.fragment.video;
 
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
-import com.faishalbadri.hijab.repository.video_.VideoDataResource.VideoGetCallBack;
-import com.faishalbadri.hijab.repository.video_.VideoRepository;
+import com.faishalbadri.hijab.data.videos.VideosItem;
+import com.faishalbadri.hijab.repository.video.VideoDataResource.VideoGetCallBack;
+import com.faishalbadri.hijab.repository.video.VideoRepository;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
 import java.util.List;
 
@@ -31,9 +31,9 @@ public class VideoPresenter implements VideoContract.VideoPresenter {
 
   @Override
   public void getDataVideo(int PAGE) {
-    videoRepository.getVideoList(PAGE ,new VideoGetCallBack() {
+    videoRepository.getVideoList(PAGE, new VideoGetCallBack() {
       @Override
-      public void onSuccessVideo(List<VideosBean> data, String msg) {
+      public void onSuccessVideo(List<VideosItem> data, String msg) {
         videoView.onSuccesVideo(data, msg);
       }
 

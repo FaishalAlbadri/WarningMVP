@@ -4,11 +4,13 @@ import com.faishalbadri.hijab.data.categories.CategoriesResponse;
 import com.faishalbadri.hijab.data.city.CityResponse;
 import com.faishalbadri.hijab.data.ebook.EbookResponse;
 import com.faishalbadri.hijab.data.event.EventResponse;
+import com.faishalbadri.hijab.data.news.NewsResponse;
 import com.faishalbadri.hijab.data.response.GlobalResponse;
 import com.faishalbadri.hijab.data.session.SessionResponse;
 import com.faishalbadri.hijab.data.slider.SliderResponse;
 import com.faishalbadri.hijab.data.sponsor.SponsorResponse;
 import com.faishalbadri.hijab.data.user.UserResponse;
+import com.faishalbadri.hijab.data.videos.VideosResponse;
 import com.faishalbadri.hijab.data.voting.VotingResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -127,6 +129,32 @@ public interface APIInterface {
       @Header("Authorization") String apikey);
 
   /**
+   * Search videos call.
+   *
+   * @param query the query
+   * @param apikey the apikey
+   * @return the call
+   */
+  @FormUrlEncoded
+  @POST("videos/find")
+  Call<VideosResponse> searchVideos(
+      @Field("query") String query,
+      @Header("Authorization") String apikey);
+
+  /**
+   * Search news call.
+   *
+   * @param query the query
+   * @param apikey the apikey
+   * @return the call
+   */
+  @FormUrlEncoded
+  @POST("newsfeed/find")
+  Call<NewsResponse> searchNews(
+      @Field("query") String query,
+      @Header("Authorization") String apikey);
+
+  /**
    * Search event call.
    *
    * @param query the query
@@ -158,15 +186,6 @@ public interface APIInterface {
   Call<CityResponse> getCity(@Header("Authorization") String apikey);
 
   /**
-   * Gets ebook cateories.
-   *
-   * @param apikey the apikey
-   * @return the ebook cateories
-   */
-  @GET("ebook_categories")
-  Call<CityResponse> getEbookCateories(@Header("Authorization") String apikey);
-
-  /**
    * Gets slider.
    *
    * @param apikey the apikey
@@ -186,6 +205,7 @@ public interface APIInterface {
 
   /**
    * Gets event.
+   * Gets event by cities
    *
    * @param url the url
    * @param apikey the apikey
@@ -195,16 +215,7 @@ public interface APIInterface {
   Call<EventResponse> getEvent(@Url String url, @Header("Authorization") String apikey);
 
   /**
-   * Gets event by category.
-   *
-   * @param url the url
-   * @param apikey the apikey
-   * @return the event by category
-   */
-  @GET
-  Call<EventResponse> getEventByCity(@Url String url, @Header("Authorization") String apikey);
-
-  /**
+   * Gets all ebook.
    * Gets ebook by category.
    *
    * @param url the url
@@ -212,7 +223,7 @@ public interface APIInterface {
    * @return the ebook by category
    */
   @GET
-  Call<EbookResponse> getEbookByCategory(@Url String url, @Header("Authorization") String apikey);
+  Call<EbookResponse> getEbook(@Url String url, @Header("Authorization") String apikey);
 
 
   /**
@@ -224,5 +235,32 @@ public interface APIInterface {
    */
   @GET
   Call<VotingResponse> getVoting(@Url String url, @Header("Authorization") String apikey);
+
+
+  /**
+   * Gets videos (videos?page=)
+   * Gets videos limit (videos?limit=)
+   * Gets videos by categories (videos/)
+   *
+   * @param url the url
+   * @param apikey the apikey
+   * @return the videos
+   */
+  @GET
+  Call<VideosResponse> getVideos(@Url String url, @Header("Authorization") String apikey);
+
+  /**
+   * Gets all news (newsfeed?page=)
+   * Gets detail news (newsfeed/detail/)
+   * Gets news by category (newsfeed/)
+   * Gets popular news (newsfeed/popular)
+   * Gets News limit (newsfeed?limit=)
+   *
+   * @param url the url newsfeed
+   * @param apikey the apikey
+   * @return the news
+   */
+  @GET
+  Call<NewsResponse> getNews(@Url String url, @Header("Authorization") String apikey);
 
 }

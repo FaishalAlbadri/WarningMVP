@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.di.SearchVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
 import com.faishalbadri.hijab.util.UserUtil;
@@ -32,7 +32,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   RelativeLayout layoutNoInternetAcces;
   private SearchVideoPresenter searchVideoPresenter;
   private SearchVideoAdapter adapter;
-  private ArrayList<VideosBean> resultItem;
+  private ArrayList<VideosItem> resultItem;
   private String key;
 
   @Override
@@ -56,7 +56,7 @@ public class SearchVideoActivity extends AppCompatActivity implements SearchVide
   }
 
   @Override
-  public void onSuccesSearchVideo(List<VideosBean> data, String msg) {
+  public void onSuccesSearchVideo(List<VideosItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();

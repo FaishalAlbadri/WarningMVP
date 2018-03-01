@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.video_;
+package com.faishalbadri.hijab.repository.video;
 
 import android.support.annotation.NonNull;
 

@@ -8,7 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.repository.detail_video_related_.DetailVideoDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;

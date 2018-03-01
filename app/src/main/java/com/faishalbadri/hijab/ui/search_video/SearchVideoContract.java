@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.search_video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class SearchVideoContract {
 
   public interface SearchVideoView {
 
-    void onSuccesSearchVideo(List<VideosBean> data, String msg);
+    void onSuccesSearchVideo(List<VideosItem> data, String msg);
 
     void onWrongSearchVideo(String msg);
 

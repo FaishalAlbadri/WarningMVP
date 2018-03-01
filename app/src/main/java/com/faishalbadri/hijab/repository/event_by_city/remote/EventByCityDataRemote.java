@@ -30,7 +30,7 @@ public class EventByCityDataRemote implements EventByCityDataResource {
       @NonNull EventByCityGetCallback eventByCityGetCallback) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
     final Call<EventResponse> eventResponseCall = apiInterface
-        .getEventByCity("event/" + id_city_event, DataUser
+        .getEvent("event/" + id_city_event, DataUser
             .getInstance().getUserApiKey());
     eventResponseCall.enqueue(new Callback<EventResponse>() {
       @Override

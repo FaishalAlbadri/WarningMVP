@@ -27,7 +27,7 @@ public class EbookByCategoryDataRemote implements EbookByCategoryDataResource {
       @NonNull EbookByCategoryDataCallBack newsByCategoryGetDataCallBack) {
     APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
     final Call<EbookResponse> ebookResponseCall = apiInterface
-        .getEbookByCategory("ebook/" + id, DataUser.getInstance().getUserApiKey());
+        .getEbook("ebook/" + id, DataUser.getInstance().getUserApiKey());
     ebookResponseCall.enqueue(new Callback<EbookResponse>() {
       @Override
       public void onResponse(Call<EbookResponse> call, Response<EbookResponse> response) {

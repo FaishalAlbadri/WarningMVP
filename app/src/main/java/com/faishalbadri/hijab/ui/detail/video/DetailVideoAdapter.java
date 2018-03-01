@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;

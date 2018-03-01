@@ -1,7 +1,7 @@
-package com.faishalbadri.hijab.repository.video_by_category_;
+package com.faishalbadri.hijab.repository.video_by_category;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ public interface VideoByCategoryDataResource {
 
   interface VideoByCategoryGetDataCallBack {
 
-    void onSuccessVideoByCategory(List<PojoVideo.VideosBean> video, String msg);
+    void onSuccessVideoByCategory(List<VideosItem> video, String msg);
 
     void onErrorVideoByCategory(String msg);
 

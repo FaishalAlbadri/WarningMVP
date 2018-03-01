@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.di.VideoRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.video.VideoContract.VideoView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -38,7 +38,7 @@ public class VideoFragment extends Fragment implements VideoView {
   RelativeLayout layoutLoading;
   private VideoPresenter videoPresenter;
   private VideoAdapter videoAdapter;
-  private ArrayList<VideosBean> resultItem;
+  private ArrayList<VideosItem> resultItem;
   private View v;
   private int PAGE = 1;
 
@@ -83,7 +83,7 @@ public class VideoFragment extends Fragment implements VideoView {
   }
 
   @Override
-  public void onSuccesVideo(List<VideosBean> video, String msg) {
+  public void onSuccesVideo(List<VideosItem> video, String msg) {
     PAGE++;
     resultItem.addAll(video);
     LoadingStatus.getInstance().setStatus(null);

@@ -1,4 +1,4 @@
-package com.faishalbadri.hijab.repository.search_video_;
+package com.faishalbadri.hijab.repository.search_video;
 
 import android.support.annotation.NonNull;
 

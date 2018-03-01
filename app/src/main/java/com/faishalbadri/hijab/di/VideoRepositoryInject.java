@@ -1,8 +1,8 @@
 package com.faishalbadri.hijab.di;
 
 import android.content.Context;
-import com.faishalbadri.hijab.repository.video_.VideoRepository;
-import com.faishalbadri.hijab.repository.video_.remote.VideoDataRemote;
+import com.faishalbadri.hijab.repository.video.VideoRepository;
+import com.faishalbadri.hijab.repository.video.remote.VideoDataRemote;
 
 /**
  * Created by fikriimaduddin on 11/4/17.

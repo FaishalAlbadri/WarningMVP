@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.di.VideoByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryContract.videoByCategoryView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -39,7 +39,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   RelativeLayout layoutLoading;
   private VideoByCategoryPresenter videoByCategoryPresenter;
   private VideoByCategoryAdapter videoByCategoryAdapter;
-  private ArrayList<VideosBean> resultItem;
+  private ArrayList<VideosItem> resultItem;
   private String id, title;
 
   @Override
@@ -81,7 +81,7 @@ public class VideoByCategoryActivity extends AppCompatActivity implements videoB
   }
 
   @Override
-  public void onSuccesVideoByCategory(List<VideosBean> data, String msg) {
+  public void onSuccesVideoByCategory(List<VideosItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     videoByCategoryAdapter.notifyDataSetChanged();
