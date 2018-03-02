@@ -61,7 +61,7 @@ public class LoginDataRemote implements LoginDataResource {
 
       @Override
       public void onFailure(Call<UserResponse> call, Throwable t) {
-        loginGetCallback.onErrorLogin("error");
+        loginGetCallback.onErrorLogin("Tidak ada koneksi internet");
       }
     });
   }

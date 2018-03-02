@@ -3,7 +3,9 @@ package com.faishalbadri.hijab.ui.kritik_saran;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,6 +30,10 @@ public class KritikSaranActivity extends AppCompatActivity {
   EditText edittextKritikSaran;
   @BindView(R.id.button_send_feedback)
   Button buttonSendFeedback;
+  @BindView(R.id.layout_kritik_saran)
+  ConstraintLayout layoutKritikSaran;
+  @BindView(R.id.layout_succes)
+  ConstraintLayout layoutSucces;
   private String edittextValue;
 
   @Override
@@ -63,6 +69,8 @@ public class KritikSaranActivity extends AppCompatActivity {
           "&body=" + Uri.encode(edittextValue);
       Uri uri = Uri.parse(uriText);
       send.setData(uri);
+      layoutKritikSaran.setVisibility(View.GONE);
+      layoutSucces.setVisibility(View.VISIBLE);
       startActivity(Intent.createChooser(send, "Send Email..."));
     }
   }
