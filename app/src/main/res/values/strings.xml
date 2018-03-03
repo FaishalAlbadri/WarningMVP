@@ -197,7 +197,14 @@
   <string name="caption_videos">Videos</string>
   <string name="caption_city">Kota</string>
   <string name="caption_event">Event</string>
-  <string name="caption_succes_kritik_saran">Terima kasih. Kami sangat terbantu oleh kritik dan saran yang kalian berikan</string>
+  <string name="caption_succes_kritik_saran">Terima kasih. Kami sangat terbantu oleh kritik dan
+    saran yang telah berikan</string>
+  <string name="caption_title_send_article">Ayok kirimkan artikelmu sebanyak-banyaknya dan jadilah terkenal dengan ketentuan sebagai berikut :</string>
+  <string name="send_article_value">
+    1. File naskah dalam bentuk .docx / .doc
+    \n2. Sertakan file gambar dalam bentuk .jpg / .png / .jpeg
+    \n3. Kirimkan ke email pinkfameapp@gmail.com dengan subject \"Ini Artikelku\"
+  </string>
 
 </resources>
 

@@ -3,6 +3,7 @@ package com.faishalbadri.hijab.ui.kritik_saran;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,6 +36,7 @@ public class KritikSaranActivity extends AppCompatActivity {
   @BindView(R.id.layout_succes)
   ConstraintLayout layoutSucces;
   private String edittextValue;
+  private Handler handler;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class KritikSaranActivity extends AppCompatActivity {
     setContentView(R.layout.activity_kritik_saran);
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
+    handler = new Handler();
     titleText.setText(R.string.text_other_kritik_saran);
   }
 
@@ -69,8 +72,10 @@ public class KritikSaranActivity extends AppCompatActivity {
           "&body=" + Uri.encode(edittextValue);
       Uri uri = Uri.parse(uriText);
       send.setData(uri);
-      layoutKritikSaran.setVisibility(View.GONE);
-      layoutSucces.setVisibility(View.VISIBLE);
+      handler.postDelayed(() -> {
+        layoutKritikSaran.setVisibility(View.GONE);
+        layoutSucces.setVisibility(View.VISIBLE);
+      }, 3000);
       startActivity(Intent.createChooser(send, "Send Email..."));
     }
   }

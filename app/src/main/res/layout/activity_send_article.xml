@@ -12,92 +12,48 @@
     layout="@layout/general_toolbar_with_back_button"/>
 
   <ImageView
-    android:id="@+id/imageview_send_article"
+    android:id="@+id/image_send_article"
     android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
+    android:layout_marginTop="16dp"
     android:src="@drawable/ic_story"
+    app:layout_constraintDimensionRatio="3:2"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/toolbar_activity_send_article"/>
 
   <TextView
-    android:id="@+id/textview_send_article"
+    android:id="@+id/text_title"
     android:textStyle="bold"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:text="@string/caption_send_article"
-    android:textColor="@color/colorPrimary"
-    android:textSize="20sp"
+    android:text="@string/caption_title_send_article"
+    android:textColor="@color/colorPrimaryDark"
+    android:textSize="18sp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imageview_send_article"
+    app:layout_constraintTop_toBottomOf="@+id/image_send_article"
     />
 
-  <android.support.v7.widget.CardView
+  <TextView
+    android:id="@+id/text_send_article_value"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="64dp"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp"
-    android:background="@color/color_white_ff"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="16dp"
+    android:text="@string/send_article_value"
+    android:textColor="@color/colorPrimaryDark"
+    android:textSize="13sp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textview_send_article">
-
-    <android.support.constraint.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-      <TextView
-        android:id="@+id/textview_file_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-      <Button
-        android:id="@+id/button_choose_send_article"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:background="@drawable/background_custom_border_white_with_primarycolor_bold"
-        android:text="@string/caption_choose_file"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_file_name"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-  </android.support.v7.widget.CardView>
-
-  <Button
-    android:id="@+id/button_send_article"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/fab_margin"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:background="@drawable/background_custom_border_layout_full_primary_color"
-    android:text="@string/text_send"
-    android:textAllCaps="false"
-    android:textColor="@color/color_white_ff"
-    android:textSize="18sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"/>
-
+    app:layout_constraintTop_toBottomOf="@+id/text_title"
+    />
 
 </android.support.constraint.ConstraintLayout>
