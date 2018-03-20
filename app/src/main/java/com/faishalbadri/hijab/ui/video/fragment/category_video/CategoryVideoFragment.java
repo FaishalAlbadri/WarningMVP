@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import com.faishalbadri.hijab.di.CategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CatergoryVideoContract.categoryVideoView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -35,7 +35,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   RelativeLayout layoutLoading;
   private CategoryVideoPresenter categoryVideoPresenter;
   private CategoryVideoAdapter categoryVideoAdapter;
-  private ArrayList<CategoriesBean> resultItem;
+  private ArrayList<CategoriesItem> resultItem;
   private View v;
 
   public CategoryVideoFragment() {
@@ -68,7 +68,7 @@ public class CategoryVideoFragment extends Fragment implements categoryVideoView
   }
 
   @Override
-  public void onSuccesCategoryVideo(List<CategoriesBean> category, String msg) {
+  public void onSuccesCategoryVideo(List<CategoriesItem> category, String msg) {
     resultItem.clear();
     resultItem.addAll(category);
     categoryVideoAdapter.notifyDataSetChanged();

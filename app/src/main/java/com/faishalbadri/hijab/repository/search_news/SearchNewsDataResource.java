@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.search_news;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SearchNewsDataResource {
 
   interface SearchNewsGetCallback {
 
-    void onSuccesSearchNews(List<NewsBean> data, String msg);
+    void onSuccesSearchNews(List<NewsItem> data, String msg);
 
     void onWrongSearchNews(String msg);
 

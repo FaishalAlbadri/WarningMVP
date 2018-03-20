@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.di.NewsByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -33,7 +33,7 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   String id, title;
   NewsByCategoryAdapter newsByCategoryAdapter;
   NewsByCategoryPresenter newsByCategoryPresenter;
-  ArrayList<NewsBean> list_data;
+  ArrayList<NewsItem> list_data;
   @BindView(R.id.refresh_news_by_category)
   SwipeRefreshLayout refreshNewsByCategory;
   @BindView(R.id.layout_no_internet_acces)
@@ -76,13 +76,14 @@ public class NewsByCategoryActivity extends AppCompatActivity implements NewsByC
   }
 
   @Override
-  public void onSuccesNewsByCategory(List<NewsBean> data, String msg) {
+  public void onSuccesNewsByCategory(List<NewsItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     newsByCategoryAdapter.notifyDataSetChanged();
     refreshNewsByCategory.setVisibility(View.VISIBLE);
     layoutNoInternetAcces.setVisibility(View.GONE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityNewsByCategory, layoutLoading);
+    DataServerProgress.getInstance()
+        .onSuccesData(recyclerviewActivityNewsByCategory, layoutLoading);
   }
 
   @Override

@@ -17,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.di.RegisterRepositoryInject;
-import com.faishalbadri.hijab.util.SendMail;
 import com.faishalbadri.hijab.util.server.Server;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import java.text.DateFormat;
@@ -58,7 +57,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     View view = inflater.inflate(R.layout.fragment_register, container, false);
     ButterKnife.bind(this, view);
     pd = new ProgressDialog(getActivity());
-    pd.setMessage("Loading");
+    pd.setMessage("Sedang mengirim data");
     pd.setCanceledOnTouchOutside(false);
     pd.setCancelable(false);
     registerPresenter = new RegisterPresenter(
@@ -84,7 +83,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
         .isEmpty(materialedittextPasswordFragmentRegister)) {
       materialedittextUsernameFragmentRegister.setError("Username tidak boleh kosong");
       materialedittextEmailFragmentRegister.setError("Email tidak boleh kosong");
-      materialedittextPasswordFragmentRegister.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentRegister.setError("Kata sandi tidak boleh kosong");
       materialedittextUsernameFragmentRegister.requestFocus();
       materialedittextEmailFragmentRegister.requestFocus();
       materialedittextPasswordFragmentRegister.requestFocus();
@@ -95,7 +94,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
       materialedittextEmailFragmentRegister.setError("Email tidak boleh kosong");
       materialedittextEmailFragmentRegister.requestFocus();
     } else if (Server.isEmpty(materialedittextPasswordFragmentRegister)) {
-      materialedittextPasswordFragmentRegister.setError("Password tidak boleh kosong");
+      materialedittextPasswordFragmentRegister.setError("Kata sandi tidak boleh kosong");
       materialedittextPasswordFragmentRegister.requestFocus();
     } else {
       pd.show();
@@ -110,10 +109,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
 
   @Override
   public void onSuccesRegister(String msg) {
-    sendMail();
     pd.dismiss();
-    Toast.makeText(getActivity(), "Anda telah terdaftar\nSilahkan Login", Toast.LENGTH_SHORT)
-        .show();
   }
 
   @Override
@@ -124,7 +120,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
   @Override
   public void onErrorRegister(String msg) {
     pd.dismiss();
-    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    Toast.makeText(getActivity(), "Cek koneksi internet anda", Toast.LENGTH_SHORT).show();
   }
 
   public Drawable getSelectedItemDrawable() {
@@ -133,13 +129,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.regis
     Drawable selectedItemDrawable = ta.getDrawable(0);
     ta.recycle();
     return selectedItemDrawable;
-  }
-
-  private void sendMail() {
-    String subject = "Your Verification Account Key From Pink Fame";
-    String message = "Your verification code : " + verify_code;
-    SendMail sm = new SendMail(getActivity(), email, subject, message);
-    sm.execute();
   }
 
 }

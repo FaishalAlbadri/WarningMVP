@@ -13,12 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.DataHomeFragment;
 import com.faishalbadri.hijab.ui.ebook.activity.EbookActivity;
@@ -64,17 +60,7 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     event = context.getResources().getString(R.string.text_pinky_hijab_event);
     ebook = context.getResources().getString(R.string.text_pinky_hijab_ebook);
 
-    holder.textviewTitleFragmentHome.setText(dataHomeFragment.getJudulDetail());
-
-    Glide.with(context).load(dataHomeFragment.getGambar()).into(new SimpleTarget<Drawable>() {
-      @Override
-      public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-        holder.imageViewNewsFragmentHome.setImageDrawable(resource);
-      }
-    });
-
-    holder.imageViewTitleFragmentHome.setImageResource(dataHomeFragment.getTitleImage());
-
+    holder.imageViewNewsFragmentHome.setImageResource(dataHomeFragment.getGambar());
     holder.cardviewNewsFragmentHome.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentHome.setClickable(true);
     holder.cardviewNewsFragmentHome.setOnClickListener(v -> {
@@ -121,10 +107,6 @@ public class HomeFragmentAdapter extends Adapter<ViewHolder> {
     ConstraintLayout constraintItemHome;
     @BindView(R.id.image_view_news_fragment_home)
     ImageView imageViewNewsFragmentHome;
-    @BindView(R.id.image_view_title_fragment_home)
-    ImageView imageViewTitleFragmentHome;
-    @BindView(R.id.textview_title_fragment_home)
-    TextView textviewTitleFragmentHome;
 
     public ViewHolder(View itemView) {
       super(itemView);

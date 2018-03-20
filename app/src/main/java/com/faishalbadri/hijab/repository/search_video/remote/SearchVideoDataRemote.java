@@ -2,19 +2,17 @@ package com.faishalbadri.hijab.repository.search_video.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.videos.VideosItem;
+import com.faishalbadri.hijab.data.videos.VideosResponse;
 import com.faishalbadri.hijab.repository.search_video.SearchVideoDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 10/11/17.
@@ -22,47 +20,39 @@ import java.util.Map;
 
 public class SearchVideoDataRemote implements SearchVideoDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "videos/find";
   private Context context;
-  private RequestQueue requestQueue;
 
   public SearchVideoDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchVideoResult(String key,
       @NonNull SearchVideoGetCallback searchVideoGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
-        response -> {
-          final PojoVideo pojoVideo = new Gson().fromJson(response, PojoVideo.class);
-          try {
-            if (pojoVideo == null) {
-              searchVideoGetCallback.onWrongSearchVideo("Null");
-            } else {
-              searchVideoGetCallback.onSuccesSearchVideo(pojoVideo.getVideos(), "Ok");
-            }
-          } catch (Exception e) {
-
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<VideosResponse> videosResponseCall = apiInterface
+        .searchVideos(key, DataUser.getInstance().getUserApiKey());
+    videosResponseCall.enqueue(new Callback<VideosResponse>() {
+      @Override
+      public void onResponse(Call<VideosResponse> call, Response<VideosResponse> response) {
+        try {
+          if (response.body().getVideos() == null) {
+            searchVideoGetCallback.onWrongSearchVideo("Null");
+          } else {
+            VideosResponse videosResponse = response.body();
+            List<VideosItem> items = videosResponse.getVideos();
+            searchVideoGetCallback.onSuccesSearchVideo(items, "Ok");
           }
-        }, error -> searchVideoGetCallback.onErrorSearchVideo(context.getResources().getString(R
-        .string.caption_error_internet_acces))) {
-
-      @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("query", key);
-        return params;
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
 
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onFailure(Call<VideosResponse> call, Throwable t) {
+        searchVideoGetCallback.onErrorSearchVideo(
+            context.getResources().getString(R.string.caption_error_internet_acces));
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
 }

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.slider_home;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoSlider.SliderBean;
+import com.faishalbadri.hijab.data.slider.SliderItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SliderHomeDataResource {
 
   interface SliderHomeGetCallback {
 
-    void onSuccesSliderHome(List<SliderBean> data, String msg);
+    void onSuccesSliderHome(List<SliderItem> data, String msg);
 
     void onErrorSliderHome(String msg);
   }

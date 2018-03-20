@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.news_by_category;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ public interface NewsByCategoryDataResource {
 
   interface NewsByCategoryGetDataCallBack {
 
-    void onSuccessNewsByCategory(List<NewsBean> video, String msg);
+    void onSuccessNewsByCategory(List<NewsItem> video, String msg);
 
     void onErrorNewsByCategory(String msg);
 

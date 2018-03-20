@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
+import com.faishalbadri.hijab.data.city.CityItem;
 import com.faishalbadri.hijab.di.CityEventRepositoryInject;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityContract.eventCityView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -29,7 +29,7 @@ public class EventCityFragment extends Fragment implements eventCityView {
   @BindView(R.id.recyclerview_fragment_event_city)
   RecyclerView recyclerviewFragmentEventCity;
   EventCityPresenter eventCityPresenter;
-  ArrayList<EventCityBean> list_data;
+  ArrayList<CityItem> list_data;
   EventCityAdapter eventCityAdapter;
   @BindView(R.id.layout_no_internet_acces)
   RelativeLayout layoutNoInternetAcces;
@@ -68,7 +68,7 @@ public class EventCityFragment extends Fragment implements eventCityView {
   }
 
   @Override
-  public void onSuccesEventCity(List<EventCityBean> data, String msg) {
+  public void onSuccesEventCity(List<CityItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     eventCityAdapter.notifyDataSetChanged();

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.search_video;
 
 
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.repository.search_video.SearchVideoDataResource.SearchVideoGetCallback;
 import com.faishalbadri.hijab.repository.search_video.SearchVideoRepository;
 import com.faishalbadri.hijab.ui.search_video.SearchVideoContract.SearchVideoView;
@@ -35,7 +35,7 @@ public class SearchVideoPresenter implements SearchVideoContract.SearchVideoPres
   public void getDataSearchVideo(String key) {
     searchVideoRepository.getSearchVideoResult(key, new SearchVideoGetCallback() {
       @Override
-      public void onSuccesSearchVideo(List<VideosBean> data, String msg) {
+      public void onSuccesSearchVideo(List<VideosItem> data, String msg) {
         searchVideoView.onSuccesSearchVideo(data, msg);
       }
 

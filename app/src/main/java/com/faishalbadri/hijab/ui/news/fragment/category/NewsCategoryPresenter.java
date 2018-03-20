@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.news.fragment.category;
 
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import com.faishalbadri.hijab.repository.category.CategoryDataResource.CategoryGetCallback;
 import com.faishalbadri.hijab.repository.category.CategoryRepository;
 import java.util.List;
@@ -33,7 +33,7 @@ public class NewsCategoryPresenter implements NewsCategoryContract.newsCategoryP
   public void getDataNewsCategory() {
     categoryRepository.getCategoryResult(new CategoryGetCallback() {
       @Override
-      public void onSuccesCategory(List<CategoriesBean> data, String msg) {
+      public void onSuccesCategory(List<CategoriesItem> data, String msg) {
         newsCategoryView.onSuccesNewsCategory(data, msg);
       }
 

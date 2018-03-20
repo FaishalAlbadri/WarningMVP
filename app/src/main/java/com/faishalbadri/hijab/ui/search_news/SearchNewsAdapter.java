@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -32,10 +32,10 @@ import java.util.List;
 public class SearchNewsAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<NewsBean> list_data;
+  private List<NewsItem> list_data;
 
 
-  public SearchNewsAdapter(SearchNewsActivity seaerchNewsActivity, ArrayList<NewsBean> resultItem) {
+  public SearchNewsAdapter(SearchNewsActivity seaerchNewsActivity, ArrayList<NewsItem> resultItem) {
     context = seaerchNewsActivity;
     list_data = resultItem;
   }
@@ -49,21 +49,20 @@ public class SearchNewsAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final NewsBean listitem = list_data.get(position);
+    final NewsItem listitem = list_data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getNews_images())
+        .load(Server.BASE_ASSETS + listitem.getNewsImages())
         .apply(options)
         .into(holder.imageviewNewsItem);
-    holder.textviewTitleNewsItem.setText(listitem.getNews_title());
+    holder.textviewTitleNewsItem.setText(listitem.getNewsTitle());
     holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentNews.setClickable(true);
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), DetailNewsActivity.class);
-      i.putExtra("news_id", listitem.getNews_id());
-      i.putExtra("news_image", listitem.getNews_images());
-      i.putExtra("news_description", listitem.getNews_description());
+      i.putExtra("news_id", listitem.getNewsId());
+      i.putExtra("news_image", listitem.getNewsImages());
       v.getContext().startActivity(i);
     });
   }

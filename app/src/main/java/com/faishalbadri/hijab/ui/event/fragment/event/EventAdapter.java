@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.ui.detail.event.DetailEventActivity;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
@@ -39,12 +39,12 @@ public class EventAdapter extends Adapter<ViewHolder> {
   private static final int ITEM = 0;
   private static final int LOADING = 1;
   private Context context;
-  private List<EventBean> data;
+  private List<EventItem> data;
   private EventFragment eventFragment;
   private String error;
   private ViewHolderLoading viewHolderLoading;
 
-  public EventAdapter(Context context, List<EventBean> data, EventFragment eventFragment) {
+  public EventAdapter(Context context, List<EventItem> data, EventFragment eventFragment) {
     this.context = context;
     this.data = data;
     this.eventFragment = eventFragment;
@@ -78,7 +78,7 @@ public class EventAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EventBean datalist = data.get(position);
+    final EventItem datalist = data.get(position);
 
     switch (getItemViewType(position)) {
       case ITEM:
@@ -87,22 +87,22 @@ public class EventAdapter extends Adapter<ViewHolder> {
             .format(DecodeFormat.PREFER_ARGB_8888)
             .override(200, 200);
         Glide.with(context)
-            .load(Server.BASE_ASSETS + datalist.getEvent_image())
+            .load(Server.BASE_ASSETS + datalist.getEventImage())
             .apply(options)
             .into(viewHolderItem.imageviewEventItemEvent);
         viewHolderItem.textviewPlaceTimeEventItem
-            .setText(datalist.getEvent_city_name() + ", " + datalist.getEvent_date());
-        viewHolderItem.textviewTitleEventItem.setText(datalist.getEvent_title());
+            .setText(datalist.getEventCityName() + ", " + datalist.getEventDate());
+        viewHolderItem.textviewTitleEventItem.setText(datalist.getEventTitle());
         viewHolderItem.cardViewEventItem.setForeground(getSelectedItemDrawable());
         viewHolderItem.cardViewEventItem.setClickable(true);
         viewHolderItem.cardViewEventItem.setOnClickListener(view -> {
           view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
-              .putExtra("title", datalist.getEvent_title())
-              .putExtra("image", datalist.getEvent_image())
-              .putExtra("desc", datalist.getEvent_detail())
-              .putExtra("link", datalist.getEvent_link())
-              .putExtra("place", datalist.getEvent_city_name())
-              .putExtra("time", datalist.getEvent_date()));
+              .putExtra("title", datalist.getEventTitle())
+              .putExtra("image", datalist.getEventImage())
+              .putExtra("desc", datalist.getEventDetail())
+              .putExtra("link", datalist.getEventLink())
+              .putExtra("place", datalist.getEventCityName())
+              .putExtra("time", datalist.getEventDate()));
           ((Activity) context)
               .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
         });
@@ -129,7 +129,7 @@ public class EventAdapter extends Adapter<ViewHolder> {
   }
 
   public void onErrorPagination() {
-    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    Toast.makeText(context, "Koneksi internet anda lambat", Toast.LENGTH_SHORT).show();
     viewHolderLoading.progressLoadData.setVisibility(View.GONE);
     viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
   }

@@ -48,7 +48,7 @@ public class VotingDialogFragment extends DialogFragment implements
   RelativeLayout invisibleRelativeDialogFragmentVoting;
   @BindView(R.id.progress)
   ProgressBar progress;
-  private String nama, img, id_user, id_voting, id_session, status_session, voting;
+  private String nama, img, id_voting, id_session, status_session, voting;
   private VotingDialogPresenterGetSession votingDialogPresenterGetSession;
   private VotingDialogPresenterVotingRate votingDialogPresenterVotingRate;
 
@@ -168,7 +168,7 @@ public class VotingDialogFragment extends DialogFragment implements
   @Override
   public void onSuccesVotingDialogViewVotingRate(String msg) {
     if (msg.equals("You've already voting")) {
-      Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+      Toast.makeText(getActivity(), "Kamu telah memilih seseorang", Toast.LENGTH_SHORT).show();
       buttonBeforeLikeVoting.setVisibility(View.VISIBLE);
       buttonAfterLikeVoting.setVisibility(View.INVISIBLE);
     }

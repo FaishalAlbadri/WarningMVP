@@ -54,7 +54,7 @@ public class KritikSaranActivity extends AppCompatActivity {
   @OnClick(R.id.button_send_feedback)
   public void onButtonSendFeedbackClicked() {
     if (edittextKritikSaran.getText().toString().equals("")) {
-      Toast.makeText(this, "Please input data", Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, "Tolong Masukkan Data", Toast.LENGTH_SHORT).show();
     } else {
       edittextValue = edittextKritikSaran.getText().toString();
       Intent send = new Intent(Intent.ACTION_SENDTO);

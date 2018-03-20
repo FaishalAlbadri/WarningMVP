@@ -2,21 +2,20 @@ package com.faishalbadri.hijab.repository.account.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.faishalbadri.hijab.data.PojoUser;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.user.UserItem;
+import com.faishalbadri.hijab.data.user.UserResponse;
 import com.faishalbadri.hijab.repository.account.AccountDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
 import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 import net.gotev.uploadservice.MultipartUploadRequest;
 import net.gotev.uploadservice.UploadNotificationConfig;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by fikriimaduddin on 10/30/17.
@@ -24,56 +23,53 @@ import net.gotev.uploadservice.UploadNotificationConfig;
 
 public class AccountDataRemote implements AccountDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "loginuser";
   private static final String URL_EDIT_IMAGE = Server.BASE_URL_REVAMP + "user/upload";
   private Context context;
-  private RequestQueue requestQueue;
 
   public AccountDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getAccountResult(@NonNull AccountGetCallback accountGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
-        response -> {
-          final PojoUser pojoUser = new Gson().fromJson(response, PojoUser.class);
-          try {
-            if (pojoUser.getMessage().equals("Invalid username or password")) {
-              accountGetCallback.onError("Email atau Password salah");
-            } else {
-              for (int a = 0; a < pojoUser.getUser().size(); a++) {
-                String id_user = pojoUser.getUser().get(a).getUser_id();
-                String user_name = pojoUser.getUser().get(a).getUser_name();
-                String user_email = pojoUser.getUser().get(a).getUser_email();
-                String user_handphone_number = pojoUser.getUser().get(a).getUser_handphone_number();
-                String user_image = pojoUser.getUser().get(a).getUser_image();
-                String user_password = pojoUser.getUser().get(a).getUser_password();
-                String user_verify_code = pojoUser.getUser().get(a).getUser_verify_code();
-                String user_verified_code = pojoUser.getUser().get(a).getUser_verified_code();
-                String user_gender = pojoUser.getUser().get(a).getUser_gender();
-                String user_apikey = pojoUser.getUser().get(a).getUser_apikey();
-                accountGetCallback.onSucces("Ok", id_user, user_name, user_email,
-                    user_handphone_number, user_image, user_password, user_verify_code,
-                    user_verified_code, user_gender, user_apikey);
-              }
-            }
-          } catch (Exception e) {
-
-          }
-        }, error -> accountGetCallback.onError(String.valueOf(error))) {
-
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<UserResponse> userResponseCall = apiInterface
+        .getLogin(DataUser.getInstance().getUserName(), DataUser.getInstance().getUserPassword());
+    userResponseCall.enqueue(new Callback<UserResponse>() {
       @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("username", DataUser.getInstance().getUserName());
-        params.put("password", DataUser.getInstance().getUserPassword());
-        return params;
+      public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+        try {
+          if (response.body().getMessage().equals("Invalid username or password")) {
+            accountGetCallback.onError("Email atau Kata sandi salah");
+          } else {
+            UserResponse userResponse = response.body();
+            List<UserItem> items = userResponse.getUser();
+            for (int a = 0; a < items.size(); a++) {
+              String id_user = items.get(a).getUserId();
+              String user_name = items.get(a).getUserName();
+              String user_email = items.get(a).getUserEmail();
+              String user_handphone_number = items.get(a).getUserHandphoneNumber();
+              String user_image = items.get(a).getUserImage();
+              String user_password = items.get(a).getUserPassword();
+              String user_verify_code = items.get(a).getUserVerifyCode();
+              String user_verified_code = items.get(a).getUserVerifiedCode();
+              String user_gender = items.get(a).getUserGender();
+              String user_apikey = items.get(a).getUserApikey();
+              accountGetCallback.onSucces("Ok", id_user, user_name, user_email,
+                  user_handphone_number, user_image, user_password, user_verify_code,
+                  user_verified_code, user_gender, user_apikey);
+            }
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
 
-    };
-    requestQueue.add(stringRequest);
+      @Override
+      public void onFailure(Call<UserResponse> call, Throwable t) {
+        accountGetCallback.onError("error");
+      }
+    });
   }
 
 

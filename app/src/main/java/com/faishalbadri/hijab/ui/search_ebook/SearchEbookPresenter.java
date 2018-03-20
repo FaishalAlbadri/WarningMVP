@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.search_ebook;
 
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import com.faishalbadri.hijab.repository.search_ebook.SearchEbookDataResource.SearchEbookGetCallback;
 import com.faishalbadri.hijab.repository.search_ebook.SearchEbookRepository;
 import com.faishalbadri.hijab.ui.search_ebook.SearchEbookContract.SearchEbookView;
@@ -34,7 +34,7 @@ public class SearchEbookPresenter implements SearchEbookContract.SearchEbookPres
   public void getDataSearchEbook(String key) {
     searchEbookRepository.getSearchEbookResult(key, new SearchEbookGetCallback() {
       @Override
-      public void onSuccesSearchEbook(List<EbookBean> data, String msg) {
+      public void onSuccesSearchEbook(List<EbookItem> data, String msg) {
         searchEbookView.onSuccesSearchEbook(data, msg);
       }
 

@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import com.faishalbadri.hijab.ui.detail.event.DetailEventActivity;
 import com.faishalbadri.hijab.ui.event_by_city.EventByCityAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -28,11 +28,11 @@ import java.util.List;
 public class EventByCityAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<EventBean> data;
+  private List<EventItem> data;
 
 
   public EventByCityAdapter(Context context,
-      List<EventBean> data) {
+      List<EventItem> data) {
     this.context = context;
     this.data = data;
   }
@@ -46,26 +46,26 @@ public class EventByCityAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final EventBean listitem = data.get(position);
+    final EventItem listitem = data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getEvent_image())
+        .load(Server.BASE_ASSETS + listitem.getEventImage())
         .apply(options)
         .into(holder.imageviewEventItemEvent);
     holder.textviewPlaceTimeEventItem
-        .setText(listitem.getEvent_city_name() + ", " + listitem.getEvent_date());
-    holder.textviewTitleEventItem.setText(listitem.getEvent_title());
+        .setText(listitem.getEventCityName() + ", " + listitem.getEventDate());
+    holder.textviewTitleEventItem.setText(listitem.getEventTitle());
     holder.cardViewEventItem.setForeground(getSelectedItemDrawable());
     holder.cardViewEventItem.setClickable(true);
     holder.cardViewEventItem.setOnClickListener(view -> {
       view.getContext().startActivity(new Intent(view.getContext(), DetailEventActivity.class)
-          .putExtra("title", listitem.getEvent_title())
-          .putExtra("image", listitem.getEvent_image())
-          .putExtra("desc", listitem.getEvent_detail())
-          .putExtra("link", listitem.getEvent_link())
-          .putExtra("place", listitem.getEvent_city_name())
-          .putExtra("time", listitem.getEvent_date()));
+          .putExtra("title", listitem.getEventTitle())
+          .putExtra("image", listitem.getEventImage())
+          .putExtra("desc", listitem.getEventDetail())
+          .putExtra("link", listitem.getEventLink())
+          .putExtra("place", listitem.getEventCityName())
+          .putExtra("time", listitem.getEventDate()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

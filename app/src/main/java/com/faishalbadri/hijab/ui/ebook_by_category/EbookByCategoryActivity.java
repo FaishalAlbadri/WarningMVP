@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import com.faishalbadri.hijab.di.EbookByCategoryRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryContract.ebookByCategoryView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -24,7 +24,6 @@ import java.util.List;
 
 public class EbookByCategoryActivity extends AppCompatActivity implements ebookByCategoryView {
 
-  private static final String SAVE_DATA_EBOOK = "save";
   @BindView(R.id.button_back_general_toolbar_search)
   ImageView buttonBackGeneralToolbarSearch;
   @BindView(R.id.textview_general_toolbar_search)
@@ -36,7 +35,7 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   String id, title;
   EbookByCategoryPresenter ebookCategoryPresenter;
   EbookByCategoryAdapter adapter;
-  ArrayList<EbookBean> resultItem;
+  ArrayList<EbookItem> resultItem;
   @BindView(R.id.refresh_ebook_by_category)
   SwipeRefreshLayout refreshEbookByCategory;
   @BindView(R.id.layout_no_internet_acces)
@@ -80,13 +79,14 @@ public class EbookByCategoryActivity extends AppCompatActivity implements ebookB
   }
 
   @Override
-  public void onSuccesEbookByCategory(List<EbookBean> data, String msg) {
+  public void onSuccesEbookByCategory(List<EbookItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
     layoutNoInternetAcces.setVisibility(View.GONE);
     refreshEbookByCategory.setVisibility(View.VISIBLE);
-    DataServerProgress.getInstance().onSuccesData(recyclerviewActivityEbookByCategory, layoutLoading);
+    DataServerProgress.getInstance()
+        .onSuccesData(recyclerviewActivityEbookByCategory, layoutLoading);
   }
 
   @Override

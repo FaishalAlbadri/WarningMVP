@@ -127,7 +127,8 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   @Override
   public void onErrorAccount(String msg) {
     if (msg.equals("Email atau Password salah")) {
-      Toast.makeText(context, "Someone has change your password\nPlease login again",
+      Toast.makeText(context, "Seseorang telah mengganti password akun ini\nSilahkan masuk "
+              + "kembali",
           Toast.LENGTH_LONG).show();
       logout();
     }
@@ -152,8 +153,8 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
   private void editPhoto() {
     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
     intent.setType("image/*");
-//    intent.setAction(Intent.ACTION_GET_CONTENT);
-    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    intent.setAction(Intent.ACTION_GET_CONTENT);
+    startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), PICK_IMAGE_REQUEST);
   }
 
   private void setView() {
@@ -168,7 +169,7 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
     editImagePresenter.onAttachView(this);
     activityUtil = ActivityUtil.getInstance(context);
     progressDialog = new ProgressDialog(getActivity());
-    progressDialog.setMessage("Loading");
+    progressDialog.setMessage("Sedang memuat data");
     progressDialog.setCancelable(false);
     progressDialog.setCanceledOnTouchOutside(false);
   }
@@ -235,13 +236,8 @@ public class AccountFragment extends Fragment implements accoutView, editImageVi
 
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-        Toast.makeText(getActivity(), "Permission granted now you can read the storage",
-            Toast.LENGTH_SHORT)
-            .show();
       } else {
-
-        Toast.makeText(getActivity(), "Oops you just denied the permission", Toast.LENGTH_SHORT)
-            .show();
+        requestStoragePermission();
       }
     }
   }

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.event;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoEvent;
+import com.faishalbadri.hijab.data.event.EventItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface EventDataResource {
 
   interface EventGetCallback {
 
-    void onSuccesEvent(List<PojoEvent.EventBean> data, String msg);
+    void onSuccesEvent(List<EventItem> data, String msg);
 
     void onErrorEvent(String msg);
   }

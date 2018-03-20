@@ -2,19 +2,16 @@ package com.faishalbadri.hijab.repository.search_event.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEvent;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.event.EventItem;
+import com.faishalbadri.hijab.data.event.EventResponse;
 import com.faishalbadri.hijab.repository.search_event.SearchEventDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 10/11/17.
@@ -22,47 +19,38 @@ import java.util.Map;
 
 public class SearchEventDataRemote implements SearchEventDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "event/find";
   private Context context;
-  private RequestQueue requestQueue;
 
   public SearchEventDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchEventResult(String key,
       @NonNull SearchEventGetCallback searchEventGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL), response -> {
-      final PojoEvent pojoEvent = new Gson().fromJson(response, PojoEvent.class);
-      try {
-        if (pojoEvent == null) {
-          searchEventGetCallback.onWrongSearchEvent("Null");
-        } else {
-          searchEventGetCallback
-              .onSuccesSearchEvent(pojoEvent.getEvent(), "Ok");
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<EventResponse> eventResponseCall = apiInterface
+        .searchEvent(key, DataUser.getInstance().getUserApiKey());
+    eventResponseCall.enqueue(new Callback<EventResponse>() {
+      @Override
+      public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
+        try {
+          if (response.body().getEvent() == null) {
+            searchEventGetCallback.onWrongSearchEvent("Null");
+          } else {
+            EventResponse eventResponse = response.body();
+            List<EventItem> items = eventResponse.getEvent();
+            searchEventGetCallback.onSuccesSearchEvent(items, "Ok");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
         }
-      } catch (Exception e) {
-
-      }
-    }, error -> searchEventGetCallback.onErrorSearchEvent(context.getResources().getString(R
-        .string.caption_error_internet_acces))) {
-
-      @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("query", key);
-        return params;
       }
 
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onFailure(Call<EventResponse> call, Throwable t) {
+        searchEventGetCallback.onErrorSearchEvent("Tidak ada Koneksi internet");
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
 }

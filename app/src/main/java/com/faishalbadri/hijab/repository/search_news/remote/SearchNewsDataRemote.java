@@ -2,19 +2,17 @@ package com.faishalbadri.hijab.repository.search_news.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.news.NewsItem;
+import com.faishalbadri.hijab.data.news.NewsResponse;
 import com.faishalbadri.hijab.repository.search_news.SearchNewsDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 10/11/17.
@@ -22,48 +20,39 @@ import java.util.Map;
 
 public class SearchNewsDataRemote implements SearchNewsDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "newsfeed/find";
   Context context;
-  private RequestQueue requestQueue;
 
   public SearchNewsDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getSearchNewsResult(String key,
       @NonNull SearchNewsGetCallback searchNewsGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.POST, String.valueOf(URL),
-        response -> {
-          final PojoNews pojoNews = new Gson().fromJson(response, PojoNews.class);
-          try {
-            if (pojoNews == null) {
-              searchNewsGetCallback.onWrongSearchNews("Null");
-            } else {
-              searchNewsGetCallback
-                  .onSuccesSearchNews(pojoNews.getNews(), "Ok");
-            }
-          } catch (Exception e) {
-
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<NewsResponse> newsResponseCall = apiInterface.searchNews(key, DataUser.getInstance()
+        .getUserApiKey());
+    newsResponseCall.enqueue(new Callback<NewsResponse>() {
+      @Override
+      public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+        try {
+          if (response.body().getNews() == null) {
+            searchNewsGetCallback.onWrongSearchNews("Null");
+          } else {
+            NewsResponse newsResponse = response.body();
+            List<NewsItem> items = newsResponse.getNews();
+            searchNewsGetCallback.onSuccesSearchNews(items, "Ok");
           }
-        }, error -> searchNewsGetCallback.onErrorSearchNews(context.getResources().getString(R
-        .string.caption_error_internet_acces))) {
-
-      @Override
-      protected Map<String, String> getParams() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("query", key);
-        return params;
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
 
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onFailure(Call<NewsResponse> call, Throwable t) {
+        searchNewsGetCallback.onErrorSearchNews(context.getResources().getString(R
+            .string.caption_error_internet_acces));
       }
-    };
-    requestQueue.add(stringRequest);
+    });
   }
 }

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.search_news;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoNews;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class SearchNewsContract {
 
   public interface SearchNewsView {
 
-    void onSuccesSearchNews(List<PojoNews.NewsBean> data, String msg);
+    void onSuccesSearchNews(List<NewsItem> data, String msg);
 
     void onWrongSearchNews(String msg);
 

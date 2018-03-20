@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.sponsor;
 
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.data.sponsor.SponsorItem;
 import com.faishalbadri.hijab.repository.sponsor.SponsorDataResource.SponsorGetCallback;
 import com.faishalbadri.hijab.repository.sponsor.SponsorRepository;
 import com.faishalbadri.hijab.ui.sponsor.SponsorContract.SponsorView;
@@ -34,7 +34,7 @@ public class SponsorPresenter implements SponsorContract.SponsorPresenter {
   public void getDataSponsor() {
     sponsorRepository.getSponsorResult(new SponsorGetCallback() {
       @Override
-      public void onSuccesSponsor(List<SponsorBean> data, String msg) {
+      public void onSuccesSponsor(List<SponsorItem> data, String msg) {
         sponsorView.onSuccesSponsor(data, msg);
       }
 

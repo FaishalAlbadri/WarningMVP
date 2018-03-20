@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.send_article;
 
-import com.faishalbadri.hijab.repository.send_article.SendArticleDataResource.uploadFile;
-import com.faishalbadri.hijab.repository.send_article.SendArticleRepository;
+import com.faishalbadri.hijab.repository.send_article_delete.SendArticleDataResource.uploadFile;
+import com.faishalbadri.hijab.repository.send_article_delete.SendArticleRepository;
 import com.faishalbadri.hijab.ui.send_article.SendArticleContract.uploadFileView;
 import com.faishalbadri.hijab.util.ActivityUtil;
 

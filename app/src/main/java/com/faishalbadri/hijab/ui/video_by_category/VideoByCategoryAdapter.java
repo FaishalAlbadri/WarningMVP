@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -31,10 +31,10 @@ import java.util.List;
 public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<PojoVideo.VideosBean> list;
+  private List<VideosItem> list;
 
   public VideoByCategoryAdapter(VideoByCategoryActivity perkatActivity,
-      ArrayList<PojoVideo.VideosBean> resultItem) {
+      ArrayList<VideosItem> resultItem) {
     context = perkatActivity;
     list = resultItem;
   }
@@ -48,23 +48,23 @@ public class VideoByCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final PojoVideo.VideosBean listitem = list.get(position);
+    final VideosItem listitem = list.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_IMG_YT + listitem.getVideo_url() + Server.IMG_YT_FORMAT)
+        .load(Server.BASE_IMG_YT + listitem.getVideoUrl() + Server.IMG_YT_FORMAT)
         .apply(options)
         .into(holder.imgListVideo);
-    holder.txtJudulListVideo.setText(listitem.getVideo_title());
+    holder.txtJudulListVideo.setText(listitem.getVideoTitle());
     holder.txtJudulListVideo.setMaxLines(3);
-    holder.txtDurationVideo.setText(listitem.getVideo_duration().toString());
+    holder.txtDurationVideo.setText(listitem.getVideoDuration().toString());
     holder.cardViewVideoItem.setClickable(true);
     holder.cardViewVideoItem.setOnClickListener(v -> {
       v.getContext().startActivity(new Intent(v.getContext(), DetailVideoActivity.class)
-          .putExtra("videos_title", listitem.getVideo_title())
-          .putExtra("videos_url", listitem.getVideo_url())
-          .putExtra("videos_description", listitem.getVideo_description())
-          .putExtra("videos_duration", listitem.getVideo_duration()));
+          .putExtra("videos_title", listitem.getVideoTitle())
+          .putExtra("videos_url", listitem.getVideoUrl())
+          .putExtra("videos_description", listitem.getVideoDescription())
+          .putExtra("videos_duration", listitem.getVideoDuration()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import com.faishalbadri.hijab.ui.video.fragment.category_video.CategoryVideoAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.video_by_category.VideoByCategoryActivity;
 import java.util.ArrayList;
@@ -27,10 +27,10 @@ import java.util.List;
 public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<CategoriesBean> list_category_video;
+  private List<CategoriesItem> list_category_video;
 
   public CategoryVideoAdapter(FragmentActivity activity,
-      ArrayList<CategoriesBean> resultItem) {
+      ArrayList<CategoriesItem> resultItem) {
     this.context = activity;
     this.list_category_video = resultItem;
   }
@@ -44,14 +44,14 @@ public class CategoryVideoAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final CategoriesBean listitem = list_category_video.get(position);
+    final CategoriesItem listitem = list_category_video.get(position);
     setImage(holder.imageviewItem,
-        "categories_" + listitem.getCategory_name().toLowerCase().replace(" ", ""));
-    holder.textviewItem.setText(listitem.getCategory_name());
+        "categories_" + listitem.getCategoryName().toLowerCase().replace(" ", ""));
+    holder.textviewItem.setText(listitem.getCategoryName());
     holder.constrainItem.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), VideoByCategoryActivity.class);
-      i.putExtra("category_id", listitem.getCategory_id());
-      i.putExtra("category_title", listitem.getCategory_name());
+      i.putExtra("category_id", listitem.getCategoryId());
+      i.putExtra("category_title", listitem.getCategoryName());
       v.getContext().startActivity(i);
     });
   }

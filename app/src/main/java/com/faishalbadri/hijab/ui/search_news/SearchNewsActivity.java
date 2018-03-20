@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.di.SearchNewsRepositoryInject;
 import com.faishalbadri.hijab.ui.search_news.SearchNewsContract.SearchNewsView;
 import com.faishalbadri.hijab.util.UserUtil;
@@ -33,7 +33,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
   private String key;
   private SearchNewsPresenter searchNewsPresenter;
   private SearchNewsAdapter adapter;
-  private ArrayList<NewsBean> resultItem;
+  private ArrayList<NewsItem> resultItem;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
   }
 
   @Override
-  public void onSuccesSearchNews(List<NewsBean> data, String msg) {
+  public void onSuccesSearchNews(List<NewsItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     adapter.notifyDataSetChanged();
@@ -66,7 +66,7 @@ public class SearchNewsActivity extends AppCompatActivity implements SearchNewsV
 
   @Override
   public void onWrongSearchNews(String msg) {
-    Toast.makeText(this, "wrong key", Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, "Data tidak ada", Toast.LENGTH_SHORT).show();
   }
 
   @Override

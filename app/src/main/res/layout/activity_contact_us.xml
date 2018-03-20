@@ -32,7 +32,7 @@
     <LinearLayout
       android:id="@+id/linearlayout_contact_us"
       android:layout_width="match_parent"
-      android:layout_height="150dp"
+      android:layout_height="155dp"
       android:layout_marginBottom="25dp"
       android:layout_marginLeft="@dimen/fab_margin"
       android:layout_marginRight="@dimen/fab_margin"

@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.search_video;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface SearchVideoDataResource {
 
   interface SearchVideoGetCallback {
 
-    void onSuccesSearchVideo(List<PojoVideo.VideosBean> data, String msg);
+    void onSuccesSearchVideo(List<VideosItem> data, String msg);
 
     void onWrongSearchVideo(String msg);
 

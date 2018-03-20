@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.voting;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.data.voting.VotingItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class VotingContract {
 
   public interface votingView {
 
-    void onSuccesVoting(List<VotingBean> list, String msg);
+    void onSuccesVoting(List<VotingItem> list, String msg);
 
     void onErrorVoting(String msg);
   }

@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.data.voting.VotingItem;
 import com.faishalbadri.hijab.ui.voting.VotingAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.voting_dialog_fragment.VotingDialogFragment;
 import com.faishalbadri.hijab.util.server.Server;
@@ -24,10 +24,10 @@ import java.util.List;
 public class VotingAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<VotingBean> list_voting;
+  private List<VotingItem> list_voting;
 
 
-  public VotingAdapter(Context context, List<VotingBean> list_voting,
+  public VotingAdapter(Context context, List<VotingItem> list_voting,
       FragmentActivity fragmentActivity) {
     this.context = context;
     this.list_voting = list_voting;
@@ -43,18 +43,18 @@ public class VotingAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final VotingBean listitem = list_voting.get(position);
+    final VotingItem listitem = list_voting.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getVoting_img())
+        .load(Server.BASE_ASSETS + listitem.getVotingImg())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {
       Bundle bundle = new Bundle();
-      bundle.putString("id_voting", listitem.getVoting_id());
-      bundle.putString("nama", listitem.getVoting_nickname());
-      bundle.putString("img", listitem.getVoting_img());
+      bundle.putString("id_voting", listitem.getVotingId());
+      bundle.putString("nama", listitem.getVotingNickname());
+      bundle.putString("img", listitem.getVotingImg());
       FragmentActivity activity = (FragmentActivity) (context);
       android.support.v4.app.FragmentManager fm = activity.getSupportFragmentManager();
       VotingDialogFragment alert = new VotingDialogFragment();

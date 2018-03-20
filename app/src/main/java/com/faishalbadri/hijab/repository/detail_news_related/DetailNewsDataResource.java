@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.detail_news_related;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -17,14 +17,14 @@ public interface DetailNewsDataResource {
 
   interface DetailNewsPopularGetCallback {
 
-    void onSuccesDetailNewsPopular(List<NewsBean> data, String msg);
+    void onSuccesDetailNewsPopular(List<NewsItem> data, String msg);
 
     void onErrorDetailNewsPopular(String msg);
   }
 
   interface viewGetCallback {
 
-    void onSuccesView(List<NewsBean> data, String msg);
+    void onSuccesView(List<NewsItem> data, String msg);
 
     void onError(String msg);
   }

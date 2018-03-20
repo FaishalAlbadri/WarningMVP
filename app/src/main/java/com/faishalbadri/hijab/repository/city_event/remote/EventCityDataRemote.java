@@ -2,19 +2,16 @@ package com.faishalbadri.hijab.repository.city_event.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoCityEvent;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.city.CityItem;
+import com.faishalbadri.hijab.data.city.CityResponse;
 import com.faishalbadri.hijab.repository.city_event.EventCityDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by faishal on 11/6/17.
@@ -22,38 +19,37 @@ import java.util.Map;
 
 public class EventCityDataRemote implements EventCityDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "event_city";
   private Context context;
-  private RequestQueue requestQueue;
 
   public EventCityDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getEventCityResult(@NonNull EventCityGetCallback eventCityGetCallback) {
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
-        response -> {
-          final PojoCityEvent pojoCityEvent = new Gson().fromJson(response, PojoCityEvent.class);
-          try {
-            if (pojoCityEvent.getEvent_city().toString().equals("[]")) {
-              eventCityGetCallback.onErrorEventCity("Error");
-            } else {
-              eventCityGetCallback.onSuccesEventCity(pojoCityEvent.getEvent_city(), "Ok");
-            }
-          } catch (Exception e) {
-
-          }
-        }, error -> eventCityGetCallback.onErrorEventCity(
-        context.getResources().getString(R.string.caption_error_internet_acces))) {
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<CityResponse> cityResponseCall = apiInterface
+        .getCity(DataUser.getInstance().getUserApiKey());
+    cityResponseCall.enqueue(new Callback<CityResponse>() {
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+        try {
+          if (response.body().getEventCity().toString().equals("[]")) {
+            eventCityGetCallback.onErrorEventCity("Error");
+          } else {
+            CityResponse cityResponse = response.body();
+            List<CityItem> items = cityResponse.getEventCity();
+            eventCityGetCallback.onSuccesEventCity(items, "Ok");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    };
-    requestQueue.add(stringRequest);
+
+      @Override
+      public void onFailure(Call<CityResponse> call, Throwable t) {
+        eventCityGetCallback.onErrorEventCity("Tidak ada koneksi internet");
+      }
+    });
   }
 }

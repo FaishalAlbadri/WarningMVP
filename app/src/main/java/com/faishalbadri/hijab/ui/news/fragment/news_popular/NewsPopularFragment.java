@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.di.NewsPopularRepositoryInject;
 import com.faishalbadri.hijab.ui.news.fragment.news_popular.NewsPopularContract.newsPopularView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -30,7 +30,7 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
   @BindView(R.id.recyclerview_fragment_news_popular)
   RecyclerView recyclerviewFragmentNewsPopular;
   NewsPopularPresenter newsPopularPresenter;
-  ArrayList<NewsBean> list_data;
+  ArrayList<NewsItem> list_data;
   NewsPopularAdapter newsPopularAdapter;
   @BindView(R.id.refresh_fragment_news_popular)
   SwipeRefreshLayout refreshFragmentNewsPopular;
@@ -81,7 +81,7 @@ public class NewsPopularFragment extends Fragment implements newsPopularView {
   }
 
   @Override
-  public void onSuccesNewsPopular(List<NewsBean> data, String msg) {
+  public void onSuccesNewsPopular(List<NewsItem> data, String msg) {
     list_data.clear();
     list_data.addAll(data);
     newsPopularAdapter.notifyDataSetChanged();

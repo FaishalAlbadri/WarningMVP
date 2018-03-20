@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,8 +31,6 @@ public class EbookActivity extends AppCompatActivity {
   @BindView(R.id.button_category_activity_ebook)
   ImageButton buttonCategoryActivityEbook;
   ActivityUtil activityUtil;
-  String sessionEbook;
-  SearchView searchView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

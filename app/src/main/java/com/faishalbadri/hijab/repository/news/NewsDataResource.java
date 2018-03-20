@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.news;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ public interface NewsDataResource {
 
   interface NewsGetCallback {
 
-    void onSuccesNews(List<NewsBean> data, String msg);
+    void onSuccesNews(List<NewsItem> data, String msg);
 
     void onErrorNews(String msg);
 
@@ -24,7 +24,7 @@ public interface NewsDataResource {
 
   interface SliderGetCallback {
 
-    void onSuccesSlider(List<NewsBean> dataSlider, String msg);
+    void onSuccesSlider(List<NewsItem> dataSlider, String msg);
 
     void onErrorSlider(String msg);
   }

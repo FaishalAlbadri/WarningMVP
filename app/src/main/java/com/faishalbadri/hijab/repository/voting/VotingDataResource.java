@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.voting;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoVoting.VotingBean;
+import com.faishalbadri.hijab.data.voting.VotingItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface VotingDataResource {
 
   interface VotingGetCallback {
 
-    void onSuccesVoting(List<VotingBean> list, String msg);
+    void onSuccesVoting(List<VotingItem> list, String msg);
 
     void onErrorVoting(String msg);
   }

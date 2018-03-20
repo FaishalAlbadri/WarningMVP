@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.event.fragment.event_city;
 
-import com.faishalbadri.hijab.data.PojoCityEvent.EventCityBean;
+import com.faishalbadri.hijab.data.city.CityItem;
 import com.faishalbadri.hijab.repository.city_event.EventCityDataResource.EventCityGetCallback;
 import com.faishalbadri.hijab.repository.city_event.EventCityRepository;
 import com.faishalbadri.hijab.ui.event.fragment.event_city.EventCityContract.eventCityView;
@@ -34,7 +34,7 @@ public class EventCityPresenter implements EventCityContract.eventCityPresenter 
   public void getDataEventCity() {
     eventCityRepository.getEventCityResult(new EventCityGetCallback() {
       @Override
-      public void onSuccesEventCity(List<EventCityBean> data, String msg) {
+      public void onSuccesEventCity(List<CityItem> data, String msg) {
         eventCityView.onSuccesEventCity(data, msg);
       }
 

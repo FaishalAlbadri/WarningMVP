@@ -17,8 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoSponsor;
-import com.faishalbadri.hijab.data.PojoSponsor.SponsorBean;
+import com.faishalbadri.hijab.data.sponsor.SponsorItem;
 import com.faishalbadri.hijab.ui.sponsor.SponsorAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.List;
@@ -29,11 +28,11 @@ import java.util.List;
 
 public class SponsorAdapter extends Adapter<ViewHolder> {
 
-  private List<SponsorBean> data;
+  private List<SponsorItem> data;
   private Context context;
 
 
-  public SponsorAdapter(List<SponsorBean> data, Context context) {
+  public SponsorAdapter(List<SponsorItem> data, Context context) {
     this.data = data;
     this.context = context;
   }
@@ -47,21 +46,21 @@ public class SponsorAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final PojoSponsor.SponsorBean datalist = data.get(position);
+    final SponsorItem datalist = data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(150, 150);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + datalist.getSponsor_image())
+        .load(Server.BASE_ASSETS + datalist.getSponsorImage())
         .apply(options)
         .into(holder.imageviewVotingGrid);
     holder.imageviewVotingGrid.setOnClickListener(v -> {
-      String url = datalist.getSponsor_link();
-      if (datalist.getSponsor_link().startsWith("http://") || datalist.getSponsor_link()
+      String url = datalist.getSponsorLink();
+      if (datalist.getSponsorLink().startsWith("http://") || datalist.getSponsorLink()
           .startsWith("https://")) {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         context.startActivity(i);
-      } else if (datalist.getSponsor_link().startsWith("www.")) {
+      } else if (datalist.getSponsorLink().startsWith("www.")) {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse("http://" + url));
         context.startActivity(i);

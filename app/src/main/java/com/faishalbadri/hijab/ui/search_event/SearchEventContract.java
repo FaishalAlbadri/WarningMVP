@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.search_event;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoEvent.EventBean;
+import com.faishalbadri.hijab.data.event.EventItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class SearchEventContract {
 
   public interface SearchEventView {
 
-    void onSuccesSearchEvent(List<EventBean> data, String msg);
+    void onSuccesSearchEvent(List<EventItem> data, String msg);
 
     void onWrongSearchEvent(String msg);
 

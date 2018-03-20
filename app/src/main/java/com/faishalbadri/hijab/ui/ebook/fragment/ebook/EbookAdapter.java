@@ -16,7 +16,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookCategoryItem;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookAdapter.ViewHolder;
 import com.faishalbadri.hijab.ui.ebook_by_category.EbookByCategoryActivity;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ import java.util.List;
 public class EbookAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<DataBean> list_ebook;
+  private List<EbookCategoryItem> list_ebook;
 
-  public EbookAdapter(FragmentActivity ebookActivity, ArrayList<DataBean> resultItem) {
+  public EbookAdapter(FragmentActivity ebookActivity, ArrayList<EbookCategoryItem> resultItem) {
     this.context = ebookActivity;
     this.list_ebook = resultItem;
   }
@@ -45,13 +45,13 @@ public class EbookAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.textviewTitleEbook.setText(list_ebook.get(position).getEbook_category_name());
+    holder.textviewTitleEbook.setText(list_ebook.get(position).getEbookCategoryName());
     holder.ebookAdapterItem.setData(context, list_ebook.get(position).getEbook());
     holder.ebookAdapterItem.notifyDataSetChanged();
     holder.constraintTitle.setOnClickListener(v -> {
       Intent i = new Intent(v.getContext(), EbookByCategoryActivity.class);
-      i.putExtra("category_id", list_ebook.get(position).getEbook_category_id());
-      i.putExtra("category_title", list_ebook.get(position).getEbook_category_name());
+      i.putExtra("category_id", list_ebook.get(position).getEbookCategoryId());
+      i.putExtra("category_title", list_ebook.get(position).getEbookCategoryName());
       v.getContext().startActivity(i);
     });
   }

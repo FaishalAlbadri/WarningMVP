@@ -2,20 +2,17 @@ package com.faishalbadri.hijab.repository.ebook.remote;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory;
+import com.faishalbadri.hijab.api.APIClient;
+import com.faishalbadri.hijab.api.APIInterface;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookByCategoryResponse;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookCategoryItem;
 import com.faishalbadri.hijab.repository.ebook.EbookDataResource;
 import com.faishalbadri.hijab.util.Singleton.DataUser;
-import com.faishalbadri.hijab.util.server.Server;
-import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by fikriimaduddin on 11/3/17.
@@ -23,42 +20,40 @@ import java.util.Map;
 
 public class EbookDataRemote implements EbookDataResource {
 
-  private static final String URL = Server.BASE_URL_REVAMP + "ebook";
   private Context context;
-  private RequestQueue requestQueue;
-
 
   public EbookDataRemote(Context context) {
     this.context = context;
-    requestQueue = Volley.newRequestQueue(context);
   }
 
   @Override
   public void getEbookList(@NonNull EbookGetCallBack ebookGetCallBack) {
-    StringRequest stringRequest = new StringRequest(Method.GET, String.valueOf(URL),
-        response -> {
-          Log.i("responseebook", response);
-          final PojoEbookWithCategory pojoEbookWithCategory = new Gson()
-              .fromJson(response, PojoEbookWithCategory.class);
-          try {
-            if (pojoEbookWithCategory.getData().toString().equals("[]")) {
-              ebookGetCallBack.onErrorEbook("Error");
-            } else {
-              ebookGetCallBack
-                  .onSuccessEbook(pojoEbookWithCategory.getData(), "Ok");
-            }
-          } catch (Exception e) {
-
-          }
-        }, error -> ebookGetCallBack
-        .onErrorEbook(context.getResources().getString(R.string.caption_error_internet_acces))) {
+    APIInterface apiInterface = APIClient.getRetrofit().create(APIInterface.class);
+    final Call<EbookByCategoryResponse> ebookByCategoryResponseCall = apiInterface
+        .getEbook(DataUser.getInstance()
+            .getUserApiKey());
+    ebookByCategoryResponseCall.enqueue(new Callback<EbookByCategoryResponse>() {
       @Override
-      public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Authorization", DataUser.getInstance().getUserApiKey());
-        return params;
+      public void onResponse(Call<EbookByCategoryResponse> call,
+          Response<EbookByCategoryResponse> response) {
+        try {
+          if (response.body().getData().toString().equals("[]")) {
+            ebookGetCallBack.onErrorEbook("Error");
+          } else {
+            EbookByCategoryResponse ebookResponse = response.body();
+            List<EbookCategoryItem> items = ebookResponse.getData();
+            ebookGetCallBack.onSuccessEbook(items, "Ok");
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
       }
-    };
-    requestQueue.add(stringRequest);
+
+      @Override
+      public void onFailure(Call<EbookByCategoryResponse> call, Throwable t) {
+        ebookGetCallBack
+            .onErrorEbook(context.getResources().getString(R.string.caption_error_internet_acces));
+      }
+    });
   }
 }

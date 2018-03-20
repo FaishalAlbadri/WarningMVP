@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.search_ebook;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoEbook.EbookBean;
+import com.faishalbadri.hijab.data.ebook.EbookItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class SearchEbookContract {
 
   public interface SearchEbookView {
 
-    void onSuccesSearchEbook(List<EbookBean> data, String msg);
+    void onSuccesSearchEbook(List<EbookItem> data, String msg);
 
     void onWrongSearchEbook(String msg);
 

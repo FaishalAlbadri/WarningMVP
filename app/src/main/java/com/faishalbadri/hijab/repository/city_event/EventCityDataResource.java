@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.repository.city_event;
 
 import android.support.annotation.NonNull;
-import com.faishalbadri.hijab.data.PojoCityEvent;
+import com.faishalbadri.hijab.data.city.CityItem;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface EventCityDataResource {
 
   interface EventCityGetCallback {
 
-    void onSuccesEventCity(List<PojoCityEvent.EventCityBean> data, String msg);
+    void onSuccesEventCity(List<CityItem> data, String msg);
 
     void onErrorEventCity(String msg);
   }

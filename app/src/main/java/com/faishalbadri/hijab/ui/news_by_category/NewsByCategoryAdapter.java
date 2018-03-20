@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryAdapter.ViewHolder;
 import com.faishalbadri.hijab.util.server.Server;
@@ -32,11 +32,11 @@ import java.util.List;
 public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
 
   private Context context;
-  private List<NewsBean> data;
+  private List<NewsItem> data;
 
 
   public NewsByCategoryAdapter(Context context,
-      List<NewsBean> data) {
+      List<NewsItem> data) {
     this.context = context;
     this.data = data;
   }
@@ -50,21 +50,20 @@ public class NewsByCategoryAdapter extends Adapter<ViewHolder> {
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    final NewsBean listitem = data.get(position);
+    final NewsItem listitem = data.get(position);
     RequestOptions options = new RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888)
         .override(200, 200);
     Glide.with(context)
-        .load(Server.BASE_ASSETS + listitem.getNews_images())
+        .load(Server.BASE_ASSETS + listitem.getNewsImages())
         .apply(options)
         .into(holder.imageviewNewsItem);
-    holder.textviewTitleNewsItem.setText(listitem.getNews_title());
+    holder.textviewTitleNewsItem.setText(listitem.getNewsTitle());
     holder.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
     holder.cardviewNewsFragmentNews.setClickable(true);
     holder.cardviewNewsFragmentNews.setOnClickListener(v -> {
       v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-          .putExtra("news_id", listitem.getNews_id())
-          .putExtra("news_image", listitem.getNews_images())
-          .putExtra("news_description", listitem.getNews_description()));
+          .putExtra("news_id", listitem.getNewsId())
+          .putExtra("news_image", listitem.getNewsImages()));
       ((Activity) context)
           .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
     });

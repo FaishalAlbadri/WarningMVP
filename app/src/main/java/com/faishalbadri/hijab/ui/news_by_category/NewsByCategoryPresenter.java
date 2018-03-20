@@ -1,6 +1,6 @@
 package com.faishalbadri.hijab.ui.news_by_category;
 
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.repository.news_by_category.NewsByCategoryDataResource.NewsByCategoryGetDataCallBack;
 import com.faishalbadri.hijab.repository.news_by_category.NewsByCategoryRepository;
 import com.faishalbadri.hijab.ui.news_by_category.NewsByCategoryContract.NewsByCategoryView;
@@ -36,7 +36,7 @@ public class NewsByCategoryPresenter implements NewsByCategoryContract.NewsByCat
     newsByCategoryRepository.getNewsByCategoryGetDataCallBack(id,
         new NewsByCategoryGetDataCallBack() {
           @Override
-          public void onSuccessNewsByCategory(List<NewsBean> video, String msg) {
+          public void onSuccessNewsByCategory(List<NewsItem> video, String msg) {
             newsByCategoryView.onSuccesNewsByCategory(video, msg);
           }
 

@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo.VideosBean;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.di.DetailVideoRepositoryInject;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoContract.DetailVideoView;
 import com.faishalbadri.hijab.util.IntentUtil;
@@ -53,7 +53,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   @BindView(R.id.recyclerview_activity_video_detail)
   RecyclerView recyclerviewActivityVideoDetail;
   DetailVideoAdapter detailVideoAdapter;
-  ArrayList<VideosBean> resultItem;
+  ArrayList<VideosItem> resultItem;
   DetailVideoPresenter detailVideoPresenter;
   @BindView(R.id.ad_view_detail_video)
   AdView adViewDetailVideo;
@@ -78,7 +78,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
     ButterKnife.bind(this);
     UserUtil.getInstance(getApplicationContext()).setDataUser();
     setView();
-    detailVideoPresenter.getData("4");
+    detailVideoPresenter.getData();
   }
 
   private void setView() {
@@ -142,7 +142,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
 
 
   @Override
-  public void onSuccessDetailVideo(List<VideosBean> data, String msg) {
+  public void onSuccessDetailVideo(List<VideosItem> data, String msg) {
     resultItem.clear();
     resultItem.addAll(data);
     detailVideoAdapter.notifyDataSetChanged();
@@ -188,7 +188,7 @@ public class DetailVideoActivity extends YouTubeBaseActivity implements
   private void whenError() {
     DataServerProgress.getInstance().onErrorData(layoutNoInternetAcces, layoutLoading);
     if (DataServerProgress.getInstance().getStatus().equals("error")) {
-      detailVideoPresenter.getData("4");
+      detailVideoPresenter.getData();
     }
   }
 }

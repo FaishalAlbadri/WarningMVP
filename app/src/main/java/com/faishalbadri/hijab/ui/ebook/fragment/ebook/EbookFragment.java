@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoEbookWithCategory.DataBean;
+import com.faishalbadri.hijab.data.ebook.with_category.EbookCategoryItem;
 import com.faishalbadri.hijab.di.EbookRepositoryInject;
 import com.faishalbadri.hijab.ui.ebook.fragment.ebook.EbookContract.EbookView;
 import com.faishalbadri.hijab.util.Singleton.DataServerProgress;
@@ -32,7 +32,7 @@ public class EbookFragment extends Fragment implements EbookView {
   RecyclerView recyclerviewActivityEbook;
   EbookPresenter ebookPresenter;
   EbookAdapter ebookAdapter;
-  ArrayList<DataBean> resultItem;
+  ArrayList<EbookCategoryItem> resultItem;
   @BindView(R.id.refresh_fragment_ebook)
   SwipeRefreshLayout refreshFragmentEbook;
   @BindView(R.id.layout_no_internet_acces)
@@ -79,7 +79,7 @@ public class EbookFragment extends Fragment implements EbookView {
   }
 
   @Override
-  public void onSuccessEbook(List<DataBean> ebook, String msg) {
+  public void onSuccessEbook(List<EbookCategoryItem> ebook, String msg) {
     resultItem.clear();
     resultItem.addAll(ebook);
     ebookAdapter.notifyDataSetChanged();

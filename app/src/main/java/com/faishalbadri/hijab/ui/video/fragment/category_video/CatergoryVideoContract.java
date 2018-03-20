@@ -1,7 +1,7 @@
 package com.faishalbadri.hijab.ui.video.fragment.category_video;
 
 import com.faishalbadri.hijab.base.BasePresenter;
-import com.faishalbadri.hijab.data.PojoCategory.CategoriesBean;
+import com.faishalbadri.hijab.data.categories.CategoriesItem;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ public class CatergoryVideoContract {
 
   public interface categoryVideoView {
 
-    void onSuccesCategoryVideo(List<CategoriesBean> category, String msg);
+    void onSuccesCategoryVideo(List<CategoriesItem> category, String msg);
 
     void onErrorCategoryVideo(String msg);
   }

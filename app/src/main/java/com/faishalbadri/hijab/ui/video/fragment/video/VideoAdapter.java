@@ -25,9 +25,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoVideo;
+import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity;
-import com.faishalbadri.hijab.util.ImageLoader;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
@@ -42,17 +41,17 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
   private static final int ITEM = 0;
   private static final int LOADING = 1;
   private Context context;
-  private List<PojoVideo.VideosBean> list_video;
+  private List<VideosItem> list_video;
   private VideoFragment videoFragment;
   private String error;
   private VideoAdapter.ViewHolderLoading viewHolderLoading;
   ImageLoader imageLoader;
 
-  public VideoAdapter(VideoFragment videoFragment,FragmentActivity activity, ArrayList<PojoVideo.VideosBean> resultItem) {
+  public VideoAdapter(VideoFragment videoFragment, FragmentActivity activity,
+      ArrayList<VideosItem> resultItem) {
     this.context = activity;
     this.list_video = resultItem;
     this.videoFragment = videoFragment;
-    this.imageLoader = new ImageLoader(context);
   }
 
   @Override
@@ -82,23 +81,31 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    final PojoVideo.VideosBean listitem = list_video.get(position);
+    final VideosItem listitem = list_video.get(position);
 
     switch (getItemViewType(position)) {
       case ITEM:
         ViewHolder viewHolderItem = (ViewHolder) holder;
+        RequestOptions options = new RequestOptions().fitCenter()
+            .format(DecodeFormat.PREFER_ARGB_8888)
+            .override(200, 200);
+        Glide.with(context)
+            .load(Server.BASE_IMG_YT + listitem.getVideoUrl() + Server.IMG_YT_FORMAT)
+            .apply(options)
+            .into(viewHolderItem.imgListVideo);
+        viewHolderItem.txtJudulListVideo.setText(listitem.getVideoTitle());
         imageLoader.displayImageFromYoutube(listitem.getVideo_url(), ((ViewHolder) holder).imgListVideo);
         viewHolderItem.txtJudulListVideo.setText(listitem.getVideo_title());
         viewHolderItem.txtJudulListVideo.setMaxLines(3);
         viewHolderItem.cardViewVideoItem.setForeground(getSelectedItemDrawable());
-        viewHolderItem.txtDurationVideo.setText(listitem.getVideo_duration().toString());
+        viewHolderItem.txtDurationVideo.setText(listitem.getVideoDuration());
         viewHolderItem.cardViewVideoItem.setClickable(true);
         viewHolderItem.cardViewVideoItem.setOnClickListener(v -> {
           context.startActivity(new Intent(context, DetailVideoActivity.class)
-              .putExtra("videos_title", listitem.getVideo_title())
-              .putExtra("videos_url", listitem.getVideo_url())
-              .putExtra("videos_description", listitem.getVideo_description())
-              .putExtra("videos_duration", listitem.getVideo_duration()));
+              .putExtra("videos_title", listitem.getVideoTitle())
+              .putExtra("videos_url", listitem.getVideoUrl())
+              .putExtra("videos_description", listitem.getVideoDescription())
+              .putExtra("videos_duration", listitem.getVideoDuration()));
           ((Activity) context)
               .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
         });
@@ -125,7 +132,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
   }
 
   public void onErrorPagination() {
-    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    Toast.makeText(context, "Koneksi internet anda lambat", Toast.LENGTH_SHORT).show();
     viewHolderLoading.progressLoadData.setVisibility(View.GONE);
     viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
   }
@@ -164,6 +171,7 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
       ButterKnife.bind(this, itemView);
     }
   }
+
   protected class ViewHolderLoading extends RecyclerView.ViewHolder {
 
     @BindView(R.id.button_load_data)

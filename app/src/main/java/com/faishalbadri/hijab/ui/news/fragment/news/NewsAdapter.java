@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
-import com.faishalbadri.hijab.data.PojoNews.NewsBean;
+import com.faishalbadri.hijab.data.news.NewsItem;
 import com.faishalbadri.hijab.ui.detail.news.DetailNewsActivity;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
@@ -39,13 +39,13 @@ public class NewsAdapter extends Adapter<ViewHolder> {
   private static final int ITEM = 0;
   private static final int LOADING = 1;
   private Context context;
-  private List<NewsBean> data;
+  private List<NewsItem> data;
   private NewsFragment newsFragment;
   private String error;
   private ViewHolderLoading viewHolderLoading;
 
   public NewsAdapter(Context context,
-      List<NewsBean> data, NewsFragment newsFragment) {
+      List<NewsItem> data, NewsFragment newsFragment) {
     this.context = context;
     this.data = data;
     this.newsFragment = newsFragment;
@@ -79,7 +79,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
 
-    NewsBean datalist = data.get(position);
+    NewsItem datalist = data.get(position);
 
     switch (getItemViewType(position)) {
       case ITEM:
@@ -88,17 +88,16 @@ public class NewsAdapter extends Adapter<ViewHolder> {
             .format(DecodeFormat.PREFER_ARGB_8888)
             .override(200, 200);
         Glide.with(context)
-            .load(Server.BASE_ASSETS + datalist.getNews_images())
+            .load(Server.BASE_ASSETS + datalist.getNewsImages())
             .apply(options)
             .into(viewHolderItem.imageviewNewsItem);
-        viewHolderItem.textviewTitleNewsItem.setText(datalist.getNews_title());
+        viewHolderItem.textviewTitleNewsItem.setText(datalist.getNewsTitle());
         viewHolderItem.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
         viewHolderItem.cardviewNewsFragmentNews.setClickable(true);
         viewHolderItem.cardviewNewsFragmentNews.setOnClickListener(v -> {
           v.getContext().startActivity(new Intent(v.getContext(), DetailNewsActivity.class)
-              .putExtra("news_id", datalist.getNews_id())
-              .putExtra("news_image", datalist.getNews_images())
-              .putExtra("news_description", datalist.getNews_description()));
+              .putExtra("news_id", datalist.getNewsId())
+              .putExtra("news_image", datalist.getNewsImages()));
           ((Activity) context)
               .overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_right);
         });
@@ -125,7 +124,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
   }
 
   public void onErrorPagination() {
-    Toast.makeText(context, "Your internet connection to slow", Toast.LENGTH_SHORT).show();
+    Toast.makeText(context, "Koneksi internet anda lambat", Toast.LENGTH_SHORT).show();
     viewHolderLoading.progressLoadData.setVisibility(View.GONE);
     viewHolderLoading.buttonLoadData.setVisibility(View.VISIBLE);
   }
