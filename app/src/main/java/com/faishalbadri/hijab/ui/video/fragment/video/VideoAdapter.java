@@ -27,6 +27,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.faishalbadri.hijab.R;
 import com.faishalbadri.hijab.data.videos.VideosItem;
 import com.faishalbadri.hijab.ui.detail.video.DetailVideoActivity;
+import com.faishalbadri.hijab.util.ImageLoader;
 import com.faishalbadri.hijab.util.Singleton.LoadingStatus;
 import com.faishalbadri.hijab.util.server.Server;
 import java.util.ArrayList;
@@ -94,8 +95,8 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
             .apply(options)
             .into(viewHolderItem.imgListVideo);
         viewHolderItem.txtJudulListVideo.setText(listitem.getVideoTitle());
-        imageLoader.displayImageFromYoutube(listitem.getVideo_url(), ((ViewHolder) holder).imgListVideo);
-        viewHolderItem.txtJudulListVideo.setText(listitem.getVideo_title());
+        imageLoader.displayImageFromYoutube(listitem.getVideoUrl(), ((ViewHolder) holder).imgListVideo);
+        viewHolderItem.txtJudulListVideo.setText(listitem.getVideoTitle());
         viewHolderItem.txtJudulListVideo.setMaxLines(3);
         viewHolderItem.cardViewVideoItem.setForeground(getSelectedItemDrawable());
         viewHolderItem.txtDurationVideo.setText(listitem.getVideoDuration());
