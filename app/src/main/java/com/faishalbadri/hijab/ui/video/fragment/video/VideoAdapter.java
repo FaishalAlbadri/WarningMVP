@@ -95,7 +95,6 @@ public class VideoAdapter extends Adapter<RecyclerView.ViewHolder> {
             .apply(options)
             .into(viewHolderItem.imgListVideo);
         viewHolderItem.txtJudulListVideo.setText(listitem.getVideoTitle());
-        imageLoader.displayImageFromYoutube(listitem.getVideoUrl(), ((ViewHolder) holder).imgListVideo);
         viewHolderItem.txtJudulListVideo.setText(listitem.getVideoTitle());
         viewHolderItem.txtJudulListVideo.setMaxLines(3);
         viewHolderItem.cardViewVideoItem.setForeground(getSelectedItemDrawable());

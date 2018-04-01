@@ -9,7 +9,7 @@
   </style>
 
   <style name="AppTheme.NoActionBar.swipe" parent="AppTheme.NoActionBar">
-    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowIsTranslucent">false</item>
     <item name="android:windowBackground">@android:color/transparent</item>
   </style>
 

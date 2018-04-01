@@ -10,6 +10,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +92,7 @@ public class NewsAdapter extends Adapter<ViewHolder> {
             .load(Server.BASE_ASSETS + datalist.getNewsImages())
             .apply(options)
             .into(viewHolderItem.imageviewNewsItem);
-        viewHolderItem.textviewTitleNewsItem.setText(datalist.getNewsTitle());
+        viewHolderItem.textviewTitleNewsItem.setText(Html.fromHtml(datalist.getNewsTitle()));
         viewHolderItem.cardviewNewsFragmentNews.setForeground(getSelectedItemDrawable());
         viewHolderItem.cardviewNewsFragmentNews.setClickable(true);
         viewHolderItem.cardviewNewsFragmentNews.setOnClickListener(v -> {
